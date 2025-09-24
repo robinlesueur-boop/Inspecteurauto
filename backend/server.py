@@ -469,11 +469,21 @@ async def register(user_data: UserCreate):
 @api_router.post("/auth/login", response_model=Token)
 async def login(user_credentials: UserLogin):
     user = await db.users.find_one({"email": user_credentials.email})
-    if not user or not verify_password(user_credentials.password, user['hashed_password']):
+    if not user:
+        raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
+    
+    # Check if user has hashed_password field
+    if 'hashed_password' not in user:
+        raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
+    
+    if not verify_password(user_credentials.password, user['hashed_password']):
         raise HTTPException(status_code=401, detail="Email ou mot de passe incorrect")
     
     access_token = create_access_token(data={"sub": user['email']})
-    user_obj = User(**user)
+    
+    # Remove hashed_password before creating User object
+    user_dict = {k: v for k, v in user.items() if k != 'hashed_password'}
+    user_obj = User(**user_dict)
     
     return Token(access_token=access_token, token_type="bearer", user=user_obj)
 
