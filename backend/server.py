@@ -87,6 +87,16 @@ class QuizResult(BaseModel):
     answers: Dict[str, Any]
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+class FinalExam(BaseModel):
+    answers: Dict[str, str]  # question_id -> selected_answer
+
+class FinalExamResult(BaseModel):
+    score: int
+    total_questions: int
+    passed: bool
+    answers: Dict[str, Any]
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 # Authentication utilities
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
@@ -113,332 +123,641 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
     user = await db.users.find_one({"email": email})
     if user is None:
         raise HTTPException(status_code=401, detail="User not found")
-    return User(**user)
+    
+    # Remove hashed_password before creating User object
+    user_dict = {k: v for k, v in user.items() if k != 'hashed_password'}
+    return User(**user_dict)
 
-# Initialize course modules
+# Initialize course modules with detailed content
 COURSE_MODULES = [
     {
         "id": "module-1",
         "title": "Diagnostic et Positionnement",
-        "description": "Évaluation des connaissances initiales et introduction au métier d'inspecteur automobile",
-        "duration_minutes": 90,
+        "description": "Auto-évaluation des compétences et définition du parcours personnalisé",
+        "duration_minutes": 30,
         "order": 1,
         "content": """
-        <h2>Bienvenue dans votre formation d'Inspecteur Automobile</h2>
+        <h2>Module 1 : Diagnostic et Positionnement</h2>
         
-        <h3>Objectifs du module :</h3>
+        <h3>🎯 Objectifs du Module</h3>
         <ul>
-            <li>Comprendre le rôle et les responsabilités d'un inspecteur automobile</li>
-            <li>Évaluer vos connaissances actuelles</li>
-            <li>Définir vos objectifs de formation personnalisés</li>
+            <li>Évaluer vos compétences techniques actuelles</li>
+            <li>Identifier vos points forts et axes d'amélioration</li>
+            <li>Personnaliser votre parcours de formation</li>
+            <li>Comprendre les enjeux du métier d'inspecteur automobile</li>
         </ul>
 
-        <h3>Le métier d'inspecteur automobile</h3>
-        <p>L'inspecteur automobile est un professionnel spécialisé dans l'évaluation complète des véhicules. Il intervient dans de nombreuses situations :</p>
+        <h3>🔍 Auto-évaluation des Compétences</h3>
+        
+        <h4>Compétences Mécaniques de Base</h4>
+        <p>Avant de commencer votre formation, il est essentiel d'évaluer votre niveau actuel en mécanique automobile :</p>
+        
+        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
+            <h5>📋 Grille d'Auto-évaluation</h5>
+            <p><strong>Niveau Débutant (0-2 points par domaine) :</strong></p>
+            <ul>
+                <li>Moteur : Notions de base sur le fonctionnement</li>
+                <li>Transmission : Différence boîte manuelle/automatique</li>
+                <li>Freinage : Connaissance des composants principaux</li>
+                <li>Électronique : Utilisation basique d'un multimètre</li>
+            </ul>
+            
+            <p><strong>Niveau Intermédiaire (3-4 points par domaine) :</strong></p>
+            <ul>
+                <li>Moteur : Diagnostic de pannes courantes</li>
+                <li>Transmission : Identification des symptômes d'usure</li>
+                <li>Freinage : Contrôle épaisseur plaquettes/disques</li>
+                <li>Électronique : Lecture codes défauts OBD</li>
+            </ul>
+            
+            <p><strong>Niveau Avancé (5 points par domaine) :</strong></p>
+            <ul>
+                <li>Moteur : Analyse compression, régime ralenti</li>
+                <li>Transmission : Évaluation état embrayage, boîte</li>
+                <li>Freinage : Test efficacité, géométrie</li>
+                <li>Électronique : Diagnostic approfondi calculateurs</li>
+            </ul>
+        </div>
+
+        <h4>Expérience Professionnelle</h4>
+        <p>Votre parcours professionnel influence directement votre approche de l'inspection :</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Profil</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Points forts</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Axes de développement</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Mécanicien</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Diagnostic technique approfondi</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Relation client, rédaction rapports</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Contrôleur technique</strong></td>
+                <td style="padding: 12px; border: 1st solid #4b5563;">Méthodologie, respect procédures</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Expertise moteur, conseil client</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Commercial auto</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Relation client, négociation</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Connaissances techniques approfondies</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Reconversion</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Motivation, regard neuf</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Bases techniques complètes</td>
+            </tr>
+        </table>
+
+        <h3>📊 Définition de Votre Parcours Personnalisé</h3>
+        
+        <p>Selon votre profil, nous recommandons un parcours adapté :</p>
+        
+        <h4>🚀 Parcours Accéléré (Professionnels expérimentés)</h4>
         <ul>
-            <li>Ventes entre particuliers</li>
-            <li>Évaluations pour assurances</li>
-            <li>Contrôles pour sociétés de leasing</li>
-            <li>Inspections pré-achat</li>
+            <li>Focus sur les modules 2, 4, 6 et 8</li>
+            <li>Révision rapide des bases mécaniques</li>
+            <li>Accent mis sur la méthodologie AutoJust</li>
+            <li>Développement business et relation client</li>
         </ul>
 
-        <h3>Méthodologie AutoJust</h3>
-        <p>Notre formation se base sur la méthodologie AutoJust, reconnue par plus de 200 points de contrôle couvrant :</p>
+        <h4>⚡ Parcours Standard (Niveau intermédiaire)</h4>
         <ul>
-            <li>État mécanique complet</li>
-            <li>Carrosserie et peinture</li>
-            <li>Électronique embarquée</li>
-            <li>Historique et documents</li>
-            <li>Avis spécifique sur le moteur</li>
+            <li>Suivi linéaire des 8 modules</li>
+            <li>Attention particulière aux modules 3 et 5</li>
+            <li>Exercices pratiques renforcés</li>
+            <li>Validation étape par étape</li>
         </ul>
+
+        <h4>🎓 Parcours Renforcé (Débutants)</h4>
+        <ul>
+            <li>Module 3 étendu avec ressources supplémentaires</li>
+            <li>Exercices pratiques nombreux</li>
+            <li>Support pédagogique personnalisé</li>
+            <li>Validation progressive avec feedback</li>
+        </ul>
+
+        <h3>🏆 Les Enjeux du Métier d'Inspecteur</h3>
+        
+        <h4>Mission et Responsabilités</h4>
+        <p>L'inspecteur automobile est un expert indépendant qui :</p>
+        <ul>
+            <li><strong>Évalue objectivement</strong> l'état d'un véhicule</li>
+            <li><strong>Informe</strong> le client sur les risques et opportunités</li>
+            <li><strong>Protège</strong> l'acheteur contre les vices cachés</li>
+            <li><strong>Facilite</strong> les transactions en apportant la confiance</li>
+        </ul>
+
+        <h4>Marché et Opportunités</h4>
+        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>📈 Statistiques du Marché</h5>
+            <ul>
+                <li><strong>5,2 millions</strong> de véhicules d'occasion vendus/an en France</li>
+                <li><strong>15%</strong> seulement font l'objet d'une inspection</li>
+                <li><strong>Potentiel de croissance énorme</strong> avec la démocratisation</li>
+                <li><strong>Tarif moyen :</strong> 200-300€ par inspection</li>
+            </ul>
+        </div>
+
+        <h4>Défis et Exigences du Métier</h4>
+        <ul>
+            <li><strong>Précision technique :</strong> Aucune erreur n'est permise</li>
+            <li><strong>Impartialité :</strong> Résister aux pressions commerciales</li>
+            <li><strong>Pédagogie :</strong> Expliquer clairement les constats</li>
+            <li><strong>Réactivité :</strong> Intervention rapide sur demande</li>
+            <li><strong>Formation continue :</strong> Évolution technologique constante</li>
+        </ul>
+
+        <h3>🎯 Objectifs de Fin de Formation</h3>
+        
+        <p>À l'issue de cette formation, vous serez capable de :</p>
+        
+        <div style="background: #1e40af; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>💼 Compétences Professionnelles</h5>
+            <ul>
+                <li>Réaliser une inspection complète en 90 minutes</li>
+                <li>Évaluer avec précision l'état de 200+ points de contrôle</li>
+                <li>Rédiger un rapport professionnel détaillé</li>
+                <li>Formuler un avis moteur expert selon le modèle/kilométrage</li>
+                <li>Gérer la relation client avec diplomatie</li>
+                <li>Fixer vos tarifs et développer votre activité</li>
+            </ul>
+        </div>
+
+        <h3>📋 Plan de Formation Personnalisé</h3>
+        
+        <p>Votre progression sera suivie grâce à :</p>
+        <ul>
+            <li><strong>Quiz d'évaluation</strong> à chaque module (minimum 70%)</li>
+            <li><strong>Cas pratiques</strong> avec véhicules réels</li>
+            <li><strong>Exercices de rédaction</strong> de rapports</li>
+            <li><strong>Simulations</strong> de relation client</li>
+            <li><strong>Examen final</strong> de 50 questions (seuil 70%)</li>
+        </ul>
+
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>⚠️ Points d'Attention</h5>
+            <ul>
+                <li>La formation théorique ne remplace pas la pratique terrain</li>
+                <li>L'expérience s'acquiert avec le temps et la répétition</li>
+                <li>La formation continue est indispensable</li>
+                <li>Le réseau professionnel est crucial pour le développement</li>
+            </ul>
+        </div>
+
+        <h3>🚀 Prêt à Commencer ?</h3>
+        
+        <p>Maintenant que vous avez évalué votre profil et défini vos objectifs, passons aux fondamentaux de l'inspection automobile dans le module suivant.</p>
+        
+        <p><em>Durée estimée de ce module : 30 minutes de lecture + 15 minutes pour le quiz d'auto-évaluation.</em></p>
         """,
         "quiz_questions": [
             {
                 "id": "q1",
-                "question": "Combien de points de contrôle comprend la méthodologie AutoJust ?",
-                "options": ["150 points", "200 points", "250 points", "300 points"],
-                "correct_answer": "200 points"
+                "question": "Combien de véhicules d'occasion sont vendus annuellement en France ?",
+                "options": ["3,5 millions", "5,2 millions", "7,1 millions", "8,9 millions"],
+                "correct_answer": "5,2 millions"
             },
             {
-                "id": "q2", 
-                "question": "Dans quelles situations un inspecteur automobile intervient-il ?",
-                "options": ["Uniquement ventes particuliers", "Uniquement assurances", "Ventes, assurances, leasing et pré-achat", "Uniquement contrôles techniques"],
-                "correct_answer": "Ventes, assurances, leasing et pré-achat"
+                "id": "q2",
+                "question": "Quel pourcentage de véhicules d'occasion fait actuellement l'objet d'une inspection ?",
+                "options": ["5%", "15%", "25%", "35%"],
+                "correct_answer": "15%"
+            },
+            {
+                "id": "q3",
+                "question": "Quel est le tarif moyen d'une inspection automobile ?",
+                "options": ["100-150€", "200-300€", "350-400€", "450-500€"],
+                "correct_answer": "200-300€"
+            },
+            {
+                "id": "q4",
+                "question": "Combien de temps dure approximativement une inspection complète ?",
+                "options": ["60 minutes", "90 minutes", "120 minutes", "150 minutes"],
+                "correct_answer": "90 minutes"
+            },
+            {
+                "id": "q5",
+                "question": "Quelle est la première qualité d'un inspecteur automobile ?",
+                "options": ["Rapidité", "Impartialité", "Convivialité", "Flexibilité"],
+                "correct_answer": "Impartialité"
+            },
+            {
+                "id": "q6",
+                "question": "Le parcours 'Renforcé' est recommandé pour quel profil ?",
+                "options": ["Mécaniciens expérimentés", "Contrôleurs techniques", "Débutants", "Commerciaux auto"],
+                "correct_answer": "Débutants"
+            },
+            {
+                "id": "q7",
+                "question": "Combien de points de contrôle comprend la méthodologie AutoJust ?",
+                "options": ["150+", "200+", "250+", "300+"],
+                "correct_answer": "200+"
+            },
+            {
+                "id": "q8",
+                "question": "Quel est le seuil de réussite pour les quiz de modules ?",
+                "options": ["60%", "70%", "80%", "90%"],
+                "correct_answer": "70%"
+            },
+            {
+                "id": "q9",
+                "question": "La formation continue est-elle obligatoire pour un inspecteur ?",
+                "options": ["Non, pas nécessaire", "Recommandée", "Indispensable", "Uniquement la première année"],
+                "correct_answer": "Indispensable"
+            },
+            {
+                "id": "q10",
+                "question": "Quel niveau permet de diagnostiquer des pannes courantes ?",
+                "options": ["Débutant", "Intermédiaire", "Avancé", "Expert"],
+                "correct_answer": "Intermédiaire"
+            },
+            {
+                "id": "q11",
+                "question": "L'inspecteur doit-il résister aux pressions commerciales ?",
+                "options": ["Non, il doit s'adapter", "Parfois", "Oui, absolument", "Cela dépend du client"],
+                "correct_answer": "Oui, absolument"
+            },
+            {
+                "id": "q12",
+                "question": "Combien de questions comprend l'examen final ?",
+                "options": ["30 questions", "40 questions", "50 questions", "60 questions"],
+                "correct_answer": "50 questions"
             }
         ]
     },
     {
         "id": "module-2",
-        "title": "Remise à Niveau Mécanique",
-        "description": "Bases essentielles en mécanique automobile, moteur, transmission et électronique",
-        "duration_minutes": 120,
+        "title": "Fondamentaux de l'Inspection",
+        "description": "Rôle, missions, cadre réglementaire et déontologie de l'inspecteur automobile",
+        "duration_minutes": 90,
         "order": 2,
         "content": """
-        <h2>Remise à Niveau Mécanique</h2>
+        <h2>Module 2 : Fondamentaux de l'Inspection Automobile</h2>
         
-        <h3>Moteur thermique - Les fondamentaux</h3>
+        <h3>🎯 Objectifs du Module</h3>
         <ul>
-            <li><strong>Cycle 4 temps :</strong> Admission, compression, combustion, échappement</li>
-            <li><strong>Composants essentiels :</strong> Pistons, soupapes, vilebrequin, arbre à cames</li>
-            <li><strong>Systèmes annexes :</strong> Refroidissement, lubrification, alimentation</li>
+            <li>Maîtriser le rôle et les missions de l'inspecteur automobile</li>
+            <li>Comprendre les principes de transparence et d'impartialité</li>
+            <li>Connaître le cadre réglementaire français et européen</li>
+            <li>Intégrer les responsabilités légales et la déontologie</li>
         </ul>
 
-        <h3>Transmission</h3>
-        <ul>
-            <li><strong>Boîte de vitesses :</strong> Manuelle et automatique</li>
-            <li><strong>Embrayage :</strong> Fonctionnement et usure</li>
-            <li><strong>Différentiel :</strong> Rôle et diagnostic</li>
-        </ul>
-
-        <h3>Systèmes de sécurité</h3>
-        <ul>
-            <li><strong>Freinage :</strong> Disques, plaquettes, ABS, ESP</li>
-            <li><strong>Direction :</strong> Crémaillère, direction assistée</li>
-            <li><strong>Suspension :</strong> Amortisseurs, ressorts, géométrie</li>
-        </ul>
-
-        <h3>Électronique moderne</h3>
-        <ul>
-            <li><strong>Calculateurs :</strong> Moteur, ABS, climatisation</li>
-            <li><strong>Capteurs :</strong> Température, pression, position</li>
-            <li><strong>Diagnostic :</strong> OBD, codes défauts</li>
-        </ul>
-        """,
-        "quiz_questions": [
-            {
-                "id": "q1",
-                "question": "Quelles sont les 4 phases du cycle d'un moteur thermique ?",
-                "options": ["Admission, compression, combustion, échappement", "Allumage, compression, explosion, évacuation", "Entrée, compression, inflammation, sortie", "Aspiration, serrage, déflagration, expulsion"],
-                "correct_answer": "Admission, compression, combustion, échappement"
-            },
-            {
-                "id": "q2",
-                "question": "Que signifie l'acronyme ABS ?",
-                "options": ["Anti Blocking System", "Automatic Brake System", "Advanced Braking Security", "Auto Block Safety"],
-                "correct_answer": "Anti Blocking System"
-            }
-        ]
-    },
-    {
-        "id": "module-3", 
-        "title": "Méthodologie d'Inspection Terrain",
-        "description": "Processus complet d'inspection : carrosserie, intérieur, moteur, électronique et essai routier",
-        "duration_minutes": 150,
-        "order": 3,
-        "content": """
-        <h2>Méthodologie d'Inspection Terrain</h2>
+        <h3>👨‍🔧 Rôle et Missions de l'Inspecteur</h3>
         
-        <h3>Ordre d'inspection optimisé</h3>
-        <ol>
-            <li><strong>Contrôle visuel extérieur</strong> (15 min)
-                <ul>
-                    <li>Tour complet du véhicule</li>
-                    <li>État de la carrosserie et peinture</li>
-                    <li>Pneumatiques et jantes</li>
-                    <li>Éclairage et signalisation</li>
-                </ul>
-            </li>
-            
-            <li><strong>Inspection intérieure</strong> (10 min)
-                <ul>
-                    <li>Sièges et garnissages</li>
-                    <li>Tableau de bord et commandes</li>
-                    <li>Équipements de sécurité</li>
-                </ul>
-            </li>
-            
-            <li><strong>Contrôle moteur</strong> (20 min)
-                <ul>
-                    <li>Inspection visuelle compartiment moteur</li>
-                    <li>Niveaux et fuites</li>
-                    <li>Test au ralenti et montée en régime</li>
-                    <li>Diagnostic électronique OBD</li>
-                </ul>
-            </li>
-            
-            <li><strong>Essai routier</strong> (15 min)
-                <ul>
-                    <li>Démarrage et arrêt</li>
-                    <li>Comportement transmission</li>
-                    <li>Freinage et direction</li>
-                    <li>Systèmes d'aide à la conduite</li>
-                </ul>
-            </li>
-        </ol>
-
-        <h3>Outils digitaux</h3>
-        <p><strong>WebApp AutoJust :</strong> Application mobile pour saisie terrain</p>
-        <ul>
-            <li>Checklist interactive</li>
-            <li>Prise de photos géolocalisées</li>
-            <li>Notation automatisée</li>
-        </ul>
-
-        <p><strong>WeProov :</strong> Plateforme de constat visuel</p>
-        <ul>
-            <li>Photos haute résolution</li>
-            <li>Annotations et commentaires</li>
-            <li>Horodatage certifié</li>
-        </ul>
-        """,
-        "quiz_questions": [
-            {
-                "id": "q1",
-                "question": "Quelle est la durée recommandée pour l'essai routier ?",
-                "options": ["10 minutes", "15 minutes", "20 minutes", "25 minutes"],
-                "correct_answer": "15 minutes"
-            },
-            {
-                "id": "q2",
-                "question": "Dans quel ordre doit-on procéder à l'inspection ?",
-                "options": ["Moteur, extérieur, intérieur, essai", "Intérieur, extérieur, moteur, essai", "Extérieur, intérieur, moteur, essai", "Essai, extérieur, intérieur, moteur"],
-                "correct_answer": "Extérieur, intérieur, moteur, essai"
-            }
-        ]
-    },
-    {
-        "id": "module-4",
-        "title": "Rédaction du Rapport d'Inspection", 
-        "description": "Structuration du rapport, intégration photos et rédaction de l'avis moteur spécialisé",
-        "duration_minutes": 90,
-        "order": 4,
-        "content": """
-        <h2>Rédaction du Rapport d'Inspection</h2>
+        <h4>Définition du Métier</h4>
+        <p>L'inspecteur automobile est un <strong>expert technique indépendant</strong> spécialisé dans l'évaluation complète de véhicules. Il intervient comme tiers de confiance dans les transactions automobiles.</p>
         
-        <h3>Structure du rapport professionnel</h3>
-        <ol>
-            <li><strong>Page de garde</strong>
-                <ul>
-                    <li>Informations véhicule (marque, modèle, année, km)</li>
-                    <li>Date et lieu d'inspection</li>
-                    <li>Coordonnées inspecteur certifié</li>
-                </ul>
-            </li>
-            
-            <li><strong>Synthèse exécutive</strong>
-                <ul>
-                    <li>Note globale sur 100</li>
-                    <li>Points forts et points d'attention</li>
-                    <li>Recommandation d'achat (OUI/NON/AVEC RÉSERVES)</li>
-                </ul>
-            </li>
-            
-            <li><strong>Détail par catégories</strong>
-                <ul>
-                    <li>Carrosserie et esthétique (/20)</li>
-                    <li>Mécanique et motorisation (/25)</li>
-                    <li>Équipements et électronique (/20)</li>
-                    <li>Sécurité et conformité (/20)</li>
-                    <li>Documents et historique (/15)</li>
-                </ul>
-            </li>
-            
-            <li><strong>Avis moteur spécialisé</strong> (OBLIGATOIRE)
-                <ul>
-                    <li>Analyse selon kilométrage et modèle</li>
-                    <li>Points de vigilance spécifiques</li>
-                    <li>Estimation coûts d'entretien prévisionnels</li>
-                </ul>
-            </li>
-        </ol>
+        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
+            <h5>🎯 Missions Principales</h5>
+            <ul>
+                <li><strong>Inspection technique complète :</strong> Évaluation de l'état mécanique, esthétique et sécuritaire</li>
+                <li><strong>Rédaction de rapport détaillé :</strong> Document officiel avec photos et recommandations</li>
+                <li><strong>Conseil expert :</strong> Accompagnement du client dans sa décision d'achat</li>
+                <li><strong>Estimation de valeur :</strong> Évaluation du prix de marché selon l'état</li>
+                <li><strong>Détection de vices cachés :</strong> Identification des défauts non apparents</li>
+                <li><strong>Formation du client :</strong> Explication des enjeux techniques</li>
+            </ul>
+        </div>
 
-        <h3>Intégration photos professionnelles</h3>
-        <ul>
-            <li><strong>Photos d'ensemble :</strong> 4 angles + intérieur</li>
-            <li><strong>Photos détail :</strong> Défauts identifiés</li>
-            <li><strong>Photos techniques :</strong> Compartiment moteur, dessous</li>
-            <li><strong>Qualité :</strong> Éclairage, netteté, cadrage</li>
-        </ul>
-
-        <h3>Restitution client</h3>
-        <p><strong>Adaptation B2C :</strong> Langage accessible, vulgarisation technique</p>
-        <p><strong>Adaptation B2B :</strong> Terminologie professionnelle, chiffrage précis</p>
-        """,
-        "quiz_questions": [
-            {
-                "id": "q1",
-                "question": "Quelle est la note maximale pour la catégorie 'Mécanique et motorisation' ?",
-                "options": ["20 points", "25 points", "30 points", "15 points"],
-                "correct_answer": "25 points"
-            },
-            {
-                "id": "q2",
-                "question": "L'avis moteur spécialisé est-il obligatoire dans le rapport ?",
-                "options": ["Non, c'est optionnel", "Oui, c'est obligatoire", "Seulement pour les véhicules récents", "Seulement sur demande client"],
-                "correct_answer": "Oui, c'est obligatoire"
-            }
-        ]
-    },
-    {
-        "id": "module-5",
-        "title": "Relation Client et Aspects Légaux",
-        "description": "Communication professionnelle, gestion des objections et cadre légal européen",
-        "duration_minutes": 90,
-        "order": 5,
-        "content": """
-        <h2>Relation Client et Aspects Légaux</h2>
+        <h4>Contextes d'Intervention</h4>
         
-        <h3>Communication professionnelle</h3>
-        <ul>
-            <li><strong>Neutralité :</strong> Position d'expert indépendant</li>
-            <li><strong>Transparence :</strong> Méthodologie claire et explicite</li>
-            <li><strong>Pédagogie :</strong> Vulgarisation des aspects techniques</li>
-        </ul>
-
-        <h3>Gestion des objections clients</h3>
-        <table border="1" style="width:100%">
-            <tr>
-                <th>Objection</th>
-                <th>Réponse type</th>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Type d'intervention</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Client</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Objectif</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Enjeu</th>
             </tr>
             <tr>
-                <td>"Votre note est trop sévère"</td>
-                <td>"Ma notation suit une grille objective basée sur 200 points de contrôle standardisés"</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Achat particulier</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Acheteur privé</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Sécuriser l'achat</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">5 000 - 50 000€</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Expertise assurance</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Compagnie d'assurance</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Évaluer les dommages</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Remboursement sinistre</td>
             </tr>
             <tr>
-                <td>"Ce défaut n'est pas important"</td>
-                <td>"Chaque point est évalué selon son impact sécurité, fiabilité et coût"</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Fin de leasing</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Société de leasing</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">État de restitution</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Facturation dégradations</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Vente aux enchères</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Maison de ventes</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Estimation préalable</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Prix de réserve</td>
             </tr>
             <tr>
-                <td>"Vous cherchez à faire échouer la vente"</td>
-                <td>"Mon rôle est d'informer objectivement, la décision reste vôtre"</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Litige commercial</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Tribunal/Avocat</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Expertise judiciaire</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Dommages et intérêts</td>
             </tr>
         </table>
 
-        <h3>Cadre légal européen</h3>
+        <h3>⚖️ Principes de Transparence et Impartialité</h3>
+        
+        <h4>Transparence Absolue</h4>
+        <p>La transparence constitue le fondement de la crédibilité professionnelle :</p>
+        
         <ul>
-            <li><strong>Responsabilité professionnelle :</strong> RC Pro obligatoire</li>
-            <li><strong>Protection données :</strong> RGPD et confidentialité</li>
-            <li><strong>Droit de rétractation :</strong> Délais légaux</li>
-            <li><strong>Garantie légale :</strong> Vices cachés et conformité</li>
+            <li><strong>Méthodologie explicite :</strong> Explication claire du processus d'inspection</li>
+            <li><strong>Critères objectifs :</strong> Grille de notation standardisée et publique</li>
+            <li><strong>Photos systématiques :</strong> Documentation visuelle de tous les points contrôlés</li>
+            <li><strong>Sources d'information :</strong> Référencement des bases de données utilisées</li>
+            <li><strong>Limites de l'expertise :</strong> Clarification de ce qui n'est pas contrôlable</li>
         </ul>
 
-        <h3>Statut professionnel</h3>
+        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>📋 Checklist Transparence</h5>
+            <ul>
+                <li>✅ Présentation de la méthodologie avant intervention</li>
+                <li>✅ Explication des outils utilisés</li>
+                <li>✅ Durée prévisionnelle communiquée</li>
+                <li>✅ Tarification claire et détaillée</li>
+                <li>✅ Remise du rapport dans les 24h</li>
+                <li>✅ Disponibilité pour questions post-inspection</li>
+            </ul>
+        </div>
+
+        <h4>Impartialité Rigoureuse</h4>
+        <p>L'impartialité garantit la fiabilité de l'évaluation :</p>
+        
         <ul>
-            <li><strong>Auto-entrepreneur :</strong> Simplicité et flexibilité</li>
-            <li><strong>Micro-entreprise :</strong> Régime fiscal avantageux</li>
-            <li><strong>SIRET obligatoire :</strong> Identification professionnelle</li>
+            <li><strong>Indépendance financière :</strong> Aucun lien commercial avec vendeur/acheteur</li>
+            <li><strong>Neutralité émotionnelle :</strong> Évaluation basée uniquement sur les faits</li>
+            <li><strong>Résistance aux pressions :</strong> Maintien des conclusions malgré les influences</li>
+            <li><strong>Égalité de traitement :</strong> Même rigueur quel que soit le client</li>
         </ul>
 
-        <h3>Tarification professionnelle</h3>
+        <h4>Gestion des Conflits d'Intérêts</h4>
+        
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🚫 Situations à Éviter Absolument</h5>
+            <ul>
+                <li>Inspection d'un véhicule que vous souhaitez acheter</li>
+                <li>Recommandation d'un garage partenaire</li>
+                <li>Commission sur une vente suite à votre expertise</li>
+                <li>Pression pour modifier vos conclusions</li>
+                <li>Double expertise pour le même véhicule (vendeur + acheteur)</li>
+            </ul>
+        </div>
+
+        <h3>📜 Cadre Réglementaire de l'Inspection</h3>
+        
+        <h4>Réglementation Française</h4>
+        
+        <h5>Code de la Consommation</h5>
+        <p>Articles L217-1 à L217-32 relatifs à la conformité et aux vices cachés :</p>
         <ul>
-            <li><strong>Particuliers :</strong> 150-250€ selon région</li>
-            <li><strong>Professionnels :</strong> 200-350€ selon complexité</li>
-            <li><strong>Déplacements :</strong> Facturation km selon barème fiscal</li>
+            <li><strong>Garantie de conformité :</strong> 2 ans pour défauts existants à la livraison</li>
+            <li><strong>Garantie des vices cachés :</strong> Défauts rendant le bien impropre à l'usage</li>
+            <li><strong>Obligation d'information :</strong> Devoir du vendeur professionnel</li>
         </ul>
+
+        <h5>Code Civil</h5>
+        <p>Articles 1641 à 1649 sur la garantie des défauts cachés :</p>
+        <ul>
+            <li>Défaut caché existant lors de la vente</li>
+            <li>Défaut suffisamment grave</li>
+            <li>Défaut inconnu de l'acheteur</li>
+        </ul>
+
+        <h4>Réglementation Européenne</h4>
+        
+        <h5>Directive 2011/83/UE (Droits des consommateurs)</h5>
+        <ul>
+            <li>Information précontractuelle obligatoire</li>
+            <li>Droit de rétractation (14 jours pour vente à distance)</li>
+            <li>Garantie légale de conformité (2 ans minimum)</li>
+        </ul>
+
+        <h5>Règlement RGPD (Protection des données)</h5>
+        <ul>
+            <li>Consentement explicite pour collecte de données</li>
+            <li>Droit à l'effacement et à la portabilité</li>
+            <li>Registre des traitements obligatoire</li>
+        </ul>
+
+        <h3>⚖️ Responsabilités Légales</h3>
+        
+        <h4>Responsabilité Civile Professionnelle</h4>
+        
+        <div style="background: #1e40af; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>💼 Assurance RC Professionnelle Obligatoire</h5>
+            <p><strong>Montants de garantie recommandés :</strong></p>
+            <ul>
+                <li>Dommages corporels : 4 500 000€ minimum</li>
+                <li>Dommages matériels : 1 500 000€ minimum</li>
+                <li>Défense-recours : 300 000€ minimum</li>
+                <li>Franchise : 500€ maximum</li>
+            </ul>
+        </div>
+
+        <h4>Responsabilité Pénale</h4>
+        <p>L'inspecteur peut engager sa responsabilité pénale en cas de :</p>
+        <ul>
+            <li><strong>Faux et usage de faux :</strong> Rapport mensonger (5 ans de prison, 75 000€ d'amende)</li>
+            <li><strong>Escroquerie :</strong> Tromperie sur l'état du véhicule (5 ans, 375 000€)</li>
+            <li><strong>Mise en danger d'autrui :</strong> Non-signalement d'un défaut de sécurité</li>
+        </ul>
+
+        <h4>Responsabilité Administrative</h4>
+        <ul>
+            <li>Respect des obligations déclaratives (URSSAF, impôts)</li>
+            <li>Tenue des registres professionnels</li>
+            <li>Formation continue obligatoire</li>
+        </ul>
+
+        <h3>🏛️ Code de Déontologie Professionnelle</h3>
+        
+        <h4>Principes Fondamentaux</h4>
+        
+        <div style="background: #581c87; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🎯 Les 10 Commandements de l'Inspecteur</h5>
+            <ol>
+                <li><strong>Compétence :</strong> Maintenir et développer ses connaissances techniques</li>
+                <li><strong>Intégrité :</strong> Honnêteté absolue dans les constats</li>
+                <li><strong>Objectivité :</strong> Évaluation basée uniquement sur les faits</li>
+                <li><strong>Confidentialité :</strong> Protection des informations clients</li>
+                <li><strong>Indépendance :</strong> Liberté de jugement préservée</li>
+                <li><strong>Responsabilité :</strong> Assume les conséquences de ses actes</li>
+                <li><strong>Respect :</strong> Courtoisie envers tous les intervenants</li>
+                <li><strong>Loyauté :</strong> Fidélité aux engagements pris</li>
+                <li><strong>Diligence :</strong> Célérité dans l'exécution des missions</li>
+                <li><strong>Formation :</strong> Mise à jour permanente des compétences</li>
+            </ol>
+        </div>
+
+        <h4>Relations avec les Clients</h4>
+        <ul>
+            <li><strong>Information préalable :</strong> Explication claire de la prestation</li>
+            <li><strong>Consentement éclairé :</strong> Validation de la compréhension client</li>
+            <li><strong>Respect des délais :</strong> Tenue des engagements temporels</li>
+            <li><strong>Confidentialité :</strong> Non-divulgation d'informations privées</li>
+            <li><strong>Suivi post-intervention :</strong> Disponibilité pour explications</li>
+        </ul>
+
+        <h4>Relations avec les Confrères</h4>
+        <ul>
+            <li><strong>Respect mutuel :</strong> Pas de dénigrement de collègues</li>
+            <li><strong>Partage d'expérience :</strong> Contribution à l'évolution métier</li>
+            <li><strong>Tarification éthique :</strong> Pas de concurrence déloyale</li>
+            <li><strong>Entraide professionnelle :</strong> Solidarité en cas de difficulté</li>
+        </ul>
+
+        <h3>📋 Obligations Administratives</h3>
+        
+        <h4>Statut Juridique</h4>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Statut</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Avantages</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Inconvénients</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">CA maxi</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Micro-entreprise</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Simplicité, charges réduites</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Plafond CA, pas de TVA</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">72 600€</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>EURL</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Flexibilité, protection</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Comptabilité, charges sociales</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Illimité</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>SASU</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Statut cadre, dividendes</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Charges élevées</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Illimité</td>
+            </tr>
+        </table>
+
+        <h4>Obligations Déclaratives</h4>
+        <ul>
+            <li><strong>Déclaration d'activité :</strong> CFE dans les 15 jours</li>
+            <li><strong>Immatriculation :</strong> RCS ou Répertoire des Métiers</li>
+            <li><strong>Assurance :</strong> RC Pro + véhicule professionnel</li>
+            <li><strong>Formation :</strong> Stage SPI (Stage de Préparation à l'Installation)</li>
+        </ul>
+
+        <h3>🔍 Cas Pratiques Déontologiques</h3>
+        
+        <h4>Situation 1 : Conflit d'Intérêt</h4>
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <p><strong>Cas :</strong> Un ami vous demande d'inspecter un véhicule qu'il souhaite vendre.</p>
+            <p><strong>Problème :</strong> Risque de complaisance, crédibilité compromise</p>
+            <p><strong>Solution :</strong> Refuser poliment et orienter vers un confrère</p>
+        </div>
+
+        <h4>Situation 2 : Pression Commerciale</h4>
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <p><strong>Cas :</strong> Le vendeur vous propose une "prime" pour un rapport favorable.</p>
+            <p><strong>Problème :</strong> Corruption, faux en écriture</p>
+            <p><strong>Solution :</strong> Refus catégorique, documenter la tentative</p>
+        </div>
+
+        <h4>Situation 3 : Découverte Importante</h4>
+        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <p><strong>Cas :</strong> Découverte d'un défaut de sécurité critique non déclaré.</p>
+            <p><strong>Action :</strong> Signalement immédiat, refus de valider la transaction</p>
+            <p><strong>Justification :</strong> Sécurité publique prioritaire</p>
+        </div>
+
+        <h3>📚 Points Clés à Retenir</h3>
+        
+        <ul>
+            <li>L'inspecteur est un <strong>expert indépendant</strong> au service de la sécurité des transactions</li>
+            <li>La <strong>transparence</strong> et l'<strong>impartialité</strong> sont les piliers de la crédibilité</li>
+            <li>Le <strong>cadre légal</strong> protège autant qu'il engage la responsabilité</li>
+            <li>La <strong>déontologie</strong> guide les décisions dans les situations complexes</li>
+            <li>La <strong>formation continue</strong> est une obligation professionnelle et éthique</li>
+        </ul>
+
+        <p><em>Durée estimée : 90 minutes de lecture + 20 minutes pour le quiz</em></p>
         """,
         "quiz_questions": [
             {
                 "id": "q1",
-                "question": "Quelle assurance est obligatoire pour exercer comme inspecteur automobile ?",
-                "options": ["Assurance auto", "RC Professionnelle", "Assurance habitation", "Mutuelle santé"],
-                "correct_answer": "RC Professionnelle"
+                "question": "Quel est le rôle principal d'un inspecteur automobile ?",
+                "options": ["Vendre des véhicules", "Expert technique indépendant", "Réparateur automobile", "Commercial auto"],
+                "correct_answer": "Expert technique indépendant"
             },
             {
                 "id": "q2",
-                "question": "Quelle est la fourchette de tarifs pour les particuliers ?",
-                "options": ["100-150€", "150-250€", "200-300€", "250-350€"],
-                "correct_answer": "150-250€"
+                "question": "Dans quels contextes l'inspecteur peut-il intervenir ?",
+                "options": ["Uniquement vente particuliers", "Assurance et leasing uniquement", "Ventes, assurance, leasing, expertises", "Uniquement litiges"],
+                "correct_answer": "Ventes, assurance, leasing, expertises"
+            },
+            {
+                "id": "q3",
+                "question": "Quelle est la durée de la garantie de conformité selon le Code de la Consommation ?",
+                "options": ["1 an", "2 ans", "3 ans", "5 ans"],
+                "correct_answer": "2 ans"
+            },
+            {
+                "id": "q4",
+                "question": "Le montant minimum recommandé pour l'assurance RC Pro en dommages corporels est :",
+                "options": ["1 500 000€", "3 000 000€", "4 500 000€", "6 000 000€"],
+                "correct_answer": "4 500 000€"
+            },
+            {
+                "id": "q5",
+                "question": "En cas de faux et usage de faux, l'inspecteur risque :",
+                "options": ["Amende uniquement", "5 ans de prison + 75 000€", "Interdiction d'exercer", "Blâme professionnel"],
+                "correct_answer": "5 ans de prison + 75 000€"
+            },
+            {
+                "id": "q6",
+                "question": "Quel est le premier principe du code de déontologie ?",
+                "options": ["Rapidité", "Compétence", "Rentabilité", "Convivialité"],
+                "correct_answer": "Compétence"
+            },
+            {
+                "id": "q7",
+                "question": "Le plafond de CA pour une micro-entreprise de services est :",
+                "options": ["36 800€", "72 600€", "176 200€", "Illimité"],
+                "correct_answer": "72 600€"
+            },
+            {
+                "id": "q8",
+                "question": "L'inspecteur doit-il refuser d'inspecter le véhicule d'un ami ?",
+                "options": ["Non, pas de problème", "Oui, conflit d'intérêt", "Ça dépend du prix", "Avec une remise"],
+                "correct_answer": "Oui, conflit d'intérêt"
+            },
+            {
+                "id": "q9",
+                "question": "La formation continue est-elle obligatoire ?",
+                "options": ["Non", "Recommandée", "Obligatoire", "Uniquement les 3 premières années"],
+                "correct_answer": "Obligatoire"
+            },
+            {
+                "id": "q10",
+                "question": "En cas de défaut de sécurité critique, l'inspecteur doit :",
+                "options": ["L'ignorer si le client insiste", "Le mentionner discrètement", "Signaler immédiatement", "Négocier un arrangement"],
+                "correct_answer": "Signaler immédiatement"
+            },
+            {
+                "id": "q11",
+                "question": "Le délai de remise du rapport doit être :",
+                "options": ["Immédiat", "24h maximum", "48h maximum", "1 semaine"],
+                "correct_answer": "24h maximum"
+            },
+            {
+                "id": "q12",
+                "question": "L'indépendance de l'inspecteur signifie :",
+                "options": ["Travailler seul", "Pas de lien commercial avec vendeur/acheteur", "Choisir ses horaires", "Fixer ses tarifs"],
+                "correct_answer": "Pas de lien commercial avec vendeur/acheteur"
             }
         ]
     }
@@ -561,7 +880,9 @@ async def get_user_progress(current_user: User = Depends(get_current_user)):
 @api_router.get("/user/profile")
 async def get_user_profile(current_user: User = Depends(get_current_user)):
     user = await db.users.find_one({"email": current_user.email})
-    user_obj = User(**user)
+    # Remove hashed_password before creating User object
+    user_dict = {k: v for k, v in user.items() if k != 'hashed_password'}
+    user_obj = User(**user_dict)
     return user_obj
 
 # Initialize modules in database on startup
