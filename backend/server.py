@@ -760,6 +760,477 @@ COURSE_MODULES = [
                 "correct_answer": "Pas de lien commercial avec vendeur/acheteur"
             }
         ]
+    },
+    {
+        "id": "module-3",
+        "title": "Remise à Niveau Mécanique",
+        "description": "Bases essentielles : moteur, transmission, freinage, électronique embarquée",
+        "duration_minutes": 120,
+        "order": 3,
+        "content": """
+        <h2>Module 3 : Remise à Niveau Mécanique</h2>
+        
+        <h3>🎯 Objectifs du Module</h3>
+        <ul>
+            <li>Maîtriser les bases du moteur thermique et hybride</li>
+            <li>Comprendre les systèmes de transmission</li>
+            <li>Connaître les circuits de freinage et de direction</li>
+            <li>Appréhender l'électronique embarquée moderne</li>
+        </ul>
+
+        <h3>🔧 Le Moteur Thermique : Fonctionnement et Diagnostic</h3>
+        
+        <h4>Principe des 4 Temps</h4>
+        <p>Le moteur à 4 temps est le cœur de la plupart des véhicules. Comprendre son fonctionnement est essentiel pour l'inspection.</p>
+        
+        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔄 Cycle Complet du Moteur</h5>
+            <ol>
+                <li><strong>1er Temps - Admission :</strong>
+                    <ul>
+                        <li>Piston descend, dépression créée</li>
+                        <li>Soupape d'admission ouvre</li>
+                        <li>Mélange air/carburant aspiré</li>
+                        <li>Volume : de 0 à cylindrée totale</li>
+                    </ul>
+                </li>
+                <li><strong>2ème Temps - Compression :</strong>
+                    <ul>
+                        <li>Toutes soupapes fermées</li>
+                        <li>Piston remonte, comprime le mélange</li>
+                        <li>Ratio de compression : 8:1 à 12:1</li>
+                        <li>Température monte à 400-500°C</li>
+                    </ul>
+                </li>
+                <li><strong>3ème Temps - Combustion/Détente :</strong>
+                    <ul>
+                        <li>Allumage du mélange par bougie</li>
+                        <li>Explosion repousse le piston</li>
+                        <li>Force transmise au vilebrequin</li>
+                        <li>Temps moteur (seul productif)</li>
+                    </ul>
+                </li>
+                <li><strong>4ème Temps - Échappement :</strong>
+                    <ul>
+                        <li>Soupape d'échappement ouvre</li>
+                        <li>Piston expulse gaz brûlés</li>
+                        <li>Nettoyage de la chambre</li>
+                        <li>Préparation cycle suivant</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h4>Architecture Moteur</h4>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Composant</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Fonction</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Signes d'usure</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Impact inspection</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Pistons</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Transmission force explosion</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Claquements, fumée bleue</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Révision majeure nécessaire</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Soupapes</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Contrôle admission/échappement</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Bruit métallique, perte puissance</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Réglage ou remplacement</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Vilebrequin</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Transformation mouvement linéaire/rotatif</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Vibrations anormales</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Moteur HS, remplacement</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Arbre à cames</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Commande ouverture soupapes</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Décalage distribution</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Réparation coûteuse</td>
+            </tr>
+        </table>
+
+        <h4>Systèmes Annexes du Moteur</h4>
+        
+        <h5>💧 Circuit de Refroidissement</h5>
+        <ul>
+            <li><strong>Radiateur :</strong> Évacuation chaleur, vérifier encrassement</li>
+            <li><strong>Pompe à eau :</strong> Circulation liquide, écouter bruits</li>
+            <li><strong>Thermostat :</strong> Régulation température, test ouverture</li>
+            <li><strong>Liquide de refroidissement :</strong> Niveau, couleur, antigel</li>
+        </ul>
+
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>⚠️ Points de Vigilance Refroidissement</h5>
+            <ul>
+                <li>Fuite = surchauffe = casse moteur</li>
+                <li>Mélange huile/liquide = joint culasse</li>
+                <li>Corrosion = radiateur à remplacer</li>
+                <li>Thermostat grippé = surconsommation</li>
+            </ul>
+        </div>
+
+        <h5>🛢️ Circuit de Lubrification</h5>
+        <ul>
+            <li><strong>Huile moteur :</strong> Niveau, viscosité, contamination</li>
+            <li><strong>Filtre à huile :</strong> État, périodicité changement</li>
+            <li><strong>Pompe à huile :</strong> Pression, débit</li>
+            <li><strong>Carter :</strong> Étanchéité, pas de fissures</li>
+        </ul>
+
+        <h3>⚙️ Transmission : Boîte, Embrayage, Différentiel</h3>
+        
+        <h4>Types de Transmission</h4>
+        
+        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔧 Boîte de Vitesses Manuelle</h5>
+            <p><strong>Fonctionnement :</strong></p>
+            <ul>
+                <li>Engrenages de différents diamètres</li>
+                <li>Modification du rapport de démultiplication</li>
+                <li>Passage manuel des vitesses</li>
+                <li>Embrayage pour désolidariser moteur/boîte</li>
+            </ul>
+            <p><strong>Points de contrôle :</strong></p>
+            <ul>
+                <li>Fluidité du passage de vitesses</li>
+                <li>Absence de craquements</li>
+                <li>Point d'embrayage correct</li>
+                <li>Niveau d'huile de boîte</li>
+            </ul>
+        </div>
+
+        <div style="background: #1e40af; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔄 Boîte de Vitesses Automatique</h5>
+            <p><strong>Fonctionnement :</strong></p>
+            <ul>
+                <li>Convertisseur de couple hydraulique</li>
+                <li>Train épicycloïdal</li>
+                <li>Passage automatique des rapports</li>
+                <li>Gestion électronique</li>
+            </ul>
+            <p><strong>Points de contrôle :</strong></p>
+            <ul>
+                <li>Douceur des passages de rapports</li>
+                <li>Absence de à-coups</li>
+                <li>Réactivité en mode manuel</li>
+                <li>Couleur et odeur de l'huile ATF</li>
+            </ul>
+        </div>
+
+        <h4>L'Embrayage (Boîtes Manuelles)</h4>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Composant</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Symptômes d'usure</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Test inspection</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Disque d'embrayage</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Patinage, point haut</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Test en côte, démarrage 3ème</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Mécanisme</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Durcissement pédale</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Force d'appui, progressivité</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Butée</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Grincement débrayage</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Bruit pédale enfoncée</td>
+            </tr>
+        </table>
+
+        <h3>🛑 Système de Freinage</h3>
+        
+        <h4>Circuit Hydraulique</h4>
+        <p>Le freinage repose sur la transmission de pression hydraulique :</p>
+        
+        <ul>
+            <li><strong>Maître-cylindre :</strong> Génération pression (pédale)</li>
+            <li><strong>Servo-frein :</strong> Assistance au freinage</li>
+            <li><strong>Répartiteur :</strong> Distribution pression AV/AR</li>
+            <li><strong>Flexibles :</strong> Acheminement fluide sous pression</li>
+            <li><strong>Étriers/Cylindres :</strong> Transformation pression en force</li>
+        </ul>
+
+        <h4>Éléments de Friction</h4>
+        
+        <div style="background: #581c87; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔍 Contrôles Obligatoires</h5>
+            <p><strong>Plaquettes de frein :</strong></p>
+            <ul>
+                <li>Épaisseur minimum : 3mm de garniture</li>
+                <li>Usure régulière (pas de biais)</li>
+                <li>Absence de fissures ou délaminage</li>
+                <li>Témoins d'usure fonctionnels</li>
+            </ul>
+            <p><strong>Disques de frein :</strong></p>
+            <ul>
+                <li>Épaisseur selon constructeur</li>
+                <li>Surface lisse, pas de rayures profondes</li>
+                <li>Absence de voilage</li>
+                <li>Pas de fissures radiaires</li>
+            </ul>
+        </div>
+
+        <h4>Systèmes d'Aide au Freinage</h4>
+        
+        <ul>
+            <li><strong>ABS (Anti Blocage) :</strong> Empêche blocage roues</li>
+            <li><strong>ESP (Contrôle stabilité) :</strong> Correction trajectoire</li>
+            <li><strong>AFU (Aide au freinage d'urgence) :</strong> Détection panique</li>
+            <li><strong>EBD (Répartition électronique) :</strong> Optimisation freinage</li>
+        </ul>
+
+        <h3>🔧 Direction et Train Roulant</h3>
+        
+        <h4>Système de Direction</h4>
+        
+        <h5>Direction à Crémaillère</h5>
+        <p>Standard sur véhicules modernes :</p>
+        <ul>
+            <li><strong>Colonne de direction :</strong> Transmission mouvement volant</li>
+            <li><strong>Crémaillère :</strong> Transformation rotation/translation</li>
+            <li><strong>Biellettes :</strong> Liaison avec roues</li>
+            <li><strong>Assistance :</strong> Hydraulique ou électrique</li>
+        </ul>
+
+        <h5>Points de Contrôle Direction</h5>
+        <ul>
+            <li><strong>Jeu au volant :</strong> Maximum 30° sans réaction roues</li>
+            <li><strong>Centrage :</strong> Véhicule va droit, volant centré</li>
+            <li><strong>Effort :</strong> Manœuvre à l'arrêt possible sans forcer</li>
+            <li><strong>Bruits :</strong> Pas de claquements en braquage</li>
+        </ul>
+
+        <h4>Suspension</h4>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Type</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Composants</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Défauts courants</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Test</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Amortisseur</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Piston, huile, ressort</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Fuite, perte efficacité</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Test rebonds, fuites</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Ressort</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Spirale acier</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Cassure, affaissement</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Hauteur caisse, symétrie</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Rotule</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Articulation sphérique</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Jeu, déchirure soufflet</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Test jeu, inspection visuelle</td>
+            </tr>
+        </table>
+
+        <h3>🔌 Électronique Embarquée</h3>
+        
+        <h4>Architecture Électrique Moderne</h4>
+        
+        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
+            <h5>📱 Systèmes Embarqués</h5>
+            <ul>
+                <li><strong>Calculateur moteur (UCE) :</strong> Gestion injection, allumage</li>
+                <li><strong>Calculateur ABS/ESP :</strong> Sécurité active</li>
+                <li><strong>BCM (Body Control Module) :</strong> Confort, éclairage</li>
+                <li><strong>Airbag :</strong> Sécurité passive</li>
+                <li><strong>Climatisation :</strong> Confort thermique</li>
+                <li><strong>Multimédia :</strong> Info-divertissement</li>
+            </ul>
+        </div>
+
+        <h4>Diagnostic OBD (On-Board Diagnostic)</h4>
+        
+        <p>Norme obligatoire depuis 2001 (essence) et 2004 (diesel) :</p>
+        
+        <ul>
+            <li><strong>Prise OBD :</strong> Accès aux calculateurs</li>
+            <li><strong>Codes défauts :</strong> P (moteur), B (carrosserie), C (châssis), U (réseau)</li>
+            <li><strong>Données temps réel :</strong> Paramètres moteur</li>
+            <li><strong>Tests actifs :</strong> Activation composants</li>
+        </ul>
+
+        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔍 Procédure Diagnostic OBD</h5>
+            <ol>
+                <li>Connexion valise sur prise OBD</li>
+                <li>Identification véhicule (VIN)</li>
+                <li>Lecture codes défauts mémorisés</li>
+                <li>Consultation données temps réel</li>
+                <li>Tests actifs si nécessaire</li>
+                <li>Effacement codes après réparation</li>
+            </ol>
+        </div>
+
+        <h4>Capteurs et Actionneurs</h4>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr style="background: #374151;">
+                <th style="padding: 12px; border: 1px solid #4b5563;">Capteur</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Fonction</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Défaillance</th>
+                <th style="padding: 12px; border: 1px solid #4b5563;">Symptôme</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Débit d'air</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Mesure air aspiré</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Encrassement</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Perte puissance</td>
+            </tr>
+            <tr style="background: #1f2937;">
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Sonde lambda</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Richesse mélange</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Vieillissement</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Surconsommation</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Position vilebrequin</strong></td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Synchronisation</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Panne complète</td>
+                <td style="padding: 12px; border: 1px solid #4b5563;">Moteur ne démarre pas</td>
+            </tr>
+        </table>
+
+        <h3>🔋 Batterie et Alternateur</h3>
+        
+        <h4>Circuit de Charge</h4>
+        
+        <ul>
+            <li><strong>Batterie :</strong> Stockage énergie, démarrage moteur</li>
+            <li><strong>Alternateur :</strong> Production électricité, charge batterie</li>
+            <li><strong>Régulateur :</strong> Contrôle tension (≈14,4V)</li>
+            <li><strong>Démarreur :</strong> Lancement moteur</li>
+        </ul>
+
+        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
+            <h5>⚡ Tests Électriques Essentiels</h5>
+            <ul>
+                <li><strong>Tension batterie :</strong> 12,6V moteur arrêté</li>
+                <li><strong>Tension charge :</strong> 14,2-14,8V moteur tournant</li>
+                <li><strong>Courant de fuite :</strong> <50mA contact coupé</li>
+                <li><strong>Démarreur :</strong> Chute tension <2V au démarrage</li>
+            </ul>
+        </div>
+
+        <h3>📚 Glossaire Technique Simplifié</h3>
+        
+        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
+            <h5>🔧 Termes Essentiels</h5>
+            <ul>
+                <li><strong>Cylindrée :</strong> Volume balayé par pistons (ex: 2.0L = 2000cm³)</li>
+                <li><strong>Couple :</strong> Force rotative moteur (Nm), détermine reprises</li>
+                <li><strong>Puissance :</strong> Travail par unité de temps (Ch/kW), vitesse max</li>
+                <li><strong>Taux de compression :</strong> Rapport volume maxi/mini cylindre</li>
+                <li><strong>PMH/PMB :</strong> Point Mort Haut/Bas du piston</li>
+                <li><strong>Avance allumage :</strong> Timing explosion avant PMH</li>
+                <li><strong>Richesse :</strong> Rapport air/carburant (14,7:1 = stœchiométrique)</li>
+            </ul>
+        </div>
+
+        <h3>🎯 Points Clés pour l'Inspection</h3>
+        
+        <ul>
+            <li>Un moteur sain tourne rond et régulier au ralenti</li>
+            <li>Les transmissions usées génèrent bruits et à-coups</li>
+            <li>Le freinage doit être progressif et sans vibrations</li>
+            <li>L'électronique moderne simplifie le diagnostic mais complexifie les pannes</li>
+            <li>L'entretien préventif évite 80% des pannes</li>
+        </ul>
+
+        <p><em>Durée estimée : 120 minutes de lecture + 25 minutes pour le quiz</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "Combien de temps producteur d'énergie y a-t-il dans un cycle 4 temps ?",
+                "options": ["1 temps", "2 temps", "3 temps", "4 temps"],
+                "correct_answer": "1 temps"
+            },
+            {
+                "id": "q2",
+                "question": "À quel moment les soupapes sont-elles toutes fermées ?",
+                "options": ["Admission", "Compression", "Combustion", "Échappement"],
+                "correct_answer": "Compression"
+            },
+            {
+                "id": "q3",
+                "question": "Quelle est l'épaisseur minimum des plaquettes de frein ?",
+                "options": ["2mm", "3mm", "4mm", "5mm"],
+                "correct_answer": "3mm"
+            },
+            {
+                "id": "q4",
+                "question": "Le jeu maximum au volant sans réaction des roues est de :",
+                "options": ["15°", "30°", "45°", "60°"],
+                "correct_answer": "30°"
+            },
+            {
+                "id": "q5",
+                "question": "La tension normale d'une batterie moteur arrêté est :",
+                "options": ["12,0V", "12,6V", "13,2V", "14,4V"],
+                "correct_answer": "12,6V"
+            },
+            {
+                "id": "q6",
+                "question": "Depuis quand l'OBD est-il obligatoire sur les moteurs essence ?",
+                "options": ["1998", "2001", "2004", "2007"],
+                "correct_answer": "2001"
+            },
+            {
+                "id": "q7",
+                "question": "Que signifie un code défaut commençant par P ?",
+                "options": ["Carrosserie", "Moteur", "Châssis", "Réseau"],
+                "correct_answer": "Moteur"
+            },
+            {
+                "id": "q8",
+                "question": "La richesse stœchiométrique air/carburant est de :",
+                "options": ["12,5:1", "14,7:1", "16,2:1", "18,1:1"],
+                "correct_answer": "14,7:1"
+            },
+            {
+                "id": "q9",
+                "question": "L'ABS empêche :",
+                "options": ["Le dérapage", "Le blocage des roues", "La perte de puissance", "La surchauffe"],
+                "correct_answer": "Le blocage des roues"
+            },
+            {
+                "id": "q10",
+                "question": "Un embrayage qui patine se teste en :",
+                "options": ["Marche arrière", "1ère vitesse", "3ème vitesse", "Point mort"],
+                "correct_answer": "3ème vitesse"
+            },
+            {
+                "id": "q11",
+                "question": "La tension de charge normale de l'alternateur est :",
+                "options": ["12-13V", "14,2-14,8V", "15-16V", "16-17V"],
+                "correct_answer": "14,2-14,8V"
+            },
+            {
+                "id": "q12",
+                "question": "Un courant de fuite normal sur une batterie est :",
+                "options": ["<20mA", "<50mA", "<100mA", "<200mA"],
+                "correct_answer": "<50mA"
+            }
+        ]
     }
 ]
 
