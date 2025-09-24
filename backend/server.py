@@ -455,11 +455,17 @@ async def register(user_data: UserCreate):
     # Create new user
     hashed_password = hash_password(user_data.password)
     user_dict = user_data.dict()
-    user_dict.pop('password')
-    user_dict['hashed_password'] = hashed_password
+    user_dict.pop('password')  # Remove plain password
     
+    # Create User object for response (without hashed_password)
     user = User(**user_dict)
-    await db.users.insert_one(user.dict())
+    
+    # Add hashed_password for database storage
+    user_dict_for_db = user.dict()
+    user_dict_for_db['hashed_password'] = hashed_password
+    
+    # Store in database with hashed_password
+    await db.users.insert_one(user_dict_for_db)
     
     # Create access token
     access_token = create_access_token(data={"sub": user.email})
