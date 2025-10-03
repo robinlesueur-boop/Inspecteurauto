@@ -139,178 +139,503 @@ COURSE_MODULES = [
         "content": """
         <h2>Module 1 : Diagnostic et Positionnement</h2>
         
-        <h3>🎯 Objectifs du Module</h3>
-        <ul>
-            <li>Évaluer vos compétences techniques actuelles</li>
-            <li>Identifier vos points forts et axes d'amélioration</li>
-            <li>Personnaliser votre parcours de formation</li>
-            <li>Comprendre les enjeux du métier d'inspecteur automobile</li>
-        </ul>
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Inspection automobile professionnelle" class="module-image" />
+        
+        <div class="chapter-divider"></div>
 
-        <h3>🔍 Auto-évaluation des Compétences</h3>
-        
-        <h4>Compétences Mécaniques de Base</h4>
-        <p>Avant de commencer votre formation, il est essentiel d'évaluer votre niveau actuel en mécanique automobile :</p>
-        
-        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
-            <h5>📋 Grille d'Auto-évaluation</h5>
-            <p><strong>Niveau Débutant (0-2 points par domaine) :</strong></p>
+        <h3>Chapitre 1 : Introduction à la formation et rôle du diagnostic</h3>
+
+        <p>L'inspection automobile représente aujourd'hui l'un des métiers les plus prometteurs du secteur automotive. Avec plus de 5,2 millions de véhicules d'occasion échangés chaque année en France, et seulement 15% d'entre eux faisant l'objet d'une inspection professionnelle, le potentiel de développement est considérable.</p>
+
+        <p>Cette formation « Devenir Inspecteur Automobile » a été conçue pour vous accompagner dans cette démarche professionnalisante. Elle s'appuie sur la méthodologie AutoJust, reconnue par plus de 300 inspecteurs certifiés et validée par 50+ partenaires B2B incluant des compagnies d'assurance, des sociétés de leasing et des plateformes de vente aux enchères.</p>
+
+        <div class="info-box">
+            <h4>🎯 Pourquoi le diagnostic est-il essentiel ?</h4>
+            <p>Le diagnostic de positionnement constitue le fondement de votre parcours de formation. Il permet de :</p>
             <ul>
-                <li>Moteur : Notions de base sur le fonctionnement</li>
-                <li>Transmission : Différence boîte manuelle/automatique</li>
-                <li>Freinage : Connaissance des composants principaux</li>
-                <li>Électronique : Utilisation basique d'un multimètre</li>
-            </ul>
-            
-            <p><strong>Niveau Intermédiaire (3-4 points par domaine) :</strong></p>
-            <ul>
-                <li>Moteur : Diagnostic de pannes courantes</li>
-                <li>Transmission : Identification des symptômes d'usure</li>
-                <li>Freinage : Contrôle épaisseur plaquettes/disques</li>
-                <li>Électronique : Lecture codes défauts OBD</li>
-            </ul>
-            
-            <p><strong>Niveau Avancé (5 points par domaine) :</strong></p>
-            <ul>
-                <li>Moteur : Analyse compression, régime ralenti</li>
-                <li>Transmission : Évaluation état embrayage, boîte</li>
-                <li>Freinage : Test efficacité, géométrie</li>
-                <li>Électronique : Diagnostic approfondi calculateurs</li>
+                <li><strong>Évaluer précisément</strong> vos compétences techniques actuelles</li>
+                <li><strong>Identifier</strong> vos points forts et axes d'amélioration</li>
+                <li><strong>Personnaliser</strong> votre parcours d'apprentissage</li>
+                <li><strong>Définir</strong> des objectifs SMART et réalisables</li>
+                <li><strong>Optimiser</strong> votre temps de formation</li>
             </ul>
         </div>
 
-        <h4>Expérience Professionnelle</h4>
-        <p>Votre parcours professionnel influence directement votre approche de l'inspection :</p>
-        
-        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-            <tr style="background: #374151;">
-                <th style="padding: 12px; border: 1px solid #4b5563;">Profil</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Points forts</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Axes de développement</th>
+        <p>L'inspection automobile moderne exige une approche méthodique et rigoureuse. Un inspecteur professionnel doit maîtriser près de 200 points de contrôle répartis sur l'ensemble du véhicule, de la carrosserie aux systèmes électroniques les plus sophistiqués. Cette complexité nécessite une formation structurée et progressive, adaptée à votre profil et à vos objectifs.</p>
+
+        <p>Le rôle du diagnostic initial est de cartographier vos connaissances actuelles pour construire un parcours optimisé. Contrairement à une formation généraliste, notre approche personnalisée vous permet de concentrer vos efforts sur les domaines où vous en avez le plus besoin, tout en consolidant vos acquis.</p>
+
+        <img src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Tableau de bord automobile moderne" class="module-image" />
+
+        <p>L'évolution technologique des véhicules modernes rend cette formation d'autant plus nécessaire. Les systèmes embarqués, la multiplication des capteurs, l'émergence des véhicules hybrides et électriques transforment radicalement le métier d'inspecteur. Une BMW Série 3 de 2020 embarque plus de 100 calculateurs interconnectés, contre une dizaine pour un modèle équivalent de 2000.</p>
+
+        <div class="success-box">
+            <h4>💡 L'avantage concurrentiel de la formation</h4>
+            <p>Un inspecteur formé à la méthodologie AutoJust dispose d'un avantage concurrentiel majeur :</p>
+            <ul>
+                <li><strong>Crédibilité renforcée</strong> grâce à la certification officielle</li>
+                <li><strong>Méthodologie éprouvée</strong> et reconnue par les professionnels</li>
+                <li><strong>Outils digitaux intégrés</strong> (WebApp, WeProov)</li>
+                <li><strong>Réseau professionnel</strong> de 300+ inspecteurs</li>
+                <li><strong>Formation continue</strong> pour rester à jour</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Présentation du parcours global et des attentes</h3>
+
+        <p>Cette formation s'articule autour de 8 modules progressifs, conçus pour vous mener de l'initiation à l'expertise en 9h30 de contenu théorique enrichi d'exercices pratiques. Chaque module répond à un objectif pédagogique précis et s'appuie sur des cas concrets issus de notre base de données de plus de 10 000 inspections réalisées.</p>
+
+        <div class="info-box">
+            <h4>📚 Architecture de la formation</h4>
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Durée</th>
+                    <th>Objectif principal</th>
+                    <th>Livrables</th>
+                </tr>
+                <tr>
+                    <td><strong>Module 1</strong><br/>Diagnostic et positionnement</td>
+                    <td>30 min</td>
+                    <td>Auto-évaluation et personnalisation</td>
+                    <td>Plan de formation personnalisé</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 2</strong><br/>Fondamentaux de l'inspection</td>
+                    <td>1h30</td>
+                    <td>Rôle et missions de l'inspecteur</td>
+                    <td>Code de déontologie</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 3</strong><br/>Remise à niveau mécanique</td>
+                    <td>2h00</td>
+                    <td>Bases techniques indispensables</td>
+                    <td>Glossaire technique</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 4</strong><br/>Procédé d'inspection</td>
+                    <td>2h15</td>
+                    <td>Méthodologie 200+ points</td>
+                    <td>Checklists opérationnelles</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 5</strong><br/>Avis sur le moteur</td>
+                    <td>45 min</td>
+                    <td>Expertise moteur approfondie</td>
+                    <td>Grilles d'évaluation</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 6</strong><br/>Outils digitaux et rapports</td>
+                    <td>1h15</td>
+                    <td>Digitalisation et professionnalisation</td>
+                    <td>Modèles de rapports</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 7</strong><br/>Aspects légaux et déontologie</td>
+                    <td>35 min</td>
+                    <td>Cadre juridique et responsabilités</td>
+                    <td>Contrats types</td>
+                </tr>
+                <tr>
+                    <td><strong>Module 8</strong><br/>Business et opérations</td>
+                    <td>40 min</td>
+                    <td>Développement d'activité</td>
+                    <td>Business plan type</td>
+                </tr>
+            </table>
+        </div>
+
+        <h4>Attentes et prérequis</h4>
+
+        <p>Cette formation s'adresse à un public diversifié, des professionnels de l'automobile souhaitant évoluer aux personnes en reconversion. Les attentes varient selon votre profil, mais certains éléments sont communs à tous les participants :</p>
+
+        <p><strong>Engagement et assiduité :</strong> La formation demande un investissement personnel significatif. Chaque module doit être suivi intégralement, les quiz réussis avec un minimum de 70%, et l'examen final validé dans les mêmes conditions. La réussite dépend directement de votre implication.</p>
+
+        <p><strong>Curiosité technique :</strong> L'automobile moderne est complexe et en évolution constante. Un bon inspecteur fait preuve de curiosité permanente, lit la presse spécialisée, suit les évolutions technologiques et n'hésite pas à se former régulièrement.</p>
+
+        <p><strong>Rigueur méthodologique :</strong> L'inspection automobile ne tolère aucune approximation. Chaque point de contrôle doit être vérifié selon la procédure, chaque anomalie documentée, chaque conclusion justifiée. Cette rigueur s'apprend et se cultive.</p>
+
+        <img src="https://images.unsplash.com/photo-1606577924006-27d39b132ae2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Véhicule moderne en inspection" class="module-image" />
+
+        <div class="tip-box">
+            <h4>⭐ Facteurs de réussite</h4>
+            <p>L'analyse de nos 300+ inspecteurs certifiés révèle les facteurs clés de réussite :</p>
+            <ul>
+                <li><strong>Formation complète :</strong> 95% de réussite pour les participants suivant l'intégralité du parcours</li>
+                <li><strong>Pratique terrain :</strong> Démarrage d'activité sous 3 mois pour 80% des certifiés</li>
+                <li><strong>Réseau professionnel :</strong> Intégration dans la communauté AutoJust</li>
+                <li><strong>Formation continue :</strong> Mise à jour des connaissances tous les 2 ans</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Quiz d'auto-évaluation et son rôle</h3>
+
+        <p>Le quiz d'auto-évaluation constitue l'outil central de ce premier module. Contrairement à un simple test de connaissances, il s'agit d'un véritable instrument de diagnostic pédagogique, développé en collaboration avec des experts en ingénierie de formation et validé sur plusieurs centaines de profils.</p>
+
+        <h4>Méthodologie du quiz</h4>
+
+        <p>Le quiz comprend 50 questions réparties en 8 domaines de compétence, chacun étant évalué selon 3 niveaux de maîtrise. Cette approche granulaire permet une analyse fine de votre profil et l'identification précise des axes de développement prioritaires.</p>
+
+        <div class="info-box">
+            <h4>🔍 Domaines évalués</h4>
+            <ol>
+                <li><strong>Mécanique moteur (10 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Fonctionnement 4 temps, composants de base</li>
+                        <li>Niveau 2 : Diagnostic pannes courantes, lecture paramètres</li>
+                        <li>Niveau 3 : Analyse approfondie, optimisation performances</li>
+                    </ul>
+                </li>
+                <li><strong>Transmission (6 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Différence manuelle/automatique, embrayage</li>
+                        <li>Niveau 2 : Diagnostic usure, symptômes dysfonctionnements</li>
+                        <li>Niveau 3 : Technologies avancées (CVT, double embrayage)</li>
+                    </ul>
+                </li>
+                <li><strong>Électronique/Diagnostic (8 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Utilisation multimètre, lecture codes OBD</li>
+                        <li>Niveau 2 : Diagnostic réseau CAN, paramètres temps réel</li>
+                        <li>Niveau 3 : Programmation calculateurs, multiplexage</li>
+                    </ul>
+                </li>
+                <li><strong>Sécurité active/passive (6 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : ABS, airbags, ceintures de sécurité</li>
+                        <li>Niveau 2 : ESP, aide au freinage d'urgence</li>
+                        <li>Niveau 3 : Systèmes d'aide à la conduite (ADAS)</li>
+                    </ul>
+                </li>
+                <li><strong>Carrosserie/Structure (5 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Détection impacts, corrosion visible</li>
+                        <li>Niveau 2 : Analyse géométrie, déformations structurelles</li>
+                        <li>Niveau 3 : Matériaux composites, réparations invisibles</li>
+                    </ul>
+                </li>
+                <li><strong>Relation client (5 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Communication de base, présentation</li>
+                        <li>Niveau 2 : Gestion objections, pédagogie</li>
+                        <li>Niveau 3 : Négociation complexe, médiation</li>
+                    </ul>
+                </li>
+                <li><strong>Réglementation (5 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Code de la route, contrôle technique</li>
+                        <li>Niveau 2 : Garanties légales, responsabilités</li>
+                        <li>Niveau 3 : Évolutions réglementaires, normes européennes</li>
+                    </ul>
+                </li>
+                <li><strong>Outils/Méthodes (5 questions) :</strong>
+                    <ul>
+                        <li>Niveau 1 : Outillage de base, check-lists papier</li>
+                        <li>Niveau 2 : Outils digitaux, applications mobiles</li>
+                        <li>Niveau 3 : Intégration CRM, automatisation</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h4>Système de notation</h4>
+
+        <p>Chaque question est pondérée selon sa complexité et son importance dans la pratique professionnelle. Le système de notation utilisé s'appuie sur l'échelle de Bloom revisitée, permettant d'évaluer non seulement les connaissances factuelles, mais aussi la capacité d'analyse, de synthèse et d'application pratique.</p>
+
+        <ul>
+            <li><strong>Questions niveau 1 (1 point) :</strong> Connaissances factuelles, définitions, procédures de base</li>
+            <li><strong>Questions niveau 2 (2 points) :</strong> Compréhension, application, diagnostic simple</li>
+            <li><strong>Questions niveau 3 (3 points) :</strong> Analyse, synthèse, résolution de problèmes complexes</li>
+        </ul>
+
+        <p>Le score total sur 100 points permet de situer votre niveau global, tandis que les scores par domaine révèlent vos points forts et axes d'amélioration. Cette granularité est essentielle pour personnaliser efficacement votre parcours de formation.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Importance de l'honnêteté</h4>
+            <p>L'efficacité du diagnostic repose entièrement sur votre honnêteté lors de l'évaluation. Il ne s'agit pas d'un concours, mais d'un outil de personnalisation pédagogique. Une surévaluation de vos compétences pourrait vous orienter vers un parcours inadapté et compromettre votre réussite.</p>
+            
+            <p>N'hésitez pas à répondre "Je ne sais pas" aux questions qui dépassent vos connaissances actuelles. Cette information est précieuse pour adapter la formation à vos besoins réels.</p>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1746079074522-2b14240d932c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHw0fHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Diagnostic automobile professionnel" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Analyse des résultats et profils types</h3>
+
+        <p>L'analyse de milliers d'évaluations réalisées depuis le lancement de la formation AutoJust a permis d'identifier 6 profils types d'apprenants, chacun présentant des caractéristiques spécifiques en termes de points forts, axes de développement et stratégies pédagogiques optimales.</p>
+
+        <h4>Profil 1 : Le Technicien Expert (15% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Mécaniciens expérimentés, chefs d'atelier, techniciens spécialisés avec 10+ années d'expérience. Score moyen : 75-85 points, avec excellence en mécanique moteur (90%+) et électronique (80%+).</p>
+
+        <p><strong>Points forts :</strong> Diagnostic technique approfondi, maîtrise des outils de mesure, compréhension fine des systèmes complexes, capacité à identifier rapidement les dysfonctionnements.</p>
+
+        <p><strong>Axes de développement :</strong> Relation client (souvent sous-évaluée), rédaction de rapports accessibles aux non-techniciens, aspects commerciaux et marketing, utilisation d'outils digitaux modernes.</p>
+
+        <p><strong>Parcours recommandé :</strong> Focus sur les modules 2, 6, 7 et 8. Révision accélérée du module 3. Accent particulier sur la communication client et le développement business.</p>
+
+        <h4>Profil 2 : Le Contrôleur Méthodique (20% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Contrôleurs techniques, inspecteurs qualité, auditeurs automobiles. Score moyen : 65-75 points, avec excellence en réglementation (85%+) et méthodes (80%+).</p>
+
+        <p><strong>Points forts :</strong> Rigueur méthodologique, respect des procédures, connaissance réglementaire approfondie, capacité de synthèse et de documentation.</p>
+
+        <p><strong>Axes de développement :</strong> Expertise moteur spécifique, conseil personnalisé client, adaptation aux évolutions technologiques, diagnostic électronique avancé.</p>
+
+        <p><strong>Parcours recommandé :</strong> Parcours standard avec renforcement du module 5 (avis moteur) et approfondissement du module 3 (électronique moderne).</p>
+
+        <h4>Profil 3 : Le Commercial Relationnel (25% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Vendeurs automobiles, conseillers clientèle, négociants. Score moyen : 45-60 points, avec excellence en relation client (80%+) mais faiblesse technique marquée.</p>
+
+        <p><strong>Points forts :</strong> Communication exceptionnelle, capacité de persuasion, compréhension des enjeux commerciaux, réseau professionnel développé.</p>
+
+        <p><strong>Axes de développement :</strong> Compétences techniques globales, crédibilité technique, utilisation d'outils de diagnostic, connaissance approfondie des systèmes automobiles.</p>
+
+        <p><strong>Parcours recommandé :</strong> Parcours renforcé avec attention particulière aux modules 3, 4 et 5. Formation technique préalable recommandée.</p>
+
+        <h4>Profil 4 : Le Passionné Autodidacte (20% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Passionnés d'automobile, mécaniciens amateurs, collectionneurs. Score moyen : 50-65 points, avec des connaissances hétérogènes mais une motivation exceptionnelle.</p>
+
+        <p><strong>Points forts :</strong> Passion authentique, curiosité technique, connaissance historique des modèles, capacité d'apprentissage autodidacte élevée.</p>
+
+        <p><strong>Axes de développement :</strong> Professionnalisation des méthodes, structuration des connaissances, relation client professionnelle, aspects légaux et réglementaires.</p>
+
+        <p><strong>Parcours recommandé :</strong> Parcours standard avec coaching personnalisé et focus sur la professionnalisation (modules 2, 6, 7 et 8).</p>
+
+        <h4>Profil 5 : Le Reconverti Motivé (15% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Professionnels d'autres secteurs en reconversion, demandeurs d'emploi, créateurs d'entreprise. Score moyen : 30-50 points, avec de grandes lacunes techniques mais une forte motivation.</p>
+
+        <p><strong>Points forts :</strong> Motivation exceptionnelle, regard neuf sur le secteur, compétences transversales (gestion, communication), disponibilité pour la formation.</p>
+
+        <p><strong>Axes de développement :</strong> Connaissances techniques complètes, codes du secteur automobile, réseau professionnel, crédibilité technique.</p>
+
+        <p><strong>Parcours recommandé :</strong> Parcours renforcé avec préformation technique recommandée. Accompagnement personnalisé et mentorat par un inspecteur expérimenté.</p>
+
+        <h4>Profil 6 : L'Entrepreneur Visionnaire (5% des apprenants)</h4>
+
+        <p><strong>Caractéristiques :</strong> Dirigeants d'entreprise, investisseurs, consultants cherchant à développer une activité d'inspection. Score moyen : 40-60 points, avec focus sur les aspects stratégiques.</p>
+
+        <p><strong>Points forts :</strong> Vision business, capacité de développement, réseau professionnel étendu, compréhension des enjeux économiques.</p>
+
+        <p><strong>Axes de développement :</strong> Compétences techniques opérationnelles, crédibilité terrain, connaissance fine des processus d'inspection.</p>
+
+        <p><strong>Parcours recommandé :</strong> Parcours personnalisé avec focus technique (modules 3, 4, 5) et développement business approfondi (module 8).</p>
+
+        <div class="success-box">
+            <h4>📊 Statistiques de réussite par profil</h4>
+            <ul>
+                <li><strong>Technicien Expert :</strong> 98% de réussite, démarrage activité sous 1 mois</li>
+                <li><strong>Contrôleur Méthodique :</strong> 95% de réussite, excellente satisfaction client</li>
+                <li><strong>Commercial Relationnel :</strong> 85% de réussite, développement réseau rapide</li>
+                <li><strong>Passionné Autodidacte :</strong> 90% de réussite, forte spécialisation</li>
+                <li><strong>Reconverti Motivé :</strong> 75% de réussite, persévérance exemplaire</li>
+                <li><strong>Entrepreneur Visionnaire :</strong> 80% de réussite, croissance business élevée</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Définition des objectifs SMART</h3>
+
+        <p>La définition d'objectifs SMART (Spécifique, Mesurable, Atteignable, Réaliste, Temporellement défini) constitue une étape cruciale de votre parcours de formation. Elle transforme votre projet vague de "devenir inspecteur automobile" en plan d'action concret et réalisable.</p>
+
+        <h4>Spécifique : Préciser votre projet professionnel</h4>
+
+        <p>Votre objectif doit être parfaitement défini. "Devenir inspecteur automobile" est trop vague. Il faut préciser :</p>
+
+        <ul>
+            <li><strong>Type de clientèle visée :</strong> Particuliers (B2C), professionnels (B2B), ou mixte</li>
+            <li><strong>Zone géographique :</strong> Locale, régionale, ou nationale</li>
+            <li><strong>Spécialisation éventuelle :</strong> Véhicules de collection, utilitaires, véhicules de luxe</li>
+            <li><strong>Mode d'exercice :</strong> Indépendant, salarié, ou franchise</li>
+            <li><strong>Objectif de revenus :</strong> Activité complémentaire ou principale</li>
+        </ul>
+
+        <div class="info-box">
+            <h4>💡 Exemples d'objectifs spécifiques</h4>
+            <ul>
+                <li>"Devenir inspecteur automobile indépendant spécialisé dans les véhicules de collection pour une clientèle de particuliers passionnés en région Île-de-France"</li>
+                <li>"Développer une activité d'inspection B2B pour les sociétés de leasing et compagnies d'assurance sur un périmètre national avec objectif de 200 inspections/mois"</li>
+                <li>"Créer un service d'inspection intégré à mon garage existant pour sécuriser les ventes de véhicules d'occasion auprès de ma clientèle locale"</li>
+            </ul>
+        </div>
+
+        <h4>Mesurable : Quantifier vos ambitions</h4>
+
+        <p>Vos objectifs doivent être quantifiables pour permettre le suivi et l'évaluation de votre progression :</p>
+
+        <table>
+            <tr>
+                <th>Indicateur</th>
+                <th>Débutant</th>
+                <th>Intermédiaire</th>
+                <th>Expert</th>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Mécanicien</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Diagnostic technique approfondi</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Relation client, rédaction rapports</td>
-            </tr>
-            <tr style="background: #1f2937;">
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Contrôleur technique</strong></td>
-                <td style="padding: 12px; border: 1st solid #4b5563;">Méthodologie, respect procédures</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Expertise moteur, conseil client</td>
+                <td><strong>Nombre d'inspections/mois</strong></td>
+                <td>5-10</td>
+                <td>15-30</td>
+                <td>40-60</td>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Commercial auto</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Relation client, négociation</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Connaissances techniques approfondies</td>
+                <td><strong>Chiffre d'affaires mensuel</strong></td>
+                <td>1 500-3 000€</td>
+                <td>4 000-8 000€</td>
+                <td>10 000-15 000€</td>
             </tr>
-            <tr style="background: #1f2937;">
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Reconversion</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Motivation, regard neuf</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Bases techniques complètes</td>
+            <tr>
+                <td><strong>Durée moyenne d'inspection</strong></td>
+                <td>120 min</td>
+                <td>90 min</td>
+                <td>75 min</td>
+            </tr>
+            <tr>
+                <td><strong>Taux de recommandation client</strong></td>
+                <td>80%</td>
+                <td>90%</td>
+                <td>95%+</td>
+            </tr>
+            <tr>
+                <td><strong>Délai de livraison rapport</strong></td>
+                <td>48h</td>
+                <td>24h</td>
+                <td>12h</td>
             </tr>
         </table>
 
-        <h3>📊 Définition de Votre Parcours Personnalisé</h3>
-        
-        <p>Selon votre profil, nous recommandons un parcours adapté :</p>
-        
-        <h4>🚀 Parcours Accéléré (Professionnels expérimentés)</h4>
-        <ul>
-            <li>Focus sur les modules 2, 4, 6 et 8</li>
-            <li>Révision rapide des bases mécaniques</li>
-            <li>Accent mis sur la méthodologie AutoJust</li>
-            <li>Développement business et relation client</li>
-        </ul>
+        <h4>Atteignable : Évaluer la faisabilité</h4>
 
-        <h4>⚡ Parcours Standard (Niveau intermédiaire)</h4>
-        <ul>
-            <li>Suivi linéaire des 8 modules</li>
-            <li>Attention particulière aux modules 3 et 5</li>
-            <li>Exercices pratiques renforcés</li>
-            <li>Validation étape par étape</li>
-        </ul>
+        <p>Vos objectifs doivent être ambitieux mais réalisables compte tenu de vos contraintes personnelles et professionnelles :</p>
 
-        <h4>🎓 Parcours Renforcé (Débutants)</h4>
-        <ul>
-            <li>Module 3 étendu avec ressources supplémentaires</li>
-            <li>Exercices pratiques nombreux</li>
-            <li>Support pédagogique personnalisé</li>
-            <li>Validation progressive avec feedback</li>
-        </ul>
+        <p><strong>Contraintes temporelles :</strong> Combien d'heures par semaine pouvez-vous consacrer à cette activité ? Une activité d'inspection à temps plein nécessite 35-40h/semaine, une activité complémentaire peut se limiter à 10-15h/semaine.</p>
 
-        <h3>🏆 Les Enjeux du Métier d'Inspecteur</h3>
-        
-        <h4>Mission et Responsabilités</h4>
-        <p>L'inspecteur automobile est un expert indépendant qui :</p>
-        <ul>
-            <li><strong>Évalue objectivement</strong> l'état d'un véhicule</li>
-            <li><strong>Informe</strong> le client sur les risques et opportunités</li>
-            <li><strong>Protège</strong> l'acheteur contre les vices cachés</li>
-            <li><strong>Facilite</strong> les transactions en apportant la confiance</li>
-        </ul>
+        <p><strong>Contraintes financières :</strong> Quel budget pouvez-vous consacrer au démarrage (matériel, assurance, communication) ? L'investissement initial varie de 3 000€ (équipement de base) à 15 000€ (équipement professionnel complet).</p>
 
-        <h4>Marché et Opportunités</h4>
-        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>📈 Statistiques du Marché</h5>
+        <p><strong>Contraintes géographiques :</strong> Votre zone d'intervention doit être suffisamment dense en véhicules pour générer un volume d'activité viable. Une zone rurale nécessitera des déplacements plus importants.</p>
+
+        <h4>Réaliste : S'appuyer sur le marché</h4>
+
+        <p>Vos objectifs doivent s'appuyer sur une analyse réaliste du marché local :</p>
+
+        <div class="warning-box">
+            <h4>📈 Données de marché à considérer</h4>
             <ul>
-                <li><strong>5,2 millions</strong> de véhicules d'occasion vendus/an en France</li>
-                <li><strong>15%</strong> seulement font l'objet d'une inspection</li>
-                <li><strong>Potentiel de croissance énorme</strong> avec la démocratisation</li>
-                <li><strong>Tarif moyen :</strong> 200-300€ par inspection</li>
+                <li><strong>Taille du marché local :</strong> Nombre de transactions VO annuelles dans votre zone</li>
+                <li><strong>Concurrence existante :</strong> Nombre d'inspecteurs actifs, leurs tarifs, leur positionnement</li>
+                <li><strong>Demande potentielle :</strong> Enquêtes clients, partenariats possibles</li>
+                <li><strong>Évolution du marché :</strong> Tendances, réglementation, nouveaux usages</li>
             </ul>
         </div>
 
-        <h4>Défis et Exigences du Métier</h4>
-        <ul>
-            <li><strong>Précision technique :</strong> Aucune erreur n'est permise</li>
-            <li><strong>Impartialité :</strong> Résister aux pressions commerciales</li>
-            <li><strong>Pédagogie :</strong> Expliquer clairement les constats</li>
-            <li><strong>Réactivité :</strong> Intervention rapide sur demande</li>
-            <li><strong>Formation continue :</strong> Évolution technologique constante</li>
-        </ul>
+        <h4>Temporellement défini : Planifier les étapes</h4>
 
-        <h3>🎯 Objectifs de Fin de Formation</h3>
-        
-        <p>À l'issue de cette formation, vous serez capable de :</p>
-        
-        <div style="background: #1e40af; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>💼 Compétences Professionnelles</h5>
+        <p>Votre projet doit s'inscrire dans un calendrier précis avec des étapes intermédiaires :</p>
+
+        <div class="success-box">
+            <h4>🗓️ Planning type de déploiement</h4>
             <ul>
-                <li>Réaliser une inspection complète en 90 minutes</li>
-                <li>Évaluer avec précision l'état de 200+ points de contrôle</li>
-                <li>Rédiger un rapport professionnel détaillé</li>
-                <li>Formuler un avis moteur expert selon le modèle/kilométrage</li>
-                <li>Gérer la relation client avec diplomatie</li>
-                <li>Fixer vos tarifs et développer votre activité</li>
+                <li><strong>Mois 1 :</strong> Formation complète + certification</li>
+                <li><strong>Mois 2 :</strong> Création structure juridique + assurances</li>
+                <li><strong>Mois 3 :</strong> Acquisition matériel + communication</li>
+                <li><strong>Mois 4-6 :</strong> Démarrage activité + premiers clients</li>
+                <li><strong>Mois 7-12 :</strong> Montée en puissance + fidélisation</li>
+                <li><strong>Année 2 :</strong> Développement + spécialisation</li>
             </ul>
         </div>
 
-        <h3>📋 Plan de Formation Personnalisé</h3>
-        
-        <p>Votre progression sera suivie grâce à :</p>
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 6 : Cas pratiques introductifs (annonce, mise en situation)</h3>
+
+        <p>Pour conclure ce module de diagnostic et positionnement, nous vous proposons trois cas pratiques introductifs qui vous permettront de vous projeter concrètement dans les situations que vous rencontrerez en tant qu'inspecteur automobile certifié.</p>
+
+        <h4>Cas pratique n°1 : Analyse d'une annonce suspecte</h4>
+
+        <div class="tip-box">
+            <h4>📄 Annonce Leboncoin</h4>
+            <p><strong>Titre :</strong> "BMW 320d 2018, 45 000 km, état impeccable, cause déménagement"</p>
+            <p><strong>Prix :</strong> 18 500€ (prix de marché : 22 000€)</p>
+            <p><strong>Description :</strong> "Véhicule en parfait état, jamais accidenté, carnet d'entretien à jour, pneus neufs, révision récente. Vente rapide cause déménagement à l'étranger."</p>
+            <p><strong>Photos :</strong> 4 photos extérieures prises par beau temps, aucune photo d'intérieur ni de compartiment moteur.</p>
+        </div>
+
+        <p><strong>Signaux d'alerte identifiés :</strong></p>
         <ul>
-            <li><strong>Quiz d'évaluation</strong> à chaque module (minimum 70%)</li>
-            <li><strong>Cas pratiques</strong> avec véhicules réels</li>
-            <li><strong>Exercices de rédaction</strong> de rapports</li>
-            <li><strong>Simulations</strong> de relation client</li>
-            <li><strong>Examen final</strong> de 50 questions (seuil 70%)</li>
+            <li>Prix significativement inférieur au marché (-15%)</li>
+            <li>Justification émotionnelle ("cause déménagement")</li>
+            <li>Photos limitées et orientées</li>
+            <li>Absence de défauts mentionnés</li>
+            <li>Profil vendeur : compte récent, peu d'évaluations</li>
         </ul>
 
-        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>⚠️ Points d'Attention</h5>
+        <p>Dans ce contexte, votre rôle d'inspecteur sera crucial pour rassurer l'acheteur potentiel et identifier les éventuels vices cachés justifiant ce prix attractif.</p>
+
+        <h4>Cas pratique n°2 : Inspection pour compagnie d'assurance</h4>
+
+        <p><strong>Contexte :</strong> Sinistre déclaré par un assuré - "collision avec un sanglier sur l'A6". La compagnie d'assurance suspecte une fraude car les dégâts déclarés semblent disproportionnés et le lieu de l'accident est inhabituel pour ce type de sinistre.</p>
+
+        <p><strong>Véhicule :</strong> Audi Q5 2020, 25 000 km</p>
+        <p><strong>Dégâts déclarés :</strong> Pare-chocs avant, phare droit, capot déformé</p>
+        <p><strong>Montant estimé :</strong> 8 500€</p>
+
+        <p><strong>Mission d'inspection :</strong></p>
+        <ul>
+            <li>Analyser la cohérence des dégâts avec l'accident déclaré</li>
+            <li>Rechercher d'éventuels dégâts antérieurs masqués</li>
+            <li>Vérifier l'authenticité des pièces endommagées</li>
+            <li>Documenter l'état général du véhicule</li>
+            <li>Produire un rapport d'expertise détaillé</li>
+        </ul>
+
+        <p>Ce type de mission nécessite une expertise technique pointue et une parfaite connaissance des techniques de fraude les plus courantes.</p>
+
+        <h4>Cas pratique n°3 : Inspection pré-achat véhicule de collection</h4>
+
+        <p><strong>Contexte :</strong> Un passionné souhaite acquérir une Porsche 911 Carrera de 1989 pour 65 000€. Il fait appel à vos services pour sécuriser cet investissement important.</p>
+
+        <p><strong>Particularités :</strong></p>
+        <ul>
+            <li>Véhicule de 35 ans avec historique complexe</li>
+            <li>Modifications non d'origine possibles</li>
+            <li>Valeur élevée justifiant une expertise approfondie</li>
+            <li>Marché spécialisé avec codes spécifiques</li>
+            <li>Acheteur expert nécessitant un rapport de haut niveau</li>
+        </ul>
+
+        <p><strong>Défis spécifiques :</strong></p>
+        <ul>
+            <li>Authentification des éléments d'origine</li>
+            <li>Évaluation de l'état de conservation</li>
+            <li>Identification des restaurations antérieures</li>
+            <li>Estimation du potentiel d'évolution de valeur</li>
+            <li>Conseil sur les priorités de restauration</li>
+        </ul>
+
+        <img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg" alt="Inspection professionnelle en cours" class="module-image" />
+
+        <div class="success-box">
+            <h4>🎯 Objectifs pédagogiques atteints</h4>
+            <p>À l'issue de ce premier module, vous devriez avoir :</p>
             <ul>
-                <li>La formation théorique ne remplace pas la pratique terrain</li>
-                <li>L'expérience s'acquiert avec le temps et la répétition</li>
-                <li>La formation continue est indispensable</li>
-                <li>Le réseau professionnel est crucial pour le développement</li>
+                <li>✅ Évalué précisément votre niveau actuel</li>
+                <li>✅ Identifié votre profil d'apprenant</li>
+                <li>✅ Défini vos objectifs SMART</li>
+                <li>✅ Compris les enjeux de la profession</li>
+                <li>✅ Anticipé les situations professionnelles futures</li>
             </ul>
         </div>
 
-        <h3>🚀 Prêt à Commencer ?</h3>
-        
-        <p>Maintenant que vous avez évalué votre profil et défini vos objectifs, passons aux fondamentaux de l'inspection automobile dans le module suivant.</p>
-        
-        <p><em>Durée estimée de ce module : 30 minutes de lecture + 15 minutes pour le quiz d'auto-évaluation.</em></p>
+        <p><strong>Prochaine étape :</strong> Le Module 2 vous permettra d'approfondir les fondamentaux de l'inspection automobile et de comprendre précisément le rôle et les missions de l'inspecteur professionnel.</p>
+
+        <p><em>Durée de lecture estimée : 30 minutes | Quiz de validation : 12 questions</em></p>
         """,
         "quiz_questions": [
             {
