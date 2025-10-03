@@ -1556,6 +1556,1487 @@ COURSE_MODULES = [
                 "correct_answer": "<50mA"
             }
         ]
+    },
+    {
+        "id": "module-4",
+        "title": "Procédé d'Inspection : 200+ Points de Contrôle",
+        "description": "Méthodologie complète d'inspection terrain avec checklists détaillées et outils de diagnostic",
+        "duration_minutes": 135,
+        "order": 4,
+        "content": """
+        <h2>Module 4 : Procédé d'Inspection - 200+ Points de Contrôle</h2>
+        
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Inspection automobile professionnelle" class="module-image" />
+        
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 1 : Préparation et méthodologie (sécurité, matériel, briefing client)</h3>
+
+        <p>L'inspection automobile professionnelle commence bien avant l'examen du véhicule lui-même. Une préparation minutieuse conditionne la qualité, l'efficacité et la sécurité de toute l'intervention. Cette phase préparatoire, souvent négligée par les inspecteurs débutants, représente pourtant 15% du temps total d'inspection mais conditionne 80% de la réussite de la mission.</p>
+
+        <div class="info-box">
+            <h4>🛡️ Priorité Absolue : La Sécurité</h4>
+            <p>Avant toute intervention, l'inspecteur doit s'assurer que les conditions de sécurité sont réunies :</p>
+            <ul>
+                <li><strong>Équipements de protection individuelle :</strong> Gants nitrile, lunettes de protection, chaussures de sécurité</li>
+                <li><strong>Environnement d'inspection :</strong> Sol stable, éclairage suffisant, aération si en local fermé</li>
+                <li><strong>État du véhicule :</strong> Moteur refroidi, frein à main serré, véhicule sur terrain plat</li>
+                <li><strong>Assurance professionnelle :</strong> Vérification validité RC Pro et extension géographique</li>
+            </ul>
+        </div>
+
+        <h4>Matériel professionnel requis</h4>
+
+        <p>L'inspecteur moderne dispose d'un arsenal technologique qui s'est considérablement enrichi ces dernières années. L'investissement initial varie de 2 500€ (équipement de base) à 8 000€ (équipement professionnel complet), mais cette différence se ressent immédiatement sur la qualité des inspections et la crédibilité professionnelle.</p>
+
+        <table>
+            <tr>
+                <th>Catégorie</th>
+                <th>Équipement de base</th>
+                <th>Équipement professionnel</th>
+                <th>Coût approximatif</th>
+            </tr>
+            <tr>
+                <td><strong>Diagnostic électronique</strong></td>
+                <td>Valise OBD générique</td>
+                <td>Valise multi-marques Launch/Autel</td>
+                <td>300€ à 2 000€</td>
+            </tr>
+            <tr>
+                <td><strong>Mesures électriques</strong></td>
+                <td>Multimètre basique</td>
+                <td>Multimètre automobile + pince ampèremétrique</td>
+                <td>50€ à 400€</td>
+            </tr>
+            <tr>
+                <td><strong>Éclairage</strong></td>
+                <td>Lampe LED portable</td>
+                <td>Projecteur LED rechargeable + lampe d'inspection</td>
+                <td>30€ à 200€</td>
+            </tr>
+            <tr>
+                <td><strong>Mesures mécaniques</strong></td>
+                <td>Règle, jauge de profondeur</td>
+                <td>Comparateur, testeur compression, manomètre</td>
+                <td>100€ à 800€</td>
+            </tr>
+            <tr>
+                <td><strong>Documentation</strong></td>
+                <td>Smartphone + app</td>
+                <td>Tablette durcie + app pro + imprimante portable</td>
+                <td>200€ à 1 000€</td>
+            </tr>
+        </table>
+
+        <div class="tip-box">
+            <h4>💡 Optimisation du matériel</h4>
+            <p>L'expérience de nos 300+ inspecteurs certifiés révèle les investissements prioritaires :</p>
+            <ol>
+                <li><strong>Valise de diagnostic :</strong> 40% d'amélioration de la détection des défauts</li>
+                <li><strong>Éclairage professionnel :</strong> 60% de gain de temps en inspection moteur</li>
+                <li><strong>Application mobile dédiée :</strong> 50% de réduction du temps de rédaction</li>
+                <li><strong>Appareil photo dédié :</strong> 80% d'amélioration de la qualité visuelle des rapports</li>
+            </ol>
+        </div>
+
+        <h4>Briefing client et gestion des attentes</h4>
+
+        <p>Le briefing initial conditionne la satisfaction client finale. Cette phase de 10-15 minutes permet d'établir la confiance, de clarifier les attentes mutuelles et de prévenir les malentendus post-inspection.</p>
+
+        <div class="success-box">
+            <h4>📋 Trame de briefing client</h4>
+            <ol>
+                <li><strong>Présentation personnelle :</strong> Certification, expérience, assurance</li>
+                <li><strong>Méthodologie :</strong> Explication des 200+ points de contrôle</li>
+                <li><strong>Durée :</strong> 90 minutes d'inspection + 24h pour le rapport</li>
+                <li><strong>Limites :</strong> Inspection non destructive, pas de démontage</li>
+                <li><strong>Livrables :</strong> Rapport détaillé + photos + avis moteur</li>
+                <li><strong>Modalités :</strong> Accompagnement souhaitable, questions encouragées</li>
+            </ol>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Outils de diagnostic automobile" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Inspection extérieure (carrosserie, corrosion, alignements)</h3>
+
+        <p>L'inspection extérieure constitue le premier contact visuel avec le véhicule et détermine souvent la première impression du client. Cette phase, d'une durée de 25-30 minutes, couvre 68 points de contrôle spécifiques répartis selon une méthodologie éprouvée par plus de 10 000 inspections réalisées.</p>
+
+        <h4>Méthodologie de tour de véhicule</h4>
+
+        <p>L'inspection extérieure suit un parcours codifié garantissant l'exhaustivité et la répétabilité. Cette approche systémique, inspirée des méthodes aéronautiques, élimine les oublis et optimise le temps d'intervention.</p>
+
+        <div class="info-box">
+            <h4>🔄 Séquence d'inspection extérieure (25 minutes)</h4>
+            <ol>
+                <li><strong>Vue d'ensemble (2 min) :</strong> Position générale, première impression, anomalies évidentes</li>
+                <li><strong>Face avant (5 min) :</strong> Pare-chocs, calandre, phares, capot, pare-brise</li>
+                <li><strong>Côté conducteur (6 min) :</strong> Portières, vitres, rétroviseurs, passages de roues</li>
+                <li><strong>Arrière (4 min) :</strong> Pare-chocs, feux, coffre, échappement, plaque</li>
+                <li><strong>Côté passager (6 min) :</strong> Symétrie avec côté conducteur, comparaisons</li>
+                <li><strong>Toit et parties hautes (2 min) :</strong> Pavillon, gouttières, antennes, rails</li>
+            </ol>
+        </div>
+
+        <h4>Détection et analyse de la corrosion</h4>
+
+        <p>La corrosion représente l'un des défauts les plus critiques et les plus coûteux à traiter. Sa détection précoce peut faire la différence entre une réparation de 500€ et un véhicule économiquement irréparable. L'inspecteur doit maîtriser les différents types de corrosion et leur évolution.</p>
+
+        <table>
+            <tr>
+                <th>Type de corrosion</th>
+                <th>Localisation typique</th>
+                <th>Signes visuels</th>
+                <th>Criticité</th>
+                <th>Coût de réparation</th>
+            </tr>
+            <tr>
+                <td><strong>Corrosion superficielle</strong></td>
+                <td>Rayures, impacts</td>
+                <td>Points de rouille isolés</td>
+                <td>Faible</td>
+                <td>50-200€</td>
+            </tr>
+            <tr>
+                <td><strong>Corrosion par piqûres</strong></td>
+                <td>Bas de caisse, seuils</td>
+                <td>Petits trous multiples</td>
+                <td>Moyenne</td>
+                <td>300-800€</td>
+            </tr>
+            <tr>
+                <td><strong>Corrosion galvanique</strong></td>
+                <td>Jonctions métaux différents</td>
+                <td>Décoloration, boursouflures</td>
+                <td>Élevée</td>
+                <td>800-2000€</td>
+            </tr>
+            <tr>
+                <td><strong>Corrosion structurelle</strong></td>
+                <td>Longerons, montants</td>
+                <td>Déformation, perforation</td>
+                <td>Critique</td>
+                <td>2000€+</td>
+            </tr>
+        </table>
+
+        <h4>Analyse des défauts de carrosserie</h4>
+
+        <p>L'évaluation des défauts de carrosserie nécessite un œil exercé et une méthodologie rigoureuse. L'inspecteur doit différencier les dommages esthétiques des dommages structurels, évaluer leur origine (accident, usure, négligence) et estimer leur impact sur la valeur et la sécurité du véhicule.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Signaux d'alerte majeurs</h4>
+            <ul>
+                <li><strong>Teintes différentes :</strong> Indication de repeinte, possible accident</li>
+                <li><strong>Jeux inégaux :</strong> Déformation de structure ou mauvais remontage</li>
+                <li><strong>Ondulations :</strong> Travaux de carrosserie, mastic mal poncé</li>
+                <li><strong>Soudures atypiques :</strong> Réparation structurelle, accident grave</li>
+                <li><strong>Corrosion active :</strong> Évolution rapide, intervention urgente</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Inspection intérieure (électronique, airbags, habitacle)</h3>
+
+        <p>L'inspection intérieure révèle souvent l'usage réel du véhicule et peut dévoiler des défauts cachés non visibles à l'extérieur. Cette phase de 20 minutes couvre 45 points de contrôle et nécessite une attention particulière aux systèmes de sécurité et aux équipements électroniques.</p>
+
+        <h4>Contrôle des systèmes de sécurité</h4>
+
+        <p>Les systèmes de sécurité moderne (airbags, prétensionneurs, assistance au freinage) représentent des enjeux vitaux. Leur défaillance peut avoir des conséquences dramatiques, et leur réparation coûte généralement entre 1 500€ et 5 000€. L'inspecteur doit maîtriser leur fonctionnement et leurs modes de défaillance.</p>
+
+        <div class="info-box">
+            <h4>🛡️ Check-list sécurité passive</h4>
+            <ul>
+                <li><strong>Témoins airbag :</strong> Extinction après démarrage (6 secondes max)</li>
+                <li><strong>Ceintures de sécurité :</strong> Enroulement correct, verrouillage fonctionnel</li>
+                <li><strong>Prétensionneurs :</strong> Pas de déclenchement intempestif visible</li>
+                <li><strong>Sièges enfants :</strong> Points d'ancrage ISOFIX présents et fonctionnels</li>
+                <li><strong>Appuis-tête :</strong> Réglage et verrouillage corrects</li>
+            </ul>
+        </div>
+
+        <h4>Évaluation de l'usure intérieure</h4>
+
+        <p>L'usure de l'habitacle révèle l'usage réel du véhicule et peut contredire le kilométrage affiché. L'inspecteur expérimenté sait décrypter ces indices pour détecter les anomalies et évaluer la cohérence globale.</p>
+
+        <img src="https://images.unsplash.com/photo-1606577924006-27d39b132ae2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Intérieur véhicule moderne" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Compartiment moteur (contrôles visuels et mécaniques)</h3>
+
+        <p>Le compartiment moteur concentre la complexité technique maximale du véhicule moderne. Cette phase d'inspection de 25-30 minutes couvre 52 points de contrôle et nécessite l'expertise la plus poussée de l'inspecteur. C'est également la zone où se cachent les défauts les plus coûteux.</p>
+
+        <h4>Diagnostic moteur approfondi</h4>
+
+        <p>L'évaluation moteur combine l'analyse visuelle, auditive, olfactive et instrumentale. Cette approche multi-sensorielle, complétée par le diagnostic électronique, permet de détecter 95% des dysfonctionnements, y compris ceux en phase d'amorçage.</p>
+
+        <div class="success-box">
+            <h4>🔧 Protocole de diagnostic moteur</h4>
+            <ol>
+                <li><strong>Inspection visuelle à froid (5 min) :</strong> Fuites, corrosion, modifications</li>
+                <li><strong>Contrôle des niveaux (3 min) :</strong> Huile, liquide refroidissement, frein</li>
+                <li><strong>Démarrage et écoute (5 min) :</strong> Temps démarrage, bruits anormaux</li>
+                <li><strong>Diagnostic OBD (8 min) :</strong> Codes défauts, paramètres temps réel</li>
+                <li><strong>Test en charge (5 min) :</strong> Accélérations, montée température</li>
+            </ol>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Essai routier (démarrage, moteur, boîte, direction, freins)</h3>
+
+        <p>L'essai routier représente l'épreuve de vérité de l'inspection. C'est le moment où tous les systèmes fonctionnent en conditions réelles et où se révèlent les défauts impossible à détecter à l'arrêt. Cette phase de 15-20 minutes nécessite une grande expérience et une parfaite maîtrise des techniques de conduite d'évaluation.</p>
+
+        <h4>Sécurité et responsabilité</h4>
+
+        <p>L'essai routier engage la responsabilité civile et pénale de l'inspecteur. Une préparation rigoureuse et le respect de protocoles stricts sont indispensables pour limiter les risques tout en maintenant l'efficacité du diagnostic.</p>
+
+        <div class="warning-box">
+            <h4>⚠️ Protocole de sécurité essai routier</h4>
+            <ul>
+                <li><strong>Vérifications préalables :</strong> Freinage, direction, niveaux, pneus</li>
+                <li><strong>Accompagnement :</strong> Propriétaire ou mandataire présent obligatoirement</li>
+                <li><strong>Parcours :</strong> Sélectionné à l'avance, sécurisé, représentatif</li>
+                <li><strong>Assurance :</strong> Extension conduite professionnelle vérifiée</li>
+                <li><strong>Météo :</strong> Conditions compatibles avec sécurité</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 6 : Documentation (photos, carnet, factures, historique)</h3>
+
+        <p>La documentation constitue la mémoire de l'inspection et la base légale du rapport. Une documentation rigoureuse protège autant l'inspecteur que le client et constitue souvent l'élément décisif en cas de litige. La révolution numérique a transformé cette phase, permettant une traçabilité et une qualité inégalées.</p>
+
+        <img src="https://images.unsplash.com/photo-1746079074522-2b14240d932c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHw0fHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Documentation inspection" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 7 : Checklists types et exercices de simulation</h3>
+
+        <p>La check-list constitue l'épine dorsale de l'inspection professionnelle. Elle garantit l'exhaustivité, la répétabilité et la traçabilité de chaque intervention. Les check-lists AutoJust, développées et affinées sur plus de 10 000 inspections, constituent la référence professionnelle du secteur.</p>
+
+        <div class="tip-box">
+            <h4>📊 Répartition des 200+ points de contrôle</h4>
+            <ul>
+                <li><strong>Carrosserie et esthétique :</strong> 68 points (34%)</li>
+                <li><strong>Mécanique et motorisation :</strong> 52 points (26%)</li>
+                <li><strong>Sécurité et équipements :</strong> 45 points (22,5%)</li>
+                <li><strong>Intérieur et confort :</strong> 25 points (12,5%)</li>
+                <li><strong>Essai routier :</strong> 20 points (10%)</li>
+            </ul>
+        </div>
+
+        <p><em>Durée de lecture estimée : 135 minutes | Quiz de validation : 12 questions</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "Quelle est la durée recommandée pour la phase de préparation d'une inspection ?",
+                "options": ["5-8 minutes", "10-15 minutes", "15-20 minutes", "20-25 minutes"],
+                "correct_answer": "10-15 minutes"
+            },
+            {
+                "id": "q2",
+                "question": "Combien de points de contrôle couvre l'inspection extérieure ?",
+                "options": ["55 points", "68 points", "72 points", "85 points"],
+                "correct_answer": "68 points"
+            },
+            {
+                "id": "q3",
+                "question": "Quel est l'investissement minimum pour un équipement d'inspection de base ?",
+                "options": ["1 500€", "2 500€", "3 500€", "4 500€"],
+                "correct_answer": "2 500€"
+            },
+            {
+                "id": "q4",
+                "question": "La corrosion structurelle nécessite généralement un budget de réparation de :",
+                "options": ["500-800€", "800-1500€", "1500-2000€", "2000€ et plus"],
+                "correct_answer": "2000€ et plus"
+            },
+            {
+                "id": "q5",
+                "question": "Combien de temps doit s'écouler maximum pour l'extinction du témoin airbag ?",
+                "options": ["3 secondes", "6 secondes", "10 secondes", "15 secondes"],
+                "correct_answer": "6 secondes"
+            },
+            {
+                "id": "q6",
+                "question": "L'inspection du compartiment moteur couvre combien de points de contrôle ?",
+                "options": ["45 points", "52 points", "60 points", "68 points"],
+                "correct_answer": "52 points"
+            },
+            {
+                "id": "q7",
+                "question": "Quelle est la durée standard d'un essai routier d'inspection ?",
+                "options": ["10-12 minutes", "15-20 minutes", "20-25 minutes", "25-30 minutes"],
+                "correct_answer": "15-20 minutes"
+            },
+            {
+                "id": "q8",
+                "question": "Le briefing client représente quel pourcentage du temps total d'inspection ?",
+                "options": ["10%", "15%", "20%", "25%"],
+                "correct_answer": "15%"
+            },
+            {
+                "id": "q9",
+                "question": "Une valise de diagnostic améliore la détection des défauts de :",
+                "options": ["25%", "30%", "35%", "40%"],
+                "correct_answer": "40%"
+            },
+            {
+                "id": "q10",
+                "question": "Combien d'inspections ont servi à développer la méthodologie AutoJust ?",
+                "options": ["5 000", "8 000", "10 000+", "15 000"],
+                "correct_answer": "10 000+"
+            },
+            {
+                "id": "q11",
+                "question": "La réparation d'un système airbag coûte généralement entre :",
+                "options": ["500-1000€", "1000-1500€", "1500-5000€", "5000-8000€"],
+                "correct_answer": "1500-5000€"
+            },
+            {
+                "id": "q12",
+                "question": "Quelle est la répartition en pourcentage des points carrosserie/esthétique ?",
+                "options": ["30%", "34%", "38%", "42%"],
+                "correct_answer": "34%"
+            }
+        ]
+    },
+    {
+        "id": "module-5",
+        "title": "Avis sur le Moteur : Expertise Approfondie",
+        "description": "Analyse spécifique du moteur selon kilométrage, modèle et techniques d'évaluation avancées",
+        "duration_minutes": 45,
+        "order": 5,
+        "content": """
+        <h2>Module 5 : Avis sur le Moteur - Expertise Approfondie</h2>
+        
+        <img src="https://images.pexels.com/photos/4489749/pexels-photo-4489749.jpeg" alt="Expertise moteur professionnelle" class="module-image" />
+        
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 1 : Pourquoi l'avis moteur est central</h3>
+
+        <p>L'avis sur le moteur constitue le cœur de l'expertise automobile et la valeur ajoutée principale de l'inspecteur professionnel. Contrairement à une inspection généraliste, cet avis spécialisé exige une connaissance approfondie des motorisations, de leurs évolutions technologiques et de leurs défaillances spécifiques selon les modèles et kilométrages.</p>
+
+        <p>Dans un marché de l'occasion où 78% des acheteurs redoutent prioritairement les pannes moteur, et où ces dernières représentent 45% du coût total de possession d'un véhicule d'occasion, l'avis moteur expert devient l'élément différenciant majeur de l'inspection professionnelle.</p>
+
+        <div class="info-box">
+            <h4>🔬 Spécificité de l'avis moteur</h4>
+            <p>L'avis moteur AutoJust se distingue par :</p>
+            <ul>
+                <li><strong>Analyse contextualisée :</strong> Prise en compte du modèle, millésime, kilométrage</li>
+                <li><strong>Base de données :</strong> Référentiel de 150 000+ moteurs analysés</li>
+                <li><strong>Prédictibilité :</strong> Estimation des évolutions à 12, 24 et 36 mois</li>
+                <li><strong>Chiffrage :</strong> Évaluation des coûts d'entretien prévisionnels</li>
+                <li><strong>Recommandations :</strong> Plan d'action priorisé pour l'acquéreur</li>
+            </ul>
+        </div>
+
+        <h4>Impact économique de l'avis moteur</h4>
+
+        <p>Les statistiques de nos 300+ inspecteurs certifiés démontrent l'impact économique direct de l'avis moteur :</p>
+
+        <table>
+            <tr>
+                <th>Type d'avis</th>
+                <th>Impact sur décision achat</th>
+                <th>Économies moyennes client</th>
+                <th>Satisfaction post-achat</th>
+            </tr>
+            <tr>
+                <td><strong>Avis favorable</strong></td>
+                <td>85% de concrétisation</td>
+                <td>Négociation -8%</td>
+                <td>96% satisfaction</td>
+            </tr>
+            <tr>
+                <td><strong>Avis réservé</strong></td>
+                <td>45% de concrétisation</td>
+                <td>Négociation -15%</td>
+                <td>88% satisfaction</td>
+            </tr>
+            <tr>
+                <td><strong>Avis défavorable</strong></td>
+                <td>12% de concrétisation</td>
+                <td>Évitement perte 3000€+</td>
+                <td>98% satisfaction</td>
+            </tr>
+        </table>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Analyse visuelle et auditive (bruits, vibrations, fumées)</h3>
+
+        <p>L'expertise moteur commence par l'analyse sensorielle, technique ancestrale enrichie par l'expérience et la connaissance des spécificités techniques. Cette phase de diagnostic non-intrusif révèle 70% des dysfonctionnements moteur avant même l'utilisation d'instruments.</p>
+
+        <h4>Diagnostic par l'écoute</h4>
+
+        <p>Chaque moteur possède sa "signature sonore" caractéristique. L'inspecteur expérimenté développe une bibliothèque auditive lui permettant d'identifier instantanément les anomalies et leur localisation.</p>
+
+        <div class="success-box">
+            <h4>🎵 Cartographie sonore moteur</h4>
+            <ul>
+                <li><strong>Claquement métallique :</strong> Usure coussinets, jeu excessif vilebrequin</li>
+                <li><strong>Sifflement aigu :</strong> Fuite dépression, joint turbo défaillant</li>
+                <li><strong>Ronflement grave :</strong> Roulement défaillant, poulie endommagée</li>
+                <li><strong>Grincement intermittent :</strong> Courroie détendue ou encrassée</li>
+                <li><strong>Cognement synchrone :</strong> Avance allumage incorrecte, carburant inadapté</li>
+            </ul>
+        </div>
+
+        <h4>Analyse des vibrations</h4>
+
+        <p>Les vibrations moteur révèlent l'état des supports, l'équilibrage des masses tournantes et la qualité de la combustion. L'analyse vibratoire permet de détecter préventivement des défaillances majeures.</p>
+
+        <img src="https://images.pexels.com/photos/7715199/pexels-photo-7715199.jpeg" alt="Diagnostic moteur approfondi" class="module-image" />
+
+        <h4>Interprétation des fumées d'échappement</h4>
+
+        <p>La couleur, la densité et l'odeur des fumées d'échappement constituent un indicateur précieux de l'état interne du moteur et de ses systèmes annexes.</p>
+
+        <table>
+            <tr>
+                <th>Couleur fumée</th>
+                <th>Origine probable</th>
+                <th>Diagnostic</th>
+                <th>Coût réparation</th>
+            </tr>
+            <tr>
+                <td><strong>Blanche épaisse</strong></td>
+                <td>Liquide refroidissement</td>
+                <td>Joint de culasse</td>
+                <td>1500-3000€</td>
+            </tr>
+            <tr>
+                <td><strong>Bleue continue</strong></td>
+                <td>Combustion d'huile</td>
+                <td>Segments, guides soupapes</td>
+                <td>2000-5000€</td>
+            </tr>
+            <tr>
+                <td><strong>Noire dense</strong></td>
+                <td>Surenrichissement</td>
+                <td>Injection, filtration</td>
+                <td>300-800€</td>
+            </tr>
+            <tr>
+                <td><strong>Grise persistante</strong></td>
+                <td>Combustion incomplète</td>
+                <td>Allumage, compression</td>
+                <td>200-600€</td>
+            </tr>
+        </table>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Défauts connus par modèle/kilométrage (base de données)</h3>
+
+        <p>Chaque motorisation présente des défaillances récurrentes liées à sa conception, aux matériaux utilisés ou aux évolutions techniques. La base de données AutoJust, enrichie continuellement par le retour d'expérience terrain, référence plus de 2 500 défauts types répartis sur 850 motorisations différentes.</p>
+
+        <div class="info-box">
+            <h4>📊 Exemples de défauts récurrents par marque</h4>
+            
+            <h5>Groupe PSA (Peugeot, Citroën, DS)</h5>
+            <ul>
+                <li><strong>1.6 THP :</strong> Chaîne de distribution (80 000-120 000 km)</li>
+                <li><strong>2.0 HDi :</strong> Injecteurs (150 000-200 000 km)</li>
+                <li><strong>1.2 PureTech :</strong> Courroie de distribution humide (100 000 km)</li>
+            </ul>
+            
+            <h5>Groupe Renault-Nissan</h5>
+            <ul>
+                <li><strong>1.5 dCi :</strong> Vanne EGR (120 000-150 000 km)</li>
+                <li><strong>2.0 TCe :</strong> Turbocompresseur (100 000-130 000 km)</li>
+                <li><strong>1.6 dCi :</strong> Pompe haute pression (180 000 km)</li>
+            </ul>
+            
+            <h5>Groupe VAG (Volkswagen, Audi, Skoda, Seat)</h5>
+            <ul>
+                <li><strong>1.4 TSI :</strong> Chaîne de distribution (100 000 km)</li>
+                <li><strong>2.0 TDI :</strong> Géométrie variable turbo (150 000 km)</li>
+                <li><strong>1.6 TDI :</strong> Volant moteur bi-masse (180 000 km)</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Rédiger un avis clair, objectif et utile</h3>
+
+        <p>La rédaction de l'avis moteur constitue l'exercice le plus délicat de l'inspection. Il s'agit de transformer une analyse technique complexe en recommandations claires et actionnables pour le client, tout en maintenant l'objectivité et la précision scientifique.</p>
+
+        <div class="tip-box">
+            <h4>✍️ Structure type de l'avis moteur</h4>
+            <ol>
+                <li><strong>État général (2-3 lignes) :</strong> Synthèse de l'évaluation globale</li>
+                <li><strong>Points positifs :</strong> Éléments rassurants identifiés</li>
+                <li><strong>Points d'attention :</strong> Éléments à surveiller ou maintenir</li>
+                <li><strong>Points critiques :</strong> Défauts nécessitant intervention</li>
+                <li><strong>Prévisions d'évolution :</strong> 12, 24, 36 mois</li>
+                <li><strong>Budget prévisionnel :</strong> Estimation coûts entretien/réparation</li>
+                <li><strong>Recommandation finale :</strong> Achat conseillé/déconseillé/conditionné</li>
+            </ol>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Cas concrets et exercices pratiques</h3>
+
+        <p>Pour maîtriser l'art de l'avis moteur, rien ne remplace l'analyse de cas concrets. Voici trois exemples représentatifs des situations les plus fréquemment rencontrées par l'inspecteur professionnel.</p>
+
+        <div class="warning-box">
+            <h4>📋 Cas pratique n°1 : BMW 320d F30 - 150 000 km</h4>
+            <p><strong>Contexte :</strong> Véhicule de 2015, entretien BMW jusqu'à 100 000 km, puis garage indépendant</p>
+            <p><strong>Observations :</strong> Léger claquement démarrage à froid, fumée grise intermittente, consommation d'huile 1L/1000km</p>
+            <p><strong>Diagnostic :</strong> Début d'usure chaîne de distribution, injecteurs encrassés</p>
+            <p><strong>Avis :</strong> "Moteur globalement sain mais présentant des signes d'usure cohérents avec le kilométrage. Chaîne de distribution à surveiller (remplacement préventif recommandé avant 180 000 km - budget 2 000€). Décalaminage conseillé sous 6 mois (300€). Achat recommandé avec négociation -1 500€ pour anticiper ces interventions."</p>
+        </div>
+
+        <p><em>Durée de lecture estimée : 45 minutes | Quiz de validation : 12 questions</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "Quel pourcentage des acheteurs d'occasion redoutent prioritairement les pannes moteur ?",
+                "options": ["68%", "73%", "78%", "83%"],
+                "correct_answer": "78%"
+            },
+            {
+                "id": "q2",
+                "question": "Les pannes moteur représentent quel pourcentage du coût total de possession ?",
+                "options": ["35%", "40%", "45%", "50%"],
+                "correct_answer": "45%"
+            },
+            {
+                "id": "q3",
+                "question": "Combien de moteurs sont référencés dans la base de données AutoJust ?",
+                "options": ["100 000+", "120 000+", "150 000+", "180 000+"],
+                "correct_answer": "150 000+"
+            },
+            {
+                "id": "q4",
+                "question": "L'analyse sensorielle révèle quel pourcentage des dysfonctionnements moteur ?",
+                "options": ["60%", "65%", "70%", "75%"],
+                "correct_answer": "70%"
+            },
+            {
+                "id": "q5",
+                "question": "Une fumée blanche épaisse indique généralement :",
+                "options": ["Combustion d'huile", "Problème liquide refroidissement", "Surenrichissement", "Combustion incomplète"],
+                "correct_answer": "Problème liquide refroidissement"
+            },
+            {
+                "id": "q6",
+                "question": "Le défaut récurrent du moteur 1.6 THP PSA survient vers :",
+                "options": ["60 000-80 000 km", "80 000-120 000 km", "120 000-150 000 km", "150 000-200 000 km"],
+                "correct_answer": "80 000-120 000 km"
+            },
+            {
+                "id": "q7",
+                "question": "Combien de défauts types sont référencés dans la base AutoJust ?",
+                "options": ["2 000+", "2 250+", "2 500+", "2 750+"],
+                "correct_answer": "2 500+"
+            },
+            {
+                "id": "q8",
+                "question": "Un avis favorable entraîne quel taux de concrétisation d'achat ?",
+                "options": ["75%", "80%", "85%", "90%"],
+                "correct_answer": "85%"
+            },
+            {
+                "id": "q9",
+                "question": "Combien de motorisations différentes sont couvertes par la base AutoJust ?",
+                "options": ["650", "750", "850", "950"],
+                "correct_answer": "850"
+            },
+            {
+                "id": "q10",
+                "question": "Une fumée bleue continue indique un coût de réparation de :",
+                "options": ["500-1000€", "1000-1500€", "1500-3000€", "2000-5000€"],
+                "correct_answer": "2000-5000€"
+            },
+            {
+                "id": "q11",
+                "question": "Le taux de satisfaction client avec un avis défavorable est de :",
+                "options": ["92%", "95%", "98%", "99%"],
+                "correct_answer": "98%"
+            },
+            {
+                "id": "q12",
+                "question": "L'avis moteur doit inclure des prévisions d'évolution sur :",
+                "options": ["6, 12, 18 mois", "12, 24, 36 mois", "12, 18, 24 mois", "24, 36, 48 mois"],
+                "correct_answer": "12, 24, 36 mois"
+            }
+        ]
+    },
+    {
+        "id": "module-6",
+        "title": "Outils Digitaux et Rapports Professionnels",
+        "description": "Digitalisation complète : outils numériques, structuration des rapports et livraison professionnelle",
+        "duration_minutes": 75,
+        "order": 6,
+        "content": """
+        <h2>Module 6 : Outils Digitaux et Rapports Professionnels</h2>
+        
+        <img src="https://images.unsplash.com/photo-1587145820266-a0065b0661f2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwdG9vbHN8ZW58MHx8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Outils digitaux professionnels" class="module-image" />
+        
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 1 : Présentation des outils numériques (WeProov, SafetyCulture, webapp)</h3>
+
+        <p>La révolution digitale a transformé radicalement le métier d'inspecteur automobile. Les outils numériques modernes permettent une productivité accrue de 40%, une qualité de rapport supérieure et une traçabilité optimale. Cette transformation n'est plus optionnelle : elle conditionne la compétitivité et la crédibilité de l'inspecteur professionnel moderne.</p>
+
+        <div class="info-box">
+            <h4>🚀 Écosystème digital AutoJust</h4>
+            <p>L'écosystème technologique AutoJust s'articule autour de 4 piliers :</p>
+            <ul>
+                <li><strong>WebApp AutoJust :</strong> Application mobile native pour inspection terrain</li>
+                <li><strong>WeProov :</strong> Plateforme de constat visuel géolocalisé et horodaté</li>
+                <li><strong>SafetyCulture (iAuditor) :</strong> Check-lists intelligentes et rapports automatisés</li>
+                <li><strong>CRM intégré :</strong> Gestion client et suivi commercial</li>
+            </ul>
+        </div>
+
+        <h4>WeProov : La référence du constat visuel</h4>
+
+        <p>WeProov révolutionne la documentation visuelle de l'inspection en apportant une valeur juridique incontestable aux preuves photographiques. Utilisé par plus de 200 000 professionnels de l'automobile, cet outil garantit l'authenticité, l'horodatage et la géolocalisation de chaque prise de vue.</p>
+
+        <table>
+            <tr>
+                <th>Fonctionnalité</th>
+                <th>Avantage inspecteur</th>
+                <th>Valeur ajoutée client</th>
+                <th>Protection juridique</th>
+            </tr>
+            <tr>
+                <td><strong>Horodatage certifié</strong></td>
+                <td>Traçabilité absolue</td>
+                <td>Confiance renforcée</td>
+                <td>Preuve incontestable</td>
+            </tr>
+            <tr>
+                <td><strong>Géolocalisation GPS</strong></td>
+                <td>Contexte d'inspection</td>
+                <td>Transparence totale</td>
+                <td>Localisation certifiée</td>
+            </tr>
+            <tr>
+                <td><strong>Blockchain</strong></td>
+                <td>Inaltérabilité garantie</td>
+                <td>Sécurité maximale</td>
+                <td>Non-répudiation</td>
+            </tr>
+            <tr>
+                <td><strong>Annotations intelligentes</strong></td>
+                <td>Gain de temps</td>
+                <td>Clarté pédagogique</td>
+                <td>Précision technique</td>
+            </tr>
+        </table>
+
+        <h4>SafetyCulture : L'intelligence des check-lists</h4>
+
+        <p>SafetyCulture transforme les check-lists traditionnelles en outils intelligents capables de s'adapter au contexte, de guider l'inspecteur et de générer automatiquement des rapports structurés. Cette plateforme, utilisée par Boeing, Coca-Cola et des milliers d'entreprises mondiales, apporte une rigueur industrielle à l'inspection automobile.</p>
+
+        <div class="success-box">
+            <h4>📱 Fonctionnalités avancées SafetyCulture</h4>
+            <ul>
+                <li><strong>Check-lists conditionnelles :</strong> Questions adaptées selon les réponses précédentes</li>
+                <li><strong>Capture multimédia :</strong> Photos, vidéos, enregistrements audio intégrés</li>
+                <li><strong>Scoring automatique :</strong> Notation intelligente selon pondération définie</li>
+                <li><strong>Actions correctives :</strong> Planification et suivi des interventions</li>
+                <li><strong>Rapports temps réel :</strong> Génération instantanée au format PDF</li>
+                <li><strong>Analytics :</strong> Tableaux de bord et statistiques de performance</li>
+            </ul>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHB8ZW58MHx8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Application mobile inspection" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Avantages des checklists numériques</h3>
+
+        <p>La transition du papier au numérique ne constitue pas une simple modernisation cosmétique, mais une révolution méthodologique qui transforme fondamentalement la qualité et l'efficacité de l'inspection. Les statistiques de nos inspecteurs certifiés démontrent des gains quantifiables significatifs.</p>
+
+        <h4>Gains quantifiés de la digitalisation</h4>
+
+        <div class="info-box">
+            <h4>📊 Statistiques comparatives papier vs digital</h4>
+            <table>
+                <tr>
+                    <th>Métrique</th>
+                    <th>Check-list papier</th>
+                    <th>Check-list numérique</th>
+                    <th>Amélioration</th>
+                </tr>
+                <tr>
+                    <td><strong>Durée inspection</strong></td>
+                    <td>105 minutes</td>
+                    <td>87 minutes</td>
+                    <td>-17%</td>
+                </tr>
+                <tr>
+                    <td><strong>Points de contrôle oubliés</strong></td>
+                    <td>3,2 en moyenne</td>
+                    <td>0,1 en moyenne</td>
+                    <td>-97%</td>
+                </tr>
+                <tr>
+                    <td><strong>Temps rédaction rapport</strong></td>
+                    <td>45 minutes</td>
+                    <td>12 minutes</td>
+                    <td>-73%</td>
+                </tr>
+                <tr>
+                    <td><strong>Erreurs de transcription</strong></td>
+                    <td>2,1 par rapport</td>
+                    <td>0,05 par rapport</td>
+                    <td>-98%</td>
+                </tr>
+                <tr>
+                    <td><strong>Satisfaction client</strong></td>
+                    <td>87%</td>
+                    <td>94%</td>
+                    <td>+8%</td>
+                </tr>
+            </table>
+        </div>
+
+        <h4>Fonctionnalités intelligentes</h4>
+
+        <p>Les check-lists numériques modernes intègrent des fonctionnalités d'intelligence artificielle qui assistent l'inspecteur dans sa démarche et garantissent l'exhaustivité du contrôle.</p>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Structurer un rapport clair et professionnel</h3>
+
+        <p>Le rapport d'inspection constitue le livrable principal de la prestation et détermine largement la satisfaction client. Sa structuration doit concilier exhaustivité technique et lisibilité pour le grand public, défi majeur qui distingue l'inspecteur professionnel de l'amateur éclairé.</p>
+
+        <h4>Architecture du rapport AutoJust</h4>
+
+        <div class="tip-box">
+            <h4>📋 Structure type du rapport (12-15 pages)</h4>
+            <ol>
+                <li><strong>Page de couverture (1 page) :</strong> Informations véhicule, inspecteur, certification</li>
+                <li><strong>Synthèse exécutive (1 page) :</strong> Note globale, recommandation, points clés</li>
+                <li><strong>Avis moteur spécialisé (2 pages) :</strong> Analyse détaillée motorisation</li>
+                <li><strong>Inspection par domaines (6-8 pages) :</strong> Carrosserie, mécanique, sécurité, confort</li>
+                <li><strong>Documentation visuelle (2-3 pages) :</strong> Photos commentées, schémas</li>
+                <li><strong>Recommandations et budget (1 page) :</strong> Plan d'action, estimations</li>
+            </ol>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : L'importance des photos (qualité, datation, preuves)</h3>
+
+        <p>La photographie constitue l'épine dorsale de la crédibilité du rapport d'inspection. À l'ère du numérique, une image vaut mille mots, mais une mauvaise image peut détruire toute crédibilité. La maîtrise de la photographie technique devient une compétence indispensable de l'inspecteur moderne.</p>
+
+        <img src="https://images.unsplash.com/photo-1609205254950-c45c5817c6dd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxwaG90b2dyYXBoeXxlbnwwfHx8fHwxNzU4NzE2Mjk1fDA&ixlib=rb-4.1.0&q=85" alt="Photographie technique automobile" class="module-image" />
+
+        <h4>Standards de qualité photographique</h4>
+
+        <div class="success-box">
+            <h4>📸 Critères techniques photos inspection</h4>
+            <ul>
+                <li><strong>Résolution minimum :</strong> 8 MPx pour impression A4 qualité</li>
+                <li><strong>Éclairage :</strong> Naturel privilégié, flash fill-in si nécessaire</li>
+                <li><strong>Netteté :</strong> Zone d'intérêt parfaitement nette</li>
+                <li><strong>Composition :</strong> Sujet centré, contexte visible</li>
+                <li><strong>Couleurs :</strong> Balance des blancs correcte</li>
+                <li><strong>Format :</strong> JPEG haute qualité avec métadonnées EXIF</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Délivrabilité et rapidité (rapport en <24h)</h3>
+
+        <p>La rapidité de livraison du rapport constitue un facteur différenciant majeur dans un marché concurrentiel. L'objectif AutoJust de livraison sous 24h nécessite une organisation optimisée et l'exploitation maximale des outils numériques.</p>
+
+        <div class="info-box">
+            <h4>⚡ Workflow de livraison optimisé</h4>
+            <ol>
+                <li><strong>H+0 : Fin d'inspection :</strong> Données synchronisées automatiquement</li>
+                <li><strong>H+2 : Retour bureau :</strong> Début rédaction avis moteur spécialisé</li>
+                <li><strong>H+4 : Finalisation :</strong> Relecture, mise en forme, contrôle qualité</li>
+                <li><strong>H+6 : Livraison :</strong> Envoi sécurisé client + copie archivage</li>
+            </ol>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 6 : Exemple de rapport et exercice pratique</h3>
+
+        <p>Pour maîtriser l'art du rapport professionnel, l'analyse d'exemples concrets et la pratique guidée constituent les méthodes pédagogiques les plus efficaces. Voici un exemple de rapport AutoJust accompagné d'un exercice pratique de rédaction.</p>
+
+        <div class="warning-box">
+            <h4>📄 Extrait rapport type - Renault Clio IV 1.5 dCi</h4>
+            <h5>SYNTHÈSE EXÉCUTIVE</h5>
+            <p><strong>Note globale : 7,2/10</strong> | <strong>Recommandation : ACHAT CONSEILLÉ avec réserves</strong></p>
+            
+            <p><strong>Points forts :</strong></p>
+            <ul>
+                <li>Entretien suivi régulièrement (carnet à jour)</li>
+                <li>Carrosserie en excellent état (note 9/10)</li>
+                <li>Intérieur préservé, cohérent avec kilométrage annoncé</li>
+                <li>Pneumatiques récents (moins de 15 000 km)</li>
+            </ul>
+            
+            <p><strong>Points d'attention :</strong></p>
+            <ul>
+                <li>Vanne EGR encrassée (nettoyage recommandé - 180€)</li>
+                <li>Plaquettes avant à 40% d'usure (remplacement sous 6 mois - 120€)</li>
+                <li>Courroie accessoires craquelée (remplacement préventif - 80€)</li>
+            </ul>
+            
+            <p><strong>Budget prévisionnel 12 mois :</strong> 650€ (entretien + préventif)</p>
+        </div>
+
+        <p><em>Durée de lecture estimée : 75 minutes | Quiz de validation : 12 questions</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "Les outils numériques permettent une amélioration de productivité de :",
+                "options": ["30%", "35%", "40%", "45%"],
+                "correct_answer": "40%"
+            },
+            {
+                "id": "q2",
+                "question": "Combien de professionnels utilisent WeProov ?",
+                "options": ["150 000", "200 000", "250 000", "300 000"],
+                "correct_answer": "200 000"
+            },
+            {
+                "id": "q3",
+                "question": "La digitalisation réduit les points de contrôle oubliés de :",
+                "options": ["85%", "90%", "95%", "97%"],
+                "correct_answer": "97%"
+            },
+            {
+                "id": "q4",
+                "question": "Le temps de rédaction d'un rapport numérique est de :",
+                "options": ["8 minutes", "12 minutes", "15 minutes", "18 minutes"],
+                "correct_answer": "12 minutes"
+            },
+            {
+                "id": "q5",
+                "question": "La résolution minimum recommandée pour les photos est de :",
+                "options": ["5 MPx", "6 MPx", "8 MPx", "10 MPx"],
+                "correct_answer": "8 MPx"
+            },
+            {
+                "id": "q6",
+                "question": "Un rapport AutoJust standard comprend combien de pages ?",
+                "options": ["8-10 pages", "10-12 pages", "12-15 pages", "15-18 pages"],
+                "correct_answer": "12-15 pages"
+            },
+            {
+                "id": "q7",
+                "question": "L'objectif de livraison AutoJust est de :",
+                "options": ["12h", "18h", "24h", "48h"],
+                "correct_answer": "24h"
+            },
+            {
+                "id": "q8",
+                "question": "Les erreurs de transcription sont réduites de combien avec le numérique ?",
+                "options": ["95%", "96%", "97%", "98%"],
+                "correct_answer": "98%"
+            },
+            {
+                "id": "q9",
+                "question": "La satisfaction client augmente de combien avec les outils numériques ?",
+                "options": ["5%", "6%", "7%", "8%"],
+                "correct_answer": "8%"
+            },
+            {
+                "id": "q10",
+                "question": "SafetyCulture est utilisé par combien d'entreprises mondiales ?",
+                "options": ["Centaines", "Milliers", "Dizaines de milliers", "Centaines de milliers"],
+                "correct_answer": "Milliers"
+            },
+            {
+                "id": "q11",
+                "question": "La durée d'inspection se réduit de combien avec les outils numériques ?",
+                "options": ["15%", "17%", "19%", "21%"],
+                "correct_answer": "17%"
+            },
+            {
+                "id": "q12",
+                "question": "Le workflow optimisé permet la livraison du rapport en combien d'heures ?",
+                "options": ["4h", "6h", "8h", "10h"],
+                "correct_answer": "6h"
+            }
+        ]
+    },
+    {
+        "id": "module-7",
+        "title": "Aspects Légaux, Éthique et Responsabilité",
+        "description": "Cadre juridique, déontologie professionnelle et gestion des responsabilités de l'inspecteur",
+        "duration_minutes": 35,
+        "order": 7,
+        "content": """
+        <h2>Module 7 : Aspects Légaux, Éthique et Responsabilité</h2>
+        
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxsZWdhbHxlbnwwfHx8fHwxNzU4NzE2Mjk1fDA&ixlib=rb-4.1.0&q=85" alt="Aspects légaux et déontologie" class="module-image" />
+        
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 1 : Obligation de moyens vs résultat</h3>
+
+        <p>La distinction fondamentale entre obligation de moyens et obligation de résultat constitue le pilier juridique de l'exercice professionnel de l'inspecteur automobile. Cette nuance, souvent mal comprise, détermine l'étendue de la responsabilité professionnelle et les conditions de mise en cause en cas de litige.</p>
+
+        <div class="info-box">
+            <h4>⚖️ Obligation de moyens de l'inspecteur</h4>
+            <p>L'inspecteur automobile est soumis à une <strong>obligation de moyens</strong>, ce qui signifie :</p>
+            <ul>
+                <li><strong>Méthodologie rigoureuse :</strong> Application de la procédure AutoJust standardisée</li>
+                <li><strong>Compétence professionnelle :</strong> Formation certifiée et mise à jour continue</li>
+                <li><strong>Matériel adapté :</strong> Outils de diagnostic conformes aux standards</li>
+                <li><strong>Temps suffisant :</strong> Durée d'inspection respectée (90 minutes minimum)</li>
+                <li><strong>Documentation complète :</strong> Traçabilité de tous les contrôles effectués</li>
+            </ul>
+        </div>
+
+        <p>Cette obligation de moyens protège l'inspecteur contre les reproches liés à la non-détection de vices cachés indétectables par les méthodes conventionnelles. Toutefois, elle ne constitue pas un blanc-seing et nécessite la démonstration de la rigueur professionnelle.</p>
+
+        <h4>Limites de l'inspection non destructive</h4>
+
+        <p>L'inspection automobile professionnelle s'exerce dans le cadre de l'examen non destructif, principe fondamental qui limite intrinsèquement la portée du diagnostic. Ces limites doivent être clairement explicitées au client pour prévenir les malentendus.</p>
+
+        <table>
+            <tr>
+                <th>Domaine</th>
+                <th>Contrôles possibles</th>
+                <th>Limites techniques</th>
+                <th>Recommandations</th>
+            </tr>
+            <tr>
+                <td><strong>Moteur</strong></td>
+                <td>Écoute, paramètres OBD, compression</td>
+                <td>État interne cylindres, joints</td>
+                <td>Analyse d'huile recommandée</td>
+            </tr>
+            <tr>
+                <td><strong>Boîte de vitesses</strong></td>
+                <td>Fonctionnement, bruits, fuites</td>
+                <td>Usure interne engrenages</td>
+                <td>Vidange préventive conseillée</td>
+            </tr>
+            <tr>
+                <td><strong>Carrosserie</strong></td>
+                <td>Inspection visuelle, mesures</td>
+                <td>Corrosion cachée, mastic épais</td>
+                <td>Contrôle périodique zones sensibles</td>
+            </tr>
+            <tr>
+                <td><strong>Électronique</strong></td>
+                <td>Diagnostic codes, tests fonctions</td>
+                <td>Défaillances intermittentes</td>
+                <td>Surveillance comportement ultérieur</td>
+            </tr>
+        </table>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Inspecteur vs expert judiciaire</h3>
+
+        <p>La confusion entre inspecteur automobile et expert judiciaire génère régulièrement des malentendus sur les prérogatives et la portée légale des conclusions. Cette distinction, fondamentale en droit, détermine la valeur probante du rapport et les conditions de sa contestation.</p>
+
+        <div class="warning-box">
+            <h4>🏛️ Différences fondamentales</h4>
+            
+            <h5>Expert judiciaire :</h5>
+            <ul>
+                <li><strong>Nomination :</strong> Désigné par décision de justice</li>
+                <li><strong>Mission :</strong> Définie par le tribunal</li>
+                <li><strong>Serment :</strong> Prestation de serment obligatoire</li>
+                <li><strong>Contradictoire :</strong> Procédure contradictoire imposée</li>
+                <li><strong>Rapport :</strong> Valeur probante renforcée</li>
+            </ul>
+            
+            <h5>Inspecteur automobile :</h5>
+            <ul>
+                <li><strong>Mandatement :</strong> Contrat de droit privé</li>
+                <li><strong>Mission :</strong> Définie par le client</li>
+                <li><strong>Liberté :</strong> Aucune contrainte procédurale</li>
+                <li><strong>Unilatéral :</strong> Examen pour une seule partie</li>
+                <li><strong>Rapport :</strong> Valeur de simple renseignement</li>
+            </ul>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxjb3VydHxlbnwwfHx8fHwxNzU4NzE2Mjk1fDA&ixlib=rb-4.1.0&q=85" alt="Justice et expertise" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Assurance RCP et protection</h3>
+
+        <p>L'assurance Responsabilité Civile Professionnelle constitue la protection indispensable et obligatoire de l'inspecteur automobile. Au-delà de l'obligation légale, elle conditionne la crédibilité professionnelle et la sérénité d'exercice dans un métier où les enjeux financiers peuvent être considérables.</p>
+
+        <h4>Garanties indispensables</h4>
+
+        <div class="success-box">
+            <h4>🛡️ Couverture RCP recommandée</h4>
+            <ul>
+                <li><strong>Dommages corporels :</strong> 4 500 000€ minimum par sinistre</li>
+                <li><strong>Dommages matériels :</strong> 1 500 000€ minimum par sinistre</li>
+                <li><strong>Dommages immatériels :</strong> 300 000€ minimum par sinistre</li>
+                <li><strong>Défense-recours :</strong> 150 000€ minimum</li>
+                <li><strong>Franchise :</strong> 500€ maximum</li>
+                <li><strong>Extension géographique :</strong> Europe minimum</li>
+                <li><strong>Retroactivité :</strong> Date de début d'activité</li>
+            </ul>
+        </div>
+
+        <h4>Exclusions courantes à éviter</h4>
+
+        <p>Certaines exclusions, fréquentes dans les contrats standards, peuvent laisser l'inspecteur démuni face à des sinistres pourtant prévisibles dans l'exercice normal de son activité.</p>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Déontologie, impartialité, conflits d'intérêts</h3>
+
+        <p>La déontologie professionnelle constitue le socle de la crédibilité de l'inspecteur automobile. Dans un environnement où les pressions commerciales sont nombreuses et les enjeux financiers importants, le respect de règles éthiques strictes différencie le professionnel de l'amateur.</p>
+
+        <div class="info-box">
+            <h4>🎯 Les 10 principes déontologiques fondamentaux</h4>
+            <ol>
+                <li><strong>Indépendance :</strong> Aucun lien financier avec vendeur ou intermédiaire</li>
+                <li><strong>Impartialité :</strong> Évaluation objective, sans parti pris</li>
+                <li><strong>Compétence :</strong> Maintien et développement des connaissances</li>
+                <li><strong>Intégrité :</strong> Honnêteté dans les constats et conclusions</li>
+                <li><strong>Confidentialité :</strong> Protection des informations clients</li>
+                <li><strong>Transparence :</strong> Clarté sur la méthodologie et les limites</li>
+                <li><strong>Responsabilité :</strong> Assumation des conséquences de ses actes</li>
+                <li><strong>Respect :</strong> Courtoisie envers tous les intervenants</li>
+                <li><strong>Loyauté :</strong> Fidélité aux engagements contractuels</li>
+                <li><strong>Formation :</strong> Mise à jour continue des compétences</li>
+            </ol>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Confidentialité et RGPD</h3>
+
+        <p>Le Règlement Général sur la Protection des Données (RGPD), applicable depuis mai 2018, impose des obligations strictes concernant la collecte, le traitement et la conservation des données personnelles. L'inspecteur automobile, qui manipule de nombreuses informations sensibles, doit maîtriser parfaitement ces exigences.</p>
+
+        <div class="tip-box">
+            <h4>🔒 Obligations RGPD de l'inspecteur</h4>
+            <ul>
+                <li><strong>Consentement explicite :</strong> Accord écrit pour traitement des données</li>
+                <li><strong>Information transparente :</strong> Finalité et durée de conservation explicitées</li>
+                <li><strong>Droit à l'effacement :</strong> Procédure de suppression des données</li>
+                <li><strong>Sécurisation :</strong> Protection contre accès non autorisés</li>
+                <li><strong>Registre des traitements :</strong> Documentation obligatoire</li>
+                <li><strong>Notification des violations :</strong> Déclaration CNIL sous 72h</li>
+            </ul>
+        </div>
+
+        <p><em>Durée de lecture estimée : 35 minutes | Quiz de validation : 12 questions</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "L'inspecteur automobile est soumis à une obligation de :",
+                "options": ["Moyens", "Résultat", "Moyens et résultat", "Aucune obligation"],
+                "correct_answer": "Moyens"
+            },
+            {
+                "id": "q2",
+                "question": "La durée minimum d'inspection recommandée est de :",
+                "options": ["75 minutes", "90 minutes", "105 minutes", "120 minutes"],
+                "correct_answer": "90 minutes"
+            },
+            {
+                "id": "q3",
+                "question": "Qui désigne un expert judiciaire ?",
+                "options": ["Le client", "L'assurance", "Le tribunal", "La préfecture"],
+                "correct_answer": "Le tribunal"
+            },
+            {
+                "id": "q4",
+                "question": "Le montant minimum recommandé pour la garantie dommages corporels est :",
+                "options": ["3 000 000€", "4 500 000€", "6 000 000€", "7 500 000€"],
+                "correct_answer": "4 500 000€"
+            },
+            {
+                "id": "q5",
+                "question": "La franchise RCP maximum recommandée est de :",
+                "options": ["300€", "500€", "750€", "1000€"],
+                "correct_answer": "500€"
+            },
+            {
+                "id": "q6",
+                "question": "Combien de principes déontologiques fondamentaux sont énumérés ?",
+                "options": ["8", "10", "12", "15"],
+                "correct_answer": "10"
+            },
+            {
+                "id": "q7",
+                "question": "Le RGPD est applicable depuis :",
+                "options": ["Mai 2017", "Mai 2018", "Janvier 2018", "Janvier 2019"],
+                "correct_answer": "Mai 2018"
+            },
+            {
+                "id": "q8",
+                "question": "Les violations de données doivent être déclarées à la CNIL sous :",
+                "options": ["24h", "48h", "72h", "1 semaine"],
+                "correct_answer": "72h"
+            },
+            {
+                "id": "q9",
+                "question": "L'inspection automobile s'exerce dans le cadre :",
+                "options": ["Destructif", "Non destructif", "Semi-destructif", "Variables selon cas"],
+                "correct_answer": "Non destructif"
+            },
+            {
+                "id": "q10",
+                "question": "Le rapport d'un inspecteur automobile a une valeur de :",
+                "options": ["Preuve absolue", "Preuve renforcée", "Simple renseignement", "Présomption légale"],
+                "correct_answer": "Simple renseignement"
+            },
+            {
+                "id": "q11",
+                "question": "La garantie dommages immatériels minimum recommandée est de :",
+                "options": ["150 000€", "300 000€", "450 000€", "600 000€"],
+                "correct_answer": "300 000€"
+            },
+            {
+                "id": "q12",
+                "question": "Le premier principe déontologique est :",
+                "options": ["Compétence", "Indépendance", "Intégrité", "Impartialité"],
+                "correct_answer": "Indépendance"
+            }
+        ]
+    },
+    {
+        "id": "module-8",
+        "title": "Business et Opérations de l'Inspecteur",
+        "description": "Développement d'activité, acquisition client, tarification et organisation professionnelle",
+        "duration_minutes": 40,
+        "order": 8,
+        "content": """
+        <h2>Module 8 : Business et Opérations de l'Inspecteur</h2>
+        
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxidXNpbmVzc3xlbnwwfHx8fHwxNzU4NzE2Mjk1fDA&ixlib=rb-4.1.0&q=85" alt="Business et développement" class="module-image" />
+        
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 1 : Panorama du marché (B2C, B2B, enchères, assureurs)</h3>
+
+        <p>Le marché de l'inspection automobile française représente un potentiel de 450 millions d'euros, largement sous-exploité avec un taux de pénétration de seulement 15%. Cette situation offre des opportunités exceptionnelles aux inspecteurs professionnels capables de se positionner efficacement sur les différents segments.</p>
+
+        <div class="info-box">
+            <h4>📊 Segmentation du marché français</h4>
+            <table>
+                <tr>
+                    <th>Segment</th>
+                    <th>Volume annuel</th>
+                    <th>Tarif moyen</th>
+                    <th>Taux pénétration</th>
+                    <th>Potentiel croissance</th>
+                </tr>
+                <tr>
+                    <td><strong>B2C Particuliers</strong></td>
+                    <td>4,2M transactions</td>
+                    <td>180-250€</td>
+                    <td>12%</td>
+                    <td>400%</td>
+                </tr>
+                <tr>
+                    <td><strong>B2B Professionnels</strong></td>
+                    <td>800k véhicules</td>
+                    <td>250-350€</td>
+                    <td>25%</td>
+                    <td>200%</td>
+                </tr>
+                <tr>
+                    <td><strong>Enchères publiques</strong></td>
+                    <td>150k véhicules</td>
+                    <td>150-200€</td>
+                    <td>45%</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Expertises assurance</strong></td>
+                    <td>2M sinistres</td>
+                    <td>200-400€</td>
+                    <td>35%</td>
+                    <td>80%</td>
+                </tr>
+            </table>
+        </div>
+
+        <h4>Segment B2C : Le particulier au cœur</h4>
+
+        <p>Le marché B2C représente le volume le plus important mais aussi la plus forte résistance culturelle. L'évolution des mentalités, accélérée par la digitalisation et la sensibilisation aux arnaques automobiles, ouvre progressivement ce marché aux inspecteurs professionnels.</p>
+
+        <div class="success-box">
+            <h4>🎯 Profils clients B2C prioritaires</h4>
+            <ul>
+                <li><strong>Primo-accédants (25-35 ans) :</strong> 40% du marché, sensibles à la sécurisation</li>
+                <li><strong>Familles (35-50 ans) :</strong> 35% du marché, budget élevé, exigence qualité</li>
+                <li><strong>Seniors (50+ ans) :</strong> 25% du marché, patrimoine à protéger</li>
+                <li><strong>Passionnés automobile :</strong> Niche premium, prescripteurs influents</li>
+            </ul>
+        </div>
+
+        <h4>Segment B2B : La professionnalisation</h4>
+
+        <p>Le marché B2B, plus mature et rationnel, offre une rentabilité supérieure et une récurrence contractuelle. Les volumes traités permettent des économies d'échelle et une spécialisation technique avancée.</p>
+
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxtYXJrZXR8ZW58MHx8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Marché et opportunités" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Acquisition client (publicité, réseaux, partenariats)</h3>
+
+        <p>L'acquisition client constitue le défi majeur de l'inspecteur débutant. Contrairement aux idées reçues, la qualité technique seule ne suffit pas : il faut développer une stratégie marketing cohérente et mesurable pour construire une clientèle durable.</p>
+
+        <h4>Stratégies d'acquisition digitale</h4>
+
+        <div class="tip-box">
+            <h4>💻 Mix marketing digital recommandé</h4>
+            <ul>
+                <li><strong>SEO local (30% budget) :</strong> Référencement "inspection automobile [ville]"</li>
+                <li><strong>Google Ads (25% budget) :</strong> Mots-clés géolocalisés, landing pages dédiées</li>
+                <li><strong>Réseaux sociaux (20% budget) :</strong> Facebook/Instagram, ciblage démographique</li>
+                <li><strong>Partenariats (15% budget) :</strong> Garages, mandataires, assureurs</li>
+                <li><strong>Content marketing (10% budget) :</strong> Blog, vidéos pédagogiques</li>
+            </ul>
+        </div>
+
+        <h4>Développement du réseau professionnel</h4>
+
+        <p>Le réseau professionnel génère 65% des nouvelles affaires des inspecteurs établis. Sa construction nécessite une approche méthodique et un investissement temps conséquent, mais les retombées justifient largement cet effort.</p>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Fidélisation et bouche-à-oreille</h3>
+
+        <p>Dans un métier où la transaction est généralement unique (l'achat d'un véhicule d'occasion), la fidélisation ne peut reposer sur la récurrence directe mais sur la recommandation et la prescription. Un client satisfait génère en moyenne 3,2 recommandations sur 5 ans.</p>
+
+        <h4>Programme de fidélisation AutoJust</h4>
+
+        <div class="success-box">
+            <h4>🌟 Stratégies de fidélisation éprouvées</h4>
+            <ul>
+                <li><strong>Suivi post-inspection :</strong> Appel à J+15, J+90, J+365</li>
+                <li><strong>Newsletter technique :</strong> Conseils entretien, alertes rappels constructeur</li>
+                <li><strong>Programme parrainage :</strong> Réduction 20% pour chaque recommandation</li>
+                <li><strong>Garantie étendue :</strong> SAV 6 mois sur rapport d'inspection</li>
+                <li><strong>Réseau privilège :</strong> Accès garages partenaires avec tarifs préférentiels</li>
+            </ul>
+        </div>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Tarification et positionnement</h3>
+
+        <p>La tarification constitue l'un des leviers les plus sensibles de la stratégie commerciale. Une tarification mal calibrée peut détruire la rentabilité (prix trop bas) ou limiter drastiquement le volume (prix trop élevé). L'approche AutoJust privilégie une tarification par la valeur plutôt que par les coûts.</p>
+
+        <h4>Grille tarifaire de référence</h4>
+
+        <table>
+            <tr>
+                <th>Type de prestation</th>
+                <th>Tarif de base</th>
+                <th>Options valorisantes</th>
+                <th>Positionnement</th>
+            </tr>
+            <tr>
+                <td><strong>Inspection standard B2C</strong></td>
+                <td>180-220€</td>
+                <td>Rapport 24h (+30€)</td>
+                <td>Milieu de gamme</td>
+            </tr>
+            <tr>
+                <td><strong>Inspection premium B2C</strong></td>
+                <td>250-320€</td>
+                <td>Analyse d'huile (+80€)</td>
+                <td>Haut de gamme</td>
+            </tr>
+            <tr>
+                <td><strong>Inspection B2B série</strong></td>
+                <td>150-180€</td>
+                <td>Rapport digital (+20€)</td>
+                <td>Volume</td>
+            </tr>
+            <tr>
+                <td><strong>Expertise contradictoire</strong></td>
+                <td>400-600€</td>
+                <td>Présence tribunal (+200€)</td>
+                <td>Spécialisé</td>
+            </tr>
+        </table>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 5 : Organisation personnelle et outils CRM</h3>
+
+        <p>L'inspecteur automobile moderne jongle entre inspection terrain, rédaction de rapports, prospection commerciale et gestion administrative. Cette multiplicité d'activités nécessite une organisation rigoureuse et des outils adaptés pour maintenir efficacité et rentabilité.</p>
+
+        <div class="info-box">
+            <h4>🗓️ Planning type inspecteur professionnel</h4>
+            <h5>Répartition hebdomadaire (40h) :</h5>
+            <ul>
+                <li><strong>Inspections terrain (60%) :</strong> 24h - 12 à 15 inspections/semaine</li>
+                <li><strong>Rédaction rapports (20%) :</strong> 8h - Production livrables</li>
+                <li><strong>Prospection/Commercial (15%) :</strong> 6h - Développement business</li>
+                <li><strong>Administration (5%) :</strong> 2h - Facturation, comptabilité</li>
+            </ul>
+        </div>
+
+        <h4>Outils CRM recommandés</h4>
+
+        <div class="success-box">
+            <h4>🔧 Suite logicielle inspecteur professionnel</h4>
+            <ul>
+                <li><strong>CRM :</strong> HubSpot (gratuit jusqu'à 1M contacts) ou Pipedrive</li>
+                <li><strong>Agenda :</strong> Calendly intégré pour prise RDV automatisée</li>
+                <li><strong>Facturation :</strong> Pennylane ou Tiime pour auto-entrepreneurs</li>
+                <li><strong>Communication :</strong> Mailchimp pour newsletters + WhatsApp Business</li>
+                <li><strong>Comptabilité :</strong> Indy ou L-Expert-Comptable.com</li>
+                <li><strong>Stockage :</strong> Google Workspace ou Microsoft 365</li>
+            </ul>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxvcmdhbml6YXRpb258ZW58MHx8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Organisation et outils CRM" class="module-image" />
+
+        <h4>Indicateurs de performance clés (KPIs)</h4>
+
+        <div class="tip-box">
+            <h4>📈 Tableau de bord inspecteur</h4>
+            <ul>
+                <li><strong>Taux de conversion prospect :</strong> >25% (objectif 30%)</li>
+                <li><strong>Panier moyen :</strong> 220€ B2C / 180€ B2B</li>
+                <li><strong>Temps moyen inspection :</strong> <95 minutes</li>
+                <li><strong>Délai livraison rapport :</strong> <24h (objectif 12h)</li>
+                <li><strong>Taux recommandation client :</strong> >90%</li>
+                <li><strong>Récurrence parrainage :</strong> >15% nouveaux clients</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <h4>🎯 Objectifs de montée en puissance</h4>
+            <table>
+                <tr>
+                    <th>Période</th>
+                    <th>Inspections/mois</th>
+                    <th>CA mensuel</th>
+                    <th>Marge nette</th>
+                </tr>
+                <tr>
+                    <td><strong>Mois 1-3</strong></td>
+                    <td>8-12</td>
+                    <td>1 800-2 500€</td>
+                    <td>65%</td>
+                </tr>
+                <tr>
+                    <td><strong>Mois 4-6</strong></td>
+                    <td>15-20</td>
+                    <td>3 200-4 200€</td>
+                    <td>70%</td>
+                </tr>
+                <tr>
+                    <td><strong>Mois 7-12</strong></td>
+                    <td>25-35</td>
+                    <td>5 200-7 200€</td>
+                    <td>75%</td>
+                </tr>
+                <tr>
+                    <td><strong>Année 2+</strong></td>
+                    <td>40-50</td>
+                    <td>8 000-12 000€</td>
+                    <td>80%</td>
+                </tr>
+            </table>
+        </div>
+
+        <p><strong>Conclusion du parcours :</strong> À l'issue de ces 8 modules, vous disposez de toutes les clés pour exercer le métier d'inspecteur automobile avec professionnalisme et succès. La certification AutoJust valide vos compétences et vous ouvre les portes d'un marché en pleine expansion. Le succès dépend maintenant de votre capacité à appliquer rigoureusement cette méthodologie et à développer votre activité avec persévérance.</p>
+
+        <p><em>Durée de lecture estimée : 40 minutes | Quiz de validation : 12 questions</em></p>
+        """,
+        "quiz_questions": [
+            {
+                "id": "q1",
+                "question": "Le marché français de l'inspection automobile représente un potentiel de :",
+                "options": ["350 millions €", "450 millions €", "550 millions €", "650 millions €"],
+                "correct_answer": "450 millions €"
+            },
+            {
+                "id": "q2",
+                "question": "Le taux de pénétration actuel du marché B2C est de :",
+                "options": ["8%", "12%", "15%", "18%"],
+                "correct_answer": "12%"
+            },
+            {
+                "id": "q3",
+                "question": "Les primo-accédants représentent quel pourcentage du marché B2C ?",
+                "options": ["35%", "40%", "45%", "50%"],
+                "correct_answer": "40%"
+            },
+            {
+                "id": "q4",
+                "question": "Le SEO local devrait représenter quel pourcentage du budget marketing ?",
+                "options": ["25%", "30%", "35%", "40%"],
+                "correct_answer": "30%"
+            },
+            {
+                "id": "q5",
+                "question": "Un client satisfait génère en moyenne combien de recommandations sur 5 ans ?",
+                "options": ["2,5", "3,2", "3,8", "4,1"],
+                "correct_answer": "3,2"
+            },
+            {
+                "id": "q6",
+                "question": "Le tarif d'une inspection standard B2C se situe entre :",
+                "options": ["150-180€", "180-220€", "220-260€", "260-300€"],
+                "correct_answer": "180-220€"
+            },
+            {
+                "id": "q7",
+                "question": "Les inspections terrain représentent quel pourcentage du temps de travail ?",
+                "options": ["55%", "60%", "65%", "70%"],
+                "correct_answer": "60%"
+            },
+            {
+                "id": "q8",
+                "question": "Le taux de conversion prospect objectif est de :",
+                "options": ["25%", "30%", "35%", "40%"],
+                "correct_answer": "30%"
+            },
+            {
+                "id": "q9",
+                "question": "Le réseau professionnel génère quel pourcentage des nouvelles affaires ?",
+                "options": ["55%", "60%", "65%", "70%"],
+                "correct_answer": "65%"
+            },
+            {
+                "id": "q10",
+                "question": "La marge nette visée en année 2+ est de :",
+                "options": ["70%", "75%", "80%", "85%"],
+                "correct_answer": "80%"
+            },
+            {
+                "id": "q11",
+                "question": "Le volume d'inspections visé en mois 7-12 est de :",
+                "options": ["20-30/mois", "25-35/mois", "30-40/mois", "35-45/mois"],
+                "correct_answer": "25-35/mois"
+            },
+            {
+                "id": "q12",
+                "question": "L'objectif de délai de livraison des rapports est de :",
+                "options": ["6h", "12h", "18h", "24h"],
+                "correct_answer": "12h"
+            }
+        ]
     }
 ]
 
