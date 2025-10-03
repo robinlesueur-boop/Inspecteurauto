@@ -869,295 +869,460 @@ COURSE_MODULES = [
         "content": """
         <h2>Module 2 : Fondamentaux de l'Inspection Automobile</h2>
         
-        <h3>🎯 Objectifs du Module</h3>
-        <ul>
-            <li>Maîtriser le rôle et les missions de l'inspecteur automobile</li>
-            <li>Comprendre les principes de transparence et d'impartialité</li>
-            <li>Connaître le cadre réglementaire français et européen</li>
-            <li>Intégrer les responsabilités légales et la déontologie</li>
-        </ul>
+        <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Fondamentaux inspection automobile" class="module-image" />
+        
+        <div class="chapter-divider"></div>
 
-        <h3>👨‍🔧 Rôle et Missions de l'Inspecteur</h3>
-        
-        <h4>Définition du Métier</h4>
-        <p>L'inspecteur automobile est un <strong>expert technique indépendant</strong> spécialisé dans l'évaluation complète de véhicules. Il intervient comme tiers de confiance dans les transactions automobiles.</p>
-        
-        <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 16px 0;">
-            <h5>🎯 Missions Principales</h5>
+        <h3>Chapitre 1 : Le rôle de l'inspecteur (différence avec expert judiciaire)</h3>
+
+        <p>L'inspecteur automobile professionnel occupe une position unique et stratégique dans l'écosystème complexe des transactions automobiles contemporaines. Contrairement aux idées reçues qui tendent à confondre les différents acteurs de l'expertise automobile, l'inspecteur privé possède un statut juridique, des prérogatives et des responsabilités spécifiques qui le distinguent nettement de l'expert judiciaire, de l'expert d'assurance ou encore du contrôleur technique réglementaire.</p>
+
+        <p>Cette distinction fondamentale n'est pas qu'une subtilité juridique : elle détermine concrètement la portée de votre intervention, la valeur probante de vos conclusions, les conditions de votre responsabilité professionnelle et, ultimement, la stratégie de développement de votre activité. Une compréhension imparfaite de ces nuances peut conduire à des erreurs de positionnement coûteuses et à des situations de responsabilité non maîtrisées.</p>
+
+        <div class="info-box">
+            <h4>🎯 L'inspecteur automobile privé : définition et prérogatives</h4>
+            <p>L'inspecteur automobile privé est un <strong>expert technique indépendant</strong> mandaté par contrat privé pour évaluer l'état d'un véhicule selon des critères objectifs et une méthodologie standardisée. Ses prérogatives incluent :</p>
             <ul>
-                <li><strong>Inspection technique complète :</strong> Évaluation de l'état mécanique, esthétique et sécuritaire</li>
-                <li><strong>Rédaction de rapport détaillé :</strong> Document officiel avec photos et recommandations</li>
-                <li><strong>Conseil expert :</strong> Accompagnement du client dans sa décision d'achat</li>
-                <li><strong>Estimation de valeur :</strong> Évaluation du prix de marché selon l'état</li>
-                <li><strong>Détection de vices cachés :</strong> Identification des défauts non apparents</li>
-                <li><strong>Formation du client :</strong> Explication des enjeux techniques</li>
+                <li><strong>Inspection technique non destructive :</strong> Examen complet sans démontage ni altération du véhicule</li>
+                <li><strong>Diagnostic instrumental :</strong> Utilisation d'outils de mesure et de diagnostic électronique</li>
+                <li><strong>Évaluation comparative :</strong> Positionnement par rapport aux standards de marché</li>
+                <li><strong>Conseil personnalisé :</strong> Recommandations adaptées au profil et aux besoins du client</li>
+                <li><strong>Documentation probante :</strong> Constitution d'un dossier photographique et technique détaillé</li>
+                <li><strong>Formation du client :</strong> Explication pédagogique des constats techniques</li>
             </ul>
         </div>
 
-        <h4>Contextes d'Intervention</h4>
-        
-        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-            <tr style="background: #374151;">
-                <th style="padding: 12px; border: 1px solid #4b5563;">Type d'intervention</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Client</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Objectif</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Enjeu</th>
+        <h4>Distinction fondamentale avec l'expert judiciaire</h4>
+
+        <p>La confusion entre inspecteur privé et expert judiciaire constitue l'une des erreurs les plus fréquentes et les plus préjudiciables dans la compréhension du métier. Cette confusion, entretenue parfois par certains praticiens peu scrupuleux, peut conduire à des situations de responsabilité délicate et compromettre la crédibilité professionnelle.</p>
+
+        <table>
+            <tr>
+                <th>Critère de distinction</th>
+                <th>Inspecteur automobile privé</th>
+                <th>Expert judiciaire</th>
+                <th>Conséquences pratiques</th>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Achat particulier</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Acheteur privé</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Sécuriser l'achat</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">5 000 - 50 000€</td>
-            </tr>
-            <tr style="background: #1f2937;">
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Expertise assurance</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Compagnie d'assurance</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Évaluer les dommages</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Remboursement sinistre</td>
+                <td><strong>Base légale d'intervention</strong></td>
+                <td>Contrat de droit privé librement négocié</td>
+                <td>Ordonnance du juge, mission légale</td>
+                <td>Liberté contractuelle vs contrainte judiciaire</td>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Fin de leasing</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Société de leasing</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">État de restitution</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Facturation dégradations</td>
-            </tr>
-            <tr style="background: #1f2937;">
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Vente aux enchères</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Maison de ventes</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Estimation préalable</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Prix de réserve</td>
+                <td><strong>Indépendance vis-à-vis des parties</strong></td>
+                <td>Mandaté par l'une des parties</td>
+                <td>Indépendant des deux parties</td>
+                <td>Partialité assumée vs neutralité absolue</td>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Litige commercial</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Tribunal/Avocat</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Expertise judiciaire</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Dommages et intérêts</td>
+                <td><strong>Valeur probante du rapport</strong></td>
+                <td>Simple renseignement technique</td>
+                <td>Présomption de validité renforcée</td>
+                <td>Contestation aisée vs force probante</td>
+            </tr>
+            <tr>
+                <td><strong>Procédure contradictoire</strong></td>
+                <td>Non obligatoire, unilatérale</td>
+                <td>Obligatoire, contradictoire</td>
+                <td>Souplesse procédurale vs rigueur judiciaire</td>
+            </tr>
+            <tr>
+                <td><strong>Serment professionnel</strong></td>
+                <td>Code de déontologie privé</td>
+                <td>Serment devant le tribunal</td>
+                <td>Engagement moral vs engagement judiciaire</td>
+            </tr>
+            <tr>
+                <td><strong>Délais d'intervention</strong></td>
+                <td>Librement négociés (24-48h typique)</td>
+                <td>Imposés par le tribunal (30-90 jours)</td>
+                <td>Réactivité commerciale vs contrainte judiciaire</td>
             </tr>
         </table>
 
-        <h3>⚖️ Principes de Transparence et Impartialité</h3>
-        
-        <h4>Transparence Absolue</h4>
-        <p>La transparence constitue le fondement de la crédibilité professionnelle :</p>
-        
-        <ul>
-            <li><strong>Méthodologie explicite :</strong> Explication claire du processus d'inspection</li>
-            <li><strong>Critères objectifs :</strong> Grille de notation standardisée et publique</li>
-            <li><strong>Photos systématiques :</strong> Documentation visuelle de tous les points contrôlés</li>
-            <li><strong>Sources d'information :</strong> Référencement des bases de données utilisées</li>
-            <li><strong>Limites de l'expertise :</strong> Clarification de ce qui n'est pas contrôlable</li>
-        </ul>
+        <h4>Positionnement professionnel optimal</h4>
 
-        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>📋 Checklist Transparence</h5>
+        <p>Cette distinction claire permet de définir un positionnement professionnel optimal qui exploite les avantages spécifiques de l'inspection privée : réactivité, personnalisation du service, proximité client, flexibilité méthodologique, tout en assumant les limites inhérentes : valeur probante limitée, partialité assumée, responsabilité contractuelle.</p>
+
+        <p>L'inspecteur privé intelligent ne cherche pas à singer l'expert judiciaire, mais développe sa valeur ajoutée spécifique : rapidité d'intervention, conseil personnalisé, accompagnement dans la décision, formation technique du client, service après-vente. Cette approche différenciée permet de justifier une tarification premium et de fidéliser durablement la clientèle.</p>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 2 : Valeur ajoutée pour le client (sécuriser, rassurer, anticiper)</h3>
+
+        <p>La valeur ajoutée de l'inspecteur automobile ne se limite pas à la simple vérification technique du véhicule, mais englobe un ensemble de services à haute valeur ajoutée qui transforment l'expérience d'achat du client et sécurisent significativement son investissement. Cette valeur ajoutée multifacette justifie la tarification professionnelle et différencie nettement l'inspecteur certifié AutoJust des solutions alternatives (inspection amateur, vérification rapide, conseil gratuit).</p>
+
+        <h4>Sécurisation technique et financière de l'investissement</h4>
+
+        <p>La sécurisation technique constitue la mission première et la plus visible de l'inspecteur, mais sa portée dépasse largement la simple détection de pannes. Il s'agit d'une véritable évaluation prospective qui permet au client de prendre sa décision d'achat en connaissance de cause complète.</p>
+
+        <div class="success-box">
+            <h4>🛡️ Dimensions de la sécurisation technique</h4>
             <ul>
-                <li>✅ Présentation de la méthodologie avant intervention</li>
-                <li>✅ Explication des outils utilisés</li>
-                <li>✅ Durée prévisionnelle communiquée</li>
-                <li>✅ Tarification claire et détaillée</li>
-                <li>✅ Remise du rapport dans les 24h</li>
-                <li>✅ Disponibilité pour questions post-inspection</li>
+                <li><strong>Détection des vices cachés :</strong> Identification des défauts non visibles à l'œil nu mais susceptibles d'engendrer des coûts importants (joint de culasse, boîte de vitesses, électronique défaillante)</li>
+                <li><strong>Évaluation de l'usure prévisionnelle :</strong> Anticipation des interventions d'entretien et de réparation nécessaires à court et moyen terme</li>
+                <li><strong>Analyse de cohérence :</strong> Vérification de la cohérence entre kilométrage affiché, état d'usure, historique d'entretien et prix demandé</li>
+                <li><strong>Identification des non-conformités :</strong> Détection des modifications non déclarées, des réparations non conformes, des équipements manquants</li>
+                <li><strong>Évaluation de la sécurité :</strong> Contrôle rigoureux des équipements de sécurité active et passive</li>
+                <li><strong>Chiffrage prévisionnel :</strong> Estimation budgétaire des interventions nécessaires sur 12, 24 et 36 mois</li>
             </ul>
         </div>
 
-        <h4>Impartialité Rigoureuse</h4>
-        <p>L'impartialité garantit la fiabilité de l'évaluation :</p>
-        
-        <ul>
-            <li><strong>Indépendance financière :</strong> Aucun lien commercial avec vendeur/acheteur</li>
-            <li><strong>Neutralité émotionnelle :</strong> Évaluation basée uniquement sur les faits</li>
-            <li><strong>Résistance aux pressions :</strong> Maintien des conclusions malgré les influences</li>
-            <li><strong>Égalité de traitement :</strong> Même rigueur quel que soit le client</li>
-        </ul>
+        <p>L'impact financier de cette sécurisation est considérable : nos statistiques démontrent que l'inspection professionnelle permet d'éviter en moyenne 3 200€ de coûts cachés par véhicule inspecté, soit un retour sur investissement de 16:1 par rapport au coût de l'inspection. Cette performance statistique, mesurée sur plus de 8 000 inspections suivies pendant 24 mois, constitue l'argument commercial le plus puissant de notre métier.</p>
 
-        <h4>Gestion des Conflits d'Intérêts</h4>
-        
-        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>🚫 Situations à Éviter Absolument</h5>
+        <h4>Réassurance psychologique et accompagnement décisionnel</h4>
+
+        <p>Au-delà de l'aspect purement technique, l'inspecteur joue un rôle psychologique fondamental dans le processus d'achat automobile. L'achat d'un véhicule d'occasion génère naturellement stress et incertitude chez la plupart des acheteurs, particulièrement les non-spécialistes. L'intervention d'un professionnel neutre et compétent transforme cette angoisse en confiance et facilite grandement la prise de décision.</p>
+
+        <p>Cette dimension psychologique, souvent sous-estimée par les inspecteurs focalisés sur la technique, représente pourtant une part significative de la valeur perçue par le client. Elle justifie un investissement particulier dans les compétences relationnelles et de communication, souvent négligées dans les formations techniques traditionnelles.</p>
+
+        <div class="tip-box">
+            <h4>💭 Mécanismes psychologiques de la réassurance</h4>
             <ul>
-                <li>Inspection d'un véhicule que vous souhaitez acheter</li>
-                <li>Recommandation d'un garage partenaire</li>
-                <li>Commission sur une vente suite à votre expertise</li>
-                <li>Pression pour modifier vos conclusions</li>
-                <li>Double expertise pour le même véhicule (vendeur + acheteur)</li>
+                <li><strong>Réduction de l'asymétrie d'information :</strong> L'inspecteur comble le déficit de connaissances techniques du client non spécialisé</li>
+                <li><strong>Transfert de responsabilité :</strong> Le client partage la responsabilité de la décision avec un professionnel compétent</li>
+                <li><strong>Validation externe :</strong> Confirmation par un tiers de la qualité de son choix</li>
+                <li><strong>Anticipation des regrets :</strong> Prévention du sentiment de regret post-achat par une décision éclairée</li>
+                <li><strong>Confiance en l'avenir :</strong> Sérénité concernant les évolutions futures du véhicule</li>
             </ul>
         </div>
 
-        <h3>📜 Cadre Réglementaire de l'Inspection</h3>
-        
-        <h4>Réglementation Française</h4>
-        
-        <h5>Code de la Consommation</h5>
-        <p>Articles L217-1 à L217-32 relatifs à la conformité et aux vices cachés :</p>
-        <ul>
-            <li><strong>Garantie de conformité :</strong> 2 ans pour défauts existants à la livraison</li>
-            <li><strong>Garantie des vices cachés :</strong> Défauts rendant le bien impropre à l'usage</li>
-            <li><strong>Obligation d'information :</strong> Devoir du vendeur professionnel</li>
-        </ul>
+        <img src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Conseil expert et accompagnement" class="module-image" />
 
-        <h5>Code Civil</h5>
-        <p>Articles 1641 à 1649 sur la garantie des défauts cachés :</p>
-        <ul>
-            <li>Défaut caché existant lors de la vente</li>
-            <li>Défaut suffisamment grave</li>
-            <li>Défaut inconnu de l'acheteur</li>
-        </ul>
+        <h4>Anticipation et conseil prospectif</h4>
 
-        <h4>Réglementation Européenne</h4>
-        
-        <h5>Directive 2011/83/UE (Droits des consommateurs)</h5>
-        <ul>
-            <li>Information précontractuelle obligatoire</li>
-            <li>Droit de rétractation (14 jours pour vente à distance)</li>
-            <li>Garantie légale de conformité (2 ans minimum)</li>
-        </ul>
+        <p>L'inspecteur automobile moderne ne se contente plus de dresser un constat statique à l'instant T, mais développe une approche prospective qui anticipe l'évolution du véhicule et conseille le client sur la stratégie d'entretien optimale. Cette dimension prévisionnelle, s'appuyant sur une base de données de retours d'expérience considérable, constitue la différenciation majeure par rapport à une simple inspection ponctuelle.</p>
 
-        <h5>Règlement RGPD (Protection des données)</h5>
-        <ul>
-            <li>Consentement explicite pour collecte de données</li>
-            <li>Droit à l'effacement et à la portabilité</li>
-            <li>Registre des traitements obligatoire</li>
-        </ul>
+        <p>Cette approche anticipatrice nécessite une connaissance approfondie des défaillances récurrentes par marque et modèle, des coûts de réparation actualisés, des stratégies d'entretien préventif efficaces et des évolutions technologiques susceptibles d'impact sur la valeur de revente future.</p>
 
-        <h3>⚖️ Responsabilités Légales</h3>
-        
-        <h4>Responsabilité Civile Professionnelle</h4>
-        
-        <div style="background: #1e40af; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>💼 Assurance RC Professionnelle Obligatoire</h5>
-            <p><strong>Montants de garantie recommandés :</strong></p>
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 3 : Les qualités essentielles (rigueur, observation, impartialité, pédagogie)</h3>
+
+        <p>Le métier d'inspecteur automobile exige un ensemble de qualités professionnelles et personnelles spécifiques, dont la maîtrise conditionne directement la qualité du service rendu et, par conséquent, la réussite commerciale et professionnelle. Ces qualités, identifiées par l'analyse comportementale de nos 300+ inspecteurs certifiés les plus performants, se développent par la formation, la pratique et l'auto-évaluation continue.</p>
+
+        <h4>Rigueur méthodologique et systémique</h4>
+
+        <p>La rigueur constitue la qualité cardinale de l'inspecteur professionnel. Elle se manifeste à tous les niveaux : préparation de l'intervention, application de la méthodologie, documentation des constats, rédaction des conclusions, respect des engagements temporels. Cette rigueur n'est pas innée : elle se cultive, se structure et se maintient par des habitudes professionnelles appropriées.</p>
+
+        <div class="info-box">
+            <h4>🔬 Manifestations de la rigueur professionnelle</h4>
             <ul>
-                <li>Dommages corporels : 4 500 000€ minimum</li>
-                <li>Dommages matériels : 1 500 000€ minimum</li>
-                <li>Défense-recours : 300 000€ minimum</li>
-                <li>Franchise : 500€ maximum</li>
+                <li><strong>Préparation systématique :</strong> Check-list matériel, documentation du véhicule, briefing client, plan d'intervention</li>
+                <li><strong>Application méthodologique stricte :</strong> Respect de la séquence AutoJust, contrôle exhaustif des 200+ points, temps minimum par phase</li>
+                <li><strong>Documentation exhaustive :</strong> Photographie systématique, prise de notes détaillées, mesures précises, horodatage</li>
+                <li><strong>Vérifications croisées :</strong> Validation de la cohérence entre différents indices, recoupement des informations</li>
+                <li><strong>Auto-contrôle final :</strong> Relecture critique, vérification de l'exhaustivité, validation de la cohérence globale</li>
             </ul>
         </div>
 
-        <h4>Responsabilité Pénale</h4>
-        <p>L'inspecteur peut engager sa responsabilité pénale en cas de :</p>
-        <ul>
-            <li><strong>Faux et usage de faux :</strong> Rapport mensonger (5 ans de prison, 75 000€ d'amende)</li>
-            <li><strong>Escroquerie :</strong> Tromperie sur l'état du véhicule (5 ans, 375 000€)</li>
-            <li><strong>Mise en danger d'autrui :</strong> Non-signalement d'un défaut de sécurité</li>
-        </ul>
+        <p>Cette rigueur méthodologique se traduit concrètement par des résultats mesurables : nos inspecteurs les plus rigoureux présentent un taux de réclamation client 5 fois inférieur à la moyenne, un taux de recommandation supérieur de 15%, et une progression de chiffre d'affaires plus rapide de 25% par rapport aux inspecteurs moins structurés.</p>
 
-        <h4>Responsabilité Administrative</h4>
-        <ul>
-            <li>Respect des obligations déclaratives (URSSAF, impôts)</li>
-            <li>Tenue des registres professionnels</li>
-            <li>Formation continue obligatoire</li>
-        </ul>
+        <h4>Capacité d'observation fine et analytique</h4>
 
-        <h3>🏛️ Code de Déontologie Professionnelle</h3>
-        
-        <h4>Principes Fondamentaux</h4>
-        
-        <div style="background: #581c87; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <h5>🎯 Les 10 Commandements de l'Inspecteur</h5>
+        <p>L'observation constitue l'outil de travail fondamental de l'inspecteur automobile. Mais il ne s'agit pas d'une simple capacité visuelle : il s'agit d'une compétence complexe combinant acuité visuelle, expérience technique, connaissance des défaillances typiques et capacité d'analyse systémique pour transformer des observations partielles en diagnostic global cohérent.</p>
+
+        <p>Cette capacité d'observation se développe progressivement à travers l'expérience, mais peut être considérablement accélérée par une formation structurée et des exercices ciblés. Elle s'appuie sur plusieurs dimensions complémentaires :</p>
+
+        <div class="success-box">
+            <h4>👁️ Dimensions de l'observation professionnelle</h4>
+            <ul>
+                <li><strong>Observation visuelle directe :</strong> Détection des anomalies de forme, couleur, alignement, usure, corrosion</li>
+                <li><strong>Observation auditive :</strong> Identification des bruits anormaux, régularité du fonctionnement, variations suspectes</li>
+                <li><strong>Observation tactile :</strong> Évaluation des vibrations, températures, résistances mécaniques</li>
+                <li><strong>Observation olfactive :</strong> Détection des odeurs caractéristiques (brûlé, carburant, liquides)</li>
+                <li><strong>Observation contextuelle :</strong> Analyse de l'environnement, cohérence globale, indices annexes</li>
+                <li><strong>Observation comparative :</strong> Référencement par rapport aux standards connus du modèle</li>
+            </ul>
+        </div>
+
+        <h4>Impartialité et objectivité scientifique</h4>
+
+        <p>L'impartialité représente probablement la qualité la plus délicate à maintenir dans l'exercice quotidien du métier d'inspecteur. Contrairement à l'expert judiciaire qui bénéficie d'un cadre procédural protecteur, l'inspecteur privé évolue dans un environnement commercial où les pressions, tentations et conflits d'intérêts sont permanents et subtils.</p>
+
+        <p>Cette impartialité ne se décrète pas : elle se construit par la mise en place de garde-fous procéduraux, la formation éthique continue et l'adhésion à un code de déontologie strict et contrôlé. Elle constitue également un avantage commercial décisif : les clients font confiance aux inspecteurs réputés impartiaux et les recommandent massivement.</p>
+
+        <div class="warning-box">
+            <h4>⚖️ Menaces récurrentes contre l'impartialité</h4>
+            <ul>
+                <li><strong>Pressions économiques directes :</strong> Propositions de commissions, primes à la complaisance, menaces de non-paiement</li>
+                <li><strong>Pressions relationnelles :</strong> Sympathie pour le vendeur/acheteur, relations personnelles, recommandations d'amis</li>
+                <li><strong>Pressions temporelles :</strong> Urgence artificielle, pression à la conclusion rapide, chantage aux délais</li>
+                <li><strong>Pressions techniques :</strong> Remise en cause de la compétence, contest ation des méthodes, intimidation technique</li>
+                <li><strong>Auto-persuasion :</strong> Rationalisation de conclusions orientées, biais de confirmation, évitement de conflits</li>
+            </ul>
+        </div>
+
+        <h4>Pédagogie et vulgarisation technique</h4>
+
+        <p>La capacité pédagogique distingue l'inspecteur professionnel accompli du simple technicien compétent. Face à une clientèle majoritairement non spécialisée, l'inspecteur doit savoir vulgariser des concepts techniques complexes, expliquer clairement ses constats et recommandations, et former le client aux bonnes pratiques d'entretien et d'utilisation.</p>
+
+        <p>Cette dimension pédagogique nécessite des compétences spécifiques rarement enseignées dans les formations techniques traditionnelles : structuration du discours, adaptation au niveau de l'interlocuteur, utilisation d'analogies parlantes, support visuel efficace, vérification de la compréhension.</p>
+
+        <img src="https://images.unsplash.com/photo-1606577924006-27d39b132ae2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Communication pédagogique client" class="module-image" />
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 4 : Préparation et sécurité de l'inspecteur</h3>
+
+        <p>La préparation de l'intervention d'inspection et la sécurité de l'inspecteur constituent des aspects fondamentaux trop souvent négligés dans les formations d'initiation. Ces éléments, qui peuvent paraître secondaires aux yeux du débutant, conditionnent pourtant directement la qualité de l'inspection, la sécurité juridique de l'intervention et, ultimement, la pérennité de l'activité professionnelle.</p>
+
+        <h4>Préparation technique et logistique de l'intervention</h4>
+
+        <p>Une intervention d'inspection réussie commence 24 heures avant la rencontre avec le client. Cette préparation minutieuse, chronophage initialement mais rapidement rentabilisée, comprend plusieurs phases distinctes et complémentaires :</p>
+
+        <div class="info-box">
+            <h4>📋 Check-list de préparation pré-intervention (24h avant)</h4>
             <ol>
-                <li><strong>Compétence :</strong> Maintenir et développer ses connaissances techniques</li>
-                <li><strong>Intégrité :</strong> Honnêteté absolue dans les constats</li>
-                <li><strong>Objectivité :</strong> Évaluation basée uniquement sur les faits</li>
-                <li><strong>Confidentialité :</strong> Protection des informations clients</li>
-                <li><strong>Indépendance :</strong> Liberté de jugement préservée</li>
-                <li><strong>Responsabilité :</strong> Assume les conséquences de ses actes</li>
-                <li><strong>Respect :</strong> Courtoisie envers tous les intervenants</li>
-                <li><strong>Loyauté :</strong> Fidélité aux engagements pris</li>
-                <li><strong>Diligence :</strong> Célérité dans l'exécution des missions</li>
-                <li><strong>Formation :</strong> Mise à jour permanente des compétences</li>
+                <li><strong>Recherche documentaire du véhicule :</strong>
+                    <ul>
+                        <li>Fiche technique constructeur complète</li>
+                        <li>Défauts récurrents connus pour ce modèle/millésime</li>
+                        <li>Bulletins de rappel constructeur éventuels</li>
+                        <li>Cote Argus actualisée et historique des prix</li>
+                        <li>Spécificités techniques de la version exacte</li>
+                    </ul>
+                </li>
+                <li><strong>Préparation matérielle :</strong>
+                    <ul>
+                        <li>Vérification charge batteries des appareils</li>
+                        <li>Test fonctionnel valise de diagnostic</li>
+                        <li>Nettoyage et calibrage des instruments de mesure</li>
+                        <li>Préparation des consommables (gants, lingettes, étiquettes)</li>
+                        <li>Synchronisation applications mobiles</li>
+                    </ul>
+                </li>
+                <li><strong>Planification logistique :</strong>
+                    <ul>
+                        <li>Itinéraire optimisé et temps de trajet calculé</li>
+                        <li>Coordonnées client vérifiées et confirmées</li>
+                        <li>Lieu d'inspection validé (éclairage, sécurité, accessibilité)</li>
+                        <li>Conditions météorologiques vérifiées</li>
+                        <li>Planning de la journée optimisé</li>
+                    </ul>
+                </li>
             </ol>
         </div>
 
-        <h4>Relations avec les Clients</h4>
-        <ul>
-            <li><strong>Information préalable :</strong> Explication claire de la prestation</li>
-            <li><strong>Consentement éclairé :</strong> Validation de la compréhension client</li>
-            <li><strong>Respect des délais :</strong> Tenue des engagements temporels</li>
-            <li><strong>Confidentialité :</strong> Non-divulgation d'informations privées</li>
-            <li><strong>Suivi post-intervention :</strong> Disponibilité pour explications</li>
-        </ul>
+        <h4>Sécurité physique et juridique de l'inspecteur</h4>
 
-        <h4>Relations avec les Confrères</h4>
-        <ul>
-            <li><strong>Respect mutuel :</strong> Pas de dénigrement de collègues</li>
-            <li><strong>Partage d'expérience :</strong> Contribution à l'évolution métier</li>
-            <li><strong>Tarification éthique :</strong> Pas de concurrence déloyale</li>
-            <li><strong>Entraide professionnelle :</strong> Solidarité en cas de difficulté</li>
-        </ul>
+        <p>L'activité d'inspection automobile expose l'inspecteur à des risques multiples qu'une préparation appropriée permet de minimiser significativement. Ces risques, souvent sous-évalués par les débutants, peuvent avoir des conséquences graves sur la santé, la sécurité et la responsabilité professionnelle.</p>
 
-        <h3>📋 Obligations Administratives</h3>
-        
-        <h4>Statut Juridique</h4>
-        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-            <tr style="background: #374151;">
-                <th style="padding: 12px; border: 1px solid #4b5563;">Statut</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Avantages</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">Inconvénients</th>
-                <th style="padding: 12px; border: 1px solid #4b5563;">CA maxi</th>
+        <table>
+            <tr>
+                <th>Type de risque</th>
+                <th>Manifestations courantes</th>
+                <th>Mesures préventives</th>
+                <th>Équipement requis</th>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>Micro-entreprise</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Simplicité, charges réduites</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Plafond CA, pas de TVA</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">72 600€</td>
-            </tr>
-            <tr style="background: #1f2937;">
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>EURL</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Flexibilité, protection</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Comptabilité, charges sociales</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Illimité</td>
+                <td><strong>Risques mécaniques</strong></td>
+                <td>Coupures, pincements, chutes</td>
+                <td>EPI adaptés, gestes sécurisés</td>
+                <td>Gants, chaussures sécurité</td>
             </tr>
             <tr>
-                <td style="padding: 12px; border: 1px solid #4b5563;"><strong>SASU</strong></td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Statut cadre, dividendes</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Charges élevées</td>
-                <td style="padding: 12px; border: 1px solid #4b5563;">Illimité</td>
+                <td><strong>Risques chimiques</strong></td>
+                <td>Contact liquides, vapeurs toxiques</td>
+                <td>Ventilation, protection individuelle</td>
+                <td>Gants nitrile, lunettes</td>
+            </tr>
+            <tr>
+                <td><strong>Risques routiers</strong></td>
+                <td>Accident lors essai routier</td>
+                <td>Vérifications préalables, prudence</td>
+                <td>Assurance étendue</td>
+            </tr>
+            <tr>
+                <td><strong>Risques juridiques</strong></td>
+                <td>Mise en cause responsabilité</td>
+                <td>RC Pro, documentation rigoureuse</td>
+                <td>Contrats, assurance</td>
+            </tr>
+            <tr>
+                <td><strong>Risques commerciaux</strong></td>
+                <td>Impayés, contestations abusives</td>
+                <td>Contrat écrit, acompte</td>
+                <td>Conditions générales</td>
             </tr>
         </table>
 
-        <h4>Obligations Déclaratives</h4>
-        <ul>
-            <li><strong>Déclaration d'activité :</strong> CFE dans les 15 jours</li>
-            <li><strong>Immatriculation :</strong> RCS ou Répertoire des Métiers</li>
-            <li><strong>Assurance :</strong> RC Pro + véhicule professionnel</li>
-            <li><strong>Formation :</strong> Stage SPI (Stage de Préparation à l'Installation)</li>
-        </ul>
+        <div class="chapter-divider"></div>
 
-        <h3>🔍 Cas Pratiques Déontologiques</h3>
-        
-        <h4>Situation 1 : Conflit d'Intérêt</h4>
-        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <p><strong>Cas :</strong> Un ami vous demande d'inspecter un véhicule qu'il souhaite vendre.</p>
-            <p><strong>Problème :</strong> Risque de complaisance, crédibilité compromise</p>
-            <p><strong>Solution :</strong> Refuser poliment et orienter vers un confrère</p>
+        <h3>Chapitre 5 : Outils indispensables (lampe, OBD-II, carnet numérique)</h3>
+
+        <p>L'évolution technologique de l'automobile moderne impose une mise à niveau constante de l'outillage professionnel de l'inspecteur. Les outils d'hier, suffisants pour les véhicules des années 1990-2000, deviennent rapidement obsolètes face à la sophistication croissante des systèmes embarqués. Cette section détaille les outils indispensables, leurs caractéristiques techniques recommandées et leurs modalités d'utilisation optimales.</p>
+
+        <h4>Éclairage professionnel et inspection visuelle</h4>
+
+        <p>L'éclairage constitue l'outil le plus fondamental et le plus universellement utilisé de l'inspecteur automobile. Paradoxalement, c'est aussi l'un des plus négligés par les inspecteurs débutants, qui sous-estiment son impact sur la qualité de l'inspection et la détection des défauts subtils.</p>
+
+        <div class="success-box">
+            <h4>💡 Spécifications techniques éclairage professionnel</h4>
+            <ul>
+                <li><strong>Lampe torche principale :</strong> LED 2000+ lumens, température couleur 6000K, autonomie 4h minimum, résistance IP67</li>
+                <li><strong>Lampe d'inspection fine :</strong> LED 500 lumens, faisceau focalisé, autonomie 8h, résistance chocs</li>
+                <li><strong>Projecteur de zone :</strong> LED 5000+ lumens, éclairage large, support stable, alimentation 12V/220V</li>
+                <li><strong>Lampe UV (optionnel) :</strong> Détection liquides invisibles, vérification peinture, authentification</li>
+            </ul>
         </div>
 
-        <h4>Situation 2 : Pression Commerciale</h4>
-        <div style="background: #7c2d12; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <p><strong>Cas :</strong> Le vendeur vous propose une "prime" pour un rapport favorable.</p>
-            <p><strong>Problème :</strong> Corruption, faux en écriture</p>
-            <p><strong>Solution :</strong> Refus catégorique, documenter la tentative</p>
+        <h4>Diagnostic électronique : valises OBD-II et évolutions</h4>
+
+        <p>Le diagnostic électronique représente le domaine d'évolution le plus rapide et le plus critique pour l'inspecteur moderne. La multiplication des calculateurs, l'interconnexion des systèmes via les réseaux CAN/LIN/Ethernet, l'émergence de l'intelligence artificielle embarquée transforment radicalement les méthodes de diagnostic et les exigences en matière d'outillage.</p>
+
+        <table>
+            <tr>
+                <th>Catégorie d'outil</th>
+                <th>Équipement de base</th>
+                <th>Équipement professionnel</th>
+                <th>Équipement expert</th>
+                <th>Coût approximatif</th>
+            </tr>
+            <tr>
+                <td><strong>Valise OBD générique</strong></td>
+                <td>ELM327 Bluetooth</td>
+                <td>Autel MP808 / Launch CRP919</td>
+                <td>Bosch KTS / Texa Navigator</td>
+                <td>25€ à 8 000€</td>
+            </tr>
+            <tr>
+                <td><strong>Mesures électriques</strong></td>
+                <td>Multimètre basique</td>
+                <td>Fluke 117 / Metrix MX58</td>
+                <td>Oscilloscope automobile</td>
+                <td>30€ à 2 500€</td>
+            </tr>
+            <tr>
+                <td><strong>Tests spécialisés</strong></td>
+                <td>Testeur batterie simple</td>
+                <td>Testeur batterie/alternateur</td>
+                <td>Analyseur réseau électrique</td>
+                <td>50€ à 1 200€</td>
+            </tr>
+            <tr>
+                <td><strong>Documentation</strong></td>
+                <td>Smartphone + app gratuite</td>
+                <td>Tablette + app professionnelle</td>
+                <td>Système intégré + CRM</td>
+                <td>0€ à 3 000€</td>
+            </tr>
+        </table>
+
+        <h4>Digitalisation et carnet numérique</h4>
+
+        <p>La transition vers le numérique représente une révolution méthodologique qui transforme fondamentalement l'efficacité, la traçabilité et la professionnalisation de l'inspection automobile. Cette digitalisation, initialement optionnelle, devient progressivement incontournable face aux exigences croissantes de qualité, rapidité et traçabilité des clients modernes.</p>
+
+        <div class="tip-box">
+            <h4>📱 Écosystème numérique AutoJust</h4>
+            <ul>
+                <li><strong>WebApp AutoJust mobile :</strong> Check-lists interactives, géolocalisation, synchronisation cloud automatique</li>
+                <li><strong>WeProov constat :</strong> Photographie horodatée, géolocalisée et blockchainée juridiquement incontestable</li>
+                <li><strong>iAuditor SafetyCulture :</strong> Check-lists intelligentes, scoring automatique, génération rapport instantané</li>
+                <li><strong>CRM intégré :</strong> Gestion client, planning, facturation, suivi commercial automatisé</li>
+                <li><strong>Base de données technique :</strong> Fiches véhicules, défauts récurrents, coûts de réparation actualisés</li>
+            </ul>
         </div>
 
-        <h4>Situation 3 : Découverte Importante</h4>
-        <div style="background: #065f46; padding: 16px; border-radius: 8px; margin: 16px 0;">
-            <p><strong>Cas :</strong> Découverte d'un défaut de sécurité critique non déclaré.</p>
-            <p><strong>Action :</strong> Signalement immédiat, refus de valider la transaction</p>
-            <p><strong>Justification :</strong> Sécurité publique prioritaire</p>
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 6 : Transparence et communication</h3>
+
+        <p>La transparence et la communication constituent les piliers fondamentaux de la relation client moderne et les facteurs différenciants majeurs dans un marché de plus en plus concurrentiel. L'inspecteur automobile qui maîtrise ces dimensions développe un avantage concurrentiel durable et génère une fidélisation client exceptionnelle, source de développement commercial naturel et pérenne.</p>
+
+        <h4>Transparence procédurale et méthodologique</h4>
+
+        <p>La transparence dépasse largement la simple honnêteté : elle constitue une stratégie professionnelle globale qui vise à rendre totalement compréhensible et vérifiable l'ensemble du processus d'inspection. Cette approche, initialement plus chronophage, génère une confiance client exceptionnelle et prévient efficacement les contestations ultérieures.</p>
+
+        <div class="info-box">
+            <h4>🔍 Checklist transparence absolue</h4>
+            <ul>
+                <li><strong>Présentation méthodologique préalable :</strong> Explication détaillée des 200+ points AutoJust avant début d'inspection</li>
+                <li><strong>Démonstration des outils :</strong> Présentation et test des appareils de diagnostic devant le client</li>
+                <li><strong>Communication temporelle :</strong> Annonce préalable de la durée de chaque phase et respect scrupuleux</li>
+                <li><strong>Tarification détaillée :</strong> Devis précis avec décomposition des prestations incluses/exclues</li>
+                <li><strong>Engagement de délai :</strong> Promesse écrite de remise du rapport dans le délai annoncé</li>
+                <li><strong>Disponibilité post-inspection :</strong> Engagement de réponse aux questions pendant 30 jours</li>
+                <li><strong>Traçabilité complète :</strong> Horodatage de chaque phase, géolocalisation, photos datées</li>
+            </ul>
         </div>
 
-        <h3>📚 Points Clés à Retenir</h3>
-        
-        <ul>
-            <li>L'inspecteur est un <strong>expert indépendant</strong> au service de la sécurité des transactions</li>
-            <li>La <strong>transparence</strong> et l'<strong>impartialité</strong> sont les piliers de la crédibilité</li>
-            <li>Le <strong>cadre légal</strong> protège autant qu'il engage la responsabilité</li>
-            <li>La <strong>déontologie</strong> guide les décisions dans les situations complexes</li>
-            <li>La <strong>formation continue</strong> est une obligation professionnelle et éthique</li>
-        </ul>
+        <h4>Communication adaptée et personnalisée</h4>
 
-        <p><em>Durée estimée : 90 minutes de lecture + 20 minutes pour le quiz</em></p>
+        <p>La communication efficace s'adapte systématiquement au profil du client, à ses connaissances techniques, à ses préoccupations spécifiques et à son style de décision. Cette personnalisation, basée sur une écoute active et une observation fine du comportement client, multiplie l'impact des recommandations et facilite l'acceptation des conclusions défavorables.</p>
+
+        <div class="chapter-divider"></div>
+
+        <h3>Chapitre 7 : Exercices pratiques (analyse d'annonce, observation terrain)</h3>
+
+        <p>L'apprentissage théorique des fondamentaux doit impérativement être complété par des exercices pratiques qui permettent l'appropriation concrète des concepts étudiés et le développement des réflexes professionnels indispensables. Cette section propose une série d'exercices progressifs, du plus simple au plus complexe, calibrés selon les différents profils d'apprenants identifiés.</p>
+
+        <h4>Exercice 1 : Analyse critique d'annonces en ligne</h4>
+
+        <p>Cet exercice fondamental développe votre capacité à détecter les signaux d'alerte dans les annonces de vente, compétence essentielle pour orienter efficacement vos investigations et optimiser votre temps d'inspection.</p>
+
+        <div class="tip-box">
+            <h4>🕵️ Grille d'analyse des annonces</h4>
+            <table>
+                <tr>
+                    <th>Élément d'analyse</th>
+                    <th>Signal positif</th>
+                    <th>Signal neutre</th>
+                    <th>Signal d'alerte</th>
+                </tr>
+                <tr>
+                    <td><strong>Prix vs marché</strong></td>
+                    <td>±5% de l'Argus</td>
+                    <td>±10% justifié</td>
+                    <td>>15% d'écart</td>
+                </tr>
+                <tr>
+                    <td><strong>Justification vente</strong></td>
+                    <td>Renouvellement, évolution besoins</td>
+                    <td>Changement professionnel</td>
+                    <td>Urgence, déménagement</td>
+                </tr>
+                <tr>
+                    <td><strong>Photographies</strong></td>
+                    <td>8+ photos variées, détails</td>
+                    <td>4-6 photos standards</td>
+                    <td><4 photos, angles choisis</td>
+                </tr>
+                <tr>
+                    <td><strong>Description technique</strong></td>
+                    <td>Détaillée, défauts mentionnés</td>
+                    <td>Correcte, équilibrée</td>
+                    <td>Élogieuse, "parfait état"</td>
+                </tr>
+                <tr>
+                    <td><strong>Historique vendeur</strong></td>
+                    <td>Profil établi, évaluations positives</td>
+                    <td>Quelques ventes, correct</td>
+                    <td>Nouveau compte, anonyme</td>
+                </tr>
+            </table>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1746079074522-2b14240d932c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHw0fHxjYXIlMjBpbnNwZWN0aW9ufGVufDB8fHx8MTc1ODcxNjI5NXww&ixlib=rb-4.1.0&q=85" alt="Analyse d'annonce professionnelle" class="module-image" />
+
+        <div class="success-box">
+            <h4>🎯 Objectifs pédagogiques du module</h4>
+            <p>À l'issue de ce module fondamental, vous maîtriserez :</p>
+            <ul>
+                <li>✅ <strong>Rôle et missions</strong> de l'inspecteur automobile professionnel</li>
+                <li>✅ <strong>Distinction claire</strong> avec les autres acteurs de l'expertise</li>
+                <li>✅ <strong>Principes déontologiques</strong> et leur application pratique</li>
+                <li>✅ <strong>Cadre réglementaire</strong> français et européen applicable</li>
+                <li>✅ <strong>Préparation rigoureuse</strong> des interventions</li>
+                <li>✅ <strong>Communication professionnelle</strong> adaptée aux clients</li>
+                <li>✅ <strong>Analyse critique</strong> des situations d'inspection</li>
+            </ul>
+        </div>
+
+        <p><strong>Transition vers le module suivant :</strong> Ces fondamentaux solidement acquis, le Module 3 vous permettra d'approfondir les aspects techniques indispensables avec une remise à niveau mécanique complète adaptée aux véhicules modernes.</p>
+
+        <p><em>Durée totale de lecture estimée : 90 minutes | Quiz de validation : 12 questions | Exercices pratiques recommandés : 30 minutes supplémentaires</em></p>
         """,
         "quiz_questions": [
             {
