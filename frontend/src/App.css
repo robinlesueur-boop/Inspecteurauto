@@ -146,6 +146,131 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Module content styling */
+.module-content {
+  max-width: 100%;
+  width: 100%;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.module-content h2 {
+  font-size: 2.5rem;
+  margin: 2rem 0 1.5rem 0;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.module-content h3 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem 0;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.module-content h4 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem 0;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.module-content h5 {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.75rem 0;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.module-content p {
+  margin: 1.5rem 0;
+  text-align: justify;
+  color: #cbd5e1;
+}
+
+.module-content ul,
+.module-content ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  color: #cbd5e1;
+}
+
+.module-content li {
+  margin: 0.75rem 0;
+  line-height: 1.7;
+}
+
+.module-content table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.module-content th,
+.module-content td {
+  padding: 16px;
+  border: 1px solid #4b5563;
+  text-align: left;
+}
+
+.module-content th {
+  background: #374151;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.module-content td {
+  color: #cbd5e1;
+}
+
+.module-content .highlight-box {
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #3b82f6;
+}
+
+.module-content .warning-box {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+}
+
+.module-content .info-box {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3b82f6;
+}
+
+.module-content .success-box {
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10b981;
+}
+
+.module-content .tip-box {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #f59e0b;
+}
+
+.module-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: block;
+}
+
+.chapter-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  margin: 3rem 0;
+}
+
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
