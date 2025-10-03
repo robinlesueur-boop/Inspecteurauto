@@ -141,7 +141,7 @@ const ModuleViewer = () => {
           <div className="lg:col-span-2">
             <div className="card">
               <div 
-                className="prose prose-invert prose-lg max-w-none"
+                className="module-content"
                 dangerouslySetInnerHTML={{ __html: module.content }}
                 data-testid="module-content"
               />
