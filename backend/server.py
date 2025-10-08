@@ -63,10 +63,13 @@ class User(BaseModel):
     username: str
     full_name: str
     is_active: bool = True
+    is_admin: bool = False  # Added admin role
     avatar_url: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     has_purchased: bool = False
     certificate_url: Optional[str] = None
+    last_login: Optional[datetime] = None
+    registration_source: str = "website"  # For tracking leads
 
 class UserCreate(BaseModel):
     email: EmailStr
@@ -93,6 +96,8 @@ class Module(BaseModel):
     order_index: int
     duration_minutes: int = 60
     is_free: bool = False
+    is_published: bool = True  # Added for admin control
+    views_count: int = 0  # Track module popularity
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -105,6 +110,7 @@ class ModuleProgress(BaseModel):
     completed: bool = False
     completed_at: Optional[datetime] = None
     reading_time_minutes: float = 0.0
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class Quiz(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -112,7 +118,7 @@ class Quiz(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     module_id: str
     title: str
-    questions: List[Dict[str, Any]]  # List of questions with options and correct answers
+    questions: List[Dict[str, Any]]
     passing_score: int = 80
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
@@ -135,7 +141,7 @@ class PaymentTransaction(BaseModel):
     session_id: str
     amount: float
     currency: str = "EUR"
-    payment_status: str = "pending"  # pending, completed, failed, expired
+    payment_status: str = "pending"
     metadata: Optional[Dict[str, Any]] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -147,7 +153,7 @@ class ForumPost(BaseModel):
     user_id: str
     title: str
     content: str
-    category: str = "general"  # general, questions, discussions, tips
+    category: str = "general"
     likes: int = 0
     replies_count: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
@@ -162,6 +168,20 @@ class ForumReply(BaseModel):
     content: str
     likes: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+# Analytics Models
+class UserAnalytics(BaseModel):
+    total_users: int
+    new_users_today: int
+    new_users_this_week: int
+    paid_users: int
+    completion_rate: float
+
+class CourseAnalytics(BaseModel):
+    total_modules: int
+    total_completions: int
+    most_popular_module: str
+    average_completion_time: float
 
 # Auth Helper Functions
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -198,18 +218,19 @@ async def get_current_user_optional(credentials: Optional[HTTPAuthorizationCrede
         return None
     return await get_current_user(credentials)
 
+async def get_admin_user(current_user: User = Depends(get_current_user)):
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    return current_user
+
 # Certificate Generation Function
 def generate_certificate(user_name: str, completion_date: str) -> str:
     """Generate a PDF certificate and return as base64 string"""
     
-    # Create a BytesIO buffer for the PDF
     buffer = BytesIO()
-    
-    # Create the PDF document
     doc = SimpleDocTemplate(buffer, pagesize=A4)
     styles = getSampleStyleSheet()
     
-    # Custom styles
     title_style = styles['Title']
     title_style.fontSize = 24
     title_style.spaceAfter = 30
@@ -222,20 +243,16 @@ def generate_certificate(user_name: str, completion_date: str) -> str:
     normal_style.fontSize = 14
     normal_style.spaceAfter = 12
     
-    # Build the certificate content
     story = []
     
-    # Title
     title = Paragraph("CERTIFICAT DE FORMATION", title_style)
     story.append(title)
     story.append(Spacer(1, 20))
     
-    # Formation title
     formation_title = Paragraph("Formation Inspecteur Automobile", heading_style)
     story.append(formation_title)
     story.append(Spacer(1, 30))
     
-    # Certificate text
     cert_text = f"""
     Nous certifions par la présente que
     
@@ -263,26 +280,19 @@ def generate_certificate(user_name: str, completion_date: str) -> str:
             story.append(Spacer(1, 12))
     
     story.append(Spacer(1, 50))
-    
-    # Signature section
     signature = Paragraph("Inspecteur Auto Formation", styles['Heading2'])
     story.append(signature)
     
-    # Build the PDF
     doc.build(story)
-    
-    # Get the PDF data and encode it
     buffer.seek(0)
     pdf_data = buffer.getvalue()
     buffer.close()
     
-    # Convert to base64
     return base64.b64encode(pdf_data).decode('utf-8')
 
 # Authentication Routes
 @api_router.post("/auth/register", response_model=Token)
 async def register(user_data: UserCreate):
-    # Check if user already exists
     existing_user = await db.users.find_one({"email": user_data.email})
     if existing_user:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -291,7 +301,6 @@ async def register(user_data: UserCreate):
     if existing_username:
         raise HTTPException(status_code=400, detail="Username already taken")
     
-    # Hash password and create user
     hashed_password = get_password_hash(user_data.password)
     user_dict = user_data.model_dump(exclude={"password"})
     user_dict["password_hash"] = hashed_password
@@ -302,7 +311,6 @@ async def register(user_data: UserCreate):
     
     await db.users.insert_one(doc)
     
-    # Create access token
     access_token = create_access_token(data={"sub": user_data.email})
     return Token(access_token=access_token, token_type="bearer", user=user_obj)
 
@@ -311,6 +319,12 @@ async def login(login_data: UserLogin):
     user_doc = await db.users.find_one({"email": login_data.email}, {"_id": 0})
     if not user_doc or not verify_password(login_data.password, user_doc["password_hash"]):
         raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    # Update last login
+    await db.users.update_one(
+        {"email": login_data.email},
+        {"$set": {"last_login": datetime.now(timezone.utc).isoformat()}}
+    )
     
     user_doc.pop("password_hash", None)
     if isinstance(user_doc.get('created_at'), str):
@@ -324,10 +338,184 @@ async def login(login_data: UserLogin):
 async def get_current_user_info(current_user: User = Depends(get_current_user)):
     return current_user
 
+# Admin Routes
+@api_router.get("/admin/analytics")
+async def get_analytics(admin_user: User = Depends(get_admin_user)):
+    # User Analytics
+    total_users = await db.users.count_documents({})
+    today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    week_ago = today - timedelta(days=7)
+    
+    new_users_today = await db.users.count_documents({
+        "created_at": {"$gte": today.isoformat()}
+    })
+    
+    new_users_this_week = await db.users.count_documents({
+        "created_at": {"$gte": week_ago.isoformat()}
+    })
+    
+    paid_users = await db.users.count_documents({"has_purchased": True})
+    
+    # Completion rate
+    total_modules = await db.modules.count_documents({})
+    if total_modules > 0:
+        total_possible_completions = total_users * total_modules
+        total_actual_completions = await db.module_progress.count_documents({"completed": True})
+        completion_rate = (total_actual_completions / total_possible_completions * 100) if total_possible_completions > 0 else 0
+    else:
+        completion_rate = 0
+    
+    # Course Analytics
+    most_popular_module_pipeline = [
+        {"$group": {"_id": "$module_id", "views": {"$sum": 1}}},
+        {"$sort": {"views": -1}},
+        {"$limit": 1}
+    ]
+    
+    popular_module_result = await db.module_progress.aggregate(most_popular_module_pipeline).to_list(1)
+    most_popular_module = "N/A"
+    if popular_module_result:
+        module_doc = await db.modules.find_one({"id": popular_module_result[0]["_id"]})
+        if module_doc:
+            most_popular_module = module_doc["title"]
+    
+    return {
+        "user_analytics": {
+            "total_users": total_users,
+            "new_users_today": new_users_today,
+            "new_users_this_week": new_users_this_week,
+            "paid_users": paid_users,
+            "completion_rate": completion_rate
+        },
+        "course_analytics": {
+            "total_modules": total_modules,
+            "total_completions": await db.module_progress.count_documents({"completed": True}),
+            "most_popular_module": most_popular_module,
+            "conversion_rate": (paid_users / total_users * 100) if total_users > 0 else 0
+        },
+        "revenue_analytics": {
+            "total_revenue": paid_users * 297,  # 297€ per course
+            "monthly_revenue": paid_users * 297,  # Simplified for demo
+            "average_order_value": 297
+        }
+    }
+
+@api_router.get("/admin/users")
+async def get_all_users(
+    admin_user: User = Depends(get_admin_user),
+    page: int = 1,
+    limit: int = 20,
+    search: Optional[str] = None
+):
+    skip = (page - 1) * limit
+    query = {}
+    
+    if search:
+        query = {
+            "$or": [
+                {"full_name": {"$regex": search, "$options": "i"}},
+                {"email": {"$regex": search, "$options": "i"}},
+                {"username": {"$regex": search, "$options": "i"}}
+            ]
+        }
+    
+    users = await db.users.find(query, {"_id": 0, "password_hash": 0}).skip(skip).limit(limit).sort("created_at", -1).to_list(limit)
+    total = await db.users.count_documents(query)
+    
+    # Add progress info for each user
+    for user in users:
+        if isinstance(user.get('created_at'), str):
+            user['created_at'] = datetime.fromisoformat(user['created_at'])
+        
+        # Get user progress
+        user_progress = await db.module_progress.find({"user_id": user["id"]}).to_list(100)
+        completed_modules = sum(1 for p in user_progress if p.get("completed", False))
+        total_modules = await db.modules.count_documents({})
+        
+        user["progress"] = {
+            "completed_modules": completed_modules,
+            "total_modules": total_modules,
+            "completion_percentage": (completed_modules / total_modules * 100) if total_modules > 0 else 0
+        }
+    
+    return {
+        "users": users,
+        "pagination": {
+            "current_page": page,
+            "total_pages": (total + limit - 1) // limit,
+            "total_users": total,
+            "users_per_page": limit
+        }
+    }
+
+@api_router.get("/admin/transactions")
+async def get_transactions(admin_user: User = Depends(get_admin_user)):
+    transactions = await db.payment_transactions.find({}, {"_id": 0}).sort("created_at", -1).to_list(100)
+    
+    for transaction in transactions:
+        if isinstance(transaction.get('created_at'), str):
+            transaction['created_at'] = datetime.fromisoformat(transaction['created_at'])
+        if isinstance(transaction.get('updated_at'), str):
+            transaction['updated_at'] = datetime.fromisoformat(transaction['updated_at'])
+        
+        # Get user info
+        if transaction.get('user_id'):
+            user = await db.users.find_one({"id": transaction['user_id']}, {"_id": 0, "full_name": 1, "email": 1})
+            transaction['user'] = user
+    
+    return transactions
+
+@api_router.get("/admin/course-progress")
+async def get_course_progress(admin_user: User = Depends(get_admin_user)):
+    # Get module completion stats
+    pipeline = [
+        {
+            "$group": {
+                "_id": "$module_id",
+                "total_attempts": {"$sum": 1},
+                "completed": {"$sum": {"$cond": ["$completed", 1, 0]}},
+                "avg_reading_time": {"$avg": "$reading_time_minutes"}
+            }
+        }
+    ]
+    
+    progress_stats = await db.module_progress.aggregate(pipeline).to_list(100)
+    
+    # Add module info
+    for stat in progress_stats:
+        module = await db.modules.find_one({"id": stat["_id"]}, {"_id": 0, "title": 1, "duration_minutes": 1})
+        if module:
+            stat["module_title"] = module["title"]
+            stat["completion_rate"] = (stat["completed"] / stat["total_attempts"] * 100) if stat["total_attempts"] > 0 else 0
+    
+    return progress_stats
+
+@api_router.put("/admin/users/{user_id}")
+async def update_user(
+    user_id: str,
+    updates: Dict[str, Any],
+    admin_user: User = Depends(get_admin_user)
+):
+    # Remove sensitive fields
+    allowed_fields = ["is_active", "has_purchased", "is_admin", "full_name", "email"]
+    filtered_updates = {k: v for k, v in updates.items() if k in allowed_fields}
+    
+    if not filtered_updates:
+        raise HTTPException(status_code=400, detail="No valid fields to update")
+    
+    result = await db.users.update_one(
+        {"id": user_id},
+        {"$set": filtered_updates}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    return {"message": "User updated successfully"}
+
 # Module Routes
 @api_router.get("/modules", response_model=List[Module])
 async def get_modules(current_user: Optional[User] = Depends(get_current_user_optional)):
-    # If user is not authenticated or hasn't purchased, only show free modules
     query = {}
     if not current_user or not current_user.has_purchased:
         query = {"is_free": True}
@@ -347,10 +535,15 @@ async def get_module(module_id: str, current_user: Optional[User] = Depends(get_
     if not module:
         raise HTTPException(status_code=404, detail="Module not found")
     
-    # Check access permissions
     if not module.get("is_free", False):
         if not current_user or not current_user.has_purchased:
             raise HTTPException(status_code=403, detail="Purchase required to access this module")
+    
+    # Increment view count
+    await db.modules.update_one(
+        {"id": module_id},
+        {"$inc": {"views_count": 1}}
+    )
     
     for field in ['created_at', 'updated_at']:
         if isinstance(module.get(field), str):
@@ -365,11 +558,9 @@ async def mark_module_complete(module_id: str, current_user: User = Depends(get_
     if not module:
         raise HTTPException(status_code=404, detail="Module not found")
     
-    # Check access permissions
     if not module.get("is_free", False) and not current_user.has_purchased:
         raise HTTPException(status_code=403, detail="Purchase required to access this module")
     
-    # Create or update progress
     existing_progress = await db.module_progress.find_one({
         "user_id": current_user.id,
         "module_id": module_id
@@ -390,6 +581,7 @@ async def mark_module_complete(module_id: str, current_user: User = Depends(get_
         doc = progress.model_dump()
         if doc.get('completed_at'):
             doc['completed_at'] = doc['completed_at'].isoformat()
+        doc['created_at'] = doc['created_at'].isoformat()
         
         await db.module_progress.insert_one(doc)
     
@@ -402,16 +594,13 @@ async def mark_module_complete(module_id: str, current_user: User = Depends(get_
         })
         
         if completed_modules >= total_modules and not current_user.certificate_url:
-            # Generate certificate
             certificate_b64 = generate_certificate(
                 current_user.full_name, 
                 datetime.now().strftime('%d/%m/%Y')
             )
             
-            # Save certificate URL (in real app, you'd upload to cloud storage)
             certificate_url = f"data:application/pdf;base64,{certificate_b64}"
             
-            # Update user with certificate
             await db.users.update_one(
                 {"id": current_user.id},
                 {"$set": {"certificate_url": certificate_url}}
@@ -426,36 +615,32 @@ async def get_user_progress(current_user: User = Depends(get_current_user)):
     for p in progress:
         if isinstance(p.get('completed_at'), str):
             p['completed_at'] = datetime.fromisoformat(p['completed_at'])
+        if isinstance(p.get('created_at'), str):
+            p['created_at'] = datetime.fromisoformat(p['created_at'])
     
     return progress
 
 # Payment Routes
 @api_router.post("/payments/checkout-session")
 async def create_checkout_session(request: Request, current_user: User = Depends(get_current_user)):
-    # Fixed formation package
     FORMATION_PACKAGE = {
         "name": "Formation Inspecteur Automobile Complète",
         "amount": 297.0,
         "currency": "EUR"
     }
     
-    # Check if user already purchased
     if current_user.has_purchased:
         raise HTTPException(status_code=400, detail="Formation already purchased")
     
     try:
-        # Get host URL from request
         host_url = str(request.base_url).rstrip('/')
         webhook_url = f"{host_url}/api/webhook/stripe"
         
-        # Initialize Stripe checkout
         stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
         
-        # Build URLs
         success_url = f"{host_url}/payment-success?session_id={{CHECKOUT_SESSION_ID}}"
         cancel_url = f"{host_url}/payment-cancel"
         
-        # Create checkout request
         checkout_request = CheckoutSessionRequest(
             amount=FORMATION_PACKAGE["amount"],
             currency=FORMATION_PACKAGE["currency"],
@@ -468,10 +653,8 @@ async def create_checkout_session(request: Request, current_user: User = Depends
             }
         )
         
-        # Create session
         session: CheckoutSessionResponse = await stripe_checkout.create_checkout_session(checkout_request)
         
-        # Create payment transaction record
         payment_transaction = PaymentTransaction(
             user_id=current_user.id,
             session_id=session.session_id,
@@ -498,16 +681,13 @@ async def create_checkout_session(request: Request, current_user: User = Depends
 @api_router.get("/payments/status/{session_id}")
 async def get_payment_status(session_id: str, current_user: User = Depends(get_current_user)):
     try:
-        # Get payment transaction
         payment_transaction = await db.payment_transactions.find_one({"session_id": session_id})
         if not payment_transaction or payment_transaction["user_id"] != current_user.id:
             raise HTTPException(status_code=404, detail="Payment transaction not found")
         
-        # Check with Stripe
         stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url="")
         checkout_status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
         
-        # Update payment status
         if checkout_status.payment_status == "paid" and payment_transaction["payment_status"] != "completed":
             await db.payment_transactions.update_one(
                 {"session_id": session_id},
@@ -517,7 +697,6 @@ async def get_payment_status(session_id: str, current_user: User = Depends(get_c
                 }}
             )
             
-            # Update user purchase status
             await db.users.update_one(
                 {"id": current_user.id},
                 {"$set": {"has_purchased": True}}
@@ -554,7 +733,6 @@ async def stripe_webhook(request: Request):
         if webhook_response.event_type == "checkout.session.completed":
             session_id = webhook_response.session_id
             
-            # Update payment transaction
             await db.payment_transactions.update_one(
                 {"session_id": session_id},
                 {"$set": {
@@ -563,7 +741,6 @@ async def stripe_webhook(request: Request):
                 }}
             )
             
-            # Update user purchase status
             if webhook_response.metadata and webhook_response.metadata.get("user_id"):
                 user_id = webhook_response.metadata["user_id"]
                 await db.users.update_one(
@@ -588,7 +765,6 @@ async def get_forum_posts(category: Optional[str] = None, current_user: User = D
     
     posts = await db.forum_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(50)
     
-    # Get user info for each post
     for post in posts:
         user = await db.users.find_one({"id": post["user_id"]}, {"_id": 0, "full_name": 1, "avatar_url": 1})
         post["user"] = user or {"full_name": "Unknown", "avatar_url": None}
@@ -626,7 +802,6 @@ async def get_forum_replies(post_id: str, current_user: User = Depends(get_curre
     
     replies = await db.forum_replies.find({"post_id": post_id}, {"_id": 0}).sort("created_at", 1).to_list(100)
     
-    # Get user info for each reply
     for reply in replies:
         user = await db.users.find_one({"id": reply["user_id"]}, {"_id": 0, "full_name": 1, "avatar_url": 1})
         reply["user"] = user or {"full_name": "Unknown", "avatar_url": None}
@@ -641,7 +816,6 @@ async def create_forum_reply(post_id: str, content: str, current_user: User = De
     if not current_user.has_purchased:
         raise HTTPException(status_code=403, detail="Forum access requires course purchase")
     
-    # Check if post exists
     post = await db.forum_posts.find_one({"id": post_id})
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
@@ -657,7 +831,6 @@ async def create_forum_reply(post_id: str, content: str, current_user: User = De
     
     await db.forum_replies.insert_one(doc)
     
-    # Update post reply count
     await db.forum_posts.update_one(
         {"id": post_id},
         {"$inc": {"replies_count": 1}}
