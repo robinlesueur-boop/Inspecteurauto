@@ -22,15 +22,25 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCancel from "./pages/PaymentCancel";
 import Forum from "./pages/Forum";
 
+// Admin Pages
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminUsers from "./pages/admin/AdminUsers";
+import AdminTransactions from "./pages/admin/AdminTransactions";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 // Protected Route Component
-function ProtectedRoute({ children, requiresPurchase = false }) {
+function ProtectedRoute({ children, requiresPurchase = false, requiresAdmin = false }) {
   const { isAuthenticated, user } = useAuth();
   
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
+  }
+  
+  if (requiresAdmin && !user?.is_admin) {
+    return <Navigate to="/dashboard" />;
   }
   
   if (requiresPurchase && !user?.has_purchased) {
@@ -96,6 +106,43 @@ function AppContent() {
               element={
                 <ProtectedRoute requiresPurchase={true}>
                   <Forum />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Admin Routes */}
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/admin/users" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminUsers />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/admin/transactions" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminTransactions />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/admin/analytics" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminAnalytics />
                 </ProtectedRoute>
               } 
             />

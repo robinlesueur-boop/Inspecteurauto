@@ -19,7 +19,9 @@ import {
   BookOpen, 
   MessageCircle,
   Settings,
-  Award
+  Award,
+  Shield,
+  BarChart3
 } from "lucide-react";
 
 function Navbar() {
@@ -34,6 +36,7 @@ function Navbar() {
   };
 
   const isActive = (path) => location.pathname === path;
+  const isAdmin = user?.is_admin;
 
   return (
     <nav className="bg-white shadow-lg border-b sticky top-0 z-50">
@@ -82,6 +85,22 @@ function Navbar() {
                     </div>
                   </Link>
                 )}
+
+                {/* Admin Link */}
+                {isAdmin && (
+                  <Link 
+                    to="/admin" 
+                    className={`text-gray-700 hover:text-blue-600 transition-colors font-medium ${
+                      location.pathname.startsWith('/admin') ? 'text-blue-600 border-b-2 border-blue-600 pb-1' : ''
+                    }`}
+                    data-testid="navbar-admin-link"
+                  >
+                    <div className="flex items-center space-x-1">
+                      <Shield className="h-4 w-4" />
+                      <span>Admin</span>
+                    </div>
+                  </Link>
+                )}
                 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -99,6 +118,12 @@ function Navbar() {
                       <div className="flex flex-col space-y-1 leading-none">
                         <p className="font-medium text-sm">{user.full_name}</p>
                         <p className="text-xs text-muted-foreground">{user.email}</p>
+                        {isAdmin && (
+                          <div className="flex items-center text-xs text-blue-600">
+                            <Shield className="h-3 w-3 mr-1" />
+                            Administrateur
+                          </div>
+                        )}
                       </div>
                     </div>
                     
@@ -129,6 +154,25 @@ function Navbar() {
                             <span>Mon Certificat</span>
                           </DropdownMenuItem>
                         )}
+                      </>
+                    )}
+
+                    {/* Admin Menu Items */}
+                    {isAdmin && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin" className="flex items-center">
+                            <BarChart3 className="mr-2 h-4 w-4" />
+                            <span>Dashboard Admin</span>
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin/users" className="flex items-center">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Utilisateurs</span>
+                          </Link>
+                        </DropdownMenuItem>
                       </>
                     )}
                     
@@ -192,10 +236,22 @@ function Navbar() {
                       <span>Forum</span>
                     </Link>
                   )}
+
+                  {isAdmin && (
+                    <Link 
+                      to="/admin" 
+                      className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 font-medium"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Shield className="h-4 w-4" />
+                      <span>Admin</span>
+                    </Link>
+                  )}
                   
                   <div className="flex items-center px-4 py-2 text-sm text-gray-600">
                     <User className="mr-2 h-4 w-4" />
                     {user.full_name}
+                    {isAdmin && <Shield className="ml-2 h-3 w-3 text-blue-600" />}
                   </div>
                   
                   <button
