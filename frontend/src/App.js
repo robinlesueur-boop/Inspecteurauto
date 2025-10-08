@@ -1,107 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import axios from 'axios';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
+import { Toaster } from 'react-hot-toast';
+import axios from "axios";
+import "./App.css";
+
+// Context and Auth
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 
 // Components
-import LandingPage from './components/LandingPage';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
-import Dashboard from './components/Dashboard';
-import ModuleViewer from './components/ModuleViewer';
-import QuizPage from './components/QuizPage';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// Pages
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import ModuleViewer from "./pages/ModuleViewer";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentCancel from "./pages/PaymentCancel";
+import Forum from "./pages/Forum";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Context for authentication
-const AuthContext = React.createContext();
+// Protected Route Component
+function ProtectedRoute({ children, requiresPurchase = false }) {
+  const { isAuthenticated, user } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+  
+  if (requiresPurchase && !user?.has_purchased) {
+    return <Navigate to="/dashboard" />;
+  }
+  
+  return children;
+}
 
-// Auth Provider Component
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
-  const [loading, setLoading] = useState(true);
+function AppContent() {
+  const { setUser } = useAuth();
 
   useEffect(() => {
+    // Check if user is already logged in
+    const token = localStorage.getItem('token');
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      fetchUserProfile();
-    } else {
-      setLoading(false);
+      // Verify token and get user info
+      axios.get(`${API}/auth/me`)
+        .then(response => {
+          setUser(response.data);
+        })
+        .catch(error => {
+          console.error('Token verification failed:', error);
+          localStorage.removeItem('token');
+          delete axios.defaults.headers.common['Authorization'];
+        });
     }
-  }, [token]);
+  }, [setUser]);
 
-  const fetchUserProfile = async () => {
-    try {
-      const response = await axios.get(`${API}/user/profile`);
-      setUser(response.data);
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
-      logout();
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const login = (tokenData) => {
-    setToken(tokenData.access_token);
-    setUser(tokenData.user);
-    localStorage.setItem('token', tokenData.access_token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${tokenData.access_token}`;
-  };
-
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
-  };
-
-  const value = {
-    user,
-    token,
-    login,
-    logout,
-    isAuthenticated: !!token && !!user
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-// Hook to use auth context
-const useAuth = () => {
-  const context = React.useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
-// Protected Route Component
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? children : <Navigate to="/login" />;
-};
-
-// Main App Component
-function App() {
   return (
-    <AuthProvider>
-      <div className="App">
-        <BrowserRouter>
+    <div className="App min-h-screen bg-gray-50 flex flex-col">
+      <BrowserRouter>
+        <Navbar />
+        <main className="flex-1">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/payment-cancel" element={<PaymentCancel />} />
+            
             <Route 
               path="/dashboard" 
               element={
@@ -110,6 +81,7 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            
             <Route 
               path="/module/:moduleId" 
               element={
@@ -118,20 +90,41 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            
             <Route 
-              path="/quiz/:moduleId" 
+              path="/forum" 
               element={
-                <ProtectedRoute>
-                  <QuizPage />
+                <ProtectedRoute requiresPurchase={true}>
+                  <Forum />
                 </ProtectedRoute>
               } 
             />
           </Routes>
-        </BrowserRouter>
-      </div>
-    </AuthProvider>
+        </main>
+        <Footer />
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }}
+        />
+      </BrowserRouter>
+    </div>
   );
 }
 
-export { useAuth };
+function App() {
+  return (
+    <HelmetProvider>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </HelmetProvider>
+  );
+}
+
 export default App;
