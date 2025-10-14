@@ -620,6 +620,68 @@ async def get_user_progress(current_user: User = Depends(get_current_user)):
     
     return progress
 
+@api_router.get("/progress/check-access/{module_id}")
+async def check_module_access(module_id: str, current_user: User = Depends(get_current_user)):
+    """Vérifie si l'utilisateur peut accéder à un module (progression séquentielle)"""
+    
+    # Récupérer le module demandé
+    target_module = await db.modules.find_one({"id": module_id})
+    if not target_module:
+        raise HTTPException(status_code=404, detail="Module not found")
+    
+    # Module gratuit toujours accessible
+    if target_module.get("is_free", False):
+        return {"can_access": True, "reason": "free_module"}
+    
+    # Vérifier si l'utilisateur a acheté la formation
+    if not current_user.has_purchased:
+        return {"can_access": False, "reason": "purchase_required"}
+    
+    target_order = target_module.get("order_index", 999)
+    
+    # Module 1 (gratuit) toujours accessible
+    if target_order == 1:
+        return {"can_access": True, "reason": "first_module"}
+    
+    # Vérifier si le module précédent est complété avec quiz validé
+    previous_order = target_order - 1
+    previous_module = await db.modules.find_one({"order_index": previous_order})
+    
+    if not previous_module:
+        return {"can_access": True, "reason": "no_previous_module"}
+    
+    # Vérifier la complétion du module précédent
+    previous_progress = await db.module_progress.find_one({
+        "user_id": current_user.id,
+        "module_id": previous_module["id"],
+        "completed": True
+    })
+    
+    if not previous_progress:
+        return {
+            "can_access": False, 
+            "reason": "previous_module_not_completed",
+            "required_module": previous_module["title"]
+        }
+    
+    # Vérifier si le quiz du module précédent a été réussi
+    previous_quiz = await db.quizzes.find_one({"module_id": previous_module["id"]})
+    if previous_quiz:
+        quiz_passed = await db.quiz_attempts.find_one({
+            "user_id": current_user.id,
+            "quiz_id": previous_quiz["id"],
+            "passed": True
+        })
+        
+        if not quiz_passed:
+            return {
+                "can_access": False,
+                "reason": "previous_quiz_not_passed",
+                "required_module": previous_module["title"]
+            }
+    
+    return {"can_access": True, "reason": "prerequisites_met"}
+
 # Payment Routes
 @api_router.post("/payments/checkout-session")
 async def create_checkout_session(request: Request, current_user: User = Depends(get_current_user)):
