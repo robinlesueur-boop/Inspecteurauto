@@ -146,6 +146,38 @@ class PaymentTransaction(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+class PreRegistrationQuestionnaire(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    email: EmailStr
+    full_name: str
+    answers: Dict[str, Any]
+    has_driving_license: bool
+    profile_validated: bool = False
+    validation_score: float = 0.0
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class MechanicalAssessment(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    answers: Dict[str, int]
+    score: float
+    passed: bool  # 70% requis
+    needs_remedial_module: bool
+    completed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class SatisfactionSurvey(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    ratings: Dict[str, int]  # QCM ratings
+    open_feedback: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 class ForumPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
