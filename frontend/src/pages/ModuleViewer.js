@@ -272,15 +272,32 @@ function ModuleViewer() {
               
               <CardContent className="p-0">
                 <div 
-                  className="prose prose-lg max-w-none p-8 leading-relaxed"
+                  className="prose prose-lg max-w-none p-8 leading-relaxed text-gray-900"
                   dangerouslySetInnerHTML={{ __html: module.content }}
                   style={{
                     lineHeight: '1.8',
                     fontSize: '1.1rem',
                     maxWidth: '100%',
-                    width: '100%'
+                    width: '100%',
+                    color: '#1a1a1a'
                   }}
                 />
+                <style jsx="true">{`
+                  .prose h1 { color: #1a1a1a; font-weight: 700; font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1rem; }
+                  .prose h2 { color: #1f2937; font-weight: 700; font-size: 1.875rem; margin-top: 2rem; margin-bottom: 1rem; }
+                  .prose h3 { color: #374151; font-weight: 600; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+                  .prose h4 { color: #4b5563; font-weight: 600; font-size: 1.25rem; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+                  .prose p { color: #1f2937; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1rem; }
+                  .prose ul, .prose ol { color: #1f2937; font-size: 1.125rem; line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1rem; }
+                  .prose li { margin-bottom: 0.5rem; }
+                  .prose strong { color: #111827; font-weight: 700; }
+                  .prose a { color: #2563eb; text-decoration: underline; }
+                  .prose code { background-color: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 0.25rem; color: #1f2937; }
+                  .prose table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+                  .prose th, .prose td { border: 1px solid #e5e7eb; padding: 0.75rem; text-align: left; }
+                  .prose th { background-color: #f9fafb; font-weight: 600; }
+                  .prose blockquote { border-left: 4px solid #3b82f6; padding-left: 1rem; color: #4b5563; font-style: italic; margin: 1rem 0; }
+                `}</style>
               </CardContent>
             </Card>
 
