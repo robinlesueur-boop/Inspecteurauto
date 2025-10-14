@@ -753,6 +753,106 @@ async def stripe_webhook(request: Request):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Webhook error: {str(e)}")
 
+# Quiz Routes
+@api_router.get("/quizzes/module/{module_id}")
+async def get_module_quiz(module_id: str, current_user: Optional[User] = Depends(get_current_user_optional)):
+    """Get quiz for a specific module"""
+    module = await db.modules.find_one({"id": module_id})
+    if not module:
+        raise HTTPException(status_code=404, detail="Module not found")
+    
+    # Check if user can access the module
+    if not module.get("is_free", False):
+        if not current_user or not current_user.has_purchased:
+            raise HTTPException(status_code=403, detail="Purchase required to access this quiz")
+    
+    quiz = await db.quizzes.find_one({"module_id": module_id}, {"_id": 0})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Quiz not found for this module")
+    
+    # Convert dates
+    if isinstance(quiz.get('created_at'), str):
+        quiz['created_at'] = datetime.fromisoformat(quiz['created_at'])
+    
+    return quiz
+
+@api_router.post("/quizzes/{quiz_id}/submit")
+async def submit_quiz(
+    quiz_id: str,
+    answers: Dict[str, int],
+    current_user: User = Depends(get_current_user)
+):
+    """Submit quiz answers and get results"""
+    quiz = await db.quizzes.find_one({"id": quiz_id})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Quiz not found")
+    
+    # Calculate score
+    correct_answers = 0
+    total_questions = len(quiz["questions"])
+    detailed_results = []
+    
+    for question in quiz["questions"]:
+        question_id = question["id"]
+        user_answer = answers.get(question_id, -1)
+        correct_answer = question["correct_answer"]
+        is_correct = user_answer == correct_answer
+        
+        if is_correct:
+            correct_answers += 1
+        
+        detailed_results.append({
+            "question_id": question_id,
+            "question": question["question"],
+            "user_answer": user_answer,
+            "correct_answer": correct_answer,
+            "is_correct": is_correct,
+            "explanation": question.get("explanation", "")
+        })
+    
+    score = (correct_answers / total_questions) * 100
+    passed = score >= quiz["passing_score"]
+    
+    # Save attempt
+    attempt = QuizAttempt(
+        user_id=current_user.id,
+        quiz_id=quiz_id,
+        answers=answers,
+        score=score,
+        passed=passed
+    )
+    
+    doc = attempt.model_dump()
+    doc['completed_at'] = doc['completed_at'].isoformat()
+    
+    await db.quiz_attempts.insert_one(doc)
+    
+    return {
+        "score": score,
+        "passed": passed,
+        "correct_answers": correct_answers,
+        "total_questions": total_questions,
+        "passing_score": quiz["passing_score"],
+        "detailed_results": detailed_results
+    }
+
+@api_router.get("/quizzes/{quiz_id}/attempts")
+async def get_quiz_attempts(
+    quiz_id: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Get user's attempts for a specific quiz"""
+    attempts = await db.quiz_attempts.find(
+        {"quiz_id": quiz_id, "user_id": current_user.id},
+        {"_id": 0}
+    ).sort("completed_at", -1).to_list(10)
+    
+    for attempt in attempts:
+        if isinstance(attempt.get('completed_at'), str):
+            attempt['completed_at'] = datetime.fromisoformat(attempt['completed_at'])
+    
+    return attempts
+
 # Forum Routes
 @api_router.get("/forum/posts", response_model=List[Dict[str, Any]])
 async def get_forum_posts(category: Optional[str] = None, current_user: User = Depends(get_current_user)):
