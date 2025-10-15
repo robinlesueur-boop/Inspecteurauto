@@ -234,6 +234,7 @@ function AppContent() {
           </Routes>
         </main>
         <Footer />
+        <AIChatWidget user={user} />
         <Toaster 
           position="top-right"
           toastOptions={{
