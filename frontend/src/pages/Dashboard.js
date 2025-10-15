@@ -390,7 +390,9 @@ function Dashboard() {
             <div className="space-y-4" data-testid="modules-list">
               {modules.map((module, index) => {
                 const isCompleted = isModuleCompleted(module.id);
-                const isAccessible = module.is_free || user?.has_purchased;
+                const accessInfo = moduleAccess[module.id] || { can_access: false };
+                const isAccessible = accessInfo.can_access;
+                const blockReason = accessInfo.reason;
                 
                 return (
                   <motion.div
