@@ -18,7 +18,9 @@ import {
   ArrowUpRight,
   ArrowDownRight,
   Eye,
-  Settings
+  Settings,
+  Edit,
+  Mail
 } from 'lucide-react';
 import axios from 'axios';
 
