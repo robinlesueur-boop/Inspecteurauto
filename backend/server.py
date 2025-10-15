@@ -955,10 +955,6 @@ async def get_module_quiz(module_id: str, current_user: Optional[User] = Depends
     
     return quiz
 
-class QuizSubmission(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-    answers: Dict[str, int]
-
 @api_router.post("/quizzes/{quiz_id}/submit")
 async def submit_quiz(
     quiz_id: str,
