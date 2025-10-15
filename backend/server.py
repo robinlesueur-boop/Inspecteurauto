@@ -1282,6 +1282,135 @@ async def get_mechanical_knowledge_status(current_user: User = Depends(get_curre
         "score": assessment.get("score", 0)
     }
 
+# Satisfaction Survey Routes
+@api_router.post("/satisfaction-survey/submit")
+async def submit_satisfaction_survey(
+    ratings: Dict[str, int],
+    open_feedback: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Submit satisfaction survey after completing training"""
+    
+    # Check if user has already submitted
+    existing = await db.satisfaction_surveys.find_one({"user_id": current_user.id})
+    if existing:
+        raise HTTPException(status_code=400, detail="Survey already submitted")
+    
+    survey = SatisfactionSurvey(
+        user_id=current_user.id,
+        ratings=ratings,
+        open_feedback=open_feedback
+    )
+    
+    doc = survey.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.satisfaction_surveys.insert_one(doc)
+    
+    return {
+        "message": "Merci pour votre retour !",
+        "survey_id": survey.id
+    }
+
+@api_router.get("/satisfaction-survey/check")
+async def check_satisfaction_survey(current_user: User = Depends(get_current_user)):
+    """Check if user has submitted satisfaction survey"""
+    survey = await db.satisfaction_surveys.find_one({"user_id": current_user.id})
+    
+    return {
+        "submitted": survey is not None
+    }
+
+# Admin Messaging Routes
+@api_router.post("/admin/messages/send")
+async def send_admin_message(
+    recipient_id: str,
+    subject: str,
+    message: str,
+    current_user: User = Depends(require_admin)
+):
+    """Send message from admin to student(s)"""
+    
+    # If recipient_id is "all", it's a broadcast
+    if recipient_id != "all":
+        # Check if recipient exists
+        recipient = await db.users.find_one({"id": recipient_id})
+        if not recipient:
+            raise HTTPException(status_code=404, detail="User not found")
+    
+    admin_message = AdminMessage(
+        admin_id=current_user.id,
+        recipient_id=recipient_id,
+        subject=subject,
+        message=message
+    )
+    
+    doc = admin_message.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.admin_messages.insert_one(doc)
+    
+    return {
+        "message": "Message sent successfully",
+        "message_id": admin_message.id
+    }
+
+@api_router.get("/messages")
+async def get_user_messages(current_user: User = Depends(get_current_user)):
+    """Get all messages for current user"""
+    messages = await db.admin_messages.find(
+        {
+            "$or": [
+                {"recipient_id": current_user.id},
+                {"recipient_id": "all"}
+            ]
+        },
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(100)
+    
+    for msg in messages:
+        if isinstance(msg.get('created_at'), str):
+            msg['created_at'] = datetime.fromisoformat(msg['created_at'])
+    
+    return messages
+
+@api_router.patch("/messages/{message_id}/read")
+async def mark_message_read(
+    message_id: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Mark message as read"""
+    result = await db.admin_messages.update_one(
+        {"id": message_id, "recipient_id": current_user.id},
+        {"$set": {"is_read": True}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Message not found")
+    
+    return {"message": "Message marked as read"}
+
+@api_router.get("/admin/messages")
+async def get_all_messages(current_user: User = Depends(require_admin)):
+    """Get all admin messages (admin only)"""
+    messages = await db.admin_messages.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    
+    for msg in messages:
+        if isinstance(msg.get('created_at'), str):
+            msg['created_at'] = datetime.fromisoformat(msg['created_at'])
+        
+        # Get recipient info
+        if msg['recipient_id'] != "all":
+            recipient = await db.users.find_one(
+                {"id": msg['recipient_id']},
+                {"_id": 0, "full_name": 1, "email": 1}
+            )
+            msg['recipient_info'] = recipient
+        else:
+            msg['recipient_info'] = {"full_name": "Tous les étudiants", "email": "broadcast"}
+    
+    return messages
+
 # Health check
 @api_router.get("/")
 async def root():
