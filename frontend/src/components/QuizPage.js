@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../App';
+import { useAuth } from '../contexts/AuthContext';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
+import { Progress } from './ui/progress';
+import toast from 'react-hot-toast';
+import { CheckCircle, XCircle, Clock, ArrowRight, ArrowLeft, Trophy, AlertCircle } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
