@@ -140,7 +140,7 @@ function Home() {
                   Devenez 
                   <span className="text-blue-300"> Inspecteur</span>
                   <br />
-                  Automobile Expert
+                  Automobile Certifié
                 </h1>
                 
                 <p className="text-xl text-blue-100 mb-8 max-w-2xl leading-relaxed">
