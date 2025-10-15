@@ -364,13 +364,20 @@ function Dashboard() {
                     
                     {stats.progressPercentage === 100 && (
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
-                        <div className="flex items-center text-green-800">
+                        <div className="flex items-center text-green-800 mb-3">
                           <Award className="h-5 w-5 mr-2" />
                           <span className="font-semibold">Félicitations ! Formation terminée</span>
                         </div>
-                        <p className="text-green-700 mt-2">
-                          Vous avez complété tous les modules. Votre certificat est maintenant disponible.
+                        <p className="text-green-700 mb-3">
+                          Vous avez complété tous les modules. Passez maintenant l'évaluation finale 
+                          pour obtenir votre certification officielle !
                         </p>
+                        <Link to="/final-evaluation">
+                          <Button className="bg-green-600 hover:bg-green-700 text-white">
+                            <Trophy className="h-4 w-4 mr-2" />
+                            Passer l'Évaluation Finale
+                          </Button>
+                        </Link>
                       </div>
                     )}
                   </div>
