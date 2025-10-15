@@ -52,14 +52,14 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#methodology" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/methode-autojust" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Méthode AutoJust
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#certification" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/certification" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Certification
-                </a>
+                </Link>
               </li>
               <li>
                 <Link to="/forum" className="text-gray-300 hover:text-blue-400 transition-colors">
