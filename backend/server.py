@@ -1426,6 +1426,41 @@ async def get_all_messages(current_user: User = Depends(require_admin)):
     
     return messages
 
+# Admin Module Management Routes
+@api_router.put("/admin/modules/{module_id}")
+async def update_module(
+    module_id: str,
+    title: str,
+    description: str,
+    content: str,
+    duration_minutes: int,
+    is_free: bool,
+    current_user: User = Depends(require_admin)
+):
+    """Update module content (admin only)"""
+    
+    # Check if module exists
+    module = await db.modules.find_one({"id": module_id})
+    if not module:
+        raise HTTPException(status_code=404, detail="Module not found")
+    
+    # Update module
+    result = await db.modules.update_one(
+        {"id": module_id},
+        {"$set": {
+            "title": title,
+            "description": description,
+            "content": content,
+            "duration_minutes": duration_minutes,
+            "is_free": is_free
+        }}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=400, detail="No changes made")
+    
+    return {"message": "Module updated successfully", "module_id": module_id}
+
 # Health check
 @api_router.get("/")
 async def root():
