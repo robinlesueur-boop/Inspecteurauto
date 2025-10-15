@@ -335,7 +335,7 @@ function AdminDashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <Link to="/admin/users">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <Users className="h-6 w-6 mb-2" />
@@ -343,17 +343,38 @@ function AdminDashboard() {
                     </Button>
                   </Link>
                   
+                  <Link to="/admin/modules">
+                    <Button variant="outline" className="w-full h-20 flex flex-col border-blue-300 hover:bg-blue-50">
+                      <Edit className="h-6 w-6 mb-2 text-blue-600" />
+                      <span className="text-blue-600 font-semibold">Éditer les Modules</span>
+                    </Button>
+                  </Link>
+                  
+                  <Link to="/admin/messaging">
+                    <Button variant="outline" className="w-full h-20 flex flex-col">
+                      <Mail className="h-6 w-6 mb-2" />
+                      Messagerie
+                    </Button>
+                  </Link>
+                  
                   <Link to="/admin/transactions">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <CreditCard className="h-6 w-6 mb-2" />
-                      Voir les Transactions
+                      Transactions
                     </Button>
                   </Link>
                   
                   <Link to="/admin/analytics">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <BarChart3 className="h-6 w-6 mb-2" />
-                      Analytics Détaillées
+                      Analytics
+                    </Button>
+                  </Link>
+                  
+                  <Link to="/admin/pre-registrations">
+                    <Button variant="outline" className="w-full h-20 flex flex-col">
+                      <UserCheck className="h-6 w-6 mb-2" />
+                      Pré-inscriptions
                     </Button>
                   </Link>
                 </div>
