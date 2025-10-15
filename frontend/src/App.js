@@ -97,6 +97,12 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/certification" element={<Certification />} />
+            <Route path="/methode-autojust" element={<MethodeAutoJust />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/confidentialite" element={<Confidentialite />} />
             <Route path="/pre-registration" element={<PreRegistration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterNew />} />
