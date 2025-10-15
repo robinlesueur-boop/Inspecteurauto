@@ -38,6 +38,7 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminPreRegistrations from "./pages/admin/AdminPreRegistrations";
 import AdminMessaging from "./pages/admin/AdminMessaging";
 import AdminModules from "./pages/admin/AdminModules";
+import AdminBlog from "./pages/admin/AdminBlog";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
