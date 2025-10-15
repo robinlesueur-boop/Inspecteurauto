@@ -23,6 +23,7 @@ import PaymentCancel from "./pages/PaymentCancel";
 import Forum from "./pages/Forum";
 import PreRegistration from "./pages/PreRegistration";
 import QuizPageNew from "./components/QuizPageNew";
+import MechanicalKnowledgeQuiz from "./pages/MechanicalKnowledgeQuiz";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
