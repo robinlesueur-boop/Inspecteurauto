@@ -201,6 +201,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/messaging" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminMessaging />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
