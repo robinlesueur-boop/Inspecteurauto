@@ -97,6 +97,15 @@ function Dashboard() {
     }
   };
 
+  const fetchMechanicalAssessmentStatus = async () => {
+    try {
+      const response = await axios.get(`${API}/preliminary-quiz/mechanical-knowledge/status`);
+      setMechanicalAssessmentStatus(response.data);
+    } catch (error) {
+      console.error("Error fetching mechanical assessment status:", error);
+    }
+  };
+
   const calculateStats = (moduleList, progressList) => {
     if (moduleList.length === 0) return;
 
