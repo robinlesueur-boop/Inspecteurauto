@@ -17,7 +17,8 @@ import {
   ArrowLeft,
   Award,
   Users,
-  MessageCircle
+  MessageCircle,
+  Trophy
 } from 'lucide-react';
 import axios from 'axios';
 
