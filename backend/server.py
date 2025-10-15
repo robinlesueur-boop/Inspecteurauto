@@ -133,6 +133,10 @@ class QuizAttempt(BaseModel):
     passed: bool
     completed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+class QuizSubmission(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    answers: Dict[str, int]
+
 class PaymentTransaction(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
