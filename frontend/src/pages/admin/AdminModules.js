@@ -71,16 +71,26 @@ function AdminModules() {
 
     try {
       setSaving(true);
-      await axios.put(`${API}/admin/modules/${editingModule.id}`, formData);
+      
+      // Send as URL params as backend expects
+      await axios.put(`${API}/admin/modules/${editingModule.id}`, null, {
+        params: {
+          title: formData.title,
+          description: formData.description,
+          content: formData.content,
+          duration_minutes: formData.duration_minutes,
+          is_free: formData.is_free
+        }
+      });
       
       toast.success('Module mis à jour avec succès !');
       
       // Refresh modules list
-      fetchModules();
+      await fetchModules();
       handleCancel();
     } catch (error) {
       console.error('Error updating module:', error);
-      toast.error('Erreur lors de la mise à jour du module');
+      toast.error(error.response?.data?.detail || 'Erreur lors de la mise à jour du module');
     } finally {
       setSaving(false);
     }
