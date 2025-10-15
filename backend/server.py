@@ -31,6 +31,9 @@ from emergentintegrations.payments.stripe.checkout import StripeCheckout, Checko
 # Email service
 from email_service import email_service
 
+# AI Chat service
+from ai_chat_service import ai_chat_service
+
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
