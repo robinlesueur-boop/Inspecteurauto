@@ -127,6 +127,24 @@ function AppContent() {
             />
             
             <Route 
+              path="/final-evaluation" 
+              element={
+                <ProtectedRoute requiresPurchase={true}>
+                  <FinalEvaluation />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
+              path="/satisfaction-survey" 
+              element={
+                <ProtectedRoute requiresPurchase={true}>
+                  <SatisfactionSurvey />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/forum" 
               element={
                 <ProtectedRoute requiresPurchase={true}>
