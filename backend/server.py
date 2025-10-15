@@ -407,17 +407,18 @@ async def get_current_user_info(current_user: User = Depends(get_current_user)):
     return current_user
 
 # Pre-Registration Questionnaire Routes (Qualiopi Compliance)
-@api_router.post("/pre-registration/submit")
-async def submit_pre_registration(
-    email: EmailStr,
-    full_name: str,
-    answers: Dict[str, Any],
+class PreRegistrationSubmit(BaseModel):
+    email: EmailStr
+    full_name: str
+    answers: Dict[str, Any]
     has_driving_license: bool
-):
+
+@api_router.post("/pre-registration/submit")
+async def submit_pre_registration(submission: PreRegistrationSubmit):
     """Soumettre le questionnaire pré-inscription (10 questions + permis B)"""
     
     # Vérifier le permis de conduire
-    if not has_driving_license:
+    if not submission.has_driving_license:
         raise HTTPException(
             status_code=400, 
             detail="Un permis B valide est obligatoire pour accéder à cette formation"
@@ -430,10 +431,10 @@ async def submit_pre_registration(
     
     # Enregistrer le questionnaire
     questionnaire = PreRegistrationQuestionnaire(
-        email=email,
-        full_name=full_name,
-        answers=answers,
-        has_driving_license=has_driving_license,
+        email=submission.email,
+        full_name=submission.full_name,
+        answers=submission.answers,
+        has_driving_license=submission.has_driving_license,
         profile_validated=profile_validated,
         validation_score=validation_score
     )
