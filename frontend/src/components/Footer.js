@@ -79,29 +79,29 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-white">Support</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#faq" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/faq" className="text-gray-300 hover:text-blue-400 transition-colors">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#help" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/faq" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Centre d'aide
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/contact" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Nous contacter
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#legal" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/mentions-legales" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Mentions légales
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#privacy" className="text-gray-300 hover:text-blue-400 transition-colors">
+                <Link to="/confidentialite" className="text-gray-300 hover:text-blue-400 transition-colors">
                   Confidentialité
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
