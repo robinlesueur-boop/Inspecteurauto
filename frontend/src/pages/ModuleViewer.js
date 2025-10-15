@@ -301,6 +301,25 @@ function ModuleViewer() {
               </CardContent>
             </Card>
 
+            {/* Quiz Section - Bien visible */}
+            <Card className="shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-300">
+              <CardContent className="p-8 text-center">
+                <Award className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Fin du Module {module.order_index}</h3>
+                <p className="text-gray-700 mb-6">
+                  Pour débloquer le module suivant, vous devez réussir le quiz de validation (80% minimum requis)
+                </p>
+                <Button
+                  onClick={() => navigate(`/quiz/${module.id}`)}
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-xl"
+                >
+                  <Trophy className="mr-3 h-6 w-6" />
+                  Passer le Quiz Maintenant
+                </Button>
+              </CardContent>
+            </Card>
+
             {/* Navigation */}
             <Card className="shadow-lg">
               <CardContent className="p-6">
