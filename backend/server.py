@@ -437,6 +437,20 @@ async def check_pre_registration(email: str):
     }
 
 # Admin Routes
+@api_router.get("/admin/pre-registrations")
+async def get_pre_registrations(current_user: User = Depends(require_admin)):
+    """Get all pre-registration questionnaires (Qualiopi compliance)"""
+    questionnaires = await db.pre_registration_questionnaires.find(
+        {},
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(1000)
+    
+    for q in questionnaires:
+        if isinstance(q.get('created_at'), str):
+            q['created_at'] = datetime.fromisoformat(q['created_at'])
+    
+    return questionnaires
+
 @api_router.get("/admin/analytics")
 async def get_analytics(current_user: User = Depends(require_admin)):
     """Get platform analytics"""
