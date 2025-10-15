@@ -29,6 +29,12 @@ import FinalEvaluation from "./pages/FinalEvaluation";
 import SatisfactionSurvey from "./pages/SatisfactionSurvey";
 import Blog from "./pages/Blog";
 import Messages from "./pages/Messages";
+import Certification from "./pages/Certification";
+import MethodeAutoJust from "./pages/MethodeAutoJust";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import MentionsLegales from "./pages/MentionsLegales";
+import Confidentialite from "./pages/Confidentialite";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
