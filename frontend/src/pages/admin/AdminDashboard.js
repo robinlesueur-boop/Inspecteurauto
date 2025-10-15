@@ -377,6 +377,13 @@ function AdminDashboard() {
                       Pré-inscriptions
                     </Button>
                   </Link>
+                  
+                  <Link to="/admin/blog">
+                    <Button variant="outline" className="w-full h-20 flex flex-col">
+                      <BookOpen className="h-6 w-6 mb-2" />
+                      Gérer le Blog
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
