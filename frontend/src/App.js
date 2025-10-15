@@ -116,6 +116,15 @@ function AppContent() {
             />
             
             <Route 
+              path="/mechanical-knowledge-quiz" 
+              element={
+                <ProtectedRoute>
+                  <MechanicalKnowledgeQuiz />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/forum" 
               element={
                 <ProtectedRoute requiresPurchase={true}>
