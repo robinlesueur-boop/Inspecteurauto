@@ -90,6 +90,9 @@ export default function QuizPageNew() {
       return;
     }
 
+    console.log('Submitting quiz with answers:', answers);
+    console.log('Quiz ID:', quiz.id);
+
     try {
       setSubmitted(true);
       const response = await axios.post(
@@ -98,6 +101,7 @@ export default function QuizPageNew() {
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );
       
+      console.log('Quiz response:', response.data);
       setResults(response.data);
       
       if (response.data.passed) {
@@ -112,7 +116,8 @@ export default function QuizPageNew() {
       
     } catch (error) {
       console.error('Error submitting quiz:', error);
-      toast.error('Erreur lors de la soumission');
+      console.error('Error response:', error.response?.data);
+      toast.error(error.response?.data?.detail || 'Erreur lors de la soumission');
       setSubmitted(false);
     }
   };
