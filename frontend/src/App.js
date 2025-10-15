@@ -232,6 +232,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/blog" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminBlog />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
