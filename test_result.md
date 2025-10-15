@@ -101,3 +101,235 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: |
+  Développer une plateforme de formation "Inspecteur Auto" complète avec conformité Qualiopi. 
+  La plateforme doit inclure:
+  - Système d'authentification JWT
+  - 8 modules de formation (1 gratuit, 7 premium)
+  - Quizzes après chaque module
+  - 2 quizzes préliminaires (adéquation métier + connaissances mécaniques)
+  - Progression séquentielle (module précédent doit être complété)
+  - Module de "Remise à Niveau" conditionnel (si score mécanique < 70%)
+  - Intégration Stripe pour paiements (297€)
+  - Forum réservé aux acheteurs
+  - Panel administrateur complet
+  - Génération certificats PDF
+  - Notifications email post-paiement
+  - Option paiement 4x sans frais
+  - Enquête de satisfaction
+  - Section blog SEO
+
+backend:
+  - task: "API endpoints pour quiz préliminaires (career fit & mechanical knowledge)"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Ajout de 4 endpoints API: GET/POST career-fit quiz, GET/POST mechanical-knowledge quiz avec calcul du score et enregistrement dans mechanical_assessments"
+  
+  - task: "Backend API pour progression séquentielle des modules"
+    implemented: true
+    working: "NA"
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Endpoint existant /progress/check-access/{module_id} doit être vérifié"
+  
+  - task: "Paiement Stripe avec intégration Emergent"
+    implemented: true
+    working: "NA"
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Intégration Stripe existante avec emergentintegrations, besoin de tester"
+  
+  - task: "Option paiement 4x sans frais Stripe"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Non implémenté - nécessite recherche API Stripe pour paiements échelonnés"
+  
+  - task: "Notifications email post-paiement"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Non implémenté - nécessite intégration service email (SendGrid ou autre)"
+  
+  - task: "Enquête de satisfaction"
+    implemented: false
+    working: false
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Modèle SatisfactionSurvey existe mais pas d'endpoints API"
+  
+  - task: "Enrichissement contenu modules (20,000+ mots)"
+    implemented: false
+    working: false
+    file: "backend/seed_complete_content.py"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Contenu actuel 3,500-8,000 mots par module, target 15,000-25,000"
+
+frontend:
+  - task: "Page quiz connaissances mécaniques (MechanicalKnowledgeQuiz.js)"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/pages/MechanicalKnowledgeQuiz.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Page créée avec logique complète, intégrée dans App.js, redirige vers dashboard après completion"
+  
+  - task: "Modification PaymentSuccess pour rediriger vers quiz mécanique"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/pages/PaymentSuccess.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Modifié pour suggérer quiz mécanique au lieu du dashboard direct"
+  
+  - task: "Dashboard affichage conditionnel Module 2 (Remise à Niveau)"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/pages/Dashboard.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Ajout filtre pour Module 2: visible seulement si mechanical assessment completed et needs_remedial_module=true. Ajout bannière quiz reminder si non complété"
+  
+  - task: "PreRegistrationForm avec quiz adéquation métier"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/components/PreRegistrationForm.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Formulaire existant avec 10 questions hardcodées, intégré dans RegisterNew.js"
+  
+  - task: "Page admin gestion pré-inscriptions"
+    implemented: true
+    working: "NA"
+    file: "frontend/src/pages/admin/AdminPreRegistrations.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Page existante pour validation admin des pré-inscriptions"
+  
+  - task: "Section blog SEO (caché en bas du site)"
+    implemented: false
+    working: false
+    file: "frontend/src/pages/Home.js"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Non implémenté - nécessite création section blog avec articles SEO"
+  
+  - task: "Messaging système admin vers étudiants"
+    implemented: false
+    working: false
+    file: "N/A"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "main"
+        comment: "Non implémenté - nécessite création interface messaging complète"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 0
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "API endpoints pour quiz préliminaires (career fit & mechanical knowledge)"
+    - "Page quiz connaissances mécaniques (MechanicalKnowledgeQuiz.js)"
+    - "Modification PaymentSuccess pour rediriger vers quiz mécanique"
+    - "Dashboard affichage conditionnel Module 2 (Remise à Niveau)"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: |
+      Phase 1 implémentée: Quiz préliminaires intégrés.
+      
+      Backend:
+      - Ajout 4 nouveaux endpoints pour career fit et mechanical knowledge quizzes
+      - Endpoint pour vérifier statut mechanical assessment
+      - Sauvegarde assessment dans collection mechanical_assessments
+      - Update user avec flags mechanical_assessment_completed et needs_remedial_module
+      
+      Frontend:
+      - Nouvelle page MechanicalKnowledgeQuiz.js avec logique complète
+      - Dashboard filtré pour afficher Module 2 seulement si remedial needed
+      - Bannière reminder si quiz mécanique non complété
+      - PaymentSuccess redirige vers quiz mécanique
+      - Route /mechanical-knowledge-quiz ajoutée
+      
+      Prêt pour testing backend puis frontend E2E.
+      
+      Tâches restantes (Phase 2 & 3):
+      - Paiement 4x sans frais
+      - Notifications email
+      - Enrichissement contenu modules
+      - Blog SEO
+      - Enquête satisfaction
+      - Messaging admin
