@@ -1626,6 +1626,130 @@ async def get_ai_chat_history(
     
     return messages
 
+# Blog Management Routes
+@api_router.get("/blog/posts")
+async def get_blog_posts(published_only: bool = True):
+    """Get all blog posts (public route)"""
+    query = {"published": True} if published_only else {}
+    
+    posts = await db.blog_posts.find(query, {"_id": 0}).sort("created_at", -1).to_list(100)
+    
+    for post in posts:
+        if isinstance(post.get('created_at'), str):
+            post['created_at'] = datetime.fromisoformat(post['created_at'])
+        if isinstance(post.get('updated_at'), str):
+            post['updated_at'] = datetime.fromisoformat(post['updated_at'])
+    
+    return posts
+
+@api_router.get("/blog/posts/{slug}")
+async def get_blog_post_by_slug(slug: str):
+    """Get a single blog post by slug"""
+    post = await db.blog_posts.find_one({"slug": slug, "published": True}, {"_id": 0})
+    
+    if not post:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    if isinstance(post.get('created_at'), str):
+        post['created_at'] = datetime.fromisoformat(post['created_at'])
+    if isinstance(post.get('updated_at'), str):
+        post['updated_at'] = datetime.fromisoformat(post['updated_at'])
+    
+    return post
+
+@api_router.get("/admin/blog/posts")
+async def get_all_blog_posts_admin(current_user: User = Depends(require_admin)):
+    """Get all blog posts including unpublished (admin only)"""
+    posts = await db.blog_posts.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    
+    for post in posts:
+        if isinstance(post.get('created_at'), str):
+            post['created_at'] = datetime.fromisoformat(post['created_at'])
+        if isinstance(post.get('updated_at'), str):
+            post['updated_at'] = datetime.fromisoformat(post['updated_at'])
+    
+    return posts
+
+@api_router.post("/admin/blog/posts")
+async def create_blog_post(
+    post_data: BlogPost,
+    current_user: User = Depends(require_admin)
+):
+    """Create a new blog post (admin only)"""
+    
+    # Check if slug already exists
+    existing = await db.blog_posts.find_one({"slug": post_data.slug})
+    if existing:
+        raise HTTPException(status_code=400, detail="Un article avec ce slug existe déjà")
+    
+    doc = post_data.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    doc['updated_at'] = doc['updated_at'].isoformat()
+    
+    await db.blog_posts.insert_one(doc)
+    
+    return {"message": "Article créé avec succès", "post_id": post_data.id}
+
+@api_router.put("/admin/blog/posts/{post_id}")
+async def update_blog_post(
+    post_id: str,
+    post_data: BlogPost,
+    current_user: User = Depends(require_admin)
+):
+    """Update a blog post (admin only)"""
+    
+    # Check if post exists
+    existing = await db.blog_posts.find_one({"id": post_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    # Update timestamp
+    doc = post_data.model_dump()
+    doc['updated_at'] = datetime.now(timezone.utc).isoformat()
+    doc['created_at'] = existing['created_at']  # Keep original creation date
+    
+    result = await db.blog_posts.update_one(
+        {"id": post_id},
+        {"$set": doc}
+    )
+    
+    if result.modified_count == 0:
+        return {"message": "Aucune modification apportée", "post_id": post_id}
+    
+    return {"message": "Article mis à jour avec succès", "post_id": post_id}
+
+@api_router.delete("/admin/blog/posts/{post_id}")
+async def delete_blog_post(
+    post_id: str,
+    current_user: User = Depends(require_admin)
+):
+    """Delete a blog post (admin only)"""
+    
+    result = await db.blog_posts.delete_one({"id": post_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    return {"message": "Article supprimé avec succès"}
+
+@api_router.patch("/admin/blog/posts/{post_id}/publish")
+async def toggle_blog_post_publish(
+    post_id: str,
+    published: bool,
+    current_user: User = Depends(require_admin)
+):
+    """Toggle publish status of a blog post (admin only)"""
+    
+    result = await db.blog_posts.update_one(
+        {"id": post_id},
+        {"$set": {"published": published, "updated_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Article not found")
+    
+    return {"message": f"Article {'publié' if published else 'dépublié'} avec succès"}
+
 # Health check
 @api_router.get("/")
 async def root():
