@@ -1474,6 +1474,60 @@ async def update_module(
     
     return {"message": "Module updated successfully", "module_id": module_id}
 
+# AI Chat Routes
+@api_router.post("/ai-chat")
+async def ai_chat(
+    message: str,
+    current_user: User = Depends(get_current_user)
+):
+    """Send message to AI assistant and get response"""
+    
+    # Generate session ID for user (use user_id as session base)
+    session_id = f"user_{current_user.id}"
+    
+    # Get AI response
+    response = await ai_chat_service.get_response(message, session_id)
+    
+    # Save chat history
+    chat_message = AIChatMessage(
+        user_id=current_user.id,
+        session_id=session_id,
+        user_message=message,
+        ai_response=response
+    )
+    
+    doc = chat_message.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    
+    await db.ai_chat_messages.insert_one(doc)
+    
+    return {
+        "message": message,
+        "response": response,
+        "message_id": chat_message.id
+    }
+
+@api_router.get("/ai-chat/history")
+async def get_ai_chat_history(
+    current_user: User = Depends(get_current_user),
+    limit: int = 50
+):
+    """Get user's AI chat history"""
+    
+    messages = await db.ai_chat_messages.find(
+        {"user_id": current_user.id},
+        {"_id": 0}
+    ).sort("created_at", -1).limit(limit).to_list(limit)
+    
+    # Reverse to get chronological order
+    messages.reverse()
+    
+    for msg in messages:
+        if isinstance(msg.get('created_at'), str):
+            msg['created_at'] = datetime.fromisoformat(msg['created_at'])
+    
+    return messages
+
 # Health check
 @api_router.get("/")
 async def root():
