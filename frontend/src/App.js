@@ -159,6 +159,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/pre-registrations" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminPreRegistrations />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
