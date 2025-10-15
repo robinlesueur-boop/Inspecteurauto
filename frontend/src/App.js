@@ -26,6 +26,7 @@ import QuizPageNew from "./components/QuizPageNew";
 import MechanicalKnowledgeQuiz from "./pages/MechanicalKnowledgeQuiz";
 import FinalEvaluation from "./pages/FinalEvaluation";
 import SatisfactionSurvey from "./pages/SatisfactionSurvey";
+import Blog from "./pages/Blog";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
