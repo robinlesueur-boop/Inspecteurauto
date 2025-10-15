@@ -149,6 +149,15 @@ function AppContent() {
             />
             
             <Route 
+              path="/messages" 
+              element={
+                <ProtectedRoute>
+                  <Messages />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/forum" 
               element={
                 <ProtectedRoute requiresPurchase={true}>
