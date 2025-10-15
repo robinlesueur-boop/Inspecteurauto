@@ -24,6 +24,8 @@ import Forum from "./pages/Forum";
 import PreRegistration from "./pages/PreRegistration";
 import QuizPageNew from "./components/QuizPageNew";
 import MechanicalKnowledgeQuiz from "./pages/MechanicalKnowledgeQuiz";
+import FinalEvaluation from "./pages/FinalEvaluation";
+import SatisfactionSurvey from "./pages/SatisfactionSurvey";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
