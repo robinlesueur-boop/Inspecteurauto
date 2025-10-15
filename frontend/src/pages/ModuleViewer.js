@@ -349,13 +349,25 @@ function ModuleViewer() {
                         </Link>
                       </div>
                     ) : (
-                      <Button 
-                        onClick={handleMarkComplete}
-                        disabled={!user?.has_purchased}
-                        className="bg-green-600 hover:bg-green-700"
-                      >
-                        Terminer le module
-                      </Button>
+                      <div className="space-y-3">
+                        <Button 
+                          onClick={handleMarkComplete}
+                          disabled={!user?.has_purchased}
+                          className="w-full bg-green-600 hover:bg-green-700"
+                        >
+                          <CheckCircle className="mr-2 h-5 w-5" />
+                          Marquer comme terminé
+                        </Button>
+                        <Button
+                          onClick={() => navigate(`/quiz/${module.id}`)}
+                          disabled={!user?.has_purchased}
+                          className="w-full"
+                          variant="outline"
+                        >
+                          <Award className="mr-2 h-5 w-5" />
+                          Passer le Quiz (obligatoire)
+                        </Button>
+                      </div>
                     )}
                   </div>
                 </div>
