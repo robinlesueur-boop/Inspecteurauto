@@ -138,15 +138,18 @@ backend:
   
   - task: "Backend API pour progression séquentielle des modules"
     implemented: true
-    working: "NA"
+    working: true
     file: "backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Endpoint existant /progress/check-access/{module_id} doit être vérifié"
+      - working: true
+        agent: "testing"
+        comment: "✅ API modules fonctionnelle: 9 modules créés (1 gratuit + 8 premium), logique d'accès correcte (seuls modules gratuits visibles sans achat), Module 2 'Remise à Niveau Mécanique' créé et conditionnel selon score quiz mécanique."
   
   - task: "Paiement Stripe avec intégration Emergent"
     implemented: true
