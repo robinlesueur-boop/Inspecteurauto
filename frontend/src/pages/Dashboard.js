@@ -35,6 +35,7 @@ function Dashboard() {
   const [moduleAccess, setModuleAccess] = useState({}); // Nouveau state pour gérer l'accès
   const [loading, setLoading] = useState(true);
   const [purchaseLoading, setPurchaseLoading] = useState(false);
+  const [mechanicalAssessmentStatus, setMechanicalAssessmentStatus] = useState(null);
   const [stats, setStats] = useState({
     totalModules: 0,
     completedModules: 0,
@@ -46,6 +47,7 @@ function Dashboard() {
     fetchModules();
     if (user?.has_purchased) {
       fetchProgress();
+      fetchMechanicalAssessmentStatus();
     }
   }, [user]);
 
