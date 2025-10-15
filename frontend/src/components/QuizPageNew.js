@@ -101,7 +101,11 @@ export default function QuizPageNew() {
       setResults(response.data);
       
       if (response.data.passed) {
-        toast.success(`Félicitations ! Score : ${response.data.score.toFixed(1)}%`);
+        toast.success(`Félicitations ! Score : ${response.data.score.toFixed(1)}% - Module validé !`);
+        // Redirection automatique après 3 secondes
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 3000);
       } else {
         toast.error(`Score insuffisant : ${response.data.score.toFixed(1)}% (80% requis)`);
       }
