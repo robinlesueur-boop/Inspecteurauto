@@ -1440,14 +1440,17 @@ async def get_all_messages(current_user: User = Depends(require_admin)):
     return messages
 
 # Admin Module Management Routes
+class ModuleUpdate(BaseModel):
+    title: str
+    description: str
+    content: str
+    duration_minutes: int
+    is_free: bool
+
 @api_router.put("/admin/modules/{module_id}")
 async def update_module(
     module_id: str,
-    title: str,
-    description: str,
-    content: str,
-    duration_minutes: int,
-    is_free: bool,
+    module_data: ModuleUpdate,
     current_user: User = Depends(require_admin)
 ):
     """Update module content (admin only)"""
@@ -1461,16 +1464,17 @@ async def update_module(
     result = await db.modules.update_one(
         {"id": module_id},
         {"$set": {
-            "title": title,
-            "description": description,
-            "content": content,
-            "duration_minutes": duration_minutes,
-            "is_free": is_free
+            "title": module_data.title,
+            "description": module_data.description,
+            "content": module_data.content,
+            "duration_minutes": module_data.duration_minutes,
+            "is_free": module_data.is_free
         }}
     )
     
     if result.modified_count == 0:
-        raise HTTPException(status_code=400, detail="No changes made")
+        # Actually check if data is same
+        return {"message": "Module already up to date", "module_id": module_id}
     
     return {"message": "Module updated successfully", "module_id": module_id}
 
