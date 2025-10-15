@@ -184,6 +184,17 @@ function AdminModules() {
                   </p>
                 </div>
 
+                {/* Media Uploader */}
+                <MediaUploader 
+                  onInsert={(htmlCode) => {
+                    // Insérer le code HTML à la fin du contenu
+                    setFormData({ 
+                      ...formData, 
+                      content: formData.content + '\n\n' + htmlCode 
+                    });
+                  }}
+                />
+
                 {/* Content */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
