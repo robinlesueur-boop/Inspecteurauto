@@ -48,7 +48,7 @@ function Home() {
     {
       icon: <TrendingUp className="h-8 w-8 text-orange-600" />,
       title: "Revenus Attractifs",
-      description: "Générez 150 à 400€ par inspection avec un potentiel de 3000-8000€/mois."
+      description: "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
     }
   ];
 
