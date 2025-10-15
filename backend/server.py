@@ -1485,6 +1485,78 @@ async def update_module(
     
     return {"message": "Module updated successfully", "module_id": module_id}
 
+# Media Upload Routes (Admin only)
+@api_router.post("/admin/upload/image")
+async def upload_image(
+    file: UploadFile = File(...),
+    current_user: User = Depends(require_admin)
+):
+    """Upload une image pour les modules (admin only)"""
+    
+    # Vérifier le type de fichier
+    allowed_types = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"]
+    if file.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Type de fichier non autorisé. Utilisez JPG, PNG, GIF ou WebP")
+    
+    # Lire le contenu
+    content = await file.read()
+    
+    # Vérifier la taille (max 5MB)
+    if len(content) > 5 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Fichier trop volumineux (max 5MB)")
+    
+    # Sauvegarder
+    result = media_service.save_file(content, file.filename, "image")
+    
+    return result
+
+@api_router.post("/admin/upload/video")
+async def upload_video(
+    file: UploadFile = File(...),
+    current_user: User = Depends(require_admin)
+):
+    """Upload une vidéo pour les modules (admin only)"""
+    
+    # Vérifier le type de fichier
+    allowed_types = ["video/mp4", "video/webm", "video/ogg"]
+    if file.content_type not in allowed_types:
+        raise HTTPException(status_code=400, detail="Type de fichier non autorisé. Utilisez MP4, WebM ou OGG")
+    
+    # Lire le contenu
+    content = await file.read()
+    
+    # Vérifier la taille (max 50MB)
+    if len(content) > 50 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Fichier trop volumineux (max 50MB)")
+    
+    # Sauvegarder
+    result = media_service.save_file(content, file.filename, "video")
+    
+    return result
+
+@api_router.get("/admin/media/list")
+async def list_media(
+    file_type: str = None,
+    current_user: User = Depends(require_admin)
+):
+    """Liste tous les médias uploadés (admin only)"""
+    files = media_service.list_files(file_type)
+    return {"files": files, "count": len(files)}
+
+@api_router.delete("/admin/media/{file_type}/{filename}")
+async def delete_media(
+    file_type: str,
+    filename: str,
+    current_user: User = Depends(require_admin)
+):
+    """Supprime un média (admin only)"""
+    success = media_service.delete_file(filename, file_type)
+    
+    if not success:
+        raise HTTPException(status_code=404, detail="Fichier non trouvé")
+    
+    return {"message": "Fichier supprimé avec succès"}
+
 # AI Chat Routes
 @api_router.post("/ai-chat")
 async def ai_chat(
