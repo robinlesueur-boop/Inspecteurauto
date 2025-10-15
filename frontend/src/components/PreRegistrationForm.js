@@ -16,7 +16,7 @@ const API = `${BACKEND_URL}/api`;
 
 export default function PreRegistrationForm({ onComplete }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0); // Commence à 0 pour afficher le formulaire email/nom
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
