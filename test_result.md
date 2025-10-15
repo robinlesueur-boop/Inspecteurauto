@@ -134,6 +134,9 @@ backend:
         comment: "Ajout de 4 endpoints API: GET/POST career-fit quiz, GET/POST mechanical-knowledge quiz avec calcul du score et enregistrement dans mechanical_assessments"
       - working: true
         agent: "testing"
+        comment: "✅ TOUS LES ENDPOINTS TESTÉS ET FONCTIONNELS - Career fit (10 questions), Mechanical knowledge (12 questions), score calculation correct, database updates verified"
+      - working: true
+        agent: "testing"
         comment: "✅ TOUS LES ENDPOINTS TESTÉS AVEC SUCCÈS: Career fit quiz (10 questions, pas d'auth), Mechanical knowledge quiz (12 questions, auth requise), soumission avec scores < et >= 70%, statut utilisateur correctement mis à jour avec needs_remedial_module. Authentification bug fixé (password_hash manquant). Database peuplée avec 9 modules et quizzes préliminaires."
   
   - task: "Backend API pour progression séquentielle des modules"
