@@ -11,6 +11,7 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AIChatWidget from "./components/AIChatWidget";
 
 // Pages
 import Home from "./pages/Home";
