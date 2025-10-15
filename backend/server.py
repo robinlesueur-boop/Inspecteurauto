@@ -894,6 +894,18 @@ async def get_payment_status(session_id: str, current_user: User = Depends(get_c
                 {"id": current_user.id},
                 {"$set": {"has_purchased": True}}
             )
+            
+            # Send welcome email
+            try:
+                email_service.send_welcome_email(
+                    recipient_email=current_user.email,
+                    full_name=current_user.full_name,
+                    username=current_user.username
+                )
+                logger.info(f"Welcome email sent to {current_user.email}")
+            except Exception as email_error:
+                logger.error(f"Failed to send welcome email: {str(email_error)}")
+                # Don't fail the payment status update if email fails
         
         elif checkout_status.status == "expired":
             await db.payment_transactions.update_one(
