@@ -386,12 +386,43 @@ function Dashboard() {
             </motion.div>
           )}
 
+          {/* AI Chat Helper - Always visible */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="mb-8"
+          >
+            <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200 shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <MessageCircle className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                      🤖 Assistant IA - Aide Instantanée
+                    </h3>
+                    <p className="text-blue-800 mb-3">
+                      Besoin d'aide sur un module ? Une question sur la mécanique ? 
+                      Notre assistant IA est là pour vous aider 24h/24 !
+                    </p>
+                    <p className="text-sm text-blue-700 bg-white rounded px-3 py-2 border border-blue-200">
+                      💡 <strong>Regardez en bas à droite de votre écran</strong> - Cliquez sur l'icône bleue 
+                      de chat pour poser vos questions !
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
           {/* Mechanical Knowledge Quiz Reminder */}
           {user?.has_purchased && mechanicalAssessmentStatus && !mechanicalAssessmentStatus.completed && (
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
+              transition={{ delay: 0.4 }}
               className="mb-8"
             >
               <Card className="bg-yellow-50 border-yellow-200 shadow-lg">
