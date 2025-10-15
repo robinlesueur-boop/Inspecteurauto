@@ -72,17 +72,16 @@ function AdminModules() {
     try {
       setSaving(true);
       
-      // Send as URL params as backend expects
-      await axios.put(`${API}/admin/modules/${editingModule.id}`, null, {
-        params: {
-          title: formData.title,
-          description: formData.description,
-          content: formData.content,
-          duration_minutes: formData.duration_minutes,
-          is_free: formData.is_free
-        }
+      // Send as JSON body
+      const response = await axios.put(`${API}/admin/modules/${editingModule.id}`, {
+        title: formData.title,
+        description: formData.description,
+        content: formData.content,
+        duration_minutes: formData.duration_minutes,
+        is_free: formData.is_free
       });
       
+      console.log('Module update response:', response.data);
       toast.success('Module mis à jour avec succès !');
       
       // Refresh modules list
