@@ -378,6 +378,41 @@ function Dashboard() {
             </motion.div>
           )}
 
+          {/* Mechanical Knowledge Quiz Reminder */}
+          {user?.has_purchased && mechanicalAssessmentStatus && !mechanicalAssessmentStatus.completed && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="mb-8"
+            >
+              <Card className="bg-yellow-50 border-yellow-200 shadow-lg">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <AlertCircle className="h-8 w-8 text-yellow-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-yellow-900 mb-2">
+                        📝 Évaluation des Connaissances Mécaniques
+                      </h3>
+                      <p className="text-yellow-800 mb-4">
+                        Avant de commencer la formation, nous vous recommandons de passer l'évaluation 
+                        des connaissances mécaniques pour personnaliser votre parcours d'apprentissage.
+                      </p>
+                      <Link to="/mechanical-knowledge-quiz">
+                        <Button className="bg-yellow-600 hover:bg-yellow-700 text-white">
+                          <BookOpen className="h-4 w-4 mr-2" />
+                          Passer l'Évaluation
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+
           {/* Modules List */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -399,7 +434,18 @@ function Dashboard() {
             </div>
 
             <div className="space-y-4" data-testid="modules-list">
-              {modules.map((module, index) => {
+              {modules
+                .filter(module => {
+                  // Module 2 (Remise à Niveau) should only show if:
+                  // 1. User has completed mechanical assessment AND
+                  // 2. User needs remedial module (score < 70%)
+                  if (module.order_index === 2) {
+                    return mechanicalAssessmentStatus?.completed && 
+                           mechanicalAssessmentStatus?.needs_remedial_module;
+                  }
+                  return true;
+                })
+                .map((module, index) => {
                 const isCompleted = isModuleCompleted(module.id);
                 const accessInfo = moduleAccess[module.id] || { can_access: false };
                 const isAccessible = accessInfo.can_access;
