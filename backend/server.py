@@ -951,13 +951,19 @@ async def get_module_quiz(module_id: str, current_user: Optional[User] = Depends
     
     return quiz
 
+class QuizSubmission(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    answers: Dict[str, int]
+
 @api_router.post("/quizzes/{quiz_id}/submit")
 async def submit_quiz(
     quiz_id: str,
-    answers: Dict[str, int],
+    submission: QuizSubmission,
     current_user: User = Depends(get_current_user)
 ):
     """Submit quiz answers and get results"""
+    answers = submission.answers
+    
     quiz = await db.quizzes.find_one({"id": quiz_id})
     if not quiz:
         raise HTTPException(status_code=404, detail="Quiz not found")
