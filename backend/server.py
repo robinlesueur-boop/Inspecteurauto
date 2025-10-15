@@ -1119,6 +1119,158 @@ async def create_forum_reply(post_id: str, content: str, current_user: User = De
     
     return {"message": "Reply created successfully", "reply_id": reply.id}
 
+# Preliminary Quiz Routes (Career Fit & Mechanical Knowledge)
+@api_router.get("/preliminary-quiz/career-fit")
+async def get_career_fit_quiz():
+    """Get the career fit quiz (no authentication required - pre-registration)"""
+    quiz = await db.quizzes.find_one({"module_id": "career_fit"}, {"_id": 0})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Career fit quiz not found")
+    
+    # Convert dates
+    if isinstance(quiz.get('created_at'), str):
+        quiz['created_at'] = datetime.fromisoformat(quiz['created_at'])
+    
+    return quiz
+
+@api_router.post("/preliminary-quiz/career-fit/submit")
+async def submit_career_fit_quiz(submission: QuizSubmission):
+    """Submit career fit quiz (no authentication required - pre-registration)"""
+    answers = submission.answers
+    
+    quiz = await db.quizzes.find_one({"module_id": "career_fit"})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Career fit quiz not found")
+    
+    # Calculate score
+    correct_answers = 0
+    total_questions = len(quiz["questions"])
+    
+    for question in quiz["questions"]:
+        question_id = question["id"]
+        user_answer = answers.get(question_id, -1)
+        correct_answer = question["correct_answer"]
+        
+        if user_answer == correct_answer:
+            correct_answers += 1
+    
+    score = (correct_answers / total_questions) * 100
+    passed = score >= quiz["passing_score"]
+    
+    return {
+        "score": score,
+        "passed": passed,
+        "correct_answers": correct_answers,
+        "total_questions": total_questions,
+        "passing_score": quiz["passing_score"]
+    }
+
+@api_router.get("/preliminary-quiz/mechanical-knowledge")
+async def get_mechanical_knowledge_quiz(current_user: User = Depends(get_current_user)):
+    """Get the mechanical knowledge quiz (requires authentication, post-payment)"""
+    quiz = await db.quizzes.find_one({"module_id": "mechanical_knowledge"}, {"_id": 0})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Mechanical knowledge quiz not found")
+    
+    # Convert dates
+    if isinstance(quiz.get('created_at'), str):
+        quiz['created_at'] = datetime.fromisoformat(quiz['created_at'])
+    
+    return quiz
+
+@api_router.post("/preliminary-quiz/mechanical-knowledge/submit")
+async def submit_mechanical_knowledge_quiz(
+    submission: QuizSubmission,
+    current_user: User = Depends(get_current_user)
+):
+    """Submit mechanical knowledge quiz and determine if remedial module needed"""
+    answers = submission.answers
+    
+    quiz = await db.quizzes.find_one({"module_id": "mechanical_knowledge"})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Mechanical knowledge quiz not found")
+    
+    # Calculate score
+    correct_answers = 0
+    total_questions = len(quiz["questions"])
+    detailed_results = []
+    
+    for question in quiz["questions"]:
+        question_id = question["id"]
+        user_answer = answers.get(question_id, -1)
+        correct_answer = question["correct_answer"]
+        is_correct = user_answer == correct_answer
+        
+        if is_correct:
+            correct_answers += 1
+        
+        detailed_results.append({
+            "question_id": question_id,
+            "question": question["question"],
+            "user_answer": user_answer,
+            "correct_answer": correct_answer,
+            "is_correct": is_correct,
+            "explanation": question.get("explanation", "")
+        })
+    
+    score = (correct_answers / total_questions) * 100
+    passed = score >= 70  # 70% threshold for mechanical knowledge
+    needs_remedial = score < 70
+    
+    # Save mechanical assessment
+    assessment = MechanicalAssessment(
+        user_id=current_user.id,
+        answers=answers,
+        score=score,
+        passed=passed,
+        needs_remedial_module=needs_remedial
+    )
+    
+    doc = assessment.model_dump()
+    doc['completed_at'] = doc['completed_at'].isoformat()
+    
+    await db.mechanical_assessments.insert_one(doc)
+    
+    # Update user's mechanical assessment status
+    await db.users.update_one(
+        {"id": current_user.id},
+        {"$set": {
+            "mechanical_assessment_completed": True,
+            "needs_remedial_module": needs_remedial,
+            "mechanical_assessment_score": score
+        }}
+    )
+    
+    return {
+        "score": score,
+        "passed": passed,
+        "needs_remedial_module": needs_remedial,
+        "correct_answers": correct_answers,
+        "total_questions": total_questions,
+        "detailed_results": detailed_results
+    }
+
+@api_router.get("/preliminary-quiz/mechanical-knowledge/status")
+async def get_mechanical_knowledge_status(current_user: User = Depends(get_current_user)):
+    """Check if user has completed mechanical knowledge quiz"""
+    assessment = await db.mechanical_assessments.find_one(
+        {"user_id": current_user.id},
+        {"_id": 0}
+    )
+    
+    if not assessment:
+        return {
+            "completed": False,
+            "needs_remedial_module": None,
+            "score": None
+        }
+    
+    return {
+        "completed": True,
+        "needs_remedial_module": assessment.get("needs_remedial_module", False),
+        "score": assessment.get("score", 0)
+    }
+
 # Health check
 @api_router.get("/")
 async def root():
