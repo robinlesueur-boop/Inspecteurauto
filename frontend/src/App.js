@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import RegisterNew from "./pages/RegisterNew";
 import Dashboard from "./pages/Dashboard";
 import ModuleViewer from "./pages/ModuleViewer";
 import PaymentSuccess from "./pages/PaymentSuccess";
