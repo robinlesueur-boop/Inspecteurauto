@@ -105,6 +105,15 @@ function AppContent() {
             />
             
             <Route 
+              path="/quiz/:moduleId" 
+              element={
+                <ProtectedRoute>
+                  <QuizPageNew />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/forum" 
               element={
                 <ProtectedRoute requiresPurchase={true}>
