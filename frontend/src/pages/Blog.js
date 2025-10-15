@@ -73,6 +73,56 @@ const defaultArticles = [
 ];
 
 function Blog() {
+  const [blogArticles, setBlogArticles] = useState(defaultArticles);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchBlogPosts();
+  }, []);
+
+  const fetchBlogPosts = async () => {
+    try {
+      const response = await axios.get(`${API}/blog/posts`, {
+        params: { published_only: true }
+      });
+      
+      if (response.data && response.data.length > 0) {
+        // Formater les articles de la DB
+        const formattedPosts = response.data.map(post => ({
+          id: post.id,
+          title: post.title,
+          slug: post.slug,
+          excerpt: post.excerpt,
+          author: post.author,
+          date: new Date(post.created_at).toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }),
+          category: post.category,
+          image: post.image_url
+        }));
+        setBlogArticles(formattedPosts);
+      }
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+      // Garder les articles par défaut en cas d'erreur
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin h-8 w-8 border-2 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-gray-600">Chargement du blog...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Helmet>
