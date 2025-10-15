@@ -85,6 +85,7 @@ function AppContent() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/pre-registration" element={<PreRegistration />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterNew />} />
