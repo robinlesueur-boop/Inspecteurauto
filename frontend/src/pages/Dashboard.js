@@ -32,6 +32,7 @@ function Dashboard() {
   const { user, updateUser } = useAuth();
   const [modules, setModules] = useState([]);
   const [progress, setProgress] = useState([]);
+  const [moduleAccess, setModuleAccess] = useState({}); // Nouveau state pour gérer l'accès
   const [loading, setLoading] = useState(true);
   const [purchaseLoading, setPurchaseLoading] = useState(false);
   const [stats, setStats] = useState({
@@ -53,12 +54,35 @@ function Dashboard() {
       const response = await axios.get(`${API}/modules`);
       setModules(response.data);
       calculateStats(response.data, progress);
+      
+      // Vérifier l'accès pour chaque module
+      if (user) {
+        await checkModuleAccess(response.data);
+      }
     } catch (error) {
       console.error("Error fetching modules:", error);
       toast.error("Erreur lors du chargement des modules");
     } finally {
       setLoading(false);
     }
+  };
+
+  const checkModuleAccess = async (moduleList) => {
+    const accessMap = {};
+    
+    for (const module of moduleList) {
+      try {
+        const response = await axios.get(`${API}/progress/check-access/${module.id}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        });
+        accessMap[module.id] = response.data;
+      } catch (error) {
+        // Si pas connecté ou erreur, on considère non accessible
+        accessMap[module.id] = { can_access: false, reason: 'error' };
+      }
+    }
+    
+    setModuleAccess(accessMap);
   };
 
   const fetchProgress = async () => {
