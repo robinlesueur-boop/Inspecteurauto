@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import axios from 'axios';
 
-const blogArticles = [
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+// Articles par défaut si aucun dans la DB
+const defaultArticles = [
   {
     id: 1,
     title: "Comment devenir inspecteur automobile professionnel en 2025",
