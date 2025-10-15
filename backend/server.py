@@ -438,7 +438,7 @@ async def check_pre_registration(email: str):
 
 # Admin Routes
 @api_router.get("/admin/analytics")
-async def get_analytics(admin_user: User = Depends(get_admin_user)):
+async def get_analytics(current_user: User = Depends(require_admin)):
     # User Analytics
     total_users = await db.users.count_documents({})
     today = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
