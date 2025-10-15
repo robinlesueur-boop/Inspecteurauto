@@ -473,10 +473,25 @@ function Dashboard() {
                                 </Button>
                               </Link>
                             ) : (
-                              <Button disabled variant="outline">
-                                <Lock className="h-4 w-4 mr-2" />
-                                Verrouillé
-                              </Button>
+                              <div className="text-right">
+                                <Button disabled variant="outline" className="mb-2">
+                                  <Lock className="h-4 w-4 mr-2" />
+                                  Verrouillé
+                                </Button>
+                                {blockReason === 'purchase_required' && (
+                                  <p className="text-xs text-gray-500">Achat requis</p>
+                                )}
+                                {blockReason === 'previous_module_not_completed' && (
+                                  <p className="text-xs text-orange-600 font-medium">
+                                    ⚠️ Terminez le module précédent
+                                  </p>
+                                )}
+                                {blockReason === 'previous_quiz_not_passed' && (
+                                  <p className="text-xs text-red-600 font-medium">
+                                    🔒 Réussissez le quiz précédent (80%)
+                                  </p>
+                                )}
+                              </div>
                             )}
                           </div>
                         </div>
