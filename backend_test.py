@@ -14,12 +14,12 @@ BASE_URL = "https://mechanic-trainer.preview.emergentagent.com/api"
 
 # Test credentials
 TEST_USER = {
-    "email": "testuser3@test.com",
+    "email": "testuser4@test.com",
     "password": "test123"
 }
 
 ADMIN_USER = {
-    "email": "admin3@test.com", 
+    "email": "admin4@test.com", 
     "password": "admin123"
 }
 
