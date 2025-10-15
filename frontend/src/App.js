@@ -34,6 +34,7 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import AdminTransactions from "./pages/admin/AdminTransactions";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminPreRegistrations from "./pages/admin/AdminPreRegistrations";
+import AdminMessaging from "./pages/admin/AdminMessaging";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
