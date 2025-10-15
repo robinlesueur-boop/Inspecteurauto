@@ -98,10 +98,10 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Formation Inspecteur Automobile - Devenez Expert en Diagnostic Véhiculaire</title>
-        <meta name="description" content="Formation complète d'inspecteur automobile avec la méthode AutoJust. Certification reconnue, revenus jusqu'à 8000€/mois. 97% de taux de réussite." />
-        <meta name="keywords" content="formation inspecteur automobile, diagnostic véhiculaire, méthode AutoJust, certification automobile, reconversion professionnelle" />
-        <meta property="og:title" content="Formation Inspecteur Automobile - Devenez Expert en Diagnostic Véhiculaire" />
+        <title>Formation Inspecteur Automobile - Devenez Inspecteur Certifié</title>
+        <meta name="description" content="Formation professionnelle d'inspecteur automobile. Maîtrisez le diagnostic véhiculaire, générez jusqu'à 8000€/mois. Méthode AutoJust - Certification incluse." />
+        <meta name="keywords" content="formation inspecteur automobile, diagnostic véhiculaire, contrôle véhicule, inspection automobile, formation auto, certification automobile" />
+        <meta property="og:title" content="Formation Inspecteur Automobile - Devenez Inspecteur Certifié" />
         <meta property="og:description" content="Formation complète avec certification reconnue. Revenus jusqu'à 8000€/mois." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href={window.location.href} />
