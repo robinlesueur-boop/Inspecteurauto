@@ -66,6 +66,11 @@ function Footer() {
                   Forum communauté
                 </Link>
               </li>
+              <li>
+                <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  Blog & Conseils
+                </Link>
+              </li>
             </ul>
           </div>
 
