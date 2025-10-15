@@ -100,11 +100,22 @@ function PaymentSuccess() {
                     </ul>
                   </div>
                   
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    <h3 className="font-semibold text-blue-800 mb-2">
+                      🎯 Prochaine étape
+                    </h3>
+                    <p className="text-blue-700 text-sm">
+                      Avant de commencer la formation, nous vous invitons à passer une courte 
+                      évaluation de vos connaissances mécaniques (12 questions) pour personnaliser 
+                      votre parcours d'apprentissage.
+                    </p>
+                  </div>
+                  
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/dashboard">
+                    <Link to="/mechanical-knowledge-quiz">
                       <Button className="bg-blue-600 hover:bg-blue-700">
                         <BookOpen className="w-4 h-4 mr-2" />
-                        Commencer la Formation
+                        Passer l'Évaluation
                       </Button>
                     </Link>
                     <Link to="/forum">
