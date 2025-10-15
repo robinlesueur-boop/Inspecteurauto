@@ -62,7 +62,7 @@ function ProtectedRoute({ children, requiresPurchase = false, requiresAdmin = fa
 }
 
 function AppContent() {
-  const { setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
     // Check if user is already logged in
