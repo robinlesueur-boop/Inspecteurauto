@@ -8,6 +8,7 @@ import { Textarea } from '../../components/ui/textarea';
 import { BookOpen, Save, Edit, X, CheckCircle, Plus, Trash2, HelpCircle } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import MediaUploader from '../../components/MediaUploader';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
