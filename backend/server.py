@@ -1469,6 +1469,32 @@ class ModuleUpdate(BaseModel):
     duration_minutes: int
     is_free: bool
 
+@api_router.post("/admin/modules")
+async def create_module(
+    module_data: ModuleUpdate,
+    current_user: User = Depends(require_admin)
+):
+    """Create new module (admin only)"""
+    
+    # Get the highest order_index
+    modules = await db.modules.find().sort("order_index", -1).limit(1).to_list(1)
+    next_order = 1 if not modules else modules[0].get("order_index", 0) + 1
+    
+    # Create new module
+    new_module = Module(
+        title=module_data.title,
+        description=module_data.description,
+        content=module_data.content,
+        duration_minutes=module_data.duration_minutes,
+        is_free=module_data.is_free,
+        order_index=next_order
+    )
+    
+    doc = new_module.model_dump()
+    await db.modules.insert_one(doc)
+    
+    return {"message": "Module created successfully", "module_id": new_module.id, "order_index": next_order}
+
 @api_router.put("/admin/modules/{module_id}")
 async def update_module(
     module_id: str,
@@ -1499,6 +1525,26 @@ async def update_module(
         return {"message": "Module already up to date", "module_id": module_id}
     
     return {"message": "Module updated successfully", "module_id": module_id}
+
+@api_router.delete("/admin/modules/{module_id}")
+async def delete_module(
+    module_id: str,
+    current_user: User = Depends(require_admin)
+):
+    """Delete module (admin only)"""
+    
+    # Check if module exists
+    module = await db.modules.find_one({"id": module_id})
+    if not module:
+        raise HTTPException(status_code=404, detail="Module not found")
+    
+    # Delete associated quiz
+    await db.quizzes.delete_many({"module_id": module_id})
+    
+    # Delete module
+    await db.modules.delete_one({"id": module_id})
+    
+    return {"message": "Module deleted successfully", "module_id": module_id}
 
 # Media Upload Routes (Admin only)
 @api_router.post("/admin/upload/image")
