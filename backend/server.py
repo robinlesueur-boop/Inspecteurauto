@@ -1546,6 +1546,83 @@ async def delete_module(
     
     return {"message": "Module deleted successfully", "module_id": module_id}
 
+# Admin Quiz Management
+@api_router.post("/admin/quizzes")
+async def create_quiz(
+    quiz_data: dict,
+    current_user: User = Depends(require_admin)
+):
+    """Create quiz for a module (admin only)"""
+    
+    module_id = quiz_data.get("module_id")
+    
+    # Check if module exists
+    module = await db.modules.find_one({"id": module_id})
+    if not module:
+        raise HTTPException(status_code=404, detail="Module not found")
+    
+    # Check if quiz already exists for this module
+    existing_quiz = await db.quizzes.find_one({"module_id": module_id})
+    if existing_quiz:
+        raise HTTPException(status_code=400, detail="Quiz already exists for this module")
+    
+    # Create new quiz
+    new_quiz = Quiz(
+        module_id=module_id,
+        title=quiz_data.get("title", f"Quiz - {module['title']}"),
+        description=quiz_data.get("description", ""),
+        passing_score=quiz_data.get("passing_score", 80),
+        questions=quiz_data.get("questions", [])
+    )
+    
+    doc = new_quiz.model_dump()
+    await db.quizzes.insert_one(doc)
+    
+    return {"message": "Quiz created successfully", "quiz_id": new_quiz.id}
+
+@api_router.put("/admin/quizzes/{quiz_id}")
+async def update_quiz(
+    quiz_id: str,
+    quiz_data: dict,
+    current_user: User = Depends(require_admin)
+):
+    """Update quiz (admin only)"""
+    
+    # Check if quiz exists
+    quiz = await db.quizzes.find_one({"id": quiz_id})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Quiz not found")
+    
+    # Update quiz
+    result = await db.quizzes.update_one(
+        {"id": quiz_id},
+        {"$set": {
+            "title": quiz_data.get("title"),
+            "description": quiz_data.get("description", ""),
+            "passing_score": quiz_data.get("passing_score", 80),
+            "questions": quiz_data.get("questions", [])
+        }}
+    )
+    
+    return {"message": "Quiz updated successfully", "quiz_id": quiz_id}
+
+@api_router.delete("/admin/quizzes/{quiz_id}")
+async def delete_quiz(
+    quiz_id: str,
+    current_user: User = Depends(require_admin)
+):
+    """Delete quiz (admin only)"""
+    
+    # Check if quiz exists
+    quiz = await db.quizzes.find_one({"id": quiz_id})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Quiz not found")
+    
+    # Delete quiz
+    await db.quizzes.delete_one({"id": quiz_id})
+    
+    return {"message": "Quiz deleted successfully", "quiz_id": quiz_id}
+
 # Media Upload Routes (Admin only)
 @api_router.post("/admin/upload/image")
 async def upload_image(
