@@ -16,7 +16,7 @@ const API = `${BACKEND_URL}/api`;
 
 export default function PreRegistrationForm({ onComplete }) {
   const navigate = useNavigate();
-  const [step, setStep] = useState(0); // Commence à 0 pour afficher le formulaire email/nom
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -109,9 +109,9 @@ export default function PreRegistrationForm({ onComplete }) {
       id: 'q9',
       question: "Avez-vous un budget pour démarrer votre activité d'inspecteur ?",
       options: [
-        { value: 'oui_complet', label: 'Oui, budget de 5000€ et plus' },
-        { value: 'oui_partiel', label: 'Oui, budget de 2000-5000€' },
-        { value: 'limite', label: 'Budget limité (moins de 2000€)' },
+        { value: 'oui_complet', label: 'Oui, budget de 3000€ et plus' },
+        { value: 'oui_partiel', label: 'Oui, budget de 1500-3000€' },
+        { value: 'limite', label: 'Budget limité (moins de 1500€)' },
         { value: 'non', label: 'Pas encore de budget défini' }
       ]
     },
@@ -138,7 +138,6 @@ export default function PreRegistrationForm({ onComplete }) {
   };
 
   const handleSubmit = async () => {
-    // Vérifier que toutes les questions sont répondues
     const allAnswered = questions.every(q => formData.answers[q.id]);
     
     if (!allAnswered) {
@@ -159,7 +158,6 @@ export default function PreRegistrationForm({ onComplete }) {
       if (response.data.validated) {
         toast.success('Profil validé avec succès !');
         
-        // Passer à l'inscription
         if (onComplete) {
           onComplete(formData);
         } else {
@@ -174,6 +172,10 @@ export default function PreRegistrationForm({ onComplete }) {
     }
   };
 
+  // Fix: Cap progress at 100% - use Math.min to prevent 110%
+  const displayStep = Math.min(step, 10);
+  const progressPercentage = Math.round((displayStep / 10) * 100);
+
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       <Card>
@@ -185,13 +187,13 @@ export default function PreRegistrationForm({ onComplete }) {
           </CardDescription>
           <div className="mt-4">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Question {Math.min(step, 10)} sur 10</span>
-              <span>{Math.round((step / 10) * 100)}%</span>
+              <span>Question {displayStep} sur 10</span>
+              <span>{progressPercentage}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div 
                 className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                style={{ width: `${(step / 10) * 100}%` }}
+                style={{ width: `${progressPercentage}%` }}
               />
             </div>
           </div>
