@@ -93,6 +93,7 @@ function AppContent() {
   return (
     <div className="App min-h-screen bg-gray-50 flex flex-col">
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <main className="flex-1">
           <Routes>
