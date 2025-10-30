@@ -403,3 +403,21 @@ body {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
+/* Fix quiz button cursor issue - prevent text selection on buttons */
+button {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+
+/* Ensure button text is not selectable */
+button * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: inherit;
+}
