@@ -188,7 +188,9 @@ function Navbar() {
             ) : (
               <div className="flex items-center space-x-4">
                 <Link to="/login" data-testid="navbar-login-link">
-                  <Button variant="ghost" className="font-medium">Connexion</Button>
+                  <Button variant="outline" className="font-medium border-gray-300 hover:border-blue-600 hover:text-blue-600">
+                    Connexion
+                  </Button>
                 </Link>
                 <Link to="/register" data-testid="navbar-register-link">
                   <Button className="bg-blue-600 hover:bg-blue-700 font-medium">
