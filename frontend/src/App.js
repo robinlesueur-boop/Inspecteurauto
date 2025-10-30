@@ -45,6 +45,7 @@ import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminPreRegistrations from "./pages/admin/AdminPreRegistrations";
 import AdminMessaging from "./pages/admin/AdminMessaging";
 import AdminModules from "./pages/admin/AdminModules";
+import AdminModulesNew from "./pages/admin/AdminModulesNew";
 import AdminBlog from "./pages/admin/AdminBlog";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
