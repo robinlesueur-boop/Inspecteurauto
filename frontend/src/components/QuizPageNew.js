@@ -28,6 +28,8 @@ export default function QuizPageNew() {
 
   useEffect(() => {
     fetchQuiz();
+    // Scroll to top when quiz loads
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [moduleId]);
 
   useEffect(() => {
