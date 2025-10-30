@@ -243,7 +243,7 @@ function AppContent() {
               path="/admin/modules" 
               element={
                 <ProtectedRoute requiresAdmin={true}>
-                  <AdminModules />
+                  <AdminModulesNew />
                 </ProtectedRoute>
               } 
             />
