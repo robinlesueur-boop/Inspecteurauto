@@ -80,8 +80,13 @@ function Dashboard() {
         });
         accessMap[module.id] = response.data;
       } catch (error) {
-        // Si pas connecté ou erreur, on considère non accessible
-        accessMap[module.id] = { can_access: false, reason: 'error' };
+        // If error occurs, check if module is free
+        // Free modules should always be accessible
+        if (module.is_free) {
+          accessMap[module.id] = { can_access: true, reason: 'free_module' };
+        } else {
+          accessMap[module.id] = { can_access: false, reason: 'purchase_required' };
+        }
       }
     }
     
