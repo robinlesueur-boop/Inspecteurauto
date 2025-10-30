@@ -391,6 +391,24 @@ function AdminModulesNew() {
                   </p>
                 </div>
 
+                {/* Media Uploader */}
+                <div className="space-y-2">
+                  <Label>Images et Vidéos</Label>
+                  <MediaUploader 
+                    onInsert={(htmlCode) => {
+                      // Insérer le code HTML à la fin du contenu
+                      setFormData({ 
+                        ...formData, 
+                        content: formData.content + '\n\n' + htmlCode 
+                      });
+                      toast.success('Média inséré dans le contenu !');
+                    }}
+                  />
+                  <p className="text-sm text-gray-500">
+                    💡 Uploadez des images ou vidéos et insérez-les dans le contenu
+                  </p>
+                </div>
+
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="content">Contenu du Module *</Label>
