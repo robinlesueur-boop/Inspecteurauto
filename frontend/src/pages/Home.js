@@ -197,13 +197,13 @@ function Home() {
                     <Link to="/register" data-testid="hero-register-button">
                       <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
                         <Play className="mr-2 h-5 w-5" />
-                        Commencer la formation
+                        {content.cta_primary}
                       </Button>
                     </Link>
                   )}
                   
                   <Button size="lg" variant="outline" className="border-blue-300 text-blue-100 hover:bg-blue-800/50 px-8 py-4 text-lg">
-                    Module gratuit
+                    {content.cta_secondary}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
