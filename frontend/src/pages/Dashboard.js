@@ -562,6 +562,13 @@ function Dashboard() {
                                   Terminé
                                 </Badge>
                               )}
+                              
+                              {user?.is_admin && accessInfo.reason === 'admin_access' && (
+                                <Badge className="bg-purple-100 text-purple-700">
+                                  <Shield className="h-3 w-3 mr-1" />
+                                  Prévisualisation Admin
+                                </Badge>
+                              )}
                             </div>
                           </div>
 
