@@ -75,8 +75,6 @@ class APITester:
                 return True
             else:
                 self.log_test("Admin Authentication", False, f"Login failed with status: {response.status_code}. Admin user may not exist or have wrong credentials.")
-            else:
-                self.log_test("Admin Authentication", False, f"Status: {response.status_code}", response.text)
                 return False
         except Exception as e:
             self.log_test("Admin Authentication", False, f"Exception: {str(e)}")
