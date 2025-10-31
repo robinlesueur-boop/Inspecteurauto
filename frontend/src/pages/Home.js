@@ -94,10 +94,10 @@ function Home() {
   ];
 
   const stats = [
-    { number: "1,200+", label: "Diplômés", icon: <Users className="h-5 w-5" /> },
-    { number: "97%", label: "Taux de Réussite", icon: <Trophy className="h-5 w-5" /> },
-    { number: "11h", label: "de Formation", icon: <Clock className="h-5 w-5" /> },
-    { number: "4.9/5", label: "Note Moyenne", icon: <Star className="h-5 w-5 fill-current" /> }
+    { number: content.stat_graduates, label: "Diplômés", icon: <Users className="h-5 w-5" /> },
+    { number: content.stat_success_rate, label: "Taux de Réussite", icon: <Trophy className="h-5 w-5" /> },
+    { number: content.stat_duration, label: "de Formation", icon: <Clock className="h-5 w-5" /> },
+    { number: content.stat_rating, label: "Note Moyenne", icon: <Star className="h-5 w-5 fill-current" /> }
   ];
 
   const testimonials = [
