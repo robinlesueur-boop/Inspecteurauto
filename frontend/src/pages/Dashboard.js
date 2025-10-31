@@ -512,6 +512,11 @@ function Dashboard() {
             <div className="space-y-4" data-testid="modules-list">
               {modules
                 .filter(module => {
+                  // Admin can see all modules
+                  if (user?.is_admin) {
+                    return true;
+                  }
+                  
                   // Module 2 (Remise à Niveau) should only show if:
                   // 1. User has completed mechanical assessment AND
                   // 2. User needs remedial module (score < 70%)
