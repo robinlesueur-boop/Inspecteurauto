@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Backend API Testing for Inspecteur Auto Application
-Tests all preliminary quiz endpoints and existing module/quiz endpoints
+Tests all preliminary quiz endpoints and Admin → Student module management flow
 """
 
 import requests
@@ -19,8 +19,8 @@ TEST_USER = {
 }
 
 ADMIN_USER = {
-    "email": "admin4@test.com", 
-    "password": "admin123"
+    "email": "admin@inspecteur-auto.fr", 
+    "password": "Admin123456!"
 }
 
 class APITester:
