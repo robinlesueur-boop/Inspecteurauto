@@ -79,17 +79,17 @@ function Home() {
     {
       icon: <Award className="h-8 w-8 text-green-600" />,
       title: content.feature_2_title,
-      description: "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie."
+      description: content.feature_2_description
     },
     {
       icon: <Users className="h-8 w-8 text-purple-600" />,
-      title: "Communauté Active",
-      description: "Rejoignez une communauté de 1000+ inspecteurs et échangez sur vos expériences."
+      title: content.feature_3_title,
+      description: content.feature_3_description
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-orange-600" />,
-      title: "Revenus Attractifs",
-      description: "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
+      title: content.feature_4_title,
+      description: content.feature_4_description
     }
   ];
 
