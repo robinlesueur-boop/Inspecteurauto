@@ -9,7 +9,7 @@ import os
 from dotenv import load_dotenv
 import bcrypt
 
-load_dotenv()
+load_dotenv('/app/backend/.env')
 mongo_url = os.environ['MONGO_URL']
 db_name = os.environ['DB_NAME']
 
