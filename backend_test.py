@@ -73,34 +73,8 @@ class APITester:
                 self.admin_token = data["access_token"]
                 self.log_test("Admin Authentication", True, f"Token obtained for {ADMIN_USER['email']}")
                 return True
-            elif response.status_code == 401:
-                # Try to register admin user
-                admin_register_data = {
-                    "email": ADMIN_USER["email"],
-                    "password": ADMIN_USER["password"],
-                    "full_name": "Admin User",
-                    "username": "admin"
-                }
-                
-                register_response = self.session.post(f"{BASE_URL}/auth/register", json=admin_register_data)
-                if register_response.status_code == 200:
-                    register_data = register_response.json()
-                    user_id = register_data["user"]["id"]
-                    
-                    # Make user admin by directly updating database (we'll need to do this manually)
-                    # For now, let's try to login and see if we can use the token
-                    login_response = self.session.post(f"{BASE_URL}/auth/login", json=ADMIN_USER)
-                    if login_response.status_code == 200:
-                        data = login_response.json()
-                        self.admin_token = data["access_token"]
-                        self.log_test("Admin Registration & Login", True, f"Admin created and logged in: {ADMIN_USER['email']} (Note: May need manual admin privileges)")
-                        return True
-                    else:
-                        self.log_test("Admin Authentication", False, f"Login after registration failed: {login_response.status_code}")
-                        return False
-                else:
-                    self.log_test("Admin Authentication", False, f"Registration failed: {register_response.status_code}")
-                    return False
+            else:
+                self.log_test("Admin Authentication", False, f"Login failed with status: {response.status_code}. Admin user may not exist or have wrong credentials.")
             else:
                 self.log_test("Admin Authentication", False, f"Status: {response.status_code}", response.text)
                 return False
