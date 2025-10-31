@@ -174,19 +174,15 @@ function Home() {
                 className="text-center lg:text-left"
               >
                 <Badge className="mb-6 bg-blue-600/20 text-blue-200 border-blue-400 hover:bg-blue-600/30" data-testid="hero-badge">
-                  🚀 Formation #1 en France - 1200+ diplômés
+                  🚀 Formation #1 en France - {content.stat_graduates} diplômés
                 </Badge>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Devenez 
-                  <span className="text-blue-300"> Inspecteur</span>
-                  <br />
-                  Automobile Certifié
+                  {content.hero_title}
                 </h1>
                 
                 <p className="text-xl text-blue-100 mb-8 max-w-2xl leading-relaxed">
-                  Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. 
-                  Formation complète en 11h pour générer jusqu'à <strong className="text-blue-300">8000€/mois</strong>.
+                  {content.hero_subtitle}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
