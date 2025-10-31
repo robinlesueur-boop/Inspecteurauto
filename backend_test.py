@@ -84,12 +84,16 @@ class APITester:
                 
                 register_response = self.session.post(f"{BASE_URL}/auth/register", json=admin_register_data)
                 if register_response.status_code == 200:
-                    # Now try to login again
+                    register_data = register_response.json()
+                    user_id = register_data["user"]["id"]
+                    
+                    # Make user admin by directly updating database (we'll need to do this manually)
+                    # For now, let's try to login and see if we can use the token
                     login_response = self.session.post(f"{BASE_URL}/auth/login", json=ADMIN_USER)
                     if login_response.status_code == 200:
                         data = login_response.json()
                         self.admin_token = data["access_token"]
-                        self.log_test("Admin Registration & Login", True, f"Admin created and logged in: {ADMIN_USER['email']}")
+                        self.log_test("Admin Registration & Login", True, f"Admin created and logged in: {ADMIN_USER['email']} (Note: May need manual admin privileges)")
                         return True
                     else:
                         self.log_test("Admin Authentication", False, f"Login after registration failed: {login_response.status_code}")
