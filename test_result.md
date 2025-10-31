@@ -214,6 +214,18 @@ backend:
         agent: "main"
         comment: "Contenu actuel 3,500-8,000 mots par module, target 15,000-25,000"
 
+  - task: "Admin → Student module management flow"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "✅ FLUX ADMIN → ÉLÈVE TESTÉ AVEC SUCCÈS - Tous les endpoints fonctionnels: création module admin, visibilité élève, contrôle d'accès (payant/gratuit), modification module, création quiz, suppression. Test complet du scénario demandé réussi."
+
 frontend:
   - task: "Page quiz connaissances mécaniques (MechanicalKnowledgeQuiz.js)"
     implemented: true
