@@ -319,6 +319,7 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Admin → Student module management flow"
     - "API endpoints pour quiz préliminaires (career fit & mechanical knowledge)"
     - "Page quiz connaissances mécaniques (MechanicalKnowledgeQuiz.js)"
     - "Modification PaymentSuccess pour rediriger vers quiz mécanique"
