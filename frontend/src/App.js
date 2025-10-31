@@ -257,6 +257,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/landing-page" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminLandingPage />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
