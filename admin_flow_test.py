@@ -12,7 +12,7 @@ BASE_URL = "https://autoedge.preview.emergentagent.com/api"
 
 # Admin credentials
 ADMIN_USER = {
-    "email": "admin@inspecteur-auto.fr", 
+    "email": "testadmin@test.com", 
     "password": "Admin123456!"
 }
 
