@@ -19,7 +19,7 @@ TEST_USER = {
 }
 
 ADMIN_USER = {
-    "email": "admin@inspecteur-auto.fr", 
+    "email": "testadmin@test.com", 
     "password": "Admin123456!"
 }
 
