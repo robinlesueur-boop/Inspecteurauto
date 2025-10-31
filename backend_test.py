@@ -66,12 +66,37 @@ class APITester:
     def authenticate_admin(self):
         """Authenticate admin user and get token"""
         try:
+            # First try to login
             response = self.session.post(f"{BASE_URL}/auth/login", json=ADMIN_USER)
             if response.status_code == 200:
                 data = response.json()
                 self.admin_token = data["access_token"]
                 self.log_test("Admin Authentication", True, f"Token obtained for {ADMIN_USER['email']}")
                 return True
+            elif response.status_code == 401:
+                # Try to register admin user
+                admin_register_data = {
+                    "email": ADMIN_USER["email"],
+                    "password": ADMIN_USER["password"],
+                    "full_name": "Admin User",
+                    "username": "admin"
+                }
+                
+                register_response = self.session.post(f"{BASE_URL}/auth/register", json=admin_register_data)
+                if register_response.status_code == 200:
+                    # Now try to login again
+                    login_response = self.session.post(f"{BASE_URL}/auth/login", json=ADMIN_USER)
+                    if login_response.status_code == 200:
+                        data = login_response.json()
+                        self.admin_token = data["access_token"]
+                        self.log_test("Admin Registration & Login", True, f"Admin created and logged in: {ADMIN_USER['email']}")
+                        return True
+                    else:
+                        self.log_test("Admin Authentication", False, f"Login after registration failed: {login_response.status_code}")
+                        return False
+                else:
+                    self.log_test("Admin Authentication", False, f"Registration failed: {register_response.status_code}")
+                    return False
             else:
                 self.log_test("Admin Authentication", False, f"Status: {response.status_code}", response.text)
                 return False
