@@ -1789,6 +1789,49 @@ async def get_blog_posts(published_only: bool = True):
     
     return posts
 
+# Landing Page Content Management
+@api_router.get("/landing-page/content")
+async def get_landing_page_content():
+    """Get landing page content (public route)"""
+    content = await db.landing_page_content.find_one({}, {"_id": 0})
+    
+    if not content:
+        # Return default content if none exists
+        default_content = LandingPageContent()
+        return default_content.model_dump()
+    
+    if isinstance(content.get('updated_at'), str):
+        content['updated_at'] = datetime.fromisoformat(content['updated_at'])
+    
+    return content
+
+@api_router.put("/admin/landing-page/content")
+async def update_landing_page_content(
+    content_data: dict,
+    current_user: User = Depends(require_admin)
+):
+    """Update landing page content (admin only)"""
+    
+    # Check if content exists
+    existing = await db.landing_page_content.find_one({})
+    
+    # Update timestamp
+    content_data['updated_at'] = datetime.now(timezone.utc).isoformat()
+    
+    if existing:
+        # Update existing
+        await db.landing_page_content.update_one(
+            {"id": existing["id"]},
+            {"$set": content_data}
+        )
+    else:
+        # Create new with default values merged
+        default_content = LandingPageContent()
+        merged_content = {**default_content.model_dump(), **content_data}
+        await db.landing_page_content.insert_one(merged_content)
+    
+    return {"message": "Contenu de la landing page mis à jour avec succès"}
+
 @api_router.get("/blog/posts/{slug}")
 async def get_blog_post_by_slug(slug: str):
     """Get a single blog post by slug"""
