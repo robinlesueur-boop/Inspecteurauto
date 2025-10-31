@@ -228,6 +228,28 @@ function Dashboard() {
             </div>
           </motion.div>
 
+          {/* Admin Preview Banner */}
+          {user?.is_admin && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+              className="mb-6"
+            >
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                <div className="flex items-center space-x-3">
+                  <Shield className="h-6 w-6 text-purple-600" />
+                  <div>
+                    <h3 className="font-semibold text-purple-900">Mode Prévisualisation Administrateur</h3>
+                    <p className="text-sm text-purple-700">
+                      Tous les modules sont déverrouillés pour vous permettre de prévisualiser le parcours complet de formation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* Stats Cards */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
