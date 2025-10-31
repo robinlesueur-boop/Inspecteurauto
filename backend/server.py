@@ -230,6 +230,30 @@ class BlogPost(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+class LandingPageContent(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    hero_title: str = "Devenez Inspecteur Automobile Certifié"
+    hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois."
+    stat_graduates: str = "1,200+"
+    stat_success_rate: str = "97%"
+    stat_duration: str = "11h"
+    stat_rating: str = "4.9/5"
+    price_amount: str = "297€"
+    price_description: str = "Formation complète + Certification"
+    cta_primary: str = "Commencer la formation"
+    cta_secondary: str = "Module gratuit"
+    feature_1_title: str = "Méthode AutoJust"
+    feature_1_description: str = "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France."
+    feature_2_title: str = "Certification Reconnue"
+    feature_2_description: str = "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie."
+    feature_3_title: str = "Communauté Active"
+    feature_3_description: str = "Rejoignez une communauté de 1000+ inspecteurs et échangez sur vos expériences."
+    feature_4_title: str = "Revenus Attractifs"
+    feature_4_description: str = "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 class ForumPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
