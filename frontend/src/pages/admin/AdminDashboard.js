@@ -384,6 +384,13 @@ function AdminDashboard() {
                       Gérer le Blog
                     </Button>
                   </Link>
+                  
+                  <Link to="/admin/landing-page">
+                    <Button variant="outline" className="w-full h-20 flex flex-col">
+                      <Edit className="h-6 w-6 mb-2" />
+                      Landing Page
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
