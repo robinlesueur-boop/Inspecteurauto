@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import { useAuth } from "../contexts/AuthContext";
@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Badge } from "../components/ui/badge";
 import { motion } from "framer-motion";
 import QualiopiInfo from "../components/QualiopiInfo";
+import axios from "axios";
 import { 
   Car, 
   Users, 
@@ -26,18 +27,58 @@ import {
   MessageCircle
 } from "lucide-react";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
 function Home() {
   const { isAuthenticated } = useAuth();
+  const [content, setContent] = useState({
+    hero_title: "Devenez Inspecteur Automobile Certifié",
+    hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+    stat_graduates: "1,200+",
+    stat_success_rate: "97%",
+    stat_duration: "11h",
+    stat_rating: "4.9/5",
+    price_amount: "297€",
+    price_description: "Formation complète + Certification",
+    cta_primary: "Commencer la formation",
+    cta_secondary: "Module gratuit",
+    feature_1_title: "Méthode AutoJust",
+    feature_1_description: "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France.",
+    feature_2_title: "Certification Reconnue",
+    feature_2_description: "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie.",
+    feature_3_title: "Communauté Active",
+    feature_3_description: "Rejoignez une communauté de 1000+ inspecteurs et échangez sur vos expériences.",
+    feature_4_title: "Revenus Attractifs",
+    feature_4_description: "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchLandingContent();
+  }, []);
+
+  const fetchLandingContent = async () => {
+    try {
+      const response = await axios.get(`${API}/landing-page/content`);
+      setContent(response.data);
+    } catch (error) {
+      console.error('Error fetching landing page content:', error);
+      // Keep default content if API fails
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const features = [
     {
       icon: <Target className="h-8 w-8 text-blue-600" />,
-      title: "Méthode AutoJust",
-      description: "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France."
+      title: content.feature_1_title,
+      description: content.feature_1_description
     },
     {
       icon: <Award className="h-8 w-8 text-green-600" />,
-      title: "Certification Reconnue",
+      title: content.feature_2_title,
       description: "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie."
     },
     {
