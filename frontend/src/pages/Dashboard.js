@@ -73,6 +73,15 @@ function Dashboard() {
   const checkModuleAccess = async (moduleList) => {
     const accessMap = {};
     
+    // If user is admin, grant access to all modules for preview
+    if (user?.is_admin) {
+      for (const module of moduleList) {
+        accessMap[module.id] = { can_access: true, reason: 'admin_access' };
+      }
+      setModuleAccess(accessMap);
+      return;
+    }
+    
     for (const module of moduleList) {
       try {
         const response = await axios.get(`${API}/progress/check-access/${module.id}`, {
