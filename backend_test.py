@@ -584,6 +584,243 @@ class APITester:
             self.log_test("Authentication Error Handling", False, f"Exception: {str(e)}")
             return False
     
+    def test_admin_student_module_flow(self):
+        """Test complete Admin → Student module management flow"""
+        if not self.admin_token:
+            self.log_test("Admin-Student Module Flow", False, "No admin token available")
+            return False
+        
+        print("🔄 TESTING ADMIN → STUDENT MODULE FLOW")
+        print("-" * 50)
+        
+        # Step 1: Create student account
+        student_email = "test.eleve@test.com"
+        student_data = {
+            "email": student_email,
+            "password": "Test123456!",
+            "full_name": "Test Élève",
+            "username": "testeleve"
+        }
+        
+        try:
+            # Register student
+            response = self.session.post(f"{BASE_URL}/auth/register", json=student_data)
+            if response.status_code == 200:
+                student_token_data = response.json()
+                student_token = student_token_data["access_token"]
+                self.log_test("Student Registration", True, f"Student account created: {student_email}")
+            else:
+                # Try to login if already exists
+                login_response = self.session.post(f"{BASE_URL}/auth/login", json={
+                    "email": student_email,
+                    "password": student_data["password"]
+                })
+                if login_response.status_code == 200:
+                    student_token_data = login_response.json()
+                    student_token = student_token_data["access_token"]
+                    self.log_test("Student Login", True, f"Student logged in: {student_email}")
+                else:
+                    self.log_test("Student Authentication", False, f"Could not create or login student: {response.status_code}")
+                    return False
+        except Exception as e:
+            self.log_test("Student Authentication", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 2: Admin creates new module
+        module_data = {
+            "title": "Test Module Nouveau",
+            "description": "Module de test pour vérifier le flux admin-élève",
+            "content": "Contenu de test pour valider l'affichage côté élève. Ce module devrait apparaître dans le dashboard.",
+            "duration_minutes": 30,
+            "is_free": False
+        }
+        
+        try:
+            admin_headers = self.get_headers(use_admin=True)
+            response = self.session.post(f"{BASE_URL}/admin/modules", json=module_data, headers=admin_headers)
+            
+            if response.status_code == 200:
+                create_result = response.json()
+                module_id = create_result["module_id"]
+                self.log_test("Admin Module Creation", True, f"Module created with ID: {module_id}")
+            else:
+                self.log_test("Admin Module Creation", False, f"Status: {response.status_code}, Response: {response.text}")
+                return False
+        except Exception as e:
+            self.log_test("Admin Module Creation", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 3: Verify module appears in list
+        try:
+            response = self.session.get(f"{BASE_URL}/modules")
+            if response.status_code == 200:
+                modules = response.json()
+                new_module = None
+                for module in modules:
+                    if module.get("title") == "Test Module Nouveau":
+                        new_module = module
+                        break
+                
+                if new_module:
+                    self.log_test("Module Visibility Check", True, f"New module visible in public list")
+                else:
+                    self.log_test("Module Visibility Check", False, "New module not found in public list")
+                    return False
+            else:
+                self.log_test("Module Visibility Check", False, f"Could not get modules list: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Module Visibility Check", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 4: Check student access (should be blocked - paid module)
+        try:
+            student_headers = {"Authorization": f"Bearer {student_token}"}
+            response = self.session.get(f"{BASE_URL}/progress/check-access/{module_id}", headers=student_headers)
+            
+            if response.status_code == 200:
+                access_data = response.json()
+                if not access_data.get("can_access") and access_data.get("reason") == "purchase_required":
+                    self.log_test("Student Access Check (Paid)", True, "Correctly blocked access to paid module")
+                else:
+                    self.log_test("Student Access Check (Paid)", False, f"Unexpected access result: {access_data}")
+                    return False
+            else:
+                self.log_test("Student Access Check (Paid)", False, f"Status: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Student Access Check (Paid)", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 5: Admin makes module free
+        updated_module_data = {
+            "title": "Test Module Nouveau",
+            "description": "Module de test pour vérifier le flux admin-élève",
+            "content": "Contenu modifié - maintenant gratuit !",
+            "duration_minutes": 45,
+            "is_free": True
+        }
+        
+        try:
+            response = self.session.put(f"{BASE_URL}/admin/modules/{module_id}", json=updated_module_data, headers=admin_headers)
+            
+            if response.status_code == 200:
+                self.log_test("Admin Module Update", True, "Module updated to free successfully")
+            else:
+                self.log_test("Admin Module Update", False, f"Status: {response.status_code}, Response: {response.text}")
+                return False
+        except Exception as e:
+            self.log_test("Admin Module Update", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 6: Check student access (should now be allowed)
+        try:
+            response = self.session.get(f"{BASE_URL}/progress/check-access/{module_id}", headers=student_headers)
+            
+            if response.status_code == 200:
+                access_data = response.json()
+                if access_data.get("can_access") and access_data.get("reason") == "free_module":
+                    self.log_test("Student Access Check (Free)", True, "Student can now access free module")
+                else:
+                    self.log_test("Student Access Check (Free)", False, f"Unexpected access result: {access_data}")
+                    return False
+            else:
+                self.log_test("Student Access Check (Free)", False, f"Status: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Student Access Check (Free)", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 7: Verify updated content
+        try:
+            response = self.session.get(f"{BASE_URL}/modules/{module_id}", headers=student_headers)
+            
+            if response.status_code == 200:
+                module_data = response.json()
+                if "Contenu modifié - maintenant gratuit !" in module_data.get("content", ""):
+                    self.log_test("Module Content Update", True, "Updated content visible to student")
+                else:
+                    self.log_test("Module Content Update", False, "Updated content not found")
+                    return False
+            else:
+                self.log_test("Module Content Update", False, f"Status: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Module Content Update", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 8: Admin creates quiz for module
+        quiz_data = {
+            "module_id": module_id,
+            "title": "Quiz Test Module",
+            "description": "Quiz de test",
+            "passing_score": 80,
+            "questions": [
+                {
+                    "id": "q1",
+                    "question": "Question test 1 ?",
+                    "options": ["Réponse A", "Réponse B", "Réponse C", "Réponse D"],
+                    "correct_answer": 0,
+                    "explanation": "La bonne réponse est A"
+                },
+                {
+                    "id": "q2",
+                    "question": "Question test 2 ?",
+                    "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
+                    "correct_answer": 1,
+                    "explanation": "La bonne réponse est la deuxième"
+                }
+            ]
+        }
+        
+        try:
+            response = self.session.post(f"{BASE_URL}/admin/quizzes", json=quiz_data, headers=admin_headers)
+            
+            if response.status_code == 200:
+                quiz_result = response.json()
+                quiz_id = quiz_result["quiz_id"]
+                self.log_test("Admin Quiz Creation", True, f"Quiz created with ID: {quiz_id}")
+            else:
+                self.log_test("Admin Quiz Creation", False, f"Status: {response.status_code}, Response: {response.text}")
+                return False
+        except Exception as e:
+            self.log_test("Admin Quiz Creation", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 9: Student can see quiz
+        try:
+            response = self.session.get(f"{BASE_URL}/quizzes/module/{module_id}", headers=student_headers)
+            
+            if response.status_code == 200:
+                quiz_data = response.json()
+                questions = quiz_data.get("questions", [])
+                if len(questions) == 2:
+                    self.log_test("Student Quiz Access", True, f"Student can access quiz with {len(questions)} questions")
+                else:
+                    self.log_test("Student Quiz Access", False, f"Expected 2 questions, got {len(questions)}")
+                    return False
+            else:
+                self.log_test("Student Quiz Access", False, f"Status: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Student Quiz Access", False, f"Exception: {str(e)}")
+            return False
+        
+        # Step 10: Cleanup - Delete module
+        try:
+            response = self.session.delete(f"{BASE_URL}/admin/modules/{module_id}", headers=admin_headers)
+            
+            if response.status_code == 200:
+                self.log_test("Admin Module Cleanup", True, "Module and quiz deleted successfully")
+            else:
+                self.log_test("Admin Module Cleanup", False, f"Status: {response.status_code}")
+                return False
+        except Exception as e:
+            self.log_test("Admin Module Cleanup", False, f"Exception: {str(e)}")
+            return False
+        
+        return True
+
     def run_all_tests(self):
         """Run all tests in order"""
         print("=" * 80)
@@ -598,8 +835,15 @@ class APITester:
         admin_auth_success = self.authenticate_admin()
         print()
         
-        # Priority 1: Preliminary Quiz Endpoints
-        print("🎯 PRIORITY 1: PRELIMINARY QUIZ ENDPOINTS")
+        # NEW: Admin-Student Module Flow Test (Priority 1)
+        if admin_auth_success:
+            print("🎯 PRIORITY 1: ADMIN → STUDENT MODULE FLOW")
+            print("-" * 50)
+            self.test_admin_student_module_flow()
+            print()
+        
+        # Priority 2: Preliminary Quiz Endpoints
+        print("🎯 PRIORITY 2: PRELIMINARY QUIZ ENDPOINTS")
         print("-" * 50)
         
         # Career fit quiz (no auth required)
@@ -615,8 +859,8 @@ class APITester:
         
         print()
         
-        # Priority 2: Existing Module & Quiz Endpoints
-        print("📚 PRIORITY 2: MODULE & QUIZ ENDPOINTS")
+        # Priority 3: Existing Module & Quiz Endpoints
+        print("📚 PRIORITY 3: MODULE & QUIZ ENDPOINTS")
         print("-" * 45)
         
         self.test_modules_list()
