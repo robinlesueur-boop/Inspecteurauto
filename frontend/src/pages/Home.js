@@ -241,7 +241,7 @@ function Home() {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20">
                   <img 
-                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop" 
+                    src={content.hero_image_url} 
                     alt="Inspecteur automobile professionnel au travail" 
                     className="w-full h-auto object-cover opacity-90"
                   />
