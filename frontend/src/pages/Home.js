@@ -252,7 +252,7 @@ function Home() {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20">
                   <img 
-                    src={content.hero_image_url} 
+                    src={getImageUrl(content.hero_image_url)} 
                     alt="Inspecteur automobile professionnel au travail" 
                     className="w-full h-auto object-cover opacity-90"
                   />
