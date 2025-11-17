@@ -32,7 +32,7 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    // Navigation handled by logout function
   };
 
   const isActive = (path) => location.pathname === path;
