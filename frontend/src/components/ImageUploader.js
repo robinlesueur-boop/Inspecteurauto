@@ -48,10 +48,11 @@ function ImageUploader({ onImageUploaded, currentImageUrl }) {
       });
 
       // L'URL retournée est relative (/uploads/images/xxx)
-      // On stocke l'URL complète pour que ça fonctionne partout
-      const imageUrl = `${BACKEND_URL}${response.data.url}`;
-      setPreviewUrl(imageUrl);
-      onImageUploaded(imageUrl);
+      // On NE préfixe PAS avec BACKEND_URL car on veut une URL relative
+      // qui fonctionnera dans tous les environnements
+      const imageUrl = response.data.url; // Déjà au format /uploads/images/xxx
+      setPreviewUrl(`${BACKEND_URL}${imageUrl}`); // Pour l'aperçu local
+      onImageUploaded(imageUrl); // Stocker l'URL relative
       toast.success('Image uploadée ! N\'oubliez pas de cliquer sur "Enregistrer les Modifications" en bas de la page.', {
         duration: 5000
       });
