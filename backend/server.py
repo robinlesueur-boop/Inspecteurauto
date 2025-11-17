@@ -1957,6 +1957,13 @@ async def health_check():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Mount static files for uploads
+uploads_dir = Path(__file__).parent / "uploads"
+uploads_dir.mkdir(exist_ok=True)
+(uploads_dir / "images").mkdir(exist_ok=True)
+(uploads_dir / "videos").mkdir(exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
