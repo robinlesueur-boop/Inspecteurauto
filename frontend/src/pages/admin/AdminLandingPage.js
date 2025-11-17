@@ -76,6 +76,15 @@ function AdminLandingPage() {
     setContent({ ...content, [field]: value });
   };
 
+  // Helper to get full image URL for preview
+  const getImageUrl = (url) => {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    return `${BACKEND_URL}${url}`;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
