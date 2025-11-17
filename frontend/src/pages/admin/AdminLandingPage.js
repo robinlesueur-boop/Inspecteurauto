@@ -155,65 +155,54 @@ function AdminLandingPage() {
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="hero_image_url">Image Hero (principale)</Label>
+                  <ImageUploader
+                    currentImageUrl={content.hero_image_url}
+                    onImageUploaded={(url) => handleChange('hero_image_url', url)}
+                  />
                   <Input
                     id="hero_image_url"
                     value={content.hero_image_url}
                     onChange={(e) => handleChange('hero_image_url', e.target.value)}
-                    placeholder="https://images.unsplash.com/photo-..."
+                    placeholder="Ou collez une URL: https://images.unsplash.com/photo-..."
+                    className="mt-2"
                   />
-                  {content.hero_image_url && (
-                    <div className="mt-2">
-                      <img 
-                        src={content.hero_image_url} 
-                        alt="Hero preview" 
-                        className="w-full max-w-md h-48 object-cover rounded-lg border"
-                      />
-                    </div>
-                  )}
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="features_image_url">Image Section Fonctionnalités</Label>
+                  <ImageUploader
+                    currentImageUrl={content.features_image_url}
+                    onImageUploaded={(url) => handleChange('features_image_url', url)}
+                  />
                   <Input
                     id="features_image_url"
                     value={content.features_image_url}
                     onChange={(e) => handleChange('features_image_url', e.target.value)}
-                    placeholder="https://images.unsplash.com/photo-..."
+                    placeholder="Ou collez une URL: https://images.unsplash.com/photo-..."
+                    className="mt-2"
                   />
-                  {content.features_image_url && (
-                    <div className="mt-2">
-                      <img 
-                        src={content.features_image_url} 
-                        alt="Features preview" 
-                        className="w-full max-w-md h-48 object-cover rounded-lg border"
-                      />
-                    </div>
-                  )}
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="training_image_url">Image Section Formation</Label>
+                  <ImageUploader
+                    currentImageUrl={content.training_image_url}
+                    onImageUploaded={(url) => handleChange('training_image_url', url)}
+                  />
                   <Input
                     id="training_image_url"
                     value={content.training_image_url}
                     onChange={(e) => handleChange('training_image_url', e.target.value)}
-                    placeholder="https://images.unsplash.com/photo-..."
+                    placeholder="Ou collez une URL: https://images.unsplash.com/photo-..."
+                    className="mt-2"
                   />
-                  {content.training_image_url && (
-                    <div className="mt-2">
-                      <img 
-                        src={content.training_image_url} 
-                        alt="Training preview" 
-                        className="w-full max-w-md h-48 object-cover rounded-lg border"
-                      />
-                    </div>
-                  )}
                 </div>
                 
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <p className="text-sm text-blue-900">
-                    💡 <strong>Astuce:</strong> Utilisez des images d'Unsplash ou Pexels pour des photos de haute qualité gratuites.
-                    Exemple: <code className="text-xs bg-white px-2 py-1 rounded">https://images.unsplash.com/photo-xxx</code>
+                    💡 <strong>2 Options:</strong>
+                    <br/>1. <strong>Uploader vos propres images</strong> (PNG, JPG, GIF) avec le bouton "Uploader"
+                    <br/>2. <strong>Coller une URL</strong> d'image externe (Unsplash, Pexels, etc.)
                   </p>
                 </div>
               </CardContent>
