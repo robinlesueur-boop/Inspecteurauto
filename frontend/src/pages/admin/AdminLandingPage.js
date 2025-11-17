@@ -18,6 +18,7 @@ function AdminLandingPage() {
   const [content, setContent] = useState({
     hero_title: '',
     hero_subtitle: '',
+    hero_image_url: '',
     stat_graduates: '',
     stat_success_rate: '',
     stat_duration: '',
@@ -33,7 +34,10 @@ function AdminLandingPage() {
     feature_3_title: '',
     feature_3_description: '',
     feature_4_title: '',
-    feature_4_description: ''
+    feature_4_description: '',
+    features_image_url: '',
+    training_image_url: '',
+    social_proof_image_url: ''
   });
 
   useEffect(() => {
