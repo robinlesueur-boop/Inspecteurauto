@@ -47,6 +47,8 @@ function ImageUploader({ onImageUploaded, currentImageUrl }) {
         }
       });
 
+      // L'URL retournée est relative (/uploads/images/xxx)
+      // On stocke l'URL complète pour que ça fonctionne partout
       const imageUrl = `${BACKEND_URL}${response.data.url}`;
       setPreviewUrl(imageUrl);
       onImageUploaded(imageUrl);
