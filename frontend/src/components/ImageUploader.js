@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { Upload, X, Loader2 } from 'lucide-react';
 import axios from 'axios';
@@ -9,6 +9,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 function ImageUploader({ onImageUploaded, currentImageUrl }) {
   const [uploading, setUploading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(currentImageUrl || '');
+  const fileInputRef = useRef(null);
 
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
@@ -67,35 +68,33 @@ function ImageUploader({ onImageUploaded, currentImageUrl }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-3">
-        <label htmlFor={`file-upload-${Math.random()}`}>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            disabled={uploading}
-            className="cursor-pointer"
-            onClick={() => document.getElementById(`file-upload-${Math.random()}`).click()}
-          >
-            {uploading ? (
-              <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Upload en cours...
-              </>
-            ) : (
-              <>
-                <Upload className="h-4 w-4 mr-2" />
-                Uploader une image
-              </>
-            )}
-          </Button>
-          <input
-            id={`file-upload-${Math.random()}`}
-            type="file"
-            accept="image/*"
-            onChange={handleFileSelect}
-            className="hidden"
-          />
-        </label>
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          disabled={uploading}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          {uploading ? (
+            <>
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              Upload en cours...
+            </>
+          ) : (
+            <>
+              <Upload className="h-4 w-4 mr-2" />
+              Uploader une image
+            </>
+          )}
+        </Button>
+        
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleFileSelect}
+          className="hidden"
+        />
 
         {previewUrl && (
           <Button
