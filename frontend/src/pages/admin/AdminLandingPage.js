@@ -8,6 +8,7 @@ import { Textarea } from '../../components/ui/textarea';
 import { Save, Eye } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import ImageUploader from '../../components/ImageUploader';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
