@@ -338,6 +338,52 @@ function Home() {
           </div>
         </section>
 
+        {/* Image Showcase Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <img 
+                  src={content.features_image_url}
+                  alt="Technique d'inspection professionnelle"
+                  className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="space-y-6"
+              >
+                <h3 className="text-3xl font-bold text-gray-900">
+                  Une Formation Pratique et Professionnelle
+                </h3>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Apprenez les techniques d'inspection les plus avancées avec notre méthode AutoJust éprouvée par des centaines de professionnels.
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Techniques d'inspection détaillées et visuelles</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Cas pratiques réels et retours d'expérience</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <span className="text-gray-700">Support personnalisé et communauté active</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Programme Qualiopi Section */}
         <QualiopiInfo />
 
