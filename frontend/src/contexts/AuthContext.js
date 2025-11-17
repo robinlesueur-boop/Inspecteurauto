@@ -23,6 +23,8 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('token');
     delete require('axios').defaults.headers.common['Authorization'];
     setUser(null);
+    // Force reload to clear all state
+    window.location.href = '/';
   };
 
   const updateUser = (updatedUser) => {
