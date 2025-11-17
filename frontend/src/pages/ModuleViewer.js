@@ -188,7 +188,7 @@ function ModuleViewer() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <Link to="/dashboard">
-                  <Button variant="ghost" size="sm" data-testid="back-button">
+                  <Button variant="outline" size="sm" data-testid="back-button" className="border-gray-600 text-gray-900 hover:bg-gray-100">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Retour
                   </Button>
