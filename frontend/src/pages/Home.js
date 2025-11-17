@@ -492,7 +492,7 @@ function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <img 
-                  src={content.training_image_url}
+                  src={getImageUrl(content.training_image_url)}
                   alt="Environnement de formation professionnel"
                   className="rounded-2xl shadow-2xl w-full h-auto object-cover"
                 />
