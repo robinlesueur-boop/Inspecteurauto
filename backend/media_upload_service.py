@@ -7,7 +7,7 @@ import shutil
 class MediaUploadService:
     def __init__(self):
         # Dossier pour stocker les médias uploadés
-        self.upload_dir = Path("/app/frontend/public/uploads")
+        self.upload_dir = Path(__file__).parent / "uploads"
         self.upload_dir.mkdir(parents=True, exist_ok=True)
         
         # Créer les sous-dossiers
