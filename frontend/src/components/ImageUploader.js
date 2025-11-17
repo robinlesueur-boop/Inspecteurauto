@@ -11,6 +11,18 @@ function ImageUploader({ onImageUploaded, currentImageUrl }) {
   const [previewUrl, setPreviewUrl] = useState(currentImageUrl || '');
   const fileInputRef = useRef(null);
 
+  // Update preview when currentImageUrl changes
+  React.useEffect(() => {
+    if (currentImageUrl) {
+      // If it's a relative path, add BACKEND_URL for preview
+      if (currentImageUrl.startsWith('/')) {
+        setPreviewUrl(`${BACKEND_URL}${currentImageUrl}`);
+      } else {
+        setPreviewUrl(currentImageUrl);
+      }
+    }
+  }, [currentImageUrl]);
+
   const handleFileSelect = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
