@@ -447,6 +447,49 @@ function Home() {
           </div>
         </section>
 
+        {/* Training Environment Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <Badge className="bg-blue-100 text-blue-800">Formation Certifiante Qualiopi</Badge>
+                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                  Un Environnement de Formation Optimal
+                </h3>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Bénéficiez d'une formation structurée, reconnue et optimisée pour votre réussite professionnelle.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <div className="text-3xl font-bold text-blue-600">{content.stat_graduates}</div>
+                    <div className="text-gray-600">Élèves diplômés</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-3xl font-bold text-blue-600">{content.stat_success_rate}</div>
+                    <div className="text-gray-600">Taux de réussite</div>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <img 
+                  src={content.training_image_url}
+                  alt="Environnement de formation professionnel"
+                  className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700" data-testid="cta-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
