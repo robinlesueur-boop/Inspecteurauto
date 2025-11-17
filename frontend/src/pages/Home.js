@@ -35,6 +35,7 @@ function Home() {
   const [content, setContent] = useState({
     hero_title: "Devenez Inspecteur Automobile Certifié",
     hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+    hero_image_url: "https://images.unsplash.com/photo-1762517296945-74561c2cf21e",
     stat_graduates: "1,200+",
     stat_success_rate: "97%",
     stat_duration: "11h",
@@ -50,7 +51,10 @@ function Home() {
     feature_3_title: "Communauté Active",
     feature_3_description: "Rejoignez une communauté de 1000+ inspecteurs et échangez sur vos expériences.",
     feature_4_title: "Revenus Attractifs",
-    feature_4_description: "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
+    feature_4_description: "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois.",
+    features_image_url: "https://images.unsplash.com/photo-1760836395760-cd81defecf27",
+    training_image_url: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f",
+    social_proof_image_url: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4"
   });
   const [loading, setLoading] = useState(true);
 
