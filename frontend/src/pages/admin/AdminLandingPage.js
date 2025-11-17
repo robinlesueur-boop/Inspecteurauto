@@ -420,25 +420,30 @@ function AdminLandingPage() {
             </Card>
 
             {/* Save Button */}
-            <div className="flex justify-end space-x-4 pb-8">
-              <Button
-                onClick={handleSave}
-                disabled={saving}
-                className="bg-blue-600 hover:bg-blue-700"
-                size="lg"
-              >
-                {saving ? (
-                  <>
-                    <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full mr-2"></div>
-                    Sauvegarde...
-                  </>
-                ) : (
-                  <>
-                    <Save className="w-4 h-4 mr-2" />
-                    Enregistrer les Modifications
-                  </>
-                )}
-              </Button>
+            <div className="sticky bottom-0 bg-white border-t-2 border-blue-200 p-4 shadow-lg">
+              <div className="flex justify-between items-center max-w-5xl mx-auto">
+                <div className="text-sm text-gray-600">
+                  💡 N'oubliez pas de cliquer sur "Enregistrer" pour appliquer vos modifications
+                </div>
+                <Button
+                  onClick={handleSave}
+                  disabled={saving}
+                  className="bg-blue-600 hover:bg-blue-700"
+                  size="lg"
+                >
+                  {saving ? (
+                    <>
+                      <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full mr-2"></div>
+                      Sauvegarde...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="w-4 h-4 mr-2" />
+                      Enregistrer les Modifications
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
