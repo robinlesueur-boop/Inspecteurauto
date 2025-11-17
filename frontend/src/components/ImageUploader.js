@@ -52,7 +52,9 @@ function ImageUploader({ onImageUploaded, currentImageUrl }) {
       const imageUrl = `${BACKEND_URL}${response.data.url}`;
       setPreviewUrl(imageUrl);
       onImageUploaded(imageUrl);
-      toast.success('Image uploadée avec succès !');
+      toast.success('Image uploadée ! N\'oubliez pas de cliquer sur "Enregistrer les Modifications" en bas de la page.', {
+        duration: 5000
+      });
     } catch (error) {
       console.error('Erreur upload:', error);
       toast.error('Erreur lors de l\'upload de l\'image');
