@@ -74,6 +74,17 @@ function Home() {
     }
   };
 
+  // Helper function to get full image URL
+  const getImageUrl = (url) => {
+    if (!url) return '';
+    // Si l'URL commence par http/https, c'est une URL externe (Unsplash, etc.)
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    // Sinon, c'est un chemin relatif d'une image uploadée, ajouter BACKEND_URL
+    return `${BACKEND_URL}${url}`;
+  };
+
   const features = [
     {
       icon: <Target className="h-8 w-8 text-blue-600" />,
