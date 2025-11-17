@@ -236,6 +236,7 @@ class LandingPageContent(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     hero_title: str = "Devenez Inspecteur Automobile Certifié"
     hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois."
+    hero_image_url: str = "https://images.unsplash.com/photo-1762517296945-74561c2cf21e"
     stat_graduates: str = "1,200+"
     stat_success_rate: str = "97%"
     stat_duration: str = "11h"
@@ -252,6 +253,9 @@ class LandingPageContent(BaseModel):
     feature_3_description: str = "Rejoignez une communauté de 1000+ inspecteurs et échangez sur vos expériences."
     feature_4_title: str = "Revenus Attractifs"
     feature_4_description: str = "Générez 50 à 300€ par inspection avec un potentiel jusqu'à 4000€/mois."
+    features_image_url: str = "https://images.unsplash.com/photo-1760836395760-cd81defecf27"
+    training_image_url: str = "https://images.unsplash.com/photo-1615906655593-ad0386982a0f"
+    social_proof_image_url: str = "https://images.unsplash.com/photo-1573164574572-cb89e39749b4"
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class ForumPost(BaseModel):
