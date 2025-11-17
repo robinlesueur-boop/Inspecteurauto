@@ -359,7 +359,7 @@ function Home() {
                 transition={{ duration: 0.6 }}
               >
                 <img 
-                  src={content.features_image_url}
+                  src={getImageUrl(content.features_image_url)}
                   alt="Technique d'inspection professionnelle"
                   className="rounded-2xl shadow-2xl w-full h-auto object-cover"
                 />
