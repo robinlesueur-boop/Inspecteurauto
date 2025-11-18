@@ -9,37 +9,60 @@ class AIChatService:
         # Charger la clé au runtime plutôt qu'à l'import
         self.api_key = None
         self.enabled = False
+        self.system_message = None
         self._initialize()
     
     def _initialize(self):
         """Initialize the service with API key"""
         self.api_key = os.getenv('EMERGENT_LLM_KEY')
-        self.enabled = bool(self.api_key)
         
-        if not self.enabled:
-            logger.warning("Emergent LLM key not configured - AI chat disabled")
-        
-        # System message pour le contexte de formation
-        self.system_message = """Tu es un assistant pédagogique spécialisé dans la formation d'inspecteur automobile. 
-Tu aides les étudiants avec leurs questions sur:
-- Les 8 modules de la formation Inspecteur Auto
-- La mécanique automobile (moteur, transmission, freinage, etc.)
-- Les systèmes électroniques et ADAS
-- Le diagnostic automobile
-- La méthodologie AutoJust d'inspection
-- Les aspects réglementaires et légaux
-- La carrosserie et le châssis
-- Les questions pratiques sur la plateforme de formation
+        if self.api_key:
+            self.enabled = True
+            print("✅ AI Chat Service enabled with Emergent LLM key")
+            self._load_system_message()
+        else:
+            self.enabled = False
+            print("⚠️ Emergent LLM key not configured - AI chat disabled")
+    
+    def _load_system_message(self):
+        """Load system message - will be overridden by reload_config"""
+        self.system_message = """Tu es un assistant virtuel expert pour la plateforme de formation "Inspecteur Auto". 
 
-Tu dois:
-1. Répondre de manière claire, pédagogique et professionnelle
-2. Utiliser un ton encourageant et positif
-3. Donner des exemples concrets quand c'est pertinent
-4. Si tu ne connais pas la réponse précise, le dire honnêtement
-5. Suggérer de contacter le support pour les questions administratives
-6. Répondre en français
+Tu aides les étudiants et visiteurs à comprendre la formation pour devenir inspecteur automobile certifié.
 
-Sois concis mais complet. Limite tes réponses à 200-300 mots maximum sauf si une explication détaillée est nécessaire."""
+INFORMATIONS CLÉS:
+- Durée: 11 heures
+- Prix: 297€
+- Certification officielle
+- 8 modules + quiz
+- Taux de réussite: 97%
+
+Tu dois répondre de manière claire et professionnelle en français."""
+    
+    def reload_config(self):
+        """Reload configuration from database"""
+        try:
+            # Import here to avoid circular dependency
+            import asyncio
+            from motor.motor_asyncio import AsyncIOMotorClient
+            
+            async def load():
+                mongo_url = os.getenv('MONGO_URL', 'mongodb://localhost:27017')
+                db_name = os.getenv('DB_NAME', 'inspecteur_auto_platform')
+                client = AsyncIOMotorClient(mongo_url)
+                db = client[db_name]
+                
+                config = await db.ai_chatbot_config.find_one({})
+                if config and config.get('system_prompt'):
+                    self.system_message = config['system_prompt']
+                    print("✅ AI Chat prompt reloaded from database")
+                else:
+                    print("⚠️ No custom prompt found, using default")
+            
+            asyncio.run(load())
+        except Exception as e:
+            print(f"⚠️ Error reloading AI chat config: {e}")
+    
     
     async def get_response(self, user_message: str, session_id: str) -> str:
         """
