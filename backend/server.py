@@ -260,6 +260,14 @@ class LandingPageContent(BaseModel):
     social_proof_image_url: str = "https://images.unsplash.com/photo-1573164574572-cb89e39749b4"
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+class AIChatbotConfig(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    system_prompt: str = """Tu es un assistant virtuel pour la plateforme de formation "Inspecteur Auto"..."""
+    formation_info: str = """Informations sur la formation..."""
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 class ForumPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
