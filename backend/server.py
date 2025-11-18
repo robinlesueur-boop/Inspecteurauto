@@ -1846,6 +1846,86 @@ async def update_landing_page_content(
     
     return {"message": "Contenu de la landing page mis à jour avec succès"}
 
+# AI Chatbot Configuration
+@api_router.get("/admin/chatbot/config")
+async def get_chatbot_config(current_user: User = Depends(require_admin)):
+    """Get chatbot configuration (admin only)"""
+    config = await db.ai_chatbot_config.find_one({}, {"_id": 0})
+    
+    if not config:
+        # Return default config
+        default_config = {
+            "system_prompt": """Tu es un assistant virtuel expert pour la plateforme de formation "Inspecteur Auto". 
+
+Tu aides les étudiants et visiteurs à comprendre la formation pour devenir inspecteur automobile certifié.
+
+INFORMATIONS CLÉS SUR LA FORMATION:
+- Durée: 11 heures de formation complète
+- Prix: 297€ (paiement en 4x disponible)
+- Certification officielle reconnue
+- 8 modules de formation + quiz
+- Taux de réussite: 97%
+- Plus de 1200 diplômés
+
+MODULES DE FORMATION:
+1. Introduction à l'inspection automobile
+2. Remise à niveau mécanique (si nécessaire)
+3. Moteur et transmission
+4. Systèmes électriques et électroniques
+5. Freinage et suspension
+6. ADAS (Systèmes d'aide à la conduite)
+7. Aspects réglementaires et légaux
+8. Carrosserie et châssis
+
+REVENUS POTENTIELS:
+- 50€ à 300€ par inspection
+- Potentiel jusqu'à 4000€/mois
+- Activité indépendante ou salariée
+
+Tu dois:
+1. Répondre de manière claire, pédagogique et professionnelle
+2. Utiliser un ton encourageant et positif
+3. Donner des exemples concrets quand pertinent
+4. Si tu ne connais pas la réponse, le dire honnêtement
+5. Suggérer de contacter le support pour questions administratives
+6. Répondre en français
+
+Sois concis (200-300 mots max) sauf si explication détaillée nécessaire.""",
+            "formation_info": """Formation Inspecteur Automobile - Informations complètes
+
+DURÉE: 11 heures
+PRIX: 297€
+CERTIFICATION: Officielle et reconnue
+MODULES: 8 modules complets + quiz
+TAUX DE RÉUSSITE: 97%""",
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }
+        return default_config
+    
+    return config
+
+@api_router.put("/admin/chatbot/config")
+async def update_chatbot_config(
+    config_data: dict,
+    current_user: User = Depends(require_admin)
+):
+    """Update chatbot configuration (admin only)"""
+    
+    config_data['updated_at'] = datetime.now(timezone.utc).isoformat()
+    
+    # Upsert (update or insert)
+    await db.ai_chatbot_config.update_one(
+        {},
+        {"$set": config_data},
+        upsert=True
+    )
+    
+    # Recharger la configuration dans le service
+    from ai_chat_service import ai_chat_service
+    ai_chat_service.reload_config()
+    
+    return {"message": "Configuration du chatbot mise à jour avec succès"}
+
 @api_router.get("/blog/posts/{slug}")
 async def get_blog_post_by_slug(slug: str):
     """Get a single blog post by slug"""
