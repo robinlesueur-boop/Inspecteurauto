@@ -26,9 +26,16 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.units import inch
 
-# Stripe integration
+# Emergent Integrations
 from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
 
+# File upload
+from fastapi import UploadFile, File
+
+ROOT_DIR = Path(__file__).parent
+load_dotenv(ROOT_DIR / '.env')
+
+# Import services APRÈS load_dotenv pour que les variables d'environnement soient disponibles
 # Email service
 from email_service import email_service
 
@@ -37,12 +44,6 @@ from ai_chat_service import ai_chat_service
 
 # Media upload service
 from media_upload_service import media_service
-
-# File upload
-from fastapi import UploadFile, File
-
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
