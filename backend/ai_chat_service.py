@@ -6,6 +6,13 @@ logger = logging.getLogger(__name__)
 
 class AIChatService:
     def __init__(self):
+        # Charger la clé au runtime plutôt qu'à l'import
+        self.api_key = None
+        self.enabled = False
+        self._initialize()
+    
+    def _initialize(self):
+        """Initialize the service with API key"""
         self.api_key = os.getenv('EMERGENT_LLM_KEY')
         self.enabled = bool(self.api_key)
         
