@@ -2058,6 +2058,7 @@ async def get_sitemap():
         {"loc": "/", "priority": "1.0", "changefreq": "daily"},
         {"loc": "/register", "priority": "0.9", "changefreq": "monthly"},
         {"loc": "/pre-registration", "priority": "0.8", "changefreq": "monthly"},
+        {"loc": "/programme-detaille", "priority": "0.9", "changefreq": "weekly"},
         {"loc": "/programme", "priority": "0.9", "changefreq": "weekly"},
         {"loc": "/debouches-revenus", "priority": "0.8", "changefreq": "monthly"},
         {"loc": "/methode-autojust", "priority": "0.8", "changefreq": "monthly"},
