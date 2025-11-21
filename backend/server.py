@@ -2043,6 +2043,61 @@ async def root():
 async def health_check():
     return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
+# SEO - Sitemap XML
+@api_router.get("/sitemap.xml")
+async def get_sitemap():
+    """Generate sitemap.xml for SEO"""
+    from fastapi.responses import Response
+    
+    # Get all blog posts
+    blog_posts = await db.blog_posts.find({"published": True}, {"slug": 1, "updated_at": 1}).to_list(100)
+    
+    base_url = "https://autoedge.preview.emergentagent.com"  # À remplacer par le vrai domaine
+    
+    # Pages statiques
+    static_pages = [
+        {"loc": "/", "priority": "1.0", "changefreq": "daily"},
+        {"loc": "/register", "priority": "0.9", "changefreq": "monthly"},
+        {"loc": "/pre-registration", "priority": "0.8", "changefreq": "monthly"},
+        {"loc": "/programme", "priority": "0.9", "changefreq": "weekly"},
+        {"loc": "/debouches-revenus", "priority": "0.8", "changefreq": "monthly"},
+        {"loc": "/methode-autojust", "priority": "0.8", "changefreq": "monthly"},
+        {"loc": "/certification", "priority": "0.8", "changefreq": "monthly"},
+        {"loc": "/faq", "priority": "0.7", "changefreq": "weekly"},
+        {"loc": "/blog", "priority": "0.8", "changefreq": "daily"},
+        {"loc": "/contact", "priority": "0.6", "changefreq": "yearly"},
+        {"loc": "/mentions-legales", "priority": "0.3", "changefreq": "yearly"},
+        {"loc": "/confidentialite", "priority": "0.3", "changefreq": "yearly"},
+    ]
+    
+    # Construire le XML
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    # Ajouter les pages statiques
+    for page in static_pages:
+        xml += f'  <url>\n'
+        xml += f'    <loc>{base_url}{page["loc"]}</loc>\n'
+        xml += f'    <priority>{page["priority"]}</priority>\n'
+        xml += f'    <changefreq>{page["changefreq"]}</changefreq>\n'
+        xml += f'  </url>\n'
+    
+    # Ajouter les articles de blog
+    for post in blog_posts:
+        xml += f'  <url>\n'
+        xml += f'    <loc>{base_url}/blog/{post["slug"]}</loc>\n'
+        xml += f'    <priority>0.7</priority>\n'
+        xml += f'    <changefreq>monthly</changefreq>\n'
+        if post.get('updated_at'):
+            updated = post['updated_at']
+            if isinstance(updated, str):
+                xml += f'    <lastmod>{updated[:10]}</lastmod>\n'
+        xml += f'  </url>\n'
+    
+    xml += '</urlset>'
+    
+    return Response(content=xml, media_type="application/xml")
+
 # Include the router in the main app
 app.include_router(api_router)
 
