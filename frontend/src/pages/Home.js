@@ -154,13 +154,81 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Formation Inspecteur Automobile - Devenez Inspecteur Certifié</title>
-        <meta name="description" content="Formation professionnelle d'inspecteur automobile. Maîtrisez le diagnostic véhiculaire, générez jusqu'à 8000€/mois. Méthode AutoJust - Certification incluse." />
-        <meta name="keywords" content="formation inspecteur automobile, diagnostic véhiculaire, contrôle véhicule, inspection automobile, formation auto, certification automobile" />
-        <meta property="og:title" content="Formation Inspecteur Automobile - Devenez Inspecteur Certifié" />
-        <meta property="og:description" content="Formation complète avec certification reconnue. Revenus jusqu'à 8000€/mois." />
+        <title>Formation Inspecteur Automobile – 11h – Certifié en Ligne | InspecteurAuto</title>
+        <meta name="description" content="Devenez inspecteur automobile certifié en 11h. Formation complète avec méthode AutoJust, certification reconnue, 97% de réussite. 1200+ élèves diplômés. Accès immédiat." />
+        <meta name="keywords" content="formation inspecteur automobile, devenir inspecteur auto, formation en ligne automobile, expertise voiture, diagnostic automobile, formation certifiante auto" />
+        
+        {/* Open Graph pour réseaux sociaux */}
+        <meta property="og:title" content="Formation Inspecteur Automobile – Certifié en 11h" />
+        <meta property="og:description" content="Formation complète pour devenir inspecteur automobile. Certification officielle, méthode professionnelle AutoJust utilisée par 500+ inspecteurs." />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href={window.location.href} />
+        <meta property="og:url" content="https://autoedge.preview.emergentagent.com/" />
+        <meta property="og:image" content={getImageUrl(content.hero_image_url)} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Formation Inspecteur Automobile – Certifié" />
+        <meta name="twitter:description" content="11h de formation, certification reconnue, 97% de réussite" />
+        <meta name="twitter:image" content={getImageUrl(content.hero_image_url)} />
+        
+        {/* Données structurées Schema.org pour Google */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": "Formation Inspecteur Automobile",
+            "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode AutoJust en 11 heures.",
+            "provider": {
+              "@type": "Organization",
+              "name": "InspecteurAuto - Méthode AutoJust",
+              "url": "https://autoedge.preview.emergentagent.com",
+              "logo": "https://autoedge.preview.emergentagent.com/logo.png"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "297",
+              "priceCurrency": "EUR",
+              "url": "https://autoedge.preview.emergentagent.com/register",
+              "availability": "https://schema.org/InStock"
+            },
+            "educationalLevel": "Professional",
+            "timeRequired": "PT11H",
+            "courseMode": "Online",
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "PT11H"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "1200",
+              "bestRating": "5"
+            },
+            "numberOfCredits": {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "Certificate",
+              "name": "Certification Inspecteur Automobile"
+            }
+          })}
+        </script>
+        
+        {/* Schema.org Organization */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "InspecteurAuto - Formation Automobile",
+            "url": "https://autoedge.preview.emergentagent.com",
+            "logo": "https://autoedge.preview.emergentagent.com/logo.png",
+            "description": "Plateforme de formation en ligne pour devenir inspecteur automobile certifié",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "Customer Service",
+              "email": "contact@inspecteur-auto.fr"
+            }
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen">
