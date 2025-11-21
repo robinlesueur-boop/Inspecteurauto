@@ -104,6 +104,7 @@ function AppContent() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/certification" element={<Certification />} />
             <Route path="/methode-autojust" element={<MethodeAutoJust />} />
+            <Route path="/programme-detaille" element={<ProgrammeDetaille />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
