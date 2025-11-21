@@ -592,10 +592,12 @@ function Home() {
                     Devenir Inspecteur Auto
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Parler à un Conseiller
-                </Button>
+                <Link to="/programme-detaille">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg">
+                    <BookOpen className="mr-2 h-5 w-5" />
+                    Voir le Programme
+                  </Button>
+                </Link>
               </div>
 
               <p className="text-blue-200 text-sm">
