@@ -2076,23 +2076,23 @@ async def get_sitemap():
     
     # Ajouter les pages statiques
     for page in static_pages:
-        xml += f'  <url>\n'
+        xml += '  <url>\n'
         xml += f'    <loc>{base_url}{page["loc"]}</loc>\n'
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += f'    <changefreq>{page["changefreq"]}</changefreq>\n'
-        xml += f'  </url>\n'
+        xml += '  </url>\n'
     
     # Ajouter les articles de blog
     for post in blog_posts:
-        xml += f'  <url>\n'
+        xml += '  <url>\n'
         xml += f'    <loc>{base_url}/blog/{post["slug"]}</loc>\n'
-        xml += f'    <priority>0.7</priority>\n'
-        xml += f'    <changefreq>monthly</changefreq>\n'
+        xml += '    <priority>0.7</priority>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
         if post.get('updated_at'):
             updated = post['updated_at']
             if isinstance(updated, str):
                 xml += f'    <lastmod>{updated[:10]}</lastmod>\n'
-        xml += f'  </url>\n'
+        xml += '  </url>\n'
     
     xml += '</urlset>'
     
