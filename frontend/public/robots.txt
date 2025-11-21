@@ -1,0 +1,26 @@
+# Sitemap pour InspecteurAuto.fr
+# Ce sitemap sera généré dynamiquement par le backend
+
+# Pages principales
+User-agent: *
+Allow: /
+
+# Pages importantes à indexer
+Allow: /
+Allow: /register
+Allow: /pre-registration
+Allow: /dashboard
+Allow: /blog
+Allow: /certification
+Allow: /methode-autojust
+Allow: /faq
+Allow: /contact
+Allow: /mentions-legales
+Allow: /confidentialite
+
+# Ne pas indexer les pages admin et API
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://autoedge.preview.emergentagent.com/sitemap.xml
