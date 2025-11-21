@@ -186,18 +186,28 @@ function Navbar() {
                 </DropdownMenu>
               </>
             ) : (
-              <div className="flex items-center space-x-4">
-                <Link to="/login" data-testid="navbar-login-link">
-                  <Button variant="outline" className="font-medium border-gray-600 text-gray-900 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50">
-                    Connexion
-                  </Button>
+              <>
+                <Link 
+                  to="/programme-detaille" 
+                  className={`text-gray-700 hover:text-blue-600 transition-colors font-medium ${
+                    isActive('/programme-detaille') ? 'text-blue-600 border-b-2 border-blue-600 pb-1' : ''
+                  }`}
+                >
+                  Programme
                 </Link>
-                <Link to="/register" data-testid="navbar-register-link">
-                  <Button className="bg-blue-600 hover:bg-blue-700 font-medium">
-                    S'inscrire
-                  </Button>
-                </Link>
-              </div>
+                <div className="flex items-center space-x-4">
+                  <Link to="/login" data-testid="navbar-login-link">
+                    <Button variant="outline" className="font-medium border-gray-600 text-gray-900 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50">
+                      Connexion
+                    </Button>
+                  </Link>
+                  <Link to="/register" data-testid="navbar-register-link">
+                    <Button className="bg-blue-600 hover:bg-blue-700 font-medium">
+                      S'inscrire
+                    </Button>
+                  </Link>
+                </div>
+              </>
             )}
           </div>
 
