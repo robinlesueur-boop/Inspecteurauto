@@ -23,4 +23,4 @@ Disallow: /admin/
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://autoedge.preview.emergentagent.com/sitemap.xml
+Sitemap: https://carlearn-admin.preview.emergentagent.com/sitemap.xml

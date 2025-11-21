@@ -8,7 +8,7 @@ import json
 import sys
 
 # Configuration
-BASE_URL = "https://autoedge.preview.emergentagent.com/api"
+BASE_URL = "https://carlearn-admin.preview.emergentagent.com/api"
 
 # Admin credentials
 ADMIN_USER = {

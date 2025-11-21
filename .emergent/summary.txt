@@ -1,154 +1,113 @@
 <analysis>
-The AI engineer successfully bootstrapped the Inspecteur Auto application, establishing a full-stack React/FastAPI/MongoDB setup with core functionalities like JWT authentication, module management (free/premium), user progression, PDF certificate generation, Stripe integration, a forum, and an admin dashboard. Initially, the AI engineer provided a summary of the existing app and made it operational by fixing missing frontend admin pages (, ). Subsequent work focused on fulfilling a large set of new requirements for Qualiopi compliance and enhancing the learning experience, including dynamic module content generation (with difficulties meeting word count targets), sequential module access, a pre-registration questionnaire, and two new preliminary quizzes. The AI debugged quiz submission issues and frontend routing. The current state involves partially implemented content generation and ongoing integration of the new preliminary quizzes and module flow.
+I have analyzed the provided trajectory, which documents the work of a previous AI engineer on the Inspecteur Auto application. The user, communicating in French, initiated contact with a comprehensive list of bugs and feature requests. The engineer began by systematically investigating these issues, which included UI bugs (110% progress bar, text cursor on buttons), broken links, visibility problems with the login button, and access control flaws (free modules being locked).
+
+The engineer then implemented a series of fixes: correcting the progress bar calculation, adding global CSS to prevent text selection on buttons, implementing a scroll-to-top utility, fixing module access logic for non-logged-in users, and making the login button visible.
+
+Subsequently, development shifted to major feature enhancements requested by the user. This involved building a full-featured admin section for managing course modules and quizzes, which required creating new backend endpoints (POST for modules, CRUD for quizzes) and a new React component (). Further enhancements included an admin preview mode on the user dashboard, a complete system for dynamically managing landing page content (text and images) from the admin panel, and extensive debugging of the image upload and display functionality, which involved fixing issues with file paths, database persistence, and environment-specific URLs.
+
+The engineer also successfully debugged and repaired the non-functional AI chatbot, tracing the problem to the import order in  which prevented environment variables from being loaded correctly. The most recent task was initiating a comprehensive SEO overhaul based on a detailed brief from the user, starting with technical foundations like  and a dynamic sitemap.
+
+The user's primary language is French. The next agent must respond in French.
 </analysis>
 
 <product_requirements>
-The user aims to develop an Inspecteur Auto training platform. The initial product vision included a full-stack application with React frontend, FastAPI backend, and MongoDB database. Key features already implemented and validated (as per AI's initial summary, with subsequent fixes):
-- **User Management**: Complete authentication (JWT registration/login), user tracking.
-- **Course Management**: Training modules (free/premium), user progression system, automatic PDF certificate generation (ReportLab).
-- **Payments**: Stripe integration for payments (fixed to 297€), including payable 4 fois sans frais (pending implementation for 4x payment).
-- **Community**: Forum (buyer-reserved).
-- **Admin**: Administrator dashboard with advanced analytics, user and revenue tracking, admin panel (fixed missing , ).
-- **UI/UX**: Frontend with Tailwind CSS & Radix UI; Pages: Landing, Login, Register, Dashboard, Forum, Admin.
+The Inspecteur Auto platform is an e-learning application for aspiring car inspectors, built with a React frontend, FastAPI backend, and MongoDB database.
 
-Subsequent detailed requirements for Qualiopi compliance and improved learning experience:
-- **Course Content**: Modules 2-8 need substantial content (15,000-25,000 words each), 9 hours total duration.
-- **Quizzes**: Functional quizzes after each module (12 questions each), with sequential progression (must complete module and quiz to access next). A final evaluation quiz after all modules.
-- **Pre-course Assessment**:
-    - **Pre-payment Profile Questionnaire**: 10 questions to analyze user's need/suitability for the career (mechanic experience, auto passion, career project) to prove project validity for Qualiopi. Includes a Permis B certification; blocks access if not held. Admin needs to validate these dossiers.
-    - **Post-payment Mechanical Knowledge Questionnaire**: Assess mechanical competence. If <70%, unlock a Remise à Niveau Mécanique module.
-- **Landing Page Enhancements**:
-    - Programme complet section: Recap and prerequisites for training (Qualiopi compliance), including: total hours (9h), detailed formation, 4x payment option, prerequisites, educational objectives, duration, access modalities, access delay, price, contact, methods, evaluation modalities, accessibility for disabled, Permis B.
-    - Specific educational objectives: Understand role of auto inspector, acquire inspection methods, master tools/diagnostics, establish client report, apply legal/ethical rules.
-- **Email Notifications**: Automated email after payment with platform access link and credentials, technical support contact.
-- **SEO**: Hidden blog section at bottom of site, general SEO optimization.
-- **Admin Panel Improvements**: Direct messaging to students, tracking individual progression, showing student follow-up.
-- **Satisfaction Survey**: End-of-formation survey with MCQ and open comments.
+**Core User Problem:** To provide a comprehensive, Qualiopi-compliant online training course that takes a student from registration to certification.
+
+**Key Features Implemented:**
+*   **User Management:** JWT-based authentication for students and admins.
+*   **Course Structure:** A curriculum of modules with sequential access. The first module is free to attract users, while subsequent modules are premium content.
+*   **Payment Integration:** Stripe handles a one-time payment of 297€, which automatically grants premium access.
+*   **Qualiopi Compliance:** Features include detailed module content, pre-registration questionnaires to vet candidates, and quizzes for each module.
+*   **Admin Dashboard:** A comprehensive backend interface allowing administrators to:
+    *   View analytics, users, and transactions.
+    *   Create, edit, and delete course modules and their associated quizzes.
+    *   Manage content on the main landing page, including text and images.
+    *   Message students directly.
+    *   Manage a blog.
+*   **Student Experience:**
+    *   An AI-powered chatbot for assistance.
+    *   A user dashboard to track progress.
+    *   Generation of a PDF certificate upon completion.
+
+**Recent Additions:** The platform now includes an admin-editable landing page, an admin preview mode to view all course content, and an image upload system for landing page customization. Significant SEO foundational work has also begun.
 </product_requirements>
 
 <key_technical_concepts>
 - **Full-stack Architecture**: React (Frontend), FastAPI (Backend), MongoDB (Database).
-- **Authentication**: JWT (JSON Web Tokens) for user authentication.
-- **Styling**: Tailwind CSS for UI design, Radix UI for components.
-- **Payments**: Stripe integration for processing payments.
-- **PDF Generation**: ReportLab for automatic certificate generation.
-- **Data Models**: Pydantic for FastAPI data validation and serialization.
-- **Asynchronous Programming**: asyncio in Python for database seeding.
+- **Styling**: Tailwind CSS, Radix UI.
+- **Authentication**: JWT (JSON Web Tokens) with  for password hashing.
+- **Payments**: Stripe integration for checkout sessions.
+- **API Communication**:  on the frontend.
+- **Data Modeling & Validation**: Pydantic on the backend.
+- **AI Integration**:  library for the AI chatbot (GPT-4o mini).
+- **File Serving**: FastAPI's  for serving user-uploaded media.
+- **SEO**:  for managing meta tags, dynamic  generation.
 </key_technical_concepts>
 
 <code_architecture>
-The application has a standard full-stack structure:
+The application follows a standard monorepo structure with separate  and  directories.
 
 
--   ****: This is the core FastAPI application.
-    -   **Summary**: Defines all API endpoints, MongoDB models, authentication logic, and business logic for modules, users, payments, and quizzes.
-    -   **Changes**:
-        -   Added API routes for quiz management (, , ).
-        -   Modified  endpoint to use  Pydantic model for request body, fixing a React rendering error.
-        -   Added  model and associated backend API routes (, , , ).
-        -   Added  endpoint for sequential module access logic.
--   ****:
-    -   **Summary**: A script to create default admin and test user accounts with pre-defined credentials and permissions.
-    -   **Changes**: Created and executed multiple times to reset accounts after database clearing.
--   ****:
-    -   **Summary**: Seeds the database with initial module data.
-    -   **Changes**: Executed to populate modules, but cleared existing data, necessitating recreation of users.
--   ****:
-    -   **Summary**: A script to generate more detailed content for modules and quizzes.
-    -   **Changes**: Created to populate module content and quizzes, but struggled to meet the word count target.
--   ****:
-    -   **Summary**: Adjusts module durations to 9 hours total and quiz question count to 12.
-    -   **Changes**: Created and executed to update module durations and quiz questions in the database.
--   ****:
-    -   **Summary**: Script to create the Adéquation Métier and Connaissances Mécaniques preliminary quizzes.
-    -   **Changes**: Created and executed.
--   ****:
-    -   **Summary**: Defines the main routing for the React application.
-    -   **Changes**:
-        -   Added routes for  and .
-        -   Replaced  route with .
-        -   Added a route for .
--   ****:
-    -   **Summary**: The application's landing page.
-    -   **Changes**: Replaced existing curriculum section with  component.
--   ****:
-    -   **Summary**: Original user registration page.
-    -   **Changes**: Effectively replaced by  in routing.
--   ****:
-    -   **Summary**: A new registration page integrating the pre-registration questionnaire.
-    -   **Changes**: Created, and  state modified to start at 0 for proper form display.
--   ****:
-    -   **Summary**: Displays user's progress and available modules.
-    -   **Changes**:
-        -   Implemented  function to check backend for sequential module access.
-        -   Modified module rendering logic to use  for locking/unlocking.
-        -   Added messages for blocked modules.
--   ****:
-    -   **Summary**: Displays the content of individual training modules.
-    -   **Changes**:
-        -   Improved CSS for content readability (darker text).
-        -   Added a Passer le Quiz button with  icon at the end of module content, before navigation, to explicitly direct users to the quiz.
--   ****:
-    -   **Summary**: Original quiz component, now deprecated.
-    -   **Changes**: None directly, but functionality moved to .
--   ****:
-    -   **Summary**: New, functional quiz component.
-    -   **Changes**:
-        -   Created to provide full quiz functionality.
-        -   Modified to redirect to dashboard upon successful quiz submission.
--   ****:
-    -   **Summary**: Displays Qualiopi compliance information on the landing page.
-    -   **Changes**: Created.
--   ****:
-    -   **Summary**: Component for the pre-registration questionnaire.
-    -   **Changes**: Created, and initial  state fixed to display form correctly.
--   ****:
-    -   **Summary**: Dedicated page for the pre-registration questionnaire.
-    -   **Changes**: Created.
--   ****:
-    -   **Summary**: Admin page to view and validate pre-registration questionnaires.
-    -   **Changes**: Created.
+
+- ****: The core of the backend. It defines all API endpoints, database models (using Pydantic), and business logic.
+    - **Summary**: This is the main entry point for all server-side logic, including authentication, course management, payments, and admin functions.
+    - **Recent Changes**: Endpoints were added for creating modules (), full CRUD for quizzes (), managing landing page content (, ), serving static uploads (), and generating a dynamic sitemap (). The import order was corrected to fix an environment variable loading issue for the AI chat service.
+
+- ****: Manages the AI chatbot logic.
+    - **Summary**: Contains the logic to interact with the  LLM service. It constructs the system prompt and handles sending/receiving messages.
+    - **Recent Changes**: Modified to load the system prompt dynamically from the database and initialize the API key at runtime within the  method, resolving an issue where the key was not available at initial module import.
+
+- ****: The main landing page.
+    - **Summary**: Serves as the public-facing entry point for the application.
+    - **Recent Changes**: Was heavily refactored to load all its text and image content dynamically from the  endpoint instead of being hardcoded. It now includes SEO optimizations like  for meta tags and JSON-LD schema markup. A helper function  was added to correctly resolve relative image paths from the backend.
+
+- ****: The new admin interface for managing modules and quizzes.
+    - **Summary**: Replaced the old, edit-only version. It provides a comprehensive UI for creating, reading, updating, and deleting both modules and their associated quizzes via API calls to the backend.
+    - **Recent Changes**: The  component was re-integrated after being missed in the initial creation.
+
+- ****: The admin interface for editing the landing page.
+    - **Summary**: Allows an admin to update all text fields and image URLs for the  page.
+    - **Recent Changes**: The  component was added to allow direct image uploads instead of just pasting URLs. UI/UX was improved to make the Save Changes button more prominent.
+
+- ****: The main student dashboard.
+    - **Summary**: Displays the student's progress, available modules, and other key actions.
+    - **Recent Changes**: Logic was added to unlock all modules and display a prominent Admin Preview banner if the logged-in user is an admin. A bug was fixed where the Remise à Niveau Mécanique module was incorrectly hidden from admins.
 </code_architecture>
 
 <pending_tasks>
-- **Qualiopi Compliance**:
-    - Implement payable 4 fois sans frais for Stripe integration.
-- **Course Content**:
-    - Enrich modules 2-8 to meet 15,000-25,000 words per module (currently around 3,500-8,000 words for some, and placeholder for others).
-- **Quizzes**:
-    - Final evaluation quiz after all modules.
-- **Pre-course Assessment**:
-    - Integrate the Adéquation Métier and Connaissances Mécaniques quizzes into the frontend flow, specifically:
-        - The Adéquation Métier quiz should be before payment/access.
-        - The Connaissances Mécaniques quiz should be post-payment, potentially before Module 1.
-    - Implement conditional unlock of Remise à Niveau Mécanique module based on Connaissances Mécaniques quiz score (<70%).
-    - Admin validation interface for pre-registration questionnaires.
-- **Email Notifications**:
-    - Automatic email after payment with platform access link, credentials, and technical support.
-- **SEO**:
-    - Create and implement a hidden blog section for SEO.
-- **Admin Panel Improvements**:
-    - Functionality for direct messaging to students.
-    - Enhanced tracking and display of individual student progression.
-- **Satisfaction Survey**:
-    - Create and implement a questionnaire of satisfaction at the end of the formation.
+- **SEO Implementation**:
+    - Create the new strategic SEO pages outlined in the user's brief (e.g., Programme Détaillé, Certification, Tarifs).
+    - Implement a full backlink strategy.
+- **Critical Configurations**:
+    - Guide the user to replace test Stripe keys with their production keys.
+    - Guide the user to add their  to enable automatic emails.
+- **Feature Finalization**:
+    - Implement the payable 4 fois sans frais (4x installment payment) with Stripe.
+    - Test and verify the automatic PDF certificate generation.
+    - Test the user forum functionality.
 </pending_tasks>
 
 <current_work>
-Immediately before this summary request, the AI engineer was working on integrating the newly created preliminary quizzes and addressing content length issues.
+The AI engineer was in the middle of a comprehensive SEO implementation based on a detailed brief provided by the user. The goal is to improve the site's ranking and attract organic traffic.
 
-**Specific actions:**
-1.  **Creation of Preliminary Quizzes**: The AI engineer created a backend script () to generate two new quizzes:
-    *   Quiz Adéquation Métier (profile suitability quiz).
-    *   Quiz Connaissances Mécaniques (mechanical knowledge quiz).
-    These quizzes have been successfully created in the database.
-2.  **Module 2 Content Enrichment**: The AI engineer attempted to enrich Module 2 (now renamed Remise à Niveau Mécanique) with a target of 20,000+ words. A script was run, which updated Module 2 content, but only to approximately 3,545 words, falling short of the user's explicit requirement for 20,000 words.
-3.  **Prioritization**: The AI engineer decided to prioritize the integration of these new quizzes into the user flow over spending more time on the extensive content generation for Module 2, with the understanding that content can be enriched progressively.
+**Work Completed So Far:**
+1.  **Technical Foundation**:
+    -   A  file was created in  to guide search engine crawlers.
+    -   A dynamic sitemap endpoint () was added to . This endpoint fetches all public pages, blog posts, and modules to generate an up-to-date sitemap automatically.
 
-The state of the product is that the two new preliminary quizzes exist in the backend. Module 2 has been renamed and has some enriched content, but not to the full desired length. The frontend integration for these new quizzes has not yet begun.
+2.  **On-Page SEO for Homepage**:
+    -   The main landing page component, , was significantly updated.
+    -    was used to add optimized meta titles and descriptions.
+    -   JSON-LD Script started, output log file is 'typescript'.
+# 
+Script done. tags were embedded to provide structured data for  and  schemas, which helps Google better understand the site's content.
+
+**Immediate Last Action:**
+The engineer had just finished these foundational steps and was about to proceed with the next phase of the SEO plan, which is creating the new, content-rich SEO pages. The very last action was creating a plan to start with the Programme Détaillé (Detailed Program) page.
 </current_work>
 
 <optional_next_step>
-Integrate the preliminary quizzes into the frontend user flow as requested.
+Create the new Programme Détaillé page as a React component, ensuring it fetches module data from the backend and is linked correctly within the application's routing.
 </optional_next_step>
-

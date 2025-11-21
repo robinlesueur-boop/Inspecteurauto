@@ -162,7 +162,7 @@ function Home() {
         <meta property="og:title" content="Formation Inspecteur Automobile – Certifié en 11h" />
         <meta property="og:description" content="Formation complète pour devenir inspecteur automobile. Certification officielle, méthode professionnelle AutoJust utilisée par 500+ inspecteurs." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://autoedge.preview.emergentagent.com/" />
+        <meta property="og:url" content="https://carlearn-admin.preview.emergentagent.com/" />
         <meta property="og:image" content={getImageUrl(content.hero_image_url)} />
         
         {/* Twitter Card */}
@@ -181,14 +181,14 @@ function Home() {
             "provider": {
               "@type": "Organization",
               "name": "InspecteurAuto - Méthode AutoJust",
-              "url": "https://autoedge.preview.emergentagent.com",
-              "logo": "https://autoedge.preview.emergentagent.com/logo.png"
+              "url": "https://carlearn-admin.preview.emergentagent.com",
+              "logo": "https://carlearn-admin.preview.emergentagent.com/logo.png"
             },
             "offers": {
               "@type": "Offer",
               "price": "297",
               "priceCurrency": "EUR",
-              "url": "https://autoedge.preview.emergentagent.com/register",
+              "url": "https://carlearn-admin.preview.emergentagent.com/register",
               "availability": "https://schema.org/InStock"
             },
             "educationalLevel": "Professional",
@@ -219,8 +219,8 @@ function Home() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "InspecteurAuto - Formation Automobile",
-            "url": "https://autoedge.preview.emergentagent.com",
-            "logo": "https://autoedge.preview.emergentagent.com/logo.png",
+            "url": "https://carlearn-admin.preview.emergentagent.com",
+            "logo": "https://carlearn-admin.preview.emergentagent.com/logo.png",
             "description": "Plateforme de formation en ligne pour devenir inspecteur automobile certifié",
             "contactPoint": {
               "@type": "ContactPoint",
