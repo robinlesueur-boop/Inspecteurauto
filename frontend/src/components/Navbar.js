@@ -279,6 +279,14 @@ function Navbar() {
                 </>
               ) : (
                 <div className="flex flex-col space-y-2 px-4">
+                  <Link 
+                    to="/programme-detaille" 
+                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    <span>Programme Détaillé</span>
+                  </Link>
                   <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                     <Button variant="ghost" className="w-full justify-start font-medium">
                       Connexion
