@@ -282,19 +282,22 @@ function ProgrammeDetaille() {
                           
                           <div className="mt-4 flex items-center gap-3">
                             {module.is_free ? (
-                              <Link to="/register" className="flex-1">
-                                <Button className="w-full">
-                                  Accéder au module gratuit
-                                  <CheckCircle className="ml-2 h-4 w-4" />
-                                </Button>
-                              </Link>
+                              <Button 
+                                className="w-full"
+                                onClick={() => navigate('/register')}
+                              >
+                                Accéder au module gratuit
+                                <CheckCircle className="ml-2 h-4 w-4" />
+                              </Button>
                             ) : (
-                              <Link to="/register" className="flex-1">
-                                <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
-                                  <Lock className="mr-2 h-4 w-4" />
-                                  S'inscrire pour débloquer
-                                </Button>
-                              </Link>
+                              <Button 
+                                variant="outline" 
+                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50"
+                                onClick={() => navigate('/register')}
+                              >
+                                <Lock className="mr-2 h-4 w-4" />
+                                S'inscrire pour débloquer
+                              </Button>
                             )}
                           </div>
                         </CardContent>
