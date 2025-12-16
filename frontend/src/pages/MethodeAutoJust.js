@@ -234,7 +234,7 @@ function MethodeInspection() {
           {/* Différences avec CT */}
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle className="text-2xl">méthode d'inspection vs Contrôle Technique</CardTitle>
+              <CardTitle className="text-2xl">Inspection Professionnelle vs Contrôle Technique</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <div className="overflow-x-auto">
@@ -242,7 +242,7 @@ function MethodeInspection() {
                   <thead>
                     <tr className="border-b-2 border-gray-300">
                       <th className="text-left p-3 font-semibold">Critère</th>
-                      <th className="text-left p-3 font-semibold text-blue-600">Inspection méthode d'inspection</th>
+                      <th className="text-left p-3 font-semibold text-blue-600">Inspection Professionnelle</th>
                       <th className="text-left p-3 font-semibold text-gray-600">Contrôle Technique</th>
                     </tr>
                   </thead>
