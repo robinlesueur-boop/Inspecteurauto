@@ -724,6 +724,18 @@ async def update_user(
     return {"message": "User updated successfully"}
 
 # Module Routes
+@api_router.get("/modules/all-public", response_model=List[Module])
+async def get_all_modules_public():
+    """Get all published modules (for public pages like Programme Détaillé)"""
+    modules = await db.modules.find({"is_published": True}, {"_id": 0}).sort("order_index", 1).to_list(100)
+    
+    for module in modules:
+        for field in ['created_at', 'updated_at']:
+            if isinstance(module.get(field), str):
+                module[field] = datetime.fromisoformat(module[field])
+    
+    return modules
+
 @api_router.get("/modules", response_model=List[Module])
 async def get_modules(current_user: Optional[User] = Depends(get_current_user_optional)):
     query = {}
