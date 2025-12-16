@@ -44,6 +44,22 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Prevent text selection on buttons and interactive elements */
+button, .btn, [role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer !important;
+}
+
+button *, .btn *, [role="button"] * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  pointer-events: none;
+}
+
 /* Button styles */
 .btn-primary {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
