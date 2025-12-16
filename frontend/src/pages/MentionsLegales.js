@@ -54,7 +54,7 @@ function MentionsLegales() {
                 Les contenus de formation, textes, images, vidéos, logos et marques présents sur ce site sont protégés par le droit d'auteur. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable.
               </p>
               <p className="text-gray-700">
-                <strong>Marques déposées :</strong> "méthode d'inspection", "Méthode méthode d'inspection" et le logo Inspecteur Auto sont des marques déposées.
+                <strong>Marques déposées :</strong> "méthode d'inspection", "Méthode d'inspection" et le logo Inspecteur Auto sont des marques déposées.
               </p>
             </CardContent>
           </Card>

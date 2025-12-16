@@ -94,7 +94,7 @@ function PaymentSuccess() {
                     </h3>
                     <ul className="text-green-700 space-y-1 text-left">
                       <li>✅ 8 modules de formation (11h de contenu)</li>
-                      <li>✅ Méthode méthode d'inspection exclusive</li>
+                      <li>✅ Méthode d'inspection exclusive</li>
                       <li>✅ Certification officielle</li>
                       <li>✅ Forum communauté à vie</li>
                     </ul>

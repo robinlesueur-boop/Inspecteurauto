@@ -44,7 +44,7 @@ function Home() {
     price_description: "Formation complète + Certification",
     cta_primary: "Commencer la formation",
     cta_secondary: "Module gratuit",
-    feature_1_title: "Méthode méthode d'inspection",
+    feature_1_title: "Méthode d'inspection",
     feature_1_description: "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France.",
     feature_2_title: "Certification Reconnue",
     feature_2_description: "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie.",
@@ -180,7 +180,7 @@ function Home() {
             "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode d'inspection professionnelle en 11 heures.",
             "provider": {
               "@type": "Organization",
-              "name": "InspecteurAuto - Méthode méthode d'inspection",
+              "name": "InspecteurAuto - Méthode d'inspection",
               "url": "https://carlearn-admin.preview.emergentagent.com",
               "logo": "https://carlearn-admin.preview.emergentagent.com/logo.png"
             },

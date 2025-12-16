@@ -330,7 +330,7 @@ function Dashboard() {
                         </div>
                         <div className="flex items-center text-green-700">
                           <CheckCircle className="h-5 w-5 mr-2" />
-                          <span>Méthode méthode d'inspection propriétaire</span>
+                          <span>Méthode d'inspection propriétaire</span>
                         </div>
                         <div className="flex items-center text-green-700">
                           <CheckCircle className="h-5 w-5 mr-2" />

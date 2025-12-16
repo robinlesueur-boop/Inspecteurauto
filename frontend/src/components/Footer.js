@@ -53,7 +53,7 @@ function Footer() {
               </li>
               <li>
                 <Link to="/methode-autojust" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Méthode méthode d'inspection
+                  Méthode d'inspection
                 </Link>
               </li>
               <li>

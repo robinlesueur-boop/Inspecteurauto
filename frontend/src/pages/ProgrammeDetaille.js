@@ -195,7 +195,7 @@ function ProgrammeDetaille() {
               <Card>
                 <CardContent className="pt-6 text-center">
                   <Target className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Méthode méthode d'inspection</h3>
+                  <h3 className="font-semibold mb-2">Méthode d'inspection</h3>
                   <p className="text-sm text-gray-600">Système d'inspection éprouvé</p>
                 </CardContent>
               </Card>
