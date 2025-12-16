@@ -37,13 +37,13 @@ function MethodeInspection() {
                     Qui sommes-nous ?
                   </h2>
                   <p className="text-gray-700 mb-4">
-                    <strong>méthode d'inspection</strong> est le leader français de l'inspection automobile indépendante. 
-                    Fondée en 2018 par des experts automobiles passionnés, notre entreprise a révolutionné 
-                    le marché de l'inspection pré-achat en développant une méthodologie rigoureuse et systématique.
+                    <strong>Notre méthode d'inspection</strong> est la référence en inspection automobile indépendante. 
+                    Développée par des experts automobiles passionnés, notre méthodologie a révolutionné 
+                    le marché de l'inspection pré-achat grâce à son approche rigoureuse et systématique.
                   </p>
                   <p className="text-gray-700 mb-4">
                     Avec plus de <strong>15 000 inspections</strong> réalisées et un réseau de 
-                    <strong> 200+ inspecteurs certifiés</strong> à travers la France, méthode d'inspection est devenu 
+                    <strong> 200+ inspecteurs certifiés</strong> à travers la France, notre méthode est devenue 
                     la référence incontournable pour les particuliers et professionnels de l'automobile d'occasion.
                   </p>
                   <div className="flex space-x-4">
