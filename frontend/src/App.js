@@ -31,7 +31,7 @@ import SatisfactionSurvey from "./pages/SatisfactionSurvey";
 import Blog from "./pages/Blog";
 import Messages from "./pages/Messages";
 import Certification from "./pages/Certification";
-import Methodeméthode d'inspection from "./pages/Methodeméthode d'inspection";
+import MethodeInspection from "./pages/Methodeméthode d'inspection";
 import ProgrammeDetaille from "./pages/ProgrammeDetaille";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
