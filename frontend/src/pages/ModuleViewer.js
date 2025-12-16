@@ -407,18 +407,9 @@ function ModuleViewer() {
                 <p className="text-blue-100">{module.description}</p>
               </CardHeader>
               
-              <CardContent className="p-0">
-                <div 
-                  className="prose prose-lg max-w-none p-8 leading-relaxed text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: module.content }}
-                  style={{
-                    lineHeight: '1.8',
-                    fontSize: '1.1rem',
-                    maxWidth: '100%',
-                    width: '100%',
-                    color: '#1a1a1a'
-                  }}
-                />
+              <CardContent className="p-8">
+                {renderContentWithVideos()}
+                
                 <style jsx="true">{`
                   .prose h1 { color: #1a1a1a; font-weight: 700; font-size: 2.25rem; margin-top: 2rem; margin-bottom: 1rem; }
                   .prose h2 { color: #1f2937; font-weight: 700; font-size: 1.875rem; margin-top: 2rem; margin-bottom: 1rem; }
