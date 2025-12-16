@@ -5,12 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Target, CheckCircle, Search, FileText, Camera, Shield, TrendingUp } from 'lucide-react';
 
-function Methodeméthode d'inspection() {
+function MethodeInspection() {
   return (
     <>
       <Helmet>
-        <title>Méthode méthode d'inspection - Inspection Automobile Professionnelle</title>
-        <meta name="description" content="Découvrez la méthode méthode d'inspection d'inspection automobile : systématique, rigoureuse et reconnue par les professionnels. Formation certifiée." />
+        <title>Notre Méthode d'Inspection - Inspection Automobile Professionnelle</title>
+        <meta name="description" content="Découvrez notre méthode d'inspection automobile : systématique, rigoureuse et reconnue par les professionnels. Formation certifiée." />
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
@@ -18,7 +18,7 @@ function Methodeméthode d'inspection() {
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl font-bold mb-6">
-              Méthode méthode d'inspection
+              Notre Méthode d'Inspection Professionnelle
             </h1>
             <p className="text-2xl text-blue-100 max-w-3xl mx-auto">
               La référence en inspection automobile professionnelle depuis 2018
