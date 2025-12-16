@@ -36,8 +36,8 @@ function ProgrammeDetaille() {
 
   const fetchModules = async () => {
     try {
-      // Récupérer tous les modules publiés (sans authentification, on verra tout)
-      const response = await axios.get(`${API}/modules`);
+      // Récupérer tous les modules publiés pour la page de présentation
+      const response = await axios.get(`${API}/modules/all-public`);
       const modulesData = response.data;
       
       setModules(modulesData);
