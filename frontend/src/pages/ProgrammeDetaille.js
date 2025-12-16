@@ -280,31 +280,40 @@ function ProgrammeDetaille() {
                             </p>
                           </div>
                           
-                          <div className="mt-4">
+                          <div className="mt-6" style={{ pointerEvents: 'auto' }}>
                             {module.is_free ? (
                               <a
                                 href="/register"
                                 style={{
                                   display: 'block',
                                   width: '100%',
-                                  padding: '12px 20px',
+                                  padding: '20px 30px',
                                   backgroundColor: '#000000',
                                   color: '#ffffff',
                                   textAlign: 'center',
                                   textDecoration: 'none',
-                                  borderRadius: '8px',
-                                  fontWeight: '500',
-                                  fontSize: '14px',
+                                  borderRadius: '12px',
+                                  fontWeight: '700',
+                                  fontSize: '18px',
                                   cursor: 'pointer',
                                   userSelect: 'none',
                                   WebkitUserSelect: 'none',
                                   MozUserSelect: 'none',
-                                  msUserSelect: 'none'
+                                  msUserSelect: 'none',
+                                  boxShadow: '0 4px 6px rgba(0,0,0,0.3)',
+                                  transition: 'all 0.2s',
+                                  pointerEvents: 'auto'
                                 }}
-                                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#333333'}
-                                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#000000'}
+                                onMouseOver={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#1a1a1a';
+                                  e.currentTarget.style.transform = 'scale(1.02)';
+                                }}
+                                onMouseOut={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#000000';
+                                  e.currentTarget.style.transform = 'scale(1)';
+                                }}
                               >
-                                ▶ Accéder au module gratuit
+                                ✅ CLIQUEZ ICI - MODULE GRATUIT
                               </a>
                             ) : (
                               <a
@@ -312,25 +321,33 @@ function ProgrammeDetaille() {
                                 style={{
                                   display: 'block',
                                   width: '100%',
-                                  padding: '12px 20px',
-                                  backgroundColor: '#ffffff',
-                                  color: '#2563eb',
+                                  padding: '20px 30px',
+                                  backgroundColor: '#2563eb',
+                                  color: '#ffffff',
                                   textAlign: 'center',
                                   textDecoration: 'none',
-                                  borderRadius: '8px',
-                                  border: '2px solid #2563eb',
-                                  fontWeight: '500',
-                                  fontSize: '14px',
+                                  borderRadius: '12px',
+                                  fontWeight: '700',
+                                  fontSize: '18px',
                                   cursor: 'pointer',
                                   userSelect: 'none',
                                   WebkitUserSelect: 'none',
                                   MozUserSelect: 'none',
-                                  msUserSelect: 'none'
+                                  msUserSelect: 'none',
+                                  boxShadow: '0 4px 6px rgba(37,99,235,0.4)',
+                                  transition: 'all 0.2s',
+                                  pointerEvents: 'auto'
                                 }}
-                                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#eff6ff'}
-                                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
+                                onMouseOver={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#1d4ed8';
+                                  e.currentTarget.style.transform = 'scale(1.02)';
+                                }}
+                                onMouseOut={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#2563eb';
+                                  e.currentTarget.style.transform = 'scale(1)';
+                                }}
                               >
-                                🔒 S'inscrire pour débloquer
+                                🔓 CLIQUEZ ICI - S'INSCRIRE
                               </a>
                             )}
                           </div>
