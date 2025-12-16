@@ -34,7 +34,7 @@ function Home() {
   const { isAuthenticated } = useAuth();
   const [content, setContent] = useState({
     hero_title: "Devenez Inspecteur Automobile Certifié",
-    hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+    hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode d'inspection professionnelle. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
     hero_image_url: "https://images.unsplash.com/photo-1762517296945-74561c2cf21e",
     stat_graduates: "1,200+",
     stat_success_rate: "97%",
@@ -135,7 +135,7 @@ function Home() {
     {
       name: "Jean-Paul Martin",
       role: "Ancien Mécanicien",
-      content: "À 45 ans, j'ai pu me reconvertir grâce à cette formation. La méthode méthode d'inspection fait vraiment la différence !",
+      content: "À 45 ans, j'ai pu me reconvertir grâce à cette formation. La méthode d'inspection professionnelle fait vraiment la différence !",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
       location: "Toulouse"
@@ -155,7 +155,7 @@ function Home() {
     <>
       <Helmet>
         <title>Formation Inspecteur Automobile – 11h – Certifié en Ligne | InspecteurAuto</title>
-        <meta name="description" content="Devenez inspecteur automobile certifié en 11h. Formation complète avec méthode méthode d'inspection, certification reconnue, 97% de réussite. 1200+ élèves diplômés. Accès immédiat." />
+        <meta name="description" content="Devenez inspecteur automobile certifié en 11h. Formation complète avec méthode d'inspection professionnelle, certification reconnue, 97% de réussite. 1200+ élèves diplômés. Accès immédiat." />
         <meta name="keywords" content="formation inspecteur automobile, devenir inspecteur auto, formation en ligne automobile, expertise voiture, diagnostic automobile, formation certifiante auto" />
         
         {/* Open Graph pour réseaux sociaux */}
@@ -177,7 +177,7 @@ function Home() {
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Formation Inspecteur Automobile",
-            "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode méthode d'inspection en 11 heures.",
+            "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode d'inspection professionnelle en 11 heures.",
             "provider": {
               "@type": "Organization",
               "name": "InspecteurAuto - Méthode méthode d'inspection",
@@ -442,7 +442,7 @@ function Home() {
                   Une Formation Pratique et Professionnelle
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Apprenez les techniques d'inspection les plus avancées avec notre méthode méthode d'inspection éprouvée par des centaines de professionnels.
+                  Apprenez les techniques d'inspection les plus avancées avec notre méthode d'inspection professionnelle éprouvée par des centaines de professionnels.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">
