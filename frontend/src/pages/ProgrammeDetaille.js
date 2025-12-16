@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import axios from "axios";
 import { motion } from "framer-motion";
