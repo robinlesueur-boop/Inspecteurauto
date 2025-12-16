@@ -319,4 +319,4 @@ function MethodeInspection() {
   );
 }
 
-export default Methodeméthode d'inspection;
+export default MethodeInspection;
