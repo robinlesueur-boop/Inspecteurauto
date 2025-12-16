@@ -179,6 +179,134 @@ function ModuleViewer() {
   const previousModule = getPreviousModule();
   const readingProgress = calculateReadingProgress();
 
+  // Fonction pour diviser le contenu et insérer les vidéos
+  const renderContentWithVideos = () => {
+    if (!module.content) return null;
+
+    const content = module.content;
+    const middlePosition = module.video_middle_position || 50;
+    
+    // Calculer la position approximative en caractères
+    const contentLength = content.length;
+    const middleIndex = Math.floor((contentLength * middlePosition) / 100);
+    
+    // Trouver le paragraphe le plus proche
+    const findNearestParagraph = (text, index) => {
+      // Chercher la fin du paragraphe le plus proche
+      const nextParagraph = text.indexOf('</p>', index);
+      return nextParagraph !== -1 ? nextParagraph + 4 : index;
+    };
+    
+    const insertIndex = findNearestParagraph(content, middleIndex);
+    
+    const beforeMiddle = content.substring(0, insertIndex);
+    const afterMiddle = content.substring(insertIndex);
+    
+    return (
+      <>
+        {/* Vidéo d'introduction */}
+        {module.video_intro_url && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8"
+          >
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg mb-4">
+              <div className="flex items-center space-x-3 mb-3">
+                <Video className="h-6 w-6 text-blue-600" />
+                <h3 className="text-xl font-semibold text-gray-900">Vidéo d'Introduction</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Commencez par cette vidéo pour avoir une vue d'ensemble du module
+              </p>
+            </div>
+            <VideoPlayer 
+              videoUrl={module.video_intro_url} 
+              title={`Introduction - ${module.title}`}
+            />
+          </motion.div>
+        )}
+
+        {/* Première partie du contenu */}
+        <div 
+          className="prose prose-lg max-w-none leading-relaxed text-gray-900"
+          dangerouslySetInnerHTML={{ __html: beforeMiddle }}
+          style={{
+            lineHeight: '1.8',
+            fontSize: '1.1rem',
+            maxWidth: '100%',
+            width: '100%',
+            color: '#1a1a1a'
+          }}
+        />
+
+        {/* Vidéo du milieu */}
+        {module.video_middle_url && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="my-8"
+          >
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg mb-4">
+              <div className="flex items-center space-x-3 mb-3">
+                <Play className="h-6 w-6 text-purple-600" />
+                <h3 className="text-xl font-semibold text-gray-900">Approfondissons</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Cette vidéo vous aide à mieux comprendre les concepts abordés
+              </p>
+            </div>
+            <VideoPlayer 
+              videoUrl={module.video_middle_url} 
+              title={`Partie 2 - ${module.title}`}
+            />
+          </motion.div>
+        )}
+
+        {/* Deuxième partie du contenu */}
+        <div 
+          className="prose prose-lg max-w-none leading-relaxed text-gray-900"
+          dangerouslySetInnerHTML={{ __html: afterMiddle }}
+          style={{
+            lineHeight: '1.8',
+            fontSize: '1.1rem',
+            maxWidth: '100%',
+            width: '100%',
+            color: '#1a1a1a'
+          }}
+        />
+
+        {/* Vidéo de conclusion */}
+        {module.video_end_url && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-8"
+          >
+            <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-lg mb-4">
+              <div className="flex items-center space-x-3 mb-3">
+                <CheckCircle className="h-6 w-6 text-green-600" />
+                <h3 className="text-xl font-semibold text-gray-900">Récapitulatif</h3>
+              </div>
+              <p className="text-gray-600 mb-4">
+                Finissons avec cette vidéo qui résume les points essentiels
+              </p>
+            </div>
+            <VideoPlayer 
+              videoUrl={module.video_end_url} 
+              title={`Conclusion - ${module.title}`}
+            />
+          </motion.div>
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <Helmet>
@@ -187,8 +315,11 @@ function ModuleViewer() {
       </Helmet>
 
       <div className="min-h-screen bg-gray-50" data-testid="module-viewer">
+        {/* Progress Bar */}
+        <ReadingProgressBar estimatedMinutes={module.duration_minutes} />
+
         {/* Header */}
-        <div className="bg-white shadow-sm border-b sticky top-16 z-40">
+        <div className="bg-white shadow-sm border-b sticky top-32 z-40">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
