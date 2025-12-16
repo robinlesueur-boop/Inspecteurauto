@@ -280,38 +280,57 @@ function ProgrammeDetaille() {
                             </p>
                           </div>
                           
-                          <div className="mt-4 flex items-center gap-3">
+                          <div className="mt-4">
                             {module.is_free ? (
                               <a
                                 href="/register"
-                                className="inline-flex items-center justify-center gap-2 w-full h-10 px-4 py-2 rounded-md text-sm font-medium bg-black text-white hover:bg-gray-800 transition-colors no-underline"
-                                style={{ 
-                                  userSelect: 'none', 
+                                style={{
+                                  display: 'block',
+                                  width: '100%',
+                                  padding: '12px 20px',
+                                  backgroundColor: '#000000',
+                                  color: '#ffffff',
+                                  textAlign: 'center',
+                                  textDecoration: 'none',
+                                  borderRadius: '8px',
+                                  fontWeight: '500',
+                                  fontSize: '14px',
+                                  cursor: 'pointer',
+                                  userSelect: 'none',
                                   WebkitUserSelect: 'none',
                                   MozUserSelect: 'none',
-                                  textDecoration: 'none',
-                                  cursor: 'pointer'
+                                  msUserSelect: 'none'
                                 }}
-                                onMouseDown={(e) => e.preventDefault()}
+                                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#333333'}
+                                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#000000'}
                               >
-                                Accéder au module gratuit
-                                <CheckCircle className="ml-2 h-4 w-4" />
+                                ▶ Accéder au module gratuit
                               </a>
                             ) : (
                               <a
                                 href="/register"
-                                className="inline-flex items-center justify-center gap-2 w-full h-10 px-4 py-2 rounded-md text-sm font-medium border-2 border-blue-600 text-blue-600 bg-white hover:bg-blue-50 transition-colors no-underline"
-                                style={{ 
-                                  userSelect: 'none', 
+                                style={{
+                                  display: 'block',
+                                  width: '100%',
+                                  padding: '12px 20px',
+                                  backgroundColor: '#ffffff',
+                                  color: '#2563eb',
+                                  textAlign: 'center',
+                                  textDecoration: 'none',
+                                  borderRadius: '8px',
+                                  border: '2px solid #2563eb',
+                                  fontWeight: '500',
+                                  fontSize: '14px',
+                                  cursor: 'pointer',
+                                  userSelect: 'none',
                                   WebkitUserSelect: 'none',
                                   MozUserSelect: 'none',
-                                  textDecoration: 'none',
-                                  cursor: 'pointer'
+                                  msUserSelect: 'none'
                                 }}
-                                onMouseDown={(e) => e.preventDefault()}
+                                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#eff6ff'}
+                                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ffffff'}
                               >
-                                <Lock className="mr-2 h-4 w-4" />
-                                S'inscrire pour débloquer
+                                🔒 S'inscrire pour débloquer
                               </a>
                             )}
                           </div>
