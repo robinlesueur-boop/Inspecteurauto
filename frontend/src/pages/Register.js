@@ -136,7 +136,7 @@ function Register() {
                 </h2>
                 <p className="text-xl text-blue-100 leading-relaxed">
                   Transformez votre passion automobile en expertise professionnelle 
-                  avec notre méthode méthode d'inspection reconnue.
+                  avec notre méthode d'inspection professionnelle reconnue.
                 </p>
               </div>
 

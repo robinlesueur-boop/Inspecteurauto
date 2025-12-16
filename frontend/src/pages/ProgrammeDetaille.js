@@ -75,7 +75,7 @@ function ProgrammeDetaille() {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Formation Inspecteur Automobile Certifié",
-    "description": "Programme complet de formation pour devenir inspecteur automobile certifié avec la méthode méthode d'inspection. Formation en ligne complète avec certification reconnue.",
+    "description": "Programme complet de formation pour devenir inspecteur automobile certifié avec la méthode d'inspection professionnelle. Formation en ligne complète avec certification reconnue.",
     "provider": {
       "@type": "Organization",
       "name": "Inspecteur Auto",
