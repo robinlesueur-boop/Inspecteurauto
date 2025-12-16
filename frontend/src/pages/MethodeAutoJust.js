@@ -150,7 +150,7 @@ function MethodeInspection() {
           {/* Protocole en 6 Phases */}
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle className="text-2xl">Le Protocole d'Inspection méthode d'inspection en 6 Phases</CardTitle>
+              <CardTitle className="text-2xl">Le Protocole d'Inspection Professionnel en 6 Phases</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <div className="space-y-6">
