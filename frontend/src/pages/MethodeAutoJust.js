@@ -81,7 +81,7 @@ function MethodeInspection() {
           {/* Les 5 Piliers */}
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-              Les 5 Piliers de la Méthode méthode d'inspection
+              Les 5 Piliers de Notre Méthode d'Inspection
             </h2>
             
             <div className="grid md:grid-cols-5 gap-4">
