@@ -18,9 +18,14 @@ import {
   Award,
   Users,
   MessageCircle,
-  Trophy
+  Trophy,
+  Play,
+  Video
 } from 'lucide-react';
 import axios from 'axios';
+import VideoPlayer from '../components/VideoPlayer';
+import ReadingProgressBar from '../components/ReadingProgressBar';
+import KeyPointHighlight from '../components/KeyPointHighlight';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
