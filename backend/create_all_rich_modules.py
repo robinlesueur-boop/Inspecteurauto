@@ -759,7 +759,7 @@ MODULES_CONTENT = {
 </div>""",
     
     7: """<div class="module-content prose max-w-none">
-    <h1>Module 7 : Méthodologie AutoJust en Pratique</h1>
+    <h1>Module 7 : Méthodologie méthode d'inspection en Pratique</h1>
     <p>[Contenu riche de 5500+ mots sur protocole complet inspection, outils, rapport client, négociation...]</p>
     <!-- Full content would be added here -->
 </div>""",

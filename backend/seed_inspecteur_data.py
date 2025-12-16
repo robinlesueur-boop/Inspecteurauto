@@ -43,7 +43,7 @@ async def seed_database():
                 
                 <h2>🚗 Bienvenue dans votre Formation d'Inspecteur Automobile</h2>
                 
-                <p>Cette formation complète vous permettra d'acquérir toutes les compétences nécessaires pour devenir un inspecteur automobile professionnel. Vous apprendrez la méthodologie AutoJust, une approche systématique et rigoureuse de l'évaluation véhiculaire.</p>
+                <p>Cette formation complète vous permettra d'acquérir toutes les compétences nécessaires pour devenir un inspecteur automobile professionnel. Vous apprendrez la méthodologie méthode d'inspection, une approche systématique et rigoureuse de l'évaluation véhiculaire.</p>
                 
                 <h3>Objectifs de la Formation</h3>
                 <ul>
@@ -111,9 +111,9 @@ async def seed_database():
                 <h4>Évolution Réglementaire</h4>
                 <p>La réglementation automobile évolue constamment (normes Euro, contrôle technique, nouvelles technologies). Une veille réglementaire est indispensable.</p>
                 
-                <h3>Méthodologie AutoJust : Votre Avantage Concurrentiel</h3>
+                <h3>Méthodologie méthode d'inspection : Votre Avantage Concurrentiel</h3>
                 
-                <p>La méthodologie AutoJust que vous allez apprendre dans cette formation vous distinguera de la concurrence. Elle repose sur 5 piliers :</p>
+                <p>La méthodologie méthode d'inspection que vous allez apprendre dans cette formation vous distinguera de la concurrence. Elle repose sur 5 piliers :</p>
                 
                 <h4>1. Systématisation</h4>
                 <p>Une approche méthodique qui ne laisse rien au hasard. Chaque inspection suit le même protocole rigoureux.</p>
@@ -177,7 +177,7 @@ async def seed_database():
                     <li><strong>Carrosserie et Châssis</strong> : Inspection structurelle</li>
                     <li><strong>Électronique Embarquée</strong> : Systèmes électroniques</li>
                     <li><strong>Sécurité et Équipements</strong> : Éléments de sécurité</li>
-                    <li><strong>Méthodologie AutoJust</strong> : Processus d'inspection</li>
+                    <li><strong>Méthodologie méthode d'inspection</strong> : Processus d'inspection</li>
                     <li><strong>Pratique Professionnelle</strong> : Cas concrets et certification</li>
                 </ol>
                 
@@ -933,12 +933,12 @@ async def seed_database():
         },
         {
             "id": str(uuid.uuid4()),
-            "title": "Méthodologie AutoJust",
-            "description": "Processus complet d'inspection AutoJust : organisation, outils, rapport client et négociation commerciale.",
+            "title": "Méthodologie méthode d'inspection",
+            "description": "Processus complet d'inspection méthode d'inspection : organisation, outils, rapport client et négociation commerciale.",
             "order_index": 7,
             "duration_minutes": 75,
             "is_free": False,
-            "content": "<div class='module-content'><h1>Méthodologie AutoJust</h1><p>Découvrez la méthodologie propriétaire AutoJust...</p></div>",
+            "content": "<div class='module-content'><h1>Méthodologie méthode d'inspection</h1><p>Découvrez la méthodologie propriétaire méthode d'inspection...</p></div>",
             "created_at": datetime.now(timezone.utc).isoformat(),
             "updated_at": datetime.now(timezone.utc).isoformat()
         },

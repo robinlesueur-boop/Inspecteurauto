@@ -126,7 +126,7 @@ class EmailService:
                     <h3>📚 Ce qui vous attend :</h3>
                     <ul>
                         <li>8 modules de formation (9 heures de contenu)</li>
-                        <li>Méthode AutoJust exclusive</li>
+                        <li>Méthode méthode d'inspection exclusive</li>
                         <li>Quizzes d'évaluation après chaque module</li>
                         <li>Certificat officiel à l'issue de la formation</li>
                         <li>Accès au forum communauté à vie</li>

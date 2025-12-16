@@ -243,7 +243,7 @@ class LandingPageContent(BaseModel):
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     hero_title: str = "Devenez Inspecteur Automobile Certifié"
-    hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois."
+    hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois."
     hero_image_url: str = "https://images.unsplash.com/photo-1762517296945-74561c2cf21e"
     stat_graduates: str = "1,200+"
     stat_success_rate: str = "97%"
@@ -253,7 +253,7 @@ class LandingPageContent(BaseModel):
     price_description: str = "Formation complète + Certification"
     cta_primary: str = "Commencer la formation"
     cta_secondary: str = "Module gratuit"
-    feature_1_title: str = "Méthode AutoJust"
+    feature_1_title: str = "Méthode méthode d'inspection"
     feature_1_description: str = "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France."
     feature_2_title: str = "Certification Reconnue"
     feature_2_description: str = "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie."
@@ -398,7 +398,7 @@ def generate_certificate(user_name: str, completion_date: str) -> str:
     Cette certification atteste que le bénéficiaire 
     possède les connaissances nécessaires pour 
     exercer en tant qu'inspecteur automobile selon 
-    la méthodologie AutoJust.
+    la méthodologie méthode d'inspection.
     
     Date de fin de formation : {completion_date}
     

@@ -39,7 +39,7 @@ async def create_final_evaluation():
         "questions": [
             {
                 "id": "final_q1",
-                "question": "Quelle est la première étape de la méthodologie AutoJust ?",
+                "question": "Quelle est la première étape de la méthodologie méthode d'inspection ?",
                 "type": "multiple_choice",
                 "options": [
                     "Inspection visuelle extérieure",
@@ -117,7 +117,7 @@ async def create_final_evaluation():
             },
             {
                 "id": "final_q7",
-                "question": "Que doit contenir obligatoirement un rapport d'inspection AutoJust ?",
+                "question": "Que doit contenir obligatoirement un rapport d'inspection méthode d'inspection ?",
                 "type": "multiple_choice",
                 "options": [
                     "Photos de tous les défauts constatés",

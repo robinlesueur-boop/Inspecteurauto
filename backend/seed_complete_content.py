@@ -49,7 +49,7 @@ async def seed_database():
     
     <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
         <h2 class="text-2xl font-semibold mb-3">🚗 Bienvenue dans votre Formation d'Inspecteur Automobile</h2>
-        <p class="text-lg">Cette formation complète vous permettra d'acquérir toutes les compétences nécessaires pour devenir un inspecteur automobile professionnel reconnu. Vous apprendrez la méthodologie AutoJust, une approche systématique et rigoureuse de l'évaluation véhiculaire qui fait référence dans le secteur.</p>
+        <p class="text-lg">Cette formation complète vous permettra d'acquérir toutes les compétences nécessaires pour devenir un inspecteur automobile professionnel reconnu. Vous apprendrez la méthodologie méthode d'inspection, une approche systématique et rigoureuse de l'évaluation véhiculaire qui fait référence dans le secteur.</p>
     </div>
 
     <h2 class="text-3xl font-bold mt-12 mb-6">Chapitre 1 : Vue d'ensemble du Métier d'Inspecteur Automobile</h2>
@@ -277,11 +277,11 @@ async def seed_database():
         <li><strong>Consulting :</strong> Conseil pour professionnels de l'automobile</li>
     </ul>
 
-    <h3 class="text-2xl font-semibold mt-8 mb-4">1.5 La Méthodologie AutoJust : Votre Avantage Concurrentiel</h3>
+    <h3 class="text-2xl font-semibold mt-8 mb-4">1.5 La Méthodologie méthode d'inspection : Votre Avantage Concurrentiel</h3>
 
     <h4 class="text-xl font-semibold mt-6 mb-3">Présentation de la Méthode</h4>
     
-    <p class="mb-4">La méthodologie AutoJust que vous allez apprendre dans cette formation est le résultat de plus de 15 ans d'expérience dans l'inspection automobile professionnelle. Elle a été développée et affinée par des experts du secteur ayant réalisé plus de 50 000 inspections.</p>
+    <p class="mb-4">La méthodologie méthode d'inspection que vous allez apprendre dans cette formation est le résultat de plus de 15 ans d'expérience dans l'inspection automobile professionnelle. Elle a été développée et affinée par des experts du secteur ayant réalisé plus de 50 000 inspections.</p>
 
     <p class="mb-4">Cette méthodologie vous distinguera de la concurrence en vous apportant :</p>
     <ul class="list-disc pl-8 mb-4 space-y-2">
@@ -292,7 +292,7 @@ async def seed_database():
         <li>Un <strong>réseau de pairs</strong> pour partager expériences et conseils</li>
     </ul>
 
-    <h4 class="text-xl font-semibold mt-6 mb-3">Les 5 Piliers de la Méthode AutoJust</h4>
+    <h4 class="text-xl font-semibold mt-6 mb-3">Les 5 Piliers de la Méthode méthode d'inspection</h4>
     
     <p class="mb-4"><strong>1. Systématisation - Ne Rien Laisser au Hasard</strong></p>
     <p class="mb-4">Chaque inspection suit un protocole rigoureux en 12 étapes :</p>
@@ -312,9 +312,9 @@ async def seed_database():
     </ol>
 
     <p class="mb-4"><strong>2. Technologie - Outils de Diagnostic de Pointe</strong></p>
-    <p class="mb-4">La méthode AutoJust s'appuie sur un arsenal technologique complet :</p>
+    <p class="mb-4">La méthode méthode d'inspection s'appuie sur un arsenal technologique complet :</p>
     <ul class="list-disc pl-8 mb-4 space-y-2">
-        <li><strong>Application mobile AutoJust :</strong> Guide d'inspection interactif avec photos et notes vocales</li>
+        <li><strong>Application mobile méthode d'inspection :</strong> Guide d'inspection interactif avec photos et notes vocales</li>
         <li><strong>Valise de diagnostic professionnelle :</strong> Compatible tous véhicules post-2001</li>
         <li><strong>Testeur de peinture :</strong> Mesure épaisseur pour détecter réparations carrosserie</li>
         <li><strong>Caméra d'endoscopie :</strong> Inspection zones difficiles d'accès</li>
@@ -345,7 +345,7 @@ async def seed_database():
     </ul>
 
     <p class="mb-4"><strong>5. Expertise - Formation Continue</strong></p>
-    <p class="mb-4">La méthode AutoJust intègre un programme de formation continue :</p>
+    <p class="mb-4">La méthode méthode d'inspection intègre un programme de formation continue :</p>
     <ul class="list-disc pl-8 mb-4 space-y-2">
         <li><strong>Webinaires mensuels :</strong> Nouvelles technologies, cas pratiques</li>
         <li><strong>Base de connaissances :</strong> Articles techniques, tutoriels vidéo</li>
@@ -395,7 +395,7 @@ async def seed_database():
             </div>
             
             <div class="border-l-4 border-purple-500 pl-4">
-                <p class="font-semibold">Module 7 : Méthodologie AutoJust en Pratique</p>
+                <p class="font-semibold">Module 7 : Méthodologie méthode d'inspection en Pratique</p>
                 <p class="text-sm text-gray-600">Durée : 90 minutes • Processus complet, outils, rapport client, négociation</p>
             </div>
             
@@ -429,7 +429,7 @@ async def seed_database():
         <li><strong>Quiz de fin de module :</strong> 15-20 questions par module (80% requis)</li>
         <li><strong>Cas pratiques :</strong> Études de cas à analyser</li>
         <li><strong>Examen final :</strong> QCM de 100 questions (75% requis)</li>
-        <li><strong>Certificat AutoJust :</strong> Reconnaissance professionnelle</li>
+        <li><strong>Certificat méthode d'inspection :</strong> Reconnaissance professionnelle</li>
     </ul>
 
     <h3 class="text-2xl font-semibold mt-8 mb-4">1.7 Conseils pour Réussir Votre Formation</h3>
@@ -538,7 +538,7 @@ async def seed_database():
         <li>Le marché de l'occasion et ses opportunités</li>
         <li>Les défis du métier et comment les surmonter</li>
         <li>Les différentes voies professionnelles possibles</li>
-        <li>La méthodologie AutoJust qui fera votre différence</li>
+        <li>La méthodologie méthode d'inspection qui fera votre différence</li>
         <li>L'organisation de votre formation et comment en tirer le meilleur parti</li>
     </ul>
 
@@ -637,7 +637,7 @@ async def seed_database():
             },
             {
                 "id": str(uuid.uuid4()),
-                "question": "Combien de piliers composent la méthodologie AutoJust ?",
+                "question": "Combien de piliers composent la méthodologie méthode d'inspection ?",
                 "type": "multiple_choice",
                 "options": [
                     "3 piliers",
@@ -646,7 +646,7 @@ async def seed_database():
                     "10 piliers"
                 ],
                 "correct_answer": 1,
-                "explanation": "La méthodologie AutoJust repose sur 5 piliers : Systématisation, Technologie, Traçabilité, Transparence et Expertise."
+                "explanation": "La méthodologie méthode d'inspection repose sur 5 piliers : Systématisation, Technologie, Traçabilité, Transparence et Expertise."
             },
             {
                 "id": str(uuid.uuid4()),
@@ -676,7 +676,7 @@ async def seed_database():
             },
             {
                 "id": str(uuid.uuid4()),
-                "question": "Combien d'étapes compte le protocole d'inspection AutoJust ?",
+                "question": "Combien d'étapes compte le protocole d'inspection méthode d'inspection ?",
                 "type": "multiple_choice",
                 "options": [
                     "8 étapes",
@@ -685,7 +685,7 @@ async def seed_database():
                     "15 étapes"
                 ],
                 "correct_answer": 2,
-                "explanation": "Le protocole d'inspection AutoJust comprend 12 étapes systématiques qui garantissent une inspection complète et méthodique."
+                "explanation": "Le protocole d'inspection méthode d'inspection comprend 12 étapes systématiques qui garantissent une inspection complète et méthodique."
             },
             {
                 "id": str(uuid.uuid4()),
@@ -741,7 +741,7 @@ async def seed_database():
             },
             {
                 "id": str(uuid.uuid4()),
-                "question": "Parmi les propositions suivantes, laquelle N'EST PAS un pilier de la méthodologie AutoJust ?",
+                "question": "Parmi les propositions suivantes, laquelle N'EST PAS un pilier de la méthodologie méthode d'inspection ?",
                 "type": "multiple_choice",
                 "options": [
                     "Systématisation",
@@ -750,7 +750,7 @@ async def seed_database():
                     "Transparence"
                 ],
                 "correct_answer": 1,
-                "explanation": "Les 5 piliers AutoJust sont : Systématisation, Technologie, Traçabilité, Transparence et Expertise. La rapidité n'en fait pas partie."
+                "explanation": "Les 5 piliers méthode d'inspection sont : Systématisation, Technologie, Traçabilité, Transparence et Expertise. La rapidité n'en fait pas partie."
             },
             {
                 "id": str(uuid.uuid4()),

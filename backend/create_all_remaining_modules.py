@@ -106,14 +106,14 @@ async def create_modules_2_to_8():
     mod7_id = str(uuid.uuid4())
     modules.append({
         "id": mod7_id,
-        "title": "Méthodologie AutoJust en Pratique",
-        "description": "Application concrète du protocole AutoJust : organisation de l'inspection, utilisation des outils, rédaction du rapport professionnel, négociation commerciale et relation client.",
+        "title": "Méthodologie méthode d'inspection en Pratique",
+        "description": "Application concrète du protocole méthode d'inspection : organisation de l'inspection, utilisation des outils, rédaction du rapport professionnel, négociation commerciale et relation client.",
         "order_index": 7,
         "duration_minutes": 90,
         "is_free": False,
         "is_published": True,
         "views_count": 0,
-        "content": """<div class="module-content prose max-w-none"><h1>Méthodologie AutoJust en Pratique</h1><p>Guide pratique complet de la méthodologie AutoJust, du premier contact client jusqu'à la livraison du rapport. Cas pratiques, templates et outils. [16 000+ mots]</p></div>""",
+        "content": """<div class="module-content prose max-w-none"><h1>Méthodologie méthode d'inspection en Pratique</h1><p>Guide pratique complet de la méthodologie méthode d'inspection, du premier contact client jusqu'à la livraison du rapport. Cas pratiques, templates et outils. [16 000+ mots]</p></div>""",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "updated_at": datetime.now(timezone.utc).isoformat()
     })
@@ -123,7 +123,7 @@ async def create_modules_2_to_8():
     modules.append({
         "id": mod8_id,
         "title": "Pratique Professionnelle et Certification",
-        "description": "Études de cas réels, aspects juridiques et légaux, création et développement de votre activité, marketing, et obtention de votre certification AutoJust officielle.",
+        "description": "Études de cas réels, aspects juridiques et légaux, création et développement de votre activité, marketing, et obtention de votre certification méthode d'inspection officielle.",
         "order_index": 8,
         "duration_minutes": 115,
         "is_free": False,
@@ -174,7 +174,7 @@ async def create_modules_2_to_8():
         (mod4_id, "Quiz - Carrosserie et Châssis", "Carrosserie"),
         (mod5_id, "Quiz - Électronique et ADAS", "Électronique"),
         (mod6_id, "Quiz - Sécurité et Équipements", "Sécurité"),
-        (mod7_id, "Quiz - Méthodologie AutoJust", "Méthodologie"),
+        (mod7_id, "Quiz - Méthodologie méthode d'inspection", "Méthodologie"),
         (mod8_id, "Quiz - Pratique Professionnelle", "Certification")
     ]
     

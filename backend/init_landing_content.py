@@ -24,7 +24,7 @@ async def init_landing_content():
     default_content = {
         "id": "default",
         "hero_title": "Devenez Inspecteur Automobile Certifié",
-        "hero_subtitle": "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+        "hero_subtitle": "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
         "stat_graduates": "1,200+",
         "stat_success_rate": "97%",
         "stat_duration": "11h",
@@ -33,7 +33,7 @@ async def init_landing_content():
         "price_description": "Formation complète + Certification",
         "cta_primary": "Commencer la formation",
         "cta_secondary": "Module gratuit",
-        "feature_1_title": "Méthode AutoJust",
+        "feature_1_title": "Méthode méthode d'inspection",
         "feature_1_description": "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France.",
         "feature_2_title": "Certification Reconnue",
         "feature_2_description": "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie.",
