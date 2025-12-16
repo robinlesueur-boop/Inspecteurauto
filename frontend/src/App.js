@@ -103,7 +103,7 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/certification" element={<Certification />} />
-            <Route path="/methode-autojust" element={<Methodeméthode d'inspection />} />
+            <Route path="/methode-autojust" element={<MethodeInspection />} />
             <Route path="/programme-detaille" element={<ProgrammeDetaille />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
