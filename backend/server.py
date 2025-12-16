@@ -111,6 +111,13 @@ class Module(BaseModel):
     is_free: bool = False
     is_published: bool = True  # Added for admin control
     views_count: int = 0  # Track module popularity
+    
+    # Vidéos intégrées pour rendre les cours plus ludiques
+    video_intro_url: Optional[str] = None  # Vidéo d'introduction (début du module)
+    video_middle_url: Optional[str] = None  # Vidéo au milieu du contenu
+    video_middle_position: int = 50  # Position de la vidéo milieu en % (par défaut 50%)
+    video_end_url: Optional[str] = None  # Vidéo de conclusion (fin du module)
+    
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
