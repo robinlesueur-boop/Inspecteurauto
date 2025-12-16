@@ -24,7 +24,7 @@ async def init_landing_content():
     default_content = {
         "id": "default",
         "hero_title": "Devenez Inspecteur Automobile Certifié",
-        "hero_subtitle": "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+        "hero_subtitle": "Maîtrisez l'art du diagnostic véhiculaire avec la méthode d'inspection professionnelle. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
         "stat_graduates": "1,200+",
         "stat_success_rate": "97%",
         "stat_duration": "11h",

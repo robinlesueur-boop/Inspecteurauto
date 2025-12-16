@@ -312,7 +312,7 @@ async def seed_database():
     </ol>
 
     <p class="mb-4"><strong>2. Technologie - Outils de Diagnostic de Pointe</strong></p>
-    <p class="mb-4">La méthode méthode d'inspection s'appuie sur un arsenal technologique complet :</p>
+    <p class="mb-4">La méthode d'inspection professionnelle s'appuie sur un arsenal technologique complet :</p>
     <ul class="list-disc pl-8 mb-4 space-y-2">
         <li><strong>Application mobile méthode d'inspection :</strong> Guide d'inspection interactif avec photos et notes vocales</li>
         <li><strong>Valise de diagnostic professionnelle :</strong> Compatible tous véhicules post-2001</li>
@@ -345,7 +345,7 @@ async def seed_database():
     </ul>
 
     <p class="mb-4"><strong>5. Expertise - Formation Continue</strong></p>
-    <p class="mb-4">La méthode méthode d'inspection intègre un programme de formation continue :</p>
+    <p class="mb-4">La méthode d'inspection professionnelle intègre un programme de formation continue :</p>
     <ul class="list-disc pl-8 mb-4 space-y-2">
         <li><strong>Webinaires mensuels :</strong> Nouvelles technologies, cas pratiques</li>
         <li><strong>Base de connaissances :</strong> Articles techniques, tutoriels vidéo</li>

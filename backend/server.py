@@ -243,7 +243,7 @@ class LandingPageContent(BaseModel):
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     hero_title: str = "Devenez Inspecteur Automobile Certifié"
-    hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois."
+    hero_subtitle: str = "Maîtrisez l'art du diagnostic véhiculaire avec la méthode d'inspection professionnelle. Formation complète en 11h pour générer jusqu'à 8000€/mois."
     hero_image_url: str = "https://images.unsplash.com/photo-1762517296945-74561c2cf21e"
     stat_graduates: str = "1,200+"
     stat_success_rate: str = "97%"
