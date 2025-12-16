@@ -421,6 +421,78 @@ function AdminModulesNew() {
                   </p>
                 </div>
 
+                {/* Section Vidéos Pédagogiques */}
+                <div className="space-y-4 border-2 border-purple-200 rounded-lg p-6 bg-purple-50">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <BookOpen className="h-5 w-5 text-purple-600" />
+                    <h3 className="text-lg font-semibold text-purple-900">
+                      Vidéos Pédagogiques (pour rendre le cours ludique)
+                    </h3>
+                  </div>
+                  
+                  <p className="text-sm text-purple-700 mb-4">
+                    Ajoutez 3 vidéos pour rythmer la lecture : une au début, une au milieu, et une à la fin.
+                    Vous pouvez uploader une vidéo OU coller un lien YouTube/Vimeo.
+                  </p>
+
+                  {/* Vidéo d'introduction */}
+                  <div className="space-y-2 bg-white p-4 rounded-lg">
+                    <Label className="text-blue-900 font-semibold">📹 Vidéo d'Introduction (début du module)</Label>
+                    <Input
+                      placeholder="https://youtube.com/... ou /uploads/videos/..."
+                      value={formData.video_intro_url}
+                      onChange={(e) => setFormData({ ...formData, video_intro_url: e.target.value })}
+                      className="mb-2"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Cette vidéo sera affichée au tout début du module
+                    </p>
+                  </div>
+
+                  {/* Vidéo du milieu */}
+                  <div className="space-y-2 bg-white p-4 rounded-lg">
+                    <Label className="text-purple-900 font-semibold">📹 Vidéo du Milieu (approfondissement)</Label>
+                    <Input
+                      placeholder="https://youtube.com/... ou /uploads/videos/..."
+                      value={formData.video_middle_url}
+                      onChange={(e) => setFormData({ ...formData, video_middle_url: e.target.value })}
+                      className="mb-2"
+                    />
+                    <div className="space-y-2 mt-3">
+                      <Label className="text-sm">Position dans le contenu (%)</Label>
+                      <div className="flex items-center space-x-4">
+                        <input
+                          type="range"
+                          min="25"
+                          max="75"
+                          step="5"
+                          value={formData.video_middle_position}
+                          onChange={(e) => setFormData({ ...formData, video_middle_position: parseInt(e.target.value) })}
+                          className="flex-1"
+                        />
+                        <span className="text-sm font-semibold w-12">{formData.video_middle_position}%</span>
+                      </div>
+                      <p className="text-xs text-gray-500">
+                        Choisissez où insérer cette vidéo dans le contenu (par défaut au milieu)
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Vidéo de conclusion */}
+                  <div className="space-y-2 bg-white p-4 rounded-lg">
+                    <Label className="text-green-900 font-semibold">📹 Vidéo de Conclusion (récapitulatif)</Label>
+                    <Input
+                      placeholder="https://youtube.com/... ou /uploads/videos/..."
+                      value={formData.video_end_url}
+                      onChange={(e) => setFormData({ ...formData, video_end_url: e.target.value })}
+                      className="mb-2"
+                    />
+                    <p className="text-xs text-gray-500">
+                      Cette vidéo sera affichée à la fin du module, avant le quiz
+                    </p>
+                  </div>
+                </div>
+
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="content">Contenu du Module *</Label>
