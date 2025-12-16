@@ -17,7 +17,7 @@ function Footer() {
             </Link>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Formation professionnelle d'inspecteur automobile. Devenez expert en diagnostic véhiculaire 
-              avec notre méthode AutoJust reconnue par les professionnels.
+              avec notre méthode méthode d'inspection reconnue par les professionnels.
             </p>
             
             {/* Contact Info */}
@@ -53,7 +53,7 @@ function Footer() {
               </li>
               <li>
                 <Link to="/methode-autojust" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Méthode AutoJust
+                  Méthode méthode d'inspection
                 </Link>
               </li>
               <li>

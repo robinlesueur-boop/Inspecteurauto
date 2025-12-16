@@ -25,7 +25,7 @@ const defaultArticles = [
     title: "Les 10 points de contrôle essentiels lors d'une inspection automobile",
     slug: "10-points-controle-inspection-automobile",
     excerpt: "Guide complet des vérifications indispensables pour une inspection automobile professionnelle. Carrosserie, mécanique, électronique...",
-    author: "Expert AutoJust",
+    author: "Expert méthode d'inspection",
     date: "10 janvier 2025",
     category: "Technique",
     image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80"
@@ -65,7 +65,7 @@ const defaultArticles = [
     title: "Fraude au kilométrage : comment la détecter efficacement",
     slug: "fraude-kilometrage-detection",
     excerpt: "35% des véhicules d'occasion présentent des anomalies. Apprenez les techniques pour détecter une fraude au compteur kilométrique.",
-    author: "Expert AutoJust",
+    author: "Expert méthode d'inspection",
     date: "15 décembre 2024",
     category: "Technique",
     image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
@@ -247,7 +247,7 @@ function Blog() {
                   </h3>
                   <p className="text-blue-800 mb-4">
                     Notre <strong>formation inspecteur automobile</strong> vous prépare à tous 
-                    les aspects du métier : diagnostic, méthodologie AutoJust, réglementation, 
+                    les aspects du métier : diagnostic, méthodologie méthode d'inspection, réglementation, 
                     gestion d'entreprise et bien plus encore.
                   </p>
                   <Link to="/register">

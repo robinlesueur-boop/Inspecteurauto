@@ -136,7 +136,7 @@ function Register() {
                 </h2>
                 <p className="text-xl text-blue-100 leading-relaxed">
                   Transformez votre passion automobile en expertise professionnelle 
-                  avec notre méthode AutoJust reconnue.
+                  avec notre méthode méthode d'inspection reconnue.
                 </p>
               </div>
 

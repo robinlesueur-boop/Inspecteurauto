@@ -182,7 +182,7 @@ const RegisterPage = () => {
               <h4 className="text-blue-300 font-medium mb-2">Votre formation inclut :</h4>
               <ul className="text-sm text-blue-200 space-y-1">
                 <li>• 9h de formation certifiante</li>
-                <li>• Méthodologie AutoJust (200+ points)</li>
+                <li>• Méthodologie méthode d'inspection (200+ points)</li>
                 <li>• Certification officielle</li>
                 <li>• Ressources téléchargeables</li>
                 <li>• Support personnalisé</li>

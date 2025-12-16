@@ -5,12 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button';
 import { Target, CheckCircle, Search, FileText, Camera, Shield, TrendingUp } from 'lucide-react';
 
-function MethodeAutoJust() {
+function Methodeméthode d'inspection() {
   return (
     <>
       <Helmet>
-        <title>Méthode AutoJust - Inspection Automobile Professionnelle</title>
-        <meta name="description" content="Découvrez la méthode AutoJust d'inspection automobile : systématique, rigoureuse et reconnue par les professionnels. Formation certifiée." />
+        <title>Méthode méthode d'inspection - Inspection Automobile Professionnelle</title>
+        <meta name="description" content="Découvrez la méthode méthode d'inspection d'inspection automobile : systématique, rigoureuse et reconnue par les professionnels. Formation certifiée." />
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
@@ -18,7 +18,7 @@ function MethodeAutoJust() {
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl font-bold mb-6">
-              Méthode AutoJust®
+              Méthode méthode d'inspection
             </h1>
             <p className="text-2xl text-blue-100 max-w-3xl mx-auto">
               La référence en inspection automobile professionnelle depuis 2018
@@ -37,13 +37,13 @@ function MethodeAutoJust() {
                     Qui sommes-nous ?
                   </h2>
                   <p className="text-gray-700 mb-4">
-                    <strong>AutoJust</strong> est le leader français de l'inspection automobile indépendante. 
+                    <strong>méthode d'inspection</strong> est le leader français de l'inspection automobile indépendante. 
                     Fondée en 2018 par des experts automobiles passionnés, notre entreprise a révolutionné 
                     le marché de l'inspection pré-achat en développant une méthodologie rigoureuse et systématique.
                   </p>
                   <p className="text-gray-700 mb-4">
                     Avec plus de <strong>15 000 inspections</strong> réalisées et un réseau de 
-                    <strong> 200+ inspecteurs certifiés</strong> à travers la France, AutoJust est devenu 
+                    <strong> 200+ inspecteurs certifiés</strong> à travers la France, méthode d'inspection est devenu 
                     la référence incontournable pour les particuliers et professionnels de l'automobile d'occasion.
                   </p>
                   <div className="flex space-x-4">
@@ -81,7 +81,7 @@ function MethodeAutoJust() {
           {/* Les 5 Piliers */}
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-              Les 5 Piliers de la Méthode AutoJust®
+              Les 5 Piliers de la Méthode méthode d'inspection
             </h2>
             
             <div className="grid md:grid-cols-5 gap-4">
@@ -150,7 +150,7 @@ function MethodeAutoJust() {
           {/* Protocole en 6 Phases */}
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle className="text-2xl">Le Protocole d'Inspection AutoJust en 6 Phases</CardTitle>
+              <CardTitle className="text-2xl">Le Protocole d'Inspection méthode d'inspection en 6 Phases</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <div className="space-y-6">
@@ -234,7 +234,7 @@ function MethodeAutoJust() {
           {/* Différences avec CT */}
           <Card className="mb-12">
             <CardHeader>
-              <CardTitle className="text-2xl">AutoJust vs Contrôle Technique</CardTitle>
+              <CardTitle className="text-2xl">méthode d'inspection vs Contrôle Technique</CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <div className="overflow-x-auto">
@@ -242,7 +242,7 @@ function MethodeAutoJust() {
                   <thead>
                     <tr className="border-b-2 border-gray-300">
                       <th className="text-left p-3 font-semibold">Critère</th>
-                      <th className="text-left p-3 font-semibold text-blue-600">Inspection AutoJust</th>
+                      <th className="text-left p-3 font-semibold text-blue-600">Inspection méthode d'inspection</th>
                       <th className="text-left p-3 font-semibold text-gray-600">Contrôle Technique</th>
                     </tr>
                   </thead>
@@ -292,7 +292,7 @@ function MethodeAutoJust() {
           <Card className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
             <CardContent className="p-12 text-center">
               <h2 className="text-3xl font-bold mb-4">
-                Devenez Inspecteur AutoJust Certifié
+                Devenez Inspecteur méthode d'inspection Certifié
               </h2>
               <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                 Rejoignez notre réseau d'inspecteurs professionnels et maîtrisez la méthode 
@@ -306,7 +306,7 @@ function MethodeAutoJust() {
                 </Link>
                 <a href="https://autojust.fr" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" className="border-2 border-white text-white hover:bg-blue-700 px-8 py-3 text-lg">
-                    Visiter AutoJust.fr
+                    Visiter méthode d'inspection.fr
                   </Button>
                 </a>
               </div>
@@ -319,4 +319,4 @@ function MethodeAutoJust() {
   );
 }
 
-export default MethodeAutoJust;
+export default Methodeméthode d'inspection;

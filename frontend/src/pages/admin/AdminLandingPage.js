@@ -343,7 +343,7 @@ function AdminLandingPage() {
                       id="feature_1_title"
                       value={content.feature_1_title}
                       onChange={(e) => handleChange('feature_1_title', e.target.value)}
-                      placeholder="Méthode AutoJust"
+                      placeholder="Méthode méthode d'inspection"
                     />
                   </div>
                   <div className="space-y-2">

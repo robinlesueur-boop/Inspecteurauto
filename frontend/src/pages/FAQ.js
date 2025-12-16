@@ -33,7 +33,7 @@ function FAQ() {
       questions: [
         {
           q: "Que comprend la formation ?",
-          a: "8 modules couvrant tous les aspects de l'inspection automobile : diagnostic moteur, carrosserie, électronique, ADAS, méthodologie AutoJust, pratique professionnelle. Plus de 10 quiz d'évaluation et un examen final certifiant."
+          a: "8 modules couvrant tous les aspects de l'inspection automobile : diagnostic moteur, carrosserie, électronique, ADAS, méthodologie méthode d'inspection, pratique professionnelle. Plus de 10 quiz d'évaluation et un examen final certifiant."
         },
         {
           q: "Ai-je accès à un support pédagogique ?",
@@ -82,8 +82,8 @@ function FAQ() {
           a: "Les inspecteurs facturent entre 150-400€ par inspection. Avec 3-5 inspections par jour, le potentiel de revenus est de 3 000-8 000€/mois selon votre zone géographique et votre expérience."
         },
         {
-          q: "Puis-je rejoindre le réseau AutoJust ?",
-          a: "Les meilleurs diplômés peuvent candidater pour rejoindre le réseau AutoJust en tant qu'inspecteur partenaire. Des opportunités sont régulièrement publiées dans le forum."
+          q: "Puis-je rejoindre le réseau méthode d'inspection ?",
+          a: "Les meilleurs diplômés peuvent candidater pour rejoindre le réseau méthode d'inspection en tant qu'inspecteur partenaire. Des opportunités sont régulièrement publiées dans le forum."
         }
       ]
     },

@@ -31,7 +31,7 @@ import SatisfactionSurvey from "./pages/SatisfactionSurvey";
 import Blog from "./pages/Blog";
 import Messages from "./pages/Messages";
 import Certification from "./pages/Certification";
-import MethodeAutoJust from "./pages/MethodeAutoJust";
+import Methodeméthode d'inspection from "./pages/Methodeméthode d'inspection";
 import ProgrammeDetaille from "./pages/ProgrammeDetaille";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
@@ -103,7 +103,7 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/certification" element={<Certification />} />
-            <Route path="/methode-autojust" element={<MethodeAutoJust />} />
+            <Route path="/methode-autojust" element={<Methodeméthode d'inspection />} />
             <Route path="/programme-detaille" element={<ProgrammeDetaille />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />

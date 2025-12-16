@@ -15,7 +15,7 @@ function Programme() {
       topics: [
         "Historique et évolution du métier d'inspecteur",
         "Cadre légal et réglementaire",
-        "Méthodologie AutoJust",
+        "Méthodologie méthode d'inspection",
         "Outils et équipements essentiels",
         "Éthique professionnelle"
       ]

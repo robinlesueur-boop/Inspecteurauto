@@ -75,7 +75,7 @@ function ProgrammeDetaille() {
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "Formation Inspecteur Automobile Certifié",
-    "description": "Programme complet de formation pour devenir inspecteur automobile certifié avec la méthode AutoJust. Formation en ligne complète avec certification reconnue.",
+    "description": "Programme complet de formation pour devenir inspecteur automobile certifié avec la méthode méthode d'inspection. Formation en ligne complète avec certification reconnue.",
     "provider": {
       "@type": "Organization",
       "name": "Inspecteur Auto",
@@ -195,7 +195,7 @@ function ProgrammeDetaille() {
               <Card>
                 <CardContent className="pt-6 text-center">
                   <Target className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Méthode AutoJust</h3>
+                  <h3 className="font-semibold mb-2">Méthode méthode d'inspection</h3>
                   <p className="text-sm text-gray-600">Système d'inspection éprouvé</p>
                 </CardContent>
               </Card>

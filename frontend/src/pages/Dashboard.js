@@ -319,7 +319,7 @@ function Dashboard() {
                         🚀 Débloquez la Formation Complète
                       </h3>
                       <p className="text-gray-700 mb-6 text-lg">
-                        Accédez à <strong>11 heures de formation</strong> avec la méthode AutoJust exclusive, 
+                        Accédez à <strong>11 heures de formation</strong> avec la méthode méthode d'inspection exclusive, 
                         votre certification officielle et le forum privé des inspecteurs.
                       </p>
                       
@@ -330,7 +330,7 @@ function Dashboard() {
                         </div>
                         <div className="flex items-center text-green-700">
                           <CheckCircle className="h-5 w-5 mr-2" />
-                          <span>Méthode AutoJust propriétaire</span>
+                          <span>Méthode méthode d'inspection propriétaire</span>
                         </div>
                         <div className="flex items-center text-green-700">
                           <CheckCircle className="h-5 w-5 mr-2" />

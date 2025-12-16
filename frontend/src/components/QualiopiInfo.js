@@ -30,7 +30,7 @@ export default function QualiopiInfo() {
     { module: "Module 4", title: "Inspection Carrosserie et Châssis", duration: "65 min", type: "Payant" },
     { module: "Module 5", title: "Systèmes Électroniques et ADAS", duration: "70 min", type: "Payant" },
     { module: "Module 6", title: "Sécurité et Équipements", duration: "60 min", type: "Payant" },
-    { module: "Module 7", title: "Méthodologie AutoJust", duration: "70 min", type: "Payant" },
+    { module: "Module 7", title: "Méthodologie méthode d'inspection", duration: "70 min", type: "Payant" },
     { module: "Module 8", title: "Pratique Professionnelle et Certification", duration: "70 min", type: "Payant" }
   ];
 

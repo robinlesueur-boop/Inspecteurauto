@@ -34,7 +34,7 @@ function Home() {
   const { isAuthenticated } = useAuth();
   const [content, setContent] = useState({
     hero_title: "Devenez Inspecteur Automobile Certifié",
-    hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode AutoJust. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
+    hero_subtitle: "Maîtrisez l'art du diagnostic véhiculaire avec la méthode méthode d'inspection. Formation complète en 11h pour générer jusqu'à 8000€/mois.",
     hero_image_url: "https://images.unsplash.com/photo-1762517296945-74561c2cf21e",
     stat_graduates: "1,200+",
     stat_success_rate: "97%",
@@ -44,7 +44,7 @@ function Home() {
     price_description: "Formation complète + Certification",
     cta_primary: "Commencer la formation",
     cta_secondary: "Module gratuit",
-    feature_1_title: "Méthode AutoJust",
+    feature_1_title: "Méthode méthode d'inspection",
     feature_1_description: "Système d'inspection révolutionnaire utilisé par plus de 500 professionnels en France.",
     feature_2_title: "Certification Reconnue",
     feature_2_description: "Obtenez votre certification officielle d'inspecteur automobile valorisée par l'industrie.",
@@ -135,7 +135,7 @@ function Home() {
     {
       name: "Jean-Paul Martin",
       role: "Ancien Mécanicien",
-      content: "À 45 ans, j'ai pu me reconvertir grâce à cette formation. La méthode AutoJust fait vraiment la différence !",
+      content: "À 45 ans, j'ai pu me reconvertir grâce à cette formation. La méthode méthode d'inspection fait vraiment la différence !",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
       location: "Toulouse"
@@ -147,7 +147,7 @@ function Home() {
     "Diagnostic moteur et transmission avancé", 
     "Inspection carrosserie et châssis",
     "Systèmes électroniques et ADAS",
-    "Méthodologie AutoJust propriétaire",
+    "Méthodologie méthode d'inspection propriétaire",
     "Certification et pratique professionnelle"
   ];
 
@@ -155,12 +155,12 @@ function Home() {
     <>
       <Helmet>
         <title>Formation Inspecteur Automobile – 11h – Certifié en Ligne | InspecteurAuto</title>
-        <meta name="description" content="Devenez inspecteur automobile certifié en 11h. Formation complète avec méthode AutoJust, certification reconnue, 97% de réussite. 1200+ élèves diplômés. Accès immédiat." />
+        <meta name="description" content="Devenez inspecteur automobile certifié en 11h. Formation complète avec méthode méthode d'inspection, certification reconnue, 97% de réussite. 1200+ élèves diplômés. Accès immédiat." />
         <meta name="keywords" content="formation inspecteur automobile, devenir inspecteur auto, formation en ligne automobile, expertise voiture, diagnostic automobile, formation certifiante auto" />
         
         {/* Open Graph pour réseaux sociaux */}
         <meta property="og:title" content="Formation Inspecteur Automobile – Certifié en 11h" />
-        <meta property="og:description" content="Formation complète pour devenir inspecteur automobile. Certification officielle, méthode professionnelle AutoJust utilisée par 500+ inspecteurs." />
+        <meta property="og:description" content="Formation complète pour devenir inspecteur automobile. Certification officielle, méthode professionnelle méthode d'inspection utilisée par 500+ inspecteurs." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://carlearn-admin.preview.emergentagent.com/" />
         <meta property="og:image" content={getImageUrl(content.hero_image_url)} />
@@ -177,10 +177,10 @@ function Home() {
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Formation Inspecteur Automobile",
-            "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode AutoJust en 11 heures.",
+            "description": "Formation complète pour devenir inspecteur automobile certifié. Apprenez le diagnostic véhiculaire avec la méthode méthode d'inspection en 11 heures.",
             "provider": {
               "@type": "Organization",
-              "name": "InspecteurAuto - Méthode AutoJust",
+              "name": "InspecteurAuto - Méthode méthode d'inspection",
               "url": "https://carlearn-admin.preview.emergentagent.com",
               "logo": "https://carlearn-admin.preview.emergentagent.com/logo.png"
             },
@@ -442,7 +442,7 @@ function Home() {
                   Une Formation Pratique et Professionnelle
                 </h3>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Apprenez les techniques d'inspection les plus avancées avec notre méthode AutoJust éprouvée par des centaines de professionnels.
+                  Apprenez les techniques d'inspection les plus avancées avec notre méthode méthode d'inspection éprouvée par des centaines de professionnels.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start space-x-3">

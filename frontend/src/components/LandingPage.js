@@ -9,7 +9,7 @@ const LandingPage = () => {
   const features = [
     {
       icon: "🎯",
-      title: "Méthodologie AutoJust",
+      title: "Méthodologie méthode d'inspection",
       description: "Plus de 200 points de contrôle standardisés pour une inspection complète et professionnelle"
     },
     {
@@ -20,7 +20,7 @@ const LandingPage = () => {
     {
       icon: "🔧",
       title: "Outils Digitaux",
-      description: "WebApp AutoJust et WeProov pour une inspection terrain optimisée"
+      description: "WebApp méthode d'inspection et WeProov pour une inspection terrain optimisée"
     },
     {
       icon: "📄",
@@ -67,7 +67,7 @@ const LandingPage = () => {
     },
     {
       question: "Quel matériel est nécessaire ?",
-      answer: "Un smartphone avec l'app AutoJust, un multimètre basique et une lampe de poche suffisent. Liste complète fournie lors de l'inscription."
+      answer: "Un smartphone avec l'app méthode d'inspection, un multimètre basique et une lampe de poche suffisent. Liste complète fournie lors de l'inscription."
     },
     {
       question: "Combien peut-on gagner comme inspecteur ?",
@@ -132,7 +132,7 @@ const LandingPage = () => {
               
               <p className="text-xl text-slate-300 mb-8 leading-relaxed">
                 Formation professionnelle <strong>9h certifiante</strong> pour maîtriser l'inspection automobile. 
-                Méthodologie AutoJust avec <strong>200+ points de contrôle</strong>. 
+                Méthodologie méthode d'inspection avec <strong>200+ points de contrôle</strong>. 
                 Compatible Qualiopi/CPF.
               </p>
 
@@ -221,7 +221,7 @@ const LandingPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-white mb-8">
-                Méthodologie AutoJust
+                Méthodologie méthode d'inspection
                 <br />
                 <span className="text-blue-400">200+ Points de Contrôle</span>
               </h2>
