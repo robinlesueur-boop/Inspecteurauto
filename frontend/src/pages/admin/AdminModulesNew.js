@@ -28,7 +28,11 @@ function AdminModulesNew() {
     description: '',
     content: '',
     duration_minutes: 60,
-    is_free: false
+    is_free: false,
+    video_intro_url: '',
+    video_middle_url: '',
+    video_middle_position: 50,
+    video_end_url: ''
   });
 
   const [quizFormData, setQuizFormData] = useState({
