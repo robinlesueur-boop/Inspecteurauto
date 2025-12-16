@@ -283,32 +283,38 @@ function ProgrammeDetaille() {
                           <div className="mt-4 flex items-center gap-3">
                             {module.is_free ? (
                               <Button 
-                                className="w-full cursor-pointer"
+                                className="w-full cursor-pointer select-none"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
                                   console.log('Free module button clicked!');
-                                  navigate('/register');
+                                  window.location.href = '/register';
                                 }}
                                 type="button"
+                                style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none' }}
                               >
-                                Accéder au module gratuit
-                                <CheckCircle className="ml-2 h-4 w-4" />
+                                <span style={{ pointerEvents: 'none' }}>
+                                  Accéder au module gratuit
+                                </span>
+                                <CheckCircle className="ml-2 h-4 w-4" style={{ pointerEvents: 'none' }} />
                               </Button>
                             ) : (
                               <Button 
                                 variant="outline" 
-                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer"
+                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer select-none"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
                                   console.log('Premium module button clicked!');
-                                  navigate('/register');
+                                  window.location.href = '/register';
                                 }}
                                 type="button"
+                                style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none' }}
                               >
-                                <Lock className="mr-2 h-4 w-4" />
-                                S'inscrire pour débloquer
+                                <Lock className="mr-2 h-4 w-4" style={{ pointerEvents: 'none' }} />
+                                <span style={{ pointerEvents: 'none' }}>
+                                  S'inscrire pour débloquer
+                                </span>
                               </Button>
                             )}
                           </div>
