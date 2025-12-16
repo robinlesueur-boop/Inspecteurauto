@@ -283,8 +283,14 @@ function ProgrammeDetaille() {
                           <div className="mt-4 flex items-center gap-3">
                             {module.is_free ? (
                               <Button 
-                                className="w-full"
-                                onClick={() => navigate('/register')}
+                                className="w-full cursor-pointer"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  console.log('Free module button clicked!');
+                                  navigate('/register');
+                                }}
+                                type="button"
                               >
                                 Accéder au module gratuit
                                 <CheckCircle className="ml-2 h-4 w-4" />
@@ -292,8 +298,14 @@ function ProgrammeDetaille() {
                             ) : (
                               <Button 
                                 variant="outline" 
-                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50"
-                                onClick={() => navigate('/register')}
+                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  console.log('Premium module button clicked!');
+                                  navigate('/register');
+                                }}
+                                type="button"
                               >
                                 <Lock className="mr-2 h-4 w-4" />
                                 S'inscrire pour débloquer
