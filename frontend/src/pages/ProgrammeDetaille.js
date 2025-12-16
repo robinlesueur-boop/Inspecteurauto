@@ -273,7 +273,7 @@ function ProgrammeDetaille() {
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <div className="prose prose-sm max-w-none text-gray-700">
+                          <div className="prose prose-sm max-w-none text-gray-700" style={{ pointerEvents: 'none' }}>
                             {/* On peut afficher un extrait du contenu */}
                             <p className="line-clamp-3">
                               {module.content.replace(/<[^>]*>/g, '').substring(0, 200)}...
