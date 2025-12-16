@@ -292,11 +292,11 @@ function MethodeInspection() {
           <Card className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
             <CardContent className="p-12 text-center">
               <h2 className="text-3xl font-bold mb-4">
-                Devenez Inspecteur méthode d'inspection Certifié
+                Devenez Inspecteur Automobile Certifié
               </h2>
               <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
                 Rejoignez notre réseau d'inspecteurs professionnels et maîtrisez la méthode 
-                d'inspection la plus reconnue en France.
+                d'inspection automobile la plus reconnue en France.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/register">
@@ -304,11 +304,11 @@ function MethodeInspection() {
                     S'inscrire à la Formation
                   </Button>
                 </Link>
-                <a href="https://autojust.fr" target="_blank" rel="noopener noreferrer">
+                <Link to="/contact">
                   <Button variant="outline" className="border-2 border-white text-white hover:bg-blue-700 px-8 py-3 text-lg">
-                    Visiter méthode d'inspection.fr
+                    Nous Contacter
                   </Button>
-                </a>
+                </Link>
               </div>
             </CardContent>
           </Card>
