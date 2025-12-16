@@ -81,7 +81,11 @@ function AdminModulesNew() {
       description: '',
       content: '',
       duration_minutes: 60,
-      is_free: false
+      is_free: false,
+      video_intro_url: '',
+      video_middle_url: '',
+      video_middle_position: 50,
+      video_end_url: ''
     });
     setViewMode('modules');
   };
@@ -94,7 +98,11 @@ function AdminModulesNew() {
       description: module.description,
       content: module.content,
       duration_minutes: module.duration_minutes,
-      is_free: module.is_free
+      is_free: module.is_free,
+      video_intro_url: module.video_intro_url || '',
+      video_middle_url: module.video_middle_url || '',
+      video_middle_position: module.video_middle_position || 50,
+      video_end_url: module.video_end_url || ''
     });
     setViewMode('modules');
   };
