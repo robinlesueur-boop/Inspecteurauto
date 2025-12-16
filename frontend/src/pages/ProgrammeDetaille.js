@@ -244,13 +244,13 @@ function ProgrammeDetaille() {
                       <Card className="hover:shadow-lg transition-shadow duration-300">
                         <CardHeader>
                           <div className="flex items-start justify-between">
-                            <div className="flex-1">
+                            <div className="flex-1" style={{ pointerEvents: 'none' }}>
                               <div className="flex items-center gap-3 mb-2">
                                 <Badge variant="outline" className="text-lg px-3 py-1">
                                   Module {module.order_index}
                                 </Badge>
                                 {module.is_free ? (
-                                  <Badge className="bg-green-500 hover:bg-green-600">
+                                  <Badge className="bg-green-500">
                                     <CheckCircle className="h-4 w-4 mr-1" />
                                     Gratuit
                                   </Badge>
