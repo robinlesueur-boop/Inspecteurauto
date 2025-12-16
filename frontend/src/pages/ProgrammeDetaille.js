@@ -282,40 +282,37 @@ function ProgrammeDetaille() {
                           
                           <div className="mt-4 flex items-center gap-3">
                             {module.is_free ? (
-                              <Button 
-                                className="w-full cursor-pointer select-none"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  console.log('Free module button clicked!');
-                                  window.location.href = '/register';
+                              <a
+                                href="/register"
+                                className="inline-flex items-center justify-center gap-2 w-full h-10 px-4 py-2 rounded-md text-sm font-medium bg-black text-white hover:bg-gray-800 transition-colors no-underline"
+                                style={{ 
+                                  userSelect: 'none', 
+                                  WebkitUserSelect: 'none',
+                                  MozUserSelect: 'none',
+                                  textDecoration: 'none',
+                                  cursor: 'pointer'
                                 }}
-                                type="button"
-                                style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none' }}
+                                onMouseDown={(e) => e.preventDefault()}
                               >
-                                <span style={{ pointerEvents: 'none' }}>
-                                  Accéder au module gratuit
-                                </span>
-                                <CheckCircle className="ml-2 h-4 w-4" style={{ pointerEvents: 'none' }} />
-                              </Button>
+                                Accéder au module gratuit
+                                <CheckCircle className="ml-2 h-4 w-4" />
+                              </a>
                             ) : (
-                              <Button 
-                                variant="outline" 
-                                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 cursor-pointer select-none"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  e.stopPropagation();
-                                  console.log('Premium module button clicked!');
-                                  window.location.href = '/register';
+                              <a
+                                href="/register"
+                                className="inline-flex items-center justify-center gap-2 w-full h-10 px-4 py-2 rounded-md text-sm font-medium border-2 border-blue-600 text-blue-600 bg-white hover:bg-blue-50 transition-colors no-underline"
+                                style={{ 
+                                  userSelect: 'none', 
+                                  WebkitUserSelect: 'none',
+                                  MozUserSelect: 'none',
+                                  textDecoration: 'none',
+                                  cursor: 'pointer'
                                 }}
-                                type="button"
-                                style={{ userSelect: 'none', WebkitUserSelect: 'none', MozUserSelect: 'none' }}
+                                onMouseDown={(e) => e.preventDefault()}
                               >
-                                <Lock className="mr-2 h-4 w-4" style={{ pointerEvents: 'none' }} />
-                                <span style={{ pointerEvents: 'none' }}>
-                                  S'inscrire pour débloquer
-                                </span>
-                              </Button>
+                                <Lock className="mr-2 h-4 w-4" />
+                                S'inscrire pour débloquer
+                              </a>
                             )}
                           </div>
                         </CardContent>
