@@ -322,6 +322,18 @@ frontend:
       - working: true
         agent: "main"
         comment: "Page créée avec récupération dynamique des modules depuis l'API, optimisations SEO complètes (meta tags, structured data JSON-LD), intégrée dans routing et navbar, ajoutée au sitemap.xml avec priorité 0.9. Design responsive avec animations Framer Motion."
+  
+  - task: "Système de Vidéos Intégrées (Gamification)"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/ModuleViewer.js, backend/server.py, frontend/src/pages/admin/AdminModulesNew.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Système complet de vidéos intégrées pour rendre les cours plus ludiques. Backend: ajout de 4 champs au modèle Module (video_intro_url, video_middle_url, video_middle_position, video_end_url). Frontend étudiant: composant VideoPlayer créé supportant YouTube/Vimeo/upload, ModuleViewer modifié pour insérer les vidéos automatiquement (début, milieu personnalisable, fin). Frontend admin: interface complète d'ajout de vidéos avec curseur de position. Composants additionnels: ReadingProgressBar (barre de progression avec messages motivants), KeyPointHighlight (encadrés colorés pour points clés). Guide utilisateur créé (GUIDE_VIDEOS_LUDIQUES.md)."
 
 metadata:
   created_by: "main_agent"
