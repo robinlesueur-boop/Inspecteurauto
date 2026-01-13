@@ -84,8 +84,8 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Centre d'aide
+                <Link to="/ressources" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  Ressources & Guides
                 </Link>
               </li>
               <li>
