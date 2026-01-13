@@ -2126,7 +2126,7 @@ async def health_check():
 # SEO - Sitemap XML
 @api_router.get("/sitemap.xml")
 async def get_sitemap():
-    """Generate sitemap.xml for SEO"""
+    """Generate sitemap.xml for SEO - Includes all 100 SEO pages"""
     from fastapi.responses import Response
     
     # Get all blog posts
@@ -2134,21 +2134,64 @@ async def get_sitemap():
     
     base_url = "https://elearn-repair-1.preview.emergentagent.com"  # À remplacer par le vrai domaine
     
-    # Pages statiques
+    # Pages statiques principales
     static_pages = [
         {"loc": "/", "priority": "1.0", "changefreq": "daily"},
         {"loc": "/register", "priority": "0.9", "changefreq": "monthly"},
         {"loc": "/pre-registration", "priority": "0.8", "changefreq": "monthly"},
         {"loc": "/programme-detaille", "priority": "0.9", "changefreq": "weekly"},
-        {"loc": "/programme", "priority": "0.9", "changefreq": "weekly"},
-        {"loc": "/debouches-revenus", "priority": "0.8", "changefreq": "monthly"},
-        {"loc": "/methode-autojust", "priority": "0.8", "changefreq": "monthly"},
         {"loc": "/certification", "priority": "0.8", "changefreq": "monthly"},
         {"loc": "/faq", "priority": "0.7", "changefreq": "weekly"},
         {"loc": "/blog", "priority": "0.8", "changefreq": "daily"},
         {"loc": "/contact", "priority": "0.6", "changefreq": "yearly"},
         {"loc": "/mentions-legales", "priority": "0.3", "changefreq": "yearly"},
         {"loc": "/confidentialite", "priority": "0.3", "changefreq": "yearly"},
+    ]
+    
+    # Pages SEO piliers (haute priorité)
+    seo_pillar_pages = [
+        "formation-inspecteur-automobile",
+        "comment-devenir-inspecteur-automobile",
+        "tarifs-formation-inspecteur-auto",
+        "combien-gagne-inspecteur-automobile",
+        "metier-inspecteur-automobile",
+        "formation-en-ligne-inspecteur-automobile",
+        "certification-inspecteur-automobile",
+    ]
+    
+    # Pages SEO techniques diagnostic
+    seo_diagnostic_pages = [
+        "diagnostic-moteur-essence",
+        "diagnostic-moteur-diesel",
+        "diagnostic-boite-vitesses-automatique",
+        "diagnostic-systeme-freinage-abs-esp",
+        "diagnostic-electronique-automobile-obd2",
+        "diagnostic-climatisation-automobile",
+        "diagnostic-suspension-amortisseurs",
+        "diagnostic-embrayage-signes-usure",
+        "diagnostic-turbo-pannes-courantes",
+        "diagnostic-systeme-antipollution-fap-scr",
+    ]
+    
+    # Pages SEO techniques carrosserie
+    seo_carrosserie_pages = [
+        "inspection-carrosserie-pre-achat",
+        "detection-vehicule-accidente",
+        "detection-compteur-kilometrique-trafique",
+        "reperer-voiture-maquillee",
+        "inspection-chassis-points-controle",
+        "controle-peinture-anticorrosion",
+        "inspection-vitrage-automobile",
+        "verification-etancheite-vehicule",
+        "controle-geometrie-parallelisme",
+        "inspection-pneumatiques-securite",
+    ]
+    
+    # Pages SEO géolocalisées
+    seo_geo_pages = [
+        "formation-inspecteur-automobile-paris",
+        "formation-inspecteur-automobile-lyon",
+        "formation-inspecteur-automobile-marseille",
     ]
     
     # Construire le XML
@@ -2161,6 +2204,30 @@ async def get_sitemap():
         xml += f'    <loc>{base_url}{page["loc"]}</loc>\n'
         xml += f'    <priority>{page["priority"]}</priority>\n'
         xml += f'    <changefreq>{page["changefreq"]}</changefreq>\n'
+        xml += '  </url>\n'
+    
+    # Ajouter les pages SEO piliers (priorité élevée)
+    for page_id in seo_pillar_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>{base_url}/seo/{page_id}</loc>\n'
+        xml += '    <priority>0.9</priority>\n'
+        xml += '    <changefreq>weekly</changefreq>\n'
+        xml += '  </url>\n'
+    
+    # Ajouter les pages SEO techniques (priorité moyenne)
+    for page_id in seo_diagnostic_pages + seo_carrosserie_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>{base_url}/seo/{page_id}</loc>\n'
+        xml += '    <priority>0.7</priority>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
+        xml += '  </url>\n'
+    
+    # Ajouter les pages SEO géolocalisées
+    for page_id in seo_geo_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>{base_url}/seo/{page_id}</loc>\n'
+        xml += '    <priority>0.6</priority>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
         xml += '  </url>\n'
     
     # Ajouter les articles de blog
