@@ -1679,6 +1679,68 @@ async def delete_quiz(
     
     return {"message": "Quiz deleted successfully", "quiz_id": quiz_id}
 
+# Admin routes for Mechanical Knowledge Quiz
+@api_router.get("/admin/quizzes/mechanical-knowledge")
+async def get_mechanical_quiz_admin(current_user: User = Depends(require_admin)):
+    """Get mechanical knowledge quiz for admin editing"""
+    quiz = await db.quizzes.find_one({"module_id": "mechanical_knowledge"}, {"_id": 0})
+    if not quiz:
+        raise HTTPException(status_code=404, detail="Mechanical knowledge quiz not found")
+    
+    # Convert dates
+    if isinstance(quiz.get('created_at'), str):
+        quiz['created_at'] = datetime.fromisoformat(quiz['created_at'])
+    if isinstance(quiz.get('updated_at'), str):
+        quiz['updated_at'] = datetime.fromisoformat(quiz['updated_at'])
+    
+    return quiz
+
+@api_router.put("/admin/quizzes/mechanical-knowledge")
+async def update_mechanical_quiz_admin(
+    quiz_data: dict,
+    current_user: User = Depends(require_admin)
+):
+    """Update mechanical knowledge quiz (admin only)"""
+    
+    # Validation
+    if not quiz_data.get('title'):
+        raise HTTPException(status_code=400, detail="Title is required")
+    
+    if not quiz_data.get('questions') or len(quiz_data['questions']) == 0:
+        raise HTTPException(status_code=400, detail="At least one question is required")
+    
+    # Check if quiz exists
+    existing_quiz = await db.quizzes.find_one({"module_id": "mechanical_knowledge"})
+    
+    # Prepare update data
+    update_data = {
+        "title": quiz_data['title'],
+        "description": quiz_data.get('description', ''),
+        "passing_score": quiz_data.get('passing_score', 70),
+        "questions": quiz_data['questions'],
+        "updated_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    if existing_quiz:
+        # Update existing quiz
+        await db.quizzes.update_one(
+            {"module_id": "mechanical_knowledge"},
+            {"$set": update_data}
+        )
+        message = "Mechanical knowledge quiz updated successfully"
+    else:
+        # Create new quiz
+        new_quiz = {
+            "id": f"quiz_mech_{uuid.uuid4().hex[:8]}",
+            "module_id": "mechanical_knowledge",
+            **update_data,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.quizzes.insert_one(new_quiz)
+        message = "Mechanical knowledge quiz created successfully"
+    
+    return {"message": message, "quiz": update_data}
+
 # Media Upload Routes (Admin only)
 @api_router.post("/admin/upload/image")
 async def upload_image(
