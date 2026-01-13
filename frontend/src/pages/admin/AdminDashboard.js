@@ -350,6 +350,13 @@ function AdminDashboard() {
                     </Button>
                   </Link>
                   
+                  <Link to="/admin/mechanical-quiz">
+                    <Button variant="outline" className="w-full h-20 flex flex-col border-purple-300 hover:bg-purple-50">
+                      <BookOpen className="h-6 w-6 mb-2 text-purple-600" />
+                      <span className="text-purple-600 font-semibold">Quiz Mécanique</span>
+                    </Button>
+                  </Link>
+                  
                   <Link to="/admin/messaging">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <Mail className="h-6 w-6 mb-2" />
