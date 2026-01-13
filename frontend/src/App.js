@@ -51,6 +51,9 @@ import AdminBlog from "./pages/admin/AdminBlog";
 import AdminLandingPage from "./pages/admin/AdminLandingPage";
 import AdminMechanicalQuiz from "./pages/admin/AdminMechanicalQuiz";
 
+// SEO Pages
+import DynamicSEOPage from "./pages/seo/DynamicSEOPage";
+
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
