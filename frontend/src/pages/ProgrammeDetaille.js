@@ -182,7 +182,7 @@ function ProgrammeDetaille() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
                 Une Formation Complète et Structurée
               </h2>
               <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto">
