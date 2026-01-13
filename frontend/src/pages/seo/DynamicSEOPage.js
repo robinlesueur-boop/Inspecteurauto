@@ -1,67 +1,50 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEOPageTemplate from '../../components/SEOPageTemplate';
-import { seoPageDatabase } from '../../data/seoPageDatabase';
+import { seoPageDatabase, getPageById, allSeoPageIds } from '../../data/seoPageDatabase';
 
 /**
  * Composant Dynamique pour toutes les pages SEO
+ * Route: /seo/:pageId
  * Lit les données depuis seoPageDatabase.js
  */
 function DynamicSEOPage() {
   const { pageId } = useParams();
   
-  // Chercher la page dans toutes les catégories
-  let pageData = null;
-  let relatedPages = [];
+  // Récupérer les données de la page
+  const pageData = getPageById(pageId);
 
-  // Recherche dans les piliers
-  if (seoPageDatabase.piliers[pageId]) {
-    pageData = seoPageDatabase.piliers[pageId];
-  }
-  // Recherche dans les techniques - diagnostic
-  else if (seoPageDatabase.techniques?.diagnostic[pageId]) {
-    pageData = seoPageDatabase.techniques.diagnostic[pageId];
-  }
-  // Recherche dans les techniques - carrosserie
-  else if (seoPageDatabase.techniques?.carrosserie[pageId]) {
-    pageData = seoPageDatabase.techniques.carrosserie[pageId];
-  }
-
-  // Si la page n'est pas trouvée (contenu TODO)
-  if (!pageData || !pageData.sections || pageData.sections[0]?.content[0]?.includes('TODO')) {
+  // Si la page n'est pas trouvée
+  if (!pageData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
         <div className="max-w-2xl bg-white rounded-lg shadow-lg p-8 text-center">
-          <div className="text-6xl mb-4">⚠️</div>
+          <div className="text-6xl mb-4">🔍</div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Page en Construction
+            Page Non Trouvée
           </h1>
           <p className="text-gray-600 mb-6">
-            Le contenu de cette page est en cours de rédaction. Cette page fait partie de notre stratégie SEO de 100 pages.
+            Cette page SEO n'existe pas encore ou l'URL est incorrecte.
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-blue-800">
-              <strong>ID de la page :</strong> {pageId}
-            </p>
-            <p className="text-sm text-blue-800 mt-2">
-              Pour compléter cette page, éditez le fichier :<br />
-              <code className="bg-blue-100 px-2 py-1 rounded">/app/frontend/src/data/seoPageDatabase.js</code>
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <p className="text-sm text-amber-800">
+              <strong>ID recherché :</strong> {pageId}
             </p>
           </div>
-          <div className="space-y-2">
-            <a 
-              href="/formation-inspecteur-automobile" 
+          <div className="space-y-4">
+            <Link 
+              to="/programme-detaille" 
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
             >
-              Voir notre Formation Complète
-            </a>
+              Voir le Programme de Formation
+            </Link>
             <br />
-            <a 
-              href="/" 
+            <Link 
+              to="/" 
               className="inline-block text-blue-600 hover:text-blue-700 mt-2"
             >
               Retour à l'accueil
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -72,35 +55,47 @@ function DynamicSEOPage() {
   const generateRelatedPages = () => {
     const related = [];
     
-    // Toujours suggérer la formation principale
-    related.push({
-      title: 'Formation Inspecteur Automobile Complète',
-      description: 'Découvrez notre programme de formation complet en 9 modules',
-      url: '/seo/formation-inspecteur-automobile'
-    });
+    // Formation principale (si pas déjà dessus)
+    if (pageId !== 'formation-inspecteur-automobile') {
+      related.push({
+        title: 'Formation Inspecteur Automobile Complète',
+        description: 'Découvrez notre programme de formation complet en 9 modules',
+        url: '/seo/formation-inspecteur-automobile'
+      });
+    }
 
-    // Ajouter la certification si pas déjà sur cette page
+    // Comment devenir (si pas déjà dessus)
+    if (pageId !== 'comment-devenir-inspecteur-automobile') {
+      related.push({
+        title: 'Comment Devenir Inspecteur Automobile',
+        description: 'Guide étape par étape pour réussir votre reconversion',
+        url: '/seo/comment-devenir-inspecteur-automobile'
+      });
+    }
+
+    // Certification (si pas déjà dessus)
     if (pageId !== 'certification-inspecteur-automobile') {
       related.push({
-        title: 'Certification Reconnue',
+        title: 'Certification Professionnelle',
         description: 'Obtenez votre certification d\'inspecteur automobile officielle',
         url: '/seo/certification-inspecteur-automobile'
       });
     }
 
-    // Ajouter "Comment devenir" si pas déjà sur cette page
-    if (pageId !== 'comment-devenir-inspecteur') {
+    // Revenus (si pas déjà dessus)
+    if (pageId !== 'combien-gagne-inspecteur-automobile') {
       related.push({
-        title: 'Comment Devenir Inspecteur Automobile',
-        description: 'Guide étape par étape pour réussir votre reconversion',
-        url: '/seo/comment-devenir-inspecteur'
+        title: 'Revenus d\'un Inspecteur Automobile',
+        description: 'Découvrez combien gagne un inspecteur automobile',
+        url: '/seo/combien-gagne-inspecteur-automobile'
       });
     }
 
-    return related;
+    // Limiter à 3 pages reliées
+    return related.slice(0, 3);
   };
 
-  relatedPages = generateRelatedPages();
+  const relatedPages = generateRelatedPages();
 
   return <SEOPageTemplate pageData={pageData} relatedPages={relatedPages} />;
 }
