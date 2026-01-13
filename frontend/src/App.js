@@ -253,6 +253,15 @@ function AppContent() {
             />
             
             <Route 
+              path="/admin/mechanical-quiz" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminMechanicalQuiz />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/admin/blog" 
               element={
                 <ProtectedRoute requiresAdmin={true}>
