@@ -225,7 +225,7 @@ function ProgrammeDetaille() {
 
             {/* Modules List */}
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-8">Contenu du Programme</h2>
+              <h2 className="text-3xl font-bold mb-8 text-gray-900">Contenu du Programme</h2>
               
               {loading ? (
                 <div className="text-center py-12">
