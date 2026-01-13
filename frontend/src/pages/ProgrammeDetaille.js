@@ -273,13 +273,7 @@ function ProgrammeDetaille() {
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <div className="prose prose-sm max-w-none text-gray-700" style={{ pointerEvents: 'none' }}>
-                            {/* On peut afficher un extrait du contenu */}
-                            <p className="line-clamp-3">
-                              {module.content.replace(/<[^>]*>/g, '').substring(0, 200)}...
-                            </p>
-                          </div>
-                          
+                          {/* On garde seulement le bouton, pas d'extrait de contenu */}
                           <div className="mt-6" style={{ pointerEvents: 'auto' }}>
                             {module.is_free ? (
                               <a
