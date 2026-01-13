@@ -23,4 +23,4 @@ Disallow: /admin/
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://carlearn-admin.preview.emergentagent.com/sitemap.xml
+Sitemap: https://elearn-repair-1.preview.emergentagent.com/sitemap.xml
