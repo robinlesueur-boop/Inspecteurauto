@@ -49,6 +49,7 @@ import AdminModules from "./pages/admin/AdminModules";
 import AdminModulesNew from "./pages/admin/AdminModulesNew";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminLandingPage from "./pages/admin/AdminLandingPage";
+import AdminMechanicalQuiz from "./pages/admin/AdminMechanicalQuiz";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
