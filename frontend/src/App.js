@@ -114,6 +114,9 @@ function AppContent() {
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/confidentialite" element={<Confidentialite />} />
             <Route path="/pre-registration" element={<PreRegistration />} />
+            
+            {/* Dynamic SEO Pages - Route pour les 100 pages SEO */}
+            <Route path="/seo/:pageId" element={<DynamicSEOPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterNew />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
