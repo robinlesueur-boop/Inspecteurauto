@@ -118,6 +118,8 @@ function AppContent() {
             
             {/* Dynamic SEO Pages - Route pour les 100 pages SEO */}
             <Route path="/seo/:pageId" element={<DynamicSEOPage />} />
+            <Route path="/ressources" element={<SEOIndex />} />
+            <Route path="/seo" element={<SEOIndex />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<RegisterNew />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
