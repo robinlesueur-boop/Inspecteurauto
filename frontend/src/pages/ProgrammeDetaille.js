@@ -389,7 +389,7 @@ function ProgrammeDetaille() {
         {/* FAQ Section */}
         <section className="py-16 px-4 bg-white">
           <div className="container mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold text-center mb-12">Questions Fréquentes</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Questions Fréquentes</h2>
             
             <div className="space-y-6">
               <Card>
