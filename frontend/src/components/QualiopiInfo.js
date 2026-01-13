@@ -44,7 +44,7 @@ export default function QualiopiInfo() {
             <CheckCircle className="h-5 w-5 mr-2 inline" />
             Formation Conforme Qualiopi
           </Badge>
-          <h2 className="text-4xl font-bold mb-4">Programme Complet de Formation</h2>
+          <h2 className="text-4xl font-bold mb-4 text-gray-900">Programme Complet de Formation</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Formation professionnelle d'inspecteur automobile certifiante
           </p>
