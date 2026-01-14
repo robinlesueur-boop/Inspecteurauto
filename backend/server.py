@@ -301,6 +301,84 @@ class ForumReply(BaseModel):
     likes: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# ==================== CHAT PRIVÉ ÉLÈVE-ADMIN ====================
+
+class PrivateChatMessage(BaseModel):
+    """Message dans une conversation privée élève-admin"""
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    conversation_id: str  # ID de la conversation
+    sender_id: str  # ID de l'utilisateur qui envoie
+    sender_type: str  # "student" ou "admin"
+    content: str
+    is_read: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class PrivateConversation(BaseModel):
+    """Conversation privée entre un élève et les admins"""
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    student_id: str  # ID de l'élève
+    student_name: str
+    student_email: str
+    last_message: Optional[str] = None
+    last_message_at: Optional[datetime] = None
+    last_message_by: Optional[str] = None  # "student" ou "admin"
+    unread_by_student: int = 0  # Nombre de messages non lus par l'élève
+    unread_by_admin: int = 0  # Nombre de messages non lus par les admins
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ChatMessageCreate(BaseModel):
+    """Modèle pour créer un nouveau message"""
+    content: str
+
+# WebSocket Connection Manager pour le chat en temps réel
+class ConnectionManager:
+    def __init__(self):
+        # Dictionnaire: user_id -> liste de WebSocket connections
+        self.active_connections: Dict[str, List[WebSocket]] = {}
+    
+    async def connect(self, websocket: WebSocket, user_id: str):
+        await websocket.accept()
+        if user_id not in self.active_connections:
+            self.active_connections[user_id] = []
+        self.active_connections[user_id].append(websocket)
+    
+    def disconnect(self, websocket: WebSocket, user_id: str):
+        if user_id in self.active_connections:
+            if websocket in self.active_connections[user_id]:
+                self.active_connections[user_id].remove(websocket)
+            if not self.active_connections[user_id]:
+                del self.active_connections[user_id]
+    
+    async def send_to_user(self, user_id: str, message: dict):
+        """Envoie un message à un utilisateur spécifique"""
+        if user_id in self.active_connections:
+            for connection in self.active_connections[user_id]:
+                try:
+                    await connection.send_json(message)
+                except:
+                    pass
+    
+    async def send_to_admins(self, message: dict):
+        """Envoie un message à tous les admins connectés"""
+        # On envoie à tous les utilisateurs qui ont une connexion
+        # Le frontend filtrera côté admin
+        for user_id, connections in self.active_connections.items():
+            for connection in connections:
+                try:
+                    await connection.send_json(message)
+                except:
+                    pass
+
+# Instance globale du gestionnaire de connexions
+chat_manager = ConnectionManager()
+
+# ==================== FIN CHAT PRIVÉ ====================
+
 # SEO Page Model for Admin-managed SEO pages
 class SEOPage(BaseModel):
     model_config = ConfigDict(extra="ignore")
