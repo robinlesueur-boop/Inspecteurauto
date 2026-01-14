@@ -1409,6 +1409,325 @@ async def create_forum_reply(post_id: str, content: str, current_user: User = De
     
     return {"message": "Reply created successfully", "reply_id": reply.id}
 
+# ==================== CHAT PRIVÉ ÉLÈVE-ADMIN ENDPOINTS ====================
+
+@api_router.get("/chat/conversation")
+async def get_my_conversation(current_user: User = Depends(get_current_user)):
+    """Récupère ou crée la conversation de l'élève avec les admins"""
+    if not current_user.has_purchased:
+        raise HTTPException(status_code=403, detail="Chat access requires course purchase")
+    
+    # Chercher la conversation existante
+    conversation = await db.private_conversations.find_one(
+        {"student_id": current_user.id},
+        {"_id": 0}
+    )
+    
+    if not conversation:
+        # Créer une nouvelle conversation
+        new_conv = PrivateConversation(
+            student_id=current_user.id,
+            student_name=current_user.full_name,
+            student_email=current_user.email
+        )
+        doc = new_conv.model_dump()
+        doc['created_at'] = doc['created_at'].isoformat()
+        doc['updated_at'] = doc['updated_at'].isoformat()
+        if doc.get('last_message_at'):
+            doc['last_message_at'] = doc['last_message_at'].isoformat()
+        
+        await db.private_conversations.insert_one(doc)
+        conversation = doc
+    
+    return conversation
+
+@api_router.get("/chat/messages")
+async def get_chat_messages(current_user: User = Depends(get_current_user)):
+    """Récupère les messages de la conversation de l'élève (30 derniers jours)"""
+    if not current_user.has_purchased:
+        raise HTTPException(status_code=403, detail="Chat access requires course purchase")
+    
+    # Trouver la conversation
+    conversation = await db.private_conversations.find_one({"student_id": current_user.id})
+    if not conversation:
+        return []
+    
+    # Date limite: 30 jours
+    date_limit = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+    
+    messages = await db.private_chat_messages.find(
+        {
+            "conversation_id": conversation["id"],
+            "created_at": {"$gte": date_limit}
+        },
+        {"_id": 0}
+    ).sort("created_at", 1).to_list(500)
+    
+    # Marquer les messages comme lus par l'élève
+    await db.private_chat_messages.update_many(
+        {
+            "conversation_id": conversation["id"],
+            "sender_type": "admin",
+            "is_read": False
+        },
+        {"$set": {"is_read": True}}
+    )
+    
+    # Mettre à jour le compteur de non-lus
+    await db.private_conversations.update_one(
+        {"id": conversation["id"]},
+        {"$set": {"unread_by_student": 0}}
+    )
+    
+    return messages
+
+@api_router.post("/chat/messages")
+async def send_chat_message(message: ChatMessageCreate, current_user: User = Depends(get_current_user)):
+    """Envoie un message dans le chat (élève vers admin)"""
+    if not current_user.has_purchased:
+        raise HTTPException(status_code=403, detail="Chat access requires course purchase")
+    
+    if not message.content.strip():
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
+    
+    # Trouver ou créer la conversation
+    conversation = await db.private_conversations.find_one({"student_id": current_user.id})
+    if not conversation:
+        new_conv = PrivateConversation(
+            student_id=current_user.id,
+            student_name=current_user.full_name,
+            student_email=current_user.email
+        )
+        doc = new_conv.model_dump()
+        doc['created_at'] = doc['created_at'].isoformat()
+        doc['updated_at'] = doc['updated_at'].isoformat()
+        await db.private_conversations.insert_one(doc)
+        conversation = doc
+    
+    # Créer le message
+    new_message = PrivateChatMessage(
+        conversation_id=conversation["id"],
+        sender_id=current_user.id,
+        sender_type="student",
+        content=message.content.strip()
+    )
+    
+    msg_doc = new_message.model_dump()
+    msg_doc['created_at'] = msg_doc['created_at'].isoformat()
+    
+    await db.private_chat_messages.insert_one(msg_doc)
+    
+    # Mettre à jour la conversation
+    await db.private_conversations.update_one(
+        {"id": conversation["id"]},
+        {
+            "$set": {
+                "last_message": message.content[:100],
+                "last_message_at": datetime.now(timezone.utc).isoformat(),
+                "last_message_by": "student",
+                "updated_at": datetime.now(timezone.utc).isoformat()
+            },
+            "$inc": {"unread_by_admin": 1}
+        }
+    )
+    
+    # Notifier les admins via WebSocket
+    await chat_manager.send_to_admins({
+        "type": "new_message",
+        "conversation_id": conversation["id"],
+        "message": msg_doc,
+        "student_name": current_user.full_name
+    })
+    
+    return {"message": "Message sent", "id": new_message.id}
+
+@api_router.get("/chat/unread-count")
+async def get_unread_count(current_user: User = Depends(get_current_user)):
+    """Récupère le nombre de messages non lus pour l'élève"""
+    if not current_user.has_purchased:
+        return {"unread": 0}
+    
+    conversation = await db.private_conversations.find_one(
+        {"student_id": current_user.id},
+        {"_id": 0, "unread_by_student": 1}
+    )
+    
+    return {"unread": conversation.get("unread_by_student", 0) if conversation else 0}
+
+# Admin Chat Endpoints
+@api_router.get("/admin/chat/conversations")
+async def get_all_conversations(current_user: User = Depends(get_current_user)):
+    """Admin: Récupère toutes les conversations"""
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    conversations = await db.private_conversations.find(
+        {},
+        {"_id": 0}
+    ).sort("updated_at", -1).to_list(200)
+    
+    return conversations
+
+@api_router.get("/admin/chat/conversations/{conversation_id}/messages")
+async def get_conversation_messages(conversation_id: str, current_user: User = Depends(get_current_user)):
+    """Admin: Récupère les messages d'une conversation"""
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    # Vérifier que la conversation existe
+    conversation = await db.private_conversations.find_one({"id": conversation_id})
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+    
+    # Date limite: 30 jours
+    date_limit = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+    
+    messages = await db.private_chat_messages.find(
+        {
+            "conversation_id": conversation_id,
+            "created_at": {"$gte": date_limit}
+        },
+        {"_id": 0}
+    ).sort("created_at", 1).to_list(500)
+    
+    # Marquer les messages comme lus par l'admin
+    await db.private_chat_messages.update_many(
+        {
+            "conversation_id": conversation_id,
+            "sender_type": "student",
+            "is_read": False
+        },
+        {"$set": {"is_read": True}}
+    )
+    
+    # Mettre à jour le compteur
+    await db.private_conversations.update_one(
+        {"id": conversation_id},
+        {"$set": {"unread_by_admin": 0}}
+    )
+    
+    return messages
+
+@api_router.post("/admin/chat/conversations/{conversation_id}/messages")
+async def admin_send_message(
+    conversation_id: str,
+    message: ChatMessageCreate,
+    current_user: User = Depends(get_current_user)
+):
+    """Admin: Envoie un message à un élève"""
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    if not message.content.strip():
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
+    
+    # Vérifier que la conversation existe
+    conversation = await db.private_conversations.find_one({"id": conversation_id})
+    if not conversation:
+        raise HTTPException(status_code=404, detail="Conversation not found")
+    
+    # Créer le message
+    new_message = PrivateChatMessage(
+        conversation_id=conversation_id,
+        sender_id=current_user.id,
+        sender_type="admin",
+        content=message.content.strip()
+    )
+    
+    msg_doc = new_message.model_dump()
+    msg_doc['created_at'] = msg_doc['created_at'].isoformat()
+    
+    await db.private_chat_messages.insert_one(msg_doc)
+    
+    # Mettre à jour la conversation
+    await db.private_conversations.update_one(
+        {"id": conversation_id},
+        {
+            "$set": {
+                "last_message": message.content[:100],
+                "last_message_at": datetime.now(timezone.utc).isoformat(),
+                "last_message_by": "admin",
+                "updated_at": datetime.now(timezone.utc).isoformat()
+            },
+            "$inc": {"unread_by_student": 1}
+        }
+    )
+    
+    # Notifier l'élève via WebSocket
+    await chat_manager.send_to_user(conversation["student_id"], {
+        "type": "new_message",
+        "conversation_id": conversation_id,
+        "message": msg_doc
+    })
+    
+    return {"message": "Message sent", "id": new_message.id}
+
+@api_router.get("/admin/chat/unread-total")
+async def get_admin_unread_total(current_user: User = Depends(get_current_user)):
+    """Admin: Récupère le nombre total de messages non lus"""
+    if not current_user.is_admin:
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    pipeline = [
+        {"$group": {"_id": None, "total": {"$sum": "$unread_by_admin"}}}
+    ]
+    result = await db.private_conversations.aggregate(pipeline).to_list(1)
+    
+    return {"unread": result[0]["total"] if result else 0}
+
+# WebSocket endpoint pour le chat en temps réel
+@app.websocket("/ws/chat/{token}")
+async def websocket_chat(websocket: WebSocket, token: str):
+    """WebSocket pour le chat en temps réel"""
+    try:
+        # Vérifier le token JWT
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[ALGORITHM])
+        user_email = payload.get("sub")
+        if not user_email:
+            await websocket.close(code=4001)
+            return
+        
+        # Récupérer l'utilisateur
+        user = await db.users.find_one({"email": user_email}, {"_id": 0})
+        if not user:
+            await websocket.close(code=4001)
+            return
+        
+        user_id = user["id"]
+        
+        # Connecter
+        await chat_manager.connect(websocket, user_id)
+        
+        try:
+            while True:
+                # Recevoir les messages (ping/pong pour garder la connexion)
+                data = await websocket.receive_text()
+                if data == "ping":
+                    await websocket.send_text("pong")
+        except WebSocketDisconnect:
+            chat_manager.disconnect(websocket, user_id)
+    except jwt.ExpiredSignatureError:
+        await websocket.close(code=4001)
+    except jwt.InvalidTokenError:
+        await websocket.close(code=4001)
+    except Exception as e:
+        logging.error(f"WebSocket error: {e}")
+        try:
+            await websocket.close(code=4000)
+        except:
+            pass
+
+# Nettoyage automatique des vieux messages (appelé périodiquement)
+async def cleanup_old_messages():
+    """Supprime les messages de plus de 30 jours"""
+    date_limit = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+    result = await db.private_chat_messages.delete_many(
+        {"created_at": {"$lt": date_limit}}
+    )
+    return result.deleted_count
+
+# ==================== FIN CHAT PRIVÉ ENDPOINTS ====================
+
 # Preliminary Quiz Routes (Career Fit & Mechanical Knowledge)
 @api_router.get("/preliminary-quiz/career-fit")
 async def get_career_fit_quiz():
