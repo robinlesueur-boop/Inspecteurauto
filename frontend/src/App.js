@@ -50,6 +50,7 @@ import AdminModulesNew from "./pages/admin/AdminModulesNew";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminLandingPage from "./pages/admin/AdminLandingPage";
 import AdminMechanicalQuiz from "./pages/admin/AdminMechanicalQuiz";
+import AdminSEO from "./pages/admin/AdminSEO";
 
 // SEO Pages
 import DynamicSEOPage from "./pages/seo/DynamicSEOPage";
