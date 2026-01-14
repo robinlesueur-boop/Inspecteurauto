@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
-import axios from "axios";
 import "./App.css";
 
 // Context and Auth
