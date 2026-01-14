@@ -360,7 +360,14 @@ function AdminDashboard() {
                   <Link to="/admin/messaging">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <Mail className="h-6 w-6 mb-2" />
-                      Messagerie
+                      Annonces
+                    </Button>
+                  </Link>
+                  
+                  <Link to="/admin/chat">
+                    <Button variant="outline" className="w-full h-20 flex flex-col border-orange-300 hover:bg-orange-50">
+                      <Mail className="h-6 w-6 mb-2 text-orange-600" />
+                      <span className="text-orange-600 font-semibold">Chat Élèves</span>
                     </Button>
                   </Link>
                   
