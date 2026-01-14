@@ -2200,10 +2200,9 @@ async def create_seo_page(page_data: SEOPageCreate, current_user: User = Depends
     return {"message": "Page SEO créée avec succès", "page": new_page.model_dump()}
 
 @api_router.put("/admin/seo-pages/{page_id}")
-async def update_seo_page(page_id: str, page_data: SEOPageCreate, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def update_seo_page(page_id: str, page_data: SEOPageCreate, current_user: User = Depends(get_current_user)):
     """Update an existing SEO page (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     # Check if page exists
@@ -2229,10 +2228,9 @@ async def update_seo_page(page_id: str, page_data: SEOPageCreate, credentials: H
     return {"message": "Page SEO mise à jour avec succès"}
 
 @api_router.delete("/admin/seo-pages/{page_id}")
-async def delete_seo_page(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def delete_seo_page(page_id: str, current_user: User = Depends(get_current_user)):
     """Delete a SEO page (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     result = await db.seo_pages.delete_one({"id": page_id})
@@ -2242,10 +2240,9 @@ async def delete_seo_page(page_id: str, credentials: HTTPAuthorizationCredential
     return {"message": "Page SEO supprimée avec succès"}
 
 @api_router.patch("/admin/seo-pages/{page_id}/publish")
-async def toggle_seo_page_publish(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def toggle_seo_page_publish(page_id: str, current_user: User = Depends(get_current_user)):
     """Toggle publish status of a SEO page (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     page = await db.seo_pages.find_one({"id": page_id})
