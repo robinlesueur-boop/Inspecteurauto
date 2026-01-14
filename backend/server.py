@@ -2154,6 +2154,130 @@ async def toggle_blog_post_publish(
     
     return {"message": f"Article {'publié' if published else 'dépublié'} avec succès"}
 
+# ==========================================
+# SEO PAGES MANAGEMENT (Admin)
+# ==========================================
+
+@api_router.get("/admin/seo-pages")
+async def get_all_seo_pages(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Get all SEO pages (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    pages = await db.seo_pages.find({}, {"_id": 0}).sort("created_at", -1).to_list(200)
+    return pages
+
+@api_router.get("/admin/seo-pages/{page_id}")
+async def get_seo_page_by_id(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Get a specific SEO page by ID (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    page = await db.seo_pages.find_one({"id": page_id}, {"_id": 0})
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+    return page
+
+@api_router.post("/admin/seo-pages")
+async def create_seo_page(page_data: SEOPageCreate, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Create a new SEO page (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    # Check if slug already exists
+    existing = await db.seo_pages.find_one({"slug": page_data.slug})
+    if existing:
+        raise HTTPException(status_code=400, detail="Une page avec ce slug existe déjà")
+    
+    # Create new page
+    new_page = SEOPage(
+        **page_data.model_dump(),
+        created_at=datetime.now(timezone.utc),
+        updated_at=datetime.now(timezone.utc)
+    )
+    
+    await db.seo_pages.insert_one(new_page.model_dump())
+    return {"message": "Page SEO créée avec succès", "page": new_page.model_dump()}
+
+@api_router.put("/admin/seo-pages/{page_id}")
+async def update_seo_page(page_id: str, page_data: SEOPageCreate, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Update an existing SEO page (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    # Check if page exists
+    existing = await db.seo_pages.find_one({"id": page_id})
+    if not existing:
+        raise HTTPException(status_code=404, detail="Page not found")
+    
+    # Check if slug is being changed and if new slug already exists
+    if page_data.slug != existing.get('slug'):
+        slug_exists = await db.seo_pages.find_one({"slug": page_data.slug, "id": {"$ne": page_id}})
+        if slug_exists:
+            raise HTTPException(status_code=400, detail="Une page avec ce slug existe déjà")
+    
+    # Update page
+    update_data = page_data.model_dump()
+    update_data['updated_at'] = datetime.now(timezone.utc).isoformat()
+    
+    await db.seo_pages.update_one(
+        {"id": page_id},
+        {"$set": update_data}
+    )
+    
+    return {"message": "Page SEO mise à jour avec succès"}
+
+@api_router.delete("/admin/seo-pages/{page_id}")
+async def delete_seo_page(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Delete a SEO page (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    result = await db.seo_pages.delete_one({"id": page_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Page not found")
+    
+    return {"message": "Page SEO supprimée avec succès"}
+
+@api_router.patch("/admin/seo-pages/{page_id}/publish")
+async def toggle_seo_page_publish(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Toggle publish status of a SEO page (admin only)"""
+    user = await get_current_user(credentials)
+    if not user.get('is_admin'):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    page = await db.seo_pages.find_one({"id": page_id})
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+    
+    new_status = not page.get('is_published', False)
+    await db.seo_pages.update_one(
+        {"id": page_id},
+        {"$set": {"is_published": new_status, "updated_at": datetime.now(timezone.utc).isoformat()}}
+    )
+    
+    return {"message": f"Page {'publiée' if new_status else 'dépubliée'} avec succès", "is_published": new_status}
+
+# Public endpoint to get published SEO pages by slug
+@api_router.get("/seo-pages/{slug}")
+async def get_public_seo_page(slug: str):
+    """Get a published SEO page by slug (public)"""
+    page = await db.seo_pages.find_one({"slug": slug, "is_published": True}, {"_id": 0})
+    if not page:
+        raise HTTPException(status_code=404, detail="Page not found")
+    return page
+
+@api_router.get("/seo-pages")
+async def get_all_published_seo_pages():
+    """Get all published SEO pages (public)"""
+    pages = await db.seo_pages.find({"is_published": True}, {"_id": 0, "slug": 1, "title": 1, "category": 1, "meta_description": 1}).to_list(200)
+    return pages
+
 # Health check
 @api_router.get("/")
 async def root():
