@@ -398,6 +398,13 @@ function AdminDashboard() {
                       Landing Page
                     </Button>
                   </Link>
+                  
+                  <Link to="/admin/seo">
+                    <Button variant="outline" className="w-full h-20 flex flex-col border-green-300 hover:bg-green-50">
+                      <TrendingUp className="h-6 w-6 mb-2 text-green-600" />
+                      <span className="text-green-600 font-semibold">Pages SEO</span>
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
