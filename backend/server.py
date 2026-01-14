@@ -2344,7 +2344,7 @@ async def get_sitemap():
     # Get all blog posts
     blog_posts = await db.blog_posts.find({"published": True}, {"slug": 1, "updated_at": 1}).to_list(100)
     
-    base_url = "https://elearn-repair-1.preview.emergentagent.com"  # À remplacer par le vrai domaine
+    base_url = "https://autoinspect-fix.preview.emergentagent.com"  # À remplacer par le vrai domaine
     
     # Pages statiques principales
     static_pages = [

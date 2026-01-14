@@ -33,4 +33,4 @@ Disallow: /payment-success
 Disallow: /payment-cancel
 
 # Sitemap
-Sitemap: https://elearn-repair-1.preview.emergentagent.com/api/sitemap.xml
+Sitemap: https://autoinspect-fix.preview.emergentagent.com/api/sitemap.xml

@@ -8,7 +8,7 @@ import json
 import sys
 
 # Configuration
-BASE_URL = "https://elearn-repair-1.preview.emergentagent.com/api"
+BASE_URL = "https://autoinspect-fix.preview.emergentagent.com/api"
 
 # Admin credentials
 ADMIN_USER = {

@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 # Configuration
-BASE_URL = "https://elearn-repair-1.preview.emergentagent.com/api"
+BASE_URL = "https://autoinspect-fix.preview.emergentagent.com/api"
 
 # Test credentials
 TEST_USER = {
