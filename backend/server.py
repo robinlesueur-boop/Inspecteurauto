@@ -297,6 +297,46 @@ class ForumReply(BaseModel):
     likes: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
+# SEO Page Model for Admin-managed SEO pages
+class SEOPage(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    slug: str  # URL slug (e.g., "formation-inspecteur-automobile-bordeaux")
+    title: str  # Page title
+    meta_title: str  # SEO meta title (50-60 chars)
+    meta_description: str  # SEO meta description (150-160 chars)
+    meta_keywords: Optional[str] = None  # Keywords comma-separated
+    h1: str  # Main H1 heading
+    category: str = "general"  # Category for organization
+    introduction: Optional[str] = None  # Intro paragraph
+    sections: List[Dict[str, Any]] = []  # [{title, content[], list[]}]
+    faq: List[Dict[str, str]] = []  # [{question, answer}]
+    cta_title: Optional[str] = None
+    cta_description: Optional[str] = None
+    cta_button_text: str = "S'inscrire"
+    cta_button_url: str = "/register"
+    is_published: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class SEOPageCreate(BaseModel):
+    slug: str
+    title: str
+    meta_title: str
+    meta_description: str
+    meta_keywords: Optional[str] = None
+    h1: str
+    category: str = "general"
+    introduction: Optional[str] = None
+    sections: List[Dict[str, Any]] = []
+    faq: List[Dict[str, str]] = []
+    cta_title: Optional[str] = None
+    cta_description: Optional[str] = None
+    cta_button_text: str = "S'inscrire"
+    cta_button_url: str = "/register"
+    is_published: bool = False
+
 # Analytics Models
 class UserAnalytics(BaseModel):
     total_users: int
