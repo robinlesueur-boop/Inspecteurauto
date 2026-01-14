@@ -2159,20 +2159,18 @@ async def toggle_blog_post_publish(
 # ==========================================
 
 @api_router.get("/admin/seo-pages")
-async def get_all_seo_pages(credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def get_all_seo_pages(current_user: User = Depends(get_current_user)):
     """Get all SEO pages (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     pages = await db.seo_pages.find({}, {"_id": 0}).sort("created_at", -1).to_list(200)
     return pages
 
 @api_router.get("/admin/seo-pages/{page_id}")
-async def get_seo_page_by_id(page_id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def get_seo_page_by_id(page_id: str, current_user: User = Depends(get_current_user)):
     """Get a specific SEO page by ID (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     page = await db.seo_pages.find_one({"id": page_id}, {"_id": 0})
@@ -2181,10 +2179,9 @@ async def get_seo_page_by_id(page_id: str, credentials: HTTPAuthorizationCredent
     return page
 
 @api_router.post("/admin/seo-pages")
-async def create_seo_page(page_data: SEOPageCreate, credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def create_seo_page(page_data: SEOPageCreate, current_user: User = Depends(get_current_user)):
     """Create a new SEO page (admin only)"""
-    user = await get_current_user(credentials)
-    if not user.get('is_admin'):
+    if not current_user.is_admin:
         raise HTTPException(status_code=403, detail="Admin access required")
     
     # Check if slug already exists
