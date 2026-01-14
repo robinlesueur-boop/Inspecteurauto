@@ -211,6 +211,7 @@ export default function PreRegistrationForm({ onComplete }) {
                   onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                   placeholder="Jean Dupont"
                   required
+                  data-testid="full-name-input"
                 />
               </div>
               <div>
@@ -222,12 +223,29 @@ export default function PreRegistrationForm({ onComplete }) {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="jean.dupont@example.com"
                   required
+                  data-testid="email-input"
                 />
+              </div>
+              <div>
+                <Label htmlFor="phone">Numéro de téléphone *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="06 12 34 56 78"
+                  required
+                  data-testid="phone-input"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Pour que notre équipe puisse vous contacter et répondre à vos questions
+                </p>
               </div>
               <Button 
                 onClick={() => setStep(1)} 
-                disabled={!formData.email || !formData.full_name}
+                disabled={!formData.email || !formData.full_name || !formData.phone || formData.phone.length < 10}
                 className="w-full"
+                data-testid="start-quiz-btn"
               >
                 Commencer le questionnaire
               </Button>
