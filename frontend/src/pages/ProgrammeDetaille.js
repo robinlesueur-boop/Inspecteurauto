@@ -244,7 +244,7 @@ function ProgrammeDetaille() {
                       <Card className="hover:shadow-lg transition-shadow duration-300">
                         <CardHeader>
                           <div className="flex items-start justify-between">
-                            <div className="flex-1" style={{ pointerEvents: 'none' }}>
+                            <div className="flex-1">
                               <div className="flex items-center gap-3 mb-2">
                                 <Badge variant="outline" className="text-lg px-3 py-1">
                                   Module {module.order_index}
@@ -273,76 +273,25 @@ function ProgrammeDetaille() {
                           </div>
                         </CardHeader>
                         <CardContent>
-                          {/* On garde seulement le bouton, pas d'extrait de contenu */}
-                          <div className="mt-6" style={{ pointerEvents: 'auto' }}>
+                          <div className="mt-6">
                             {module.is_free ? (
-                              <a
-                                href="/register"
-                                style={{
-                                  display: 'block',
-                                  width: '100%',
-                                  padding: '20px 30px',
-                                  backgroundColor: '#000000',
-                                  color: '#ffffff',
-                                  textAlign: 'center',
-                                  textDecoration: 'none',
-                                  borderRadius: '12px',
-                                  fontWeight: '700',
-                                  fontSize: '18px',
-                                  cursor: 'pointer',
-                                  userSelect: 'none',
-                                  WebkitUserSelect: 'none',
-                                  MozUserSelect: 'none',
-                                  msUserSelect: 'none',
-                                  boxShadow: '0 4px 6px rgba(0,0,0,0.3)',
-                                  transition: 'all 0.2s',
-                                  pointerEvents: 'auto'
-                                }}
-                                onMouseOver={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#1a1a1a';
-                                  e.currentTarget.style.transform = 'scale(1.02)';
-                                }}
-                                onMouseOut={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#000000';
-                                  e.currentTarget.style.transform = 'scale(1)';
-                                }}
+                              <Button 
+                                onClick={() => navigate('/register')}
+                                className="w-full h-14 text-lg font-bold bg-black hover:bg-gray-800"
+                                data-testid={`module-${module.order_index}-free-btn`}
                               >
-                                ✅ CLIQUEZ ICI - MODULE GRATUIT
-                              </a>
+                                <CheckCircle className="mr-2 h-5 w-5" />
+                                MODULE GRATUIT - S'INSCRIRE
+                              </Button>
                             ) : (
-                              <a
-                                href="/register"
-                                style={{
-                                  display: 'block',
-                                  width: '100%',
-                                  padding: '20px 30px',
-                                  backgroundColor: '#2563eb',
-                                  color: '#ffffff',
-                                  textAlign: 'center',
-                                  textDecoration: 'none',
-                                  borderRadius: '12px',
-                                  fontWeight: '700',
-                                  fontSize: '18px',
-                                  cursor: 'pointer',
-                                  userSelect: 'none',
-                                  WebkitUserSelect: 'none',
-                                  MozUserSelect: 'none',
-                                  msUserSelect: 'none',
-                                  boxShadow: '0 4px 6px rgba(37,99,235,0.4)',
-                                  transition: 'all 0.2s',
-                                  pointerEvents: 'auto'
-                                }}
-                                onMouseOver={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#1d4ed8';
-                                  e.currentTarget.style.transform = 'scale(1.02)';
-                                }}
-                                onMouseOut={(e) => {
-                                  e.currentTarget.style.backgroundColor = '#2563eb';
-                                  e.currentTarget.style.transform = 'scale(1)';
-                                }}
+                              <Button 
+                                onClick={() => navigate('/register')}
+                                className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-700"
+                                data-testid={`module-${module.order_index}-premium-btn`}
                               >
-                                🔓 CLIQUEZ ICI - S'INSCRIRE
-                              </a>
+                                <Lock className="mr-2 h-5 w-5" />
+                                S'INSCRIRE POUR ACCÉDER
+                              </Button>
                             )}
                           </div>
                         </CardContent>
