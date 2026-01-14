@@ -288,6 +288,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/seo" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminSEO />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
