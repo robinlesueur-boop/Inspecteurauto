@@ -181,10 +181,10 @@ function AppContent() {
             />
             
             <Route 
-              path="/forum" 
+              path="/chat" 
               element={
                 <ProtectedRoute requiresPurchase={true}>
-                  <Forum />
+                  <PrivateChat />
                 </ProtectedRoute>
               } 
             />
