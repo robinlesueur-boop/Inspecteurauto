@@ -73,15 +73,15 @@ function Navbar() {
                 
                 {user.has_purchased && (
                   <Link 
-                    to="/forum" 
+                    to="/chat" 
                     className={`text-gray-700 hover:text-blue-600 transition-colors font-medium ${
-                      isActive('/forum') ? 'text-blue-600 border-b-2 border-blue-600 pb-1' : ''
+                      isActive('/chat') ? 'text-blue-600 border-b-2 border-blue-600 pb-1' : ''
                     }`}
-                    data-testid="navbar-forum-link"
+                    data-testid="navbar-chat-link"
                   >
                     <div className="flex items-center space-x-1">
                       <MessageCircle className="h-4 w-4" />
-                      <span>Forum</span>
+                      <span>Chat</span>
                     </div>
                   </Link>
                 )}
