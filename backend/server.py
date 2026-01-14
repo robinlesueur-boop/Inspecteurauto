@@ -2406,6 +2406,19 @@ async def get_sitemap():
                 xml += f'    <lastmod>{updated[:10]}</lastmod>\n'
         xml += '  </url>\n'
     
+    # Ajouter les pages SEO créées via l'admin (base de données)
+    db_seo_pages = await db.seo_pages.find({"is_published": True}, {"slug": 1, "updated_at": 1}).to_list(200)
+    for page in db_seo_pages:
+        xml += '  <url>\n'
+        xml += f'    <loc>{base_url}/seo/{page["slug"]}</loc>\n'
+        xml += '    <priority>0.7</priority>\n'
+        xml += '    <changefreq>monthly</changefreq>\n'
+        if page.get('updated_at'):
+            updated = page['updated_at']
+            if isinstance(updated, str):
+                xml += f'    <lastmod>{updated[:10]}</lastmod>\n'
+        xml += '  </url>\n'
+    
     xml += '</urlset>'
     
     return Response(content=xml, media_type="application/xml")
