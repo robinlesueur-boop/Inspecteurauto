@@ -518,6 +518,7 @@ async def get_current_user_info(current_user: User = Depends(get_current_user)):
 class PreRegistrationSubmit(BaseModel):
     email: EmailStr
     full_name: str
+    phone: str  # Numéro de téléphone obligatoire
     answers: Dict[str, Any]
     has_driving_license: bool
 
@@ -532,6 +533,13 @@ async def submit_pre_registration(submission: PreRegistrationSubmit):
             detail="Un permis B valide est obligatoire pour accéder à cette formation"
         )
     
+    # Vérifier le numéro de téléphone
+    if not submission.phone or len(submission.phone) < 10:
+        raise HTTPException(
+            status_code=400,
+            detail="Un numéro de téléphone valide est obligatoire"
+        )
+    
     # Calculer un score basé sur les réponses (simulation d'analyse)
     # En réalité, on accepte tout le monde mais on fait semblant d'analyser
     validation_score = 85.0  # Score toujours suffisant
@@ -541,10 +549,12 @@ async def submit_pre_registration(submission: PreRegistrationSubmit):
     questionnaire = PreRegistrationQuestionnaire(
         email=submission.email,
         full_name=submission.full_name,
+        phone=submission.phone,
         answers=submission.answers,
         has_driving_license=submission.has_driving_license,
         profile_validated=profile_validated,
-        validation_score=validation_score
+        validation_score=validation_score,
+        callback_status="pending"
     )
     
     doc = questionnaire.model_dump()
