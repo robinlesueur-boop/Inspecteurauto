@@ -288,6 +288,15 @@ function AppContent() {
                 </ProtectedRoute>
               } 
             />
+            
+            <Route 
+              path="/admin/chat" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminChat />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </main>
         <Footer />
