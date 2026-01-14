@@ -39,7 +39,12 @@
 - [x] Gestion du blog
 - [x] Analytics des transactions
 - [x] Éditeur du quiz pré-évaluation mécanique
-- [x] **NOUVEAU: Interface admin SEO** (`/admin/seo`)
+- [x] **Interface admin SEO** (`/admin/seo`)
+- [x] **NOUVEAU: Gestion des Prospects** (`/admin/pre-registrations`) - 14 Jan 2025
+  - Liste des prospects avec téléphone
+  - Statuts de rappel (À rappeler, Appelé, Intéressé, Pas intéressé, Ne répond pas, Converti)
+  - Notes de suivi
+  - Recherche et filtres
 
 ### Paiements
 - [x] Intégration Stripe (mode test)
@@ -121,6 +126,17 @@
     └── PRD.md
 ```
 
+## ✅ Bugs Corrigés (14 Jan 2025)
+1. **Boutons non-cliquables sur /programme-detaille** - CORRIGÉ
+   - Problème: Le texte des boutons se sélectionnait au lieu de naviguer
+   - Solution: Remplacement des balises `<a>` stylées par des composants `<Button>` avec `onClick` et `navigate()`
+2. **Redirection intempestive des pages admin** - CORRIGÉ
+   - Problème: Accès direct à `/admin/seo` redirigeait vers `/login` même avec token valide
+   - Solution: `AuthContext` vérifie le token au montage avec `loading=true` initial, `ProtectedRoute` affiche un spinner pendant la vérification
+3. **Champ téléphone prospects** - IMPLÉMENTÉ
+   - Formulaire de pré-inscription avec champ téléphone obligatoire
+   - Interface admin pour gérer les prospects et leur statut de rappel
+
 ## 🔴 Tâches Urgentes (Bloquées - Attente clés)
 1. **Paiement 4x Stripe** - Attente clés production
 2. **Emails SendGrid** - Attente clé API
@@ -150,6 +166,10 @@
 - Le terme "AutoJust" a été remplacé par "méthode d'inspection" partout
 - Le sitemap est généré dynamiquement via `/api/sitemap.xml`
 - Les pages SEO peuvent être créées soit via le fichier statique `seoPageDatabase.js`, soit via l'interface admin (stockage MongoDB)
+
+## 📂 Tests
+- `/app/tests/test_backend_api.py` - 13 tests backend (auth, pre-registration, admin)
+- `/app/test_reports/iteration_1.json` - Rapport de tests
 
 ---
 *Dernière mise à jour: 14 Janvier 2025*
