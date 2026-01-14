@@ -139,9 +139,9 @@ function Navbar() {
                     {user.has_purchased && (
                       <>
                         <DropdownMenuItem asChild>
-                          <Link to="/forum" className="flex items-center">
+                          <Link to="/chat" className="flex items-center">
                             <MessageCircle className="mr-2 h-4 w-4" />
-                            <span>Forum</span>
+                            <span>Chat Formateurs</span>
                           </Link>
                         </DropdownMenuItem>
                         
