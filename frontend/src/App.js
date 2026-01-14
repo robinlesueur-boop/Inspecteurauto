@@ -88,25 +88,7 @@ function ProtectedRoute({ children, requiresPurchase = false, requiresAdmin = fa
 }
 
 function AppContent() {
-  const { user, setUser } = useAuth();
-
-  useEffect(() => {
-    // Check if user is already logged in
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // Verify token and get user info
-      axios.get(`${API}/auth/me`)
-        .then(response => {
-          setUser(response.data);
-        })
-        .catch(error => {
-          console.error('Token verification failed:', error);
-          localStorage.removeItem('token');
-          delete axios.defaults.headers.common['Authorization'];
-        });
-    }
-  }, [setUser]);
+  const { user } = useAuth();
 
   return (
     <div className="App min-h-screen bg-gray-50 flex flex-col">
