@@ -240,12 +240,12 @@ function Navbar() {
                   
                   {user.has_purchased && (
                     <Link 
-                      to="/forum" 
+                      to="/chat" 
                       className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 font-medium"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <MessageCircle className="h-4 w-4" />
-                      <span>Forum</span>
+                      <span>Chat</span>
                     </Link>
                   )}
 
