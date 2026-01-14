@@ -176,10 +176,13 @@ class PreRegistrationQuestionnaire(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     email: EmailStr
     full_name: str
+    phone: str = ""  # Numéro de téléphone du prospect
     answers: Dict[str, Any]
     has_driving_license: bool
     profile_validated: bool = False
     validation_score: float = 0.0
+    callback_status: str = "pending"  # pending, called, interested, not_interested, no_answer
+    callback_notes: str = ""  # Notes de l'admin après rappel
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class MechanicalAssessment(BaseModel):
