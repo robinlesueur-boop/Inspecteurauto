@@ -601,6 +601,47 @@ async def get_pre_registrations(current_user: User = Depends(require_admin)):
     
     return questionnaires
 
+# Mise à jour du statut de rappel d'un prospect
+class ProspectCallbackUpdate(BaseModel):
+    callback_status: str  # pending, called, interested, not_interested, no_answer
+    callback_notes: str = ""
+
+@api_router.patch("/admin/pre-registrations/{prospect_id}/callback")
+async def update_prospect_callback(
+    prospect_id: str, 
+    update: ProspectCallbackUpdate,
+    current_user: User = Depends(require_admin)
+):
+    """Mettre à jour le statut de rappel d'un prospect"""
+    valid_statuses = ["pending", "called", "interested", "not_interested", "no_answer", "converted"]
+    
+    if update.callback_status not in valid_statuses:
+        raise HTTPException(status_code=400, detail=f"Statut invalide. Valeurs possibles: {valid_statuses}")
+    
+    result = await db.pre_registration_questionnaires.update_one(
+        {"id": prospect_id},
+        {"$set": {
+            "callback_status": update.callback_status,
+            "callback_notes": update.callback_notes,
+            "callback_updated_at": datetime.now(timezone.utc).isoformat()
+        }}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Prospect non trouvé")
+    
+    return {"message": "Statut mis à jour avec succès"}
+
+@api_router.delete("/admin/pre-registrations/{prospect_id}")
+async def delete_prospect(prospect_id: str, current_user: User = Depends(require_admin)):
+    """Supprimer un prospect"""
+    result = await db.pre_registration_questionnaires.delete_one({"id": prospect_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Prospect non trouvé")
+    
+    return {"message": "Prospect supprimé"}
+
 @api_router.get("/admin/analytics")
 async def get_analytics(current_user: User = Depends(require_admin)):
     """Get platform analytics"""
