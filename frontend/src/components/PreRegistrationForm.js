@@ -21,6 +21,7 @@ export default function PreRegistrationForm({ onComplete }) {
   const [formData, setFormData] = useState({
     email: '',
     full_name: '',
+    phone: '',
     answers: {},
     has_driving_license: false
   });
