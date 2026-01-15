@@ -137,16 +137,20 @@
     └── PRD.md
 ```
 
-## ✅ Bugs Corrigés (14 Jan 2025)
-1. **Boutons non-cliquables sur /programme-detaille** - CORRIGÉ
+## ✅ Bugs Corrigés (14-15 Jan 2025)
+1. **Boutons non-cliquables sur /programme-detaille** - CORRIGÉ (14 Jan)
    - Problème: Le texte des boutons se sélectionnait au lieu de naviguer
    - Solution: Remplacement des balises `<a>` stylées par des composants `<Button>` avec `onClick` et `navigate()`
-2. **Redirection intempestive des pages admin** - CORRIGÉ
+2. **Redirection intempestive des pages admin** - CORRIGÉ (14 Jan)
    - Problème: Accès direct à `/admin/seo` redirigeait vers `/login` même avec token valide
    - Solution: `AuthContext` vérifie le token au montage avec `loading=true` initial, `ProtectedRoute` affiche un spinner pendant la vérification
-3. **Champ téléphone prospects** - IMPLÉMENTÉ
+3. **Champ téléphone prospects** - IMPLÉMENTÉ (14 Jan)
    - Formulaire de pré-inscription avec champ téléphone obligatoire
    - Interface admin pour gérer les prospects et leur statut de rappel
+4. **Forum public → Chat privé** - REMPLACÉ (15 Jan 2025)
+   - Ancien forum public supprimé
+   - Nouveau chat privé élève-admin avec WebSocket temps réel
+   - Historique 30 jours, notifications in-app
 
 ## 🔴 Tâches Urgentes (Bloquées - Attente clés)
 1. **Paiement 4x Stripe** - Attente clés production
