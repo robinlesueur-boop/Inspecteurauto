@@ -26,7 +26,12 @@
 - [x] Quiz pré-évaluation (connaissances mécaniques)
 - [x] Évaluation finale certifiante
 - [x] Génération de certificat PDF
-- [x] Forum communautaire
+- [x] ~~Forum communautaire~~ → **Remplacé par Chat Privé (15 Jan 2025)**
+- [x] **Chat Privé Élève-Admin** (`/chat`) - NOUVEAU 15 Jan 2025
+  - WebSocket temps réel
+  - Historique 30 jours
+  - Notifications in-app
+  - Interface moderne avec bulles de chat
 - [x] Messagerie interne
 - [x] Chatbot IA d'assistance
 
