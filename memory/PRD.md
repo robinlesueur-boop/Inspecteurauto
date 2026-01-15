@@ -170,21 +170,26 @@
 - Dashboard admin avec graphiques/KPIs
 - Mode sombre
 - PWA (Progressive Web App)
-- Forum amélioré (catégories, votes, recherche)
-- Messagerie directe admin → étudiant
 
-## 🔑 Comptes Admin
-- **Email**: admin@inspecteur-auto.fr
-- **Password**: Admin123!
+## 🔑 Comptes de Test
+- **Admin**:
+  - Email: admin@inspecteur-auto.fr
+  - Password: Admin123!
+- **Élève Premium**:
+  - Email: eleve.test@inspecteur-auto.fr
+  - Password: Eleve123!
 
 ## 📝 Notes Techniques
 - Le terme "AutoJust" a été remplacé par "méthode d'inspection" partout
 - Le sitemap est généré dynamiquement via `/api/sitemap.xml`
 - Les pages SEO peuvent être créées soit via le fichier statique `seoPageDatabase.js`, soit via l'interface admin (stockage MongoDB)
+- Le chat utilise WebSocket (`/ws/chat/{token}`) pour le temps réel
 
 ## 📂 Tests
 - `/app/tests/test_backend_api.py` - 13 tests backend (auth, pre-registration, admin)
-- `/app/test_reports/iteration_1.json` - Rapport de tests
+- `/app/tests/test_chat_api.py` - 15 tests backend (chat privé)
+- `/app/test_reports/iteration_1.json` - Rapport tests bugs critiques
+- `/app/test_reports/iteration_2.json` - Rapport tests chat privé
 
 ---
-*Dernière mise à jour: 14 Janvier 2025*
+*Dernière mise à jour: 15 Janvier 2025*
