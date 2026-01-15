@@ -45,11 +45,17 @@
 - [x] Analytics des transactions
 - [x] Éditeur du quiz pré-évaluation mécanique
 - [x] **Interface admin SEO** (`/admin/seo`)
-- [x] **NOUVEAU: Gestion des Prospects** (`/admin/pre-registrations`) - 14 Jan 2025
+- [x] **Gestion des Prospects** (`/admin/pre-registrations`) - 14 Jan 2025
   - Liste des prospects avec téléphone
   - Statuts de rappel (À rappeler, Appelé, Intéressé, Pas intéressé, Ne répond pas, Converti)
   - Notes de suivi
   - Recherche et filtres
+- [x] **Chat Admin** (`/admin/chat`) - NOUVEAU 15 Jan 2025
+  - Liste de toutes les conversations élèves
+  - Badge messages non lus
+  - Réponse directe aux élèves
+  - Recherche par nom/email
+  - WebSocket temps réel
 
 ### Paiements
 - [x] Intégration Stripe (mode test)
