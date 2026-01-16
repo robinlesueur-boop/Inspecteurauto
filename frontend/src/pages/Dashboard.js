@@ -407,7 +407,7 @@ function Dashboard() {
                         </div>
                         <p className="text-green-700 mb-3">
                           Vous avez complété tous les modules. Passez maintenant l'évaluation finale 
-                          pour obtenir votre certification officielle !
+                          pour obtenir votre attestation de formation !
                         </p>
                         <Link to="/final-evaluation">
                           <Button className="bg-green-600 hover:bg-green-700 text-white">
