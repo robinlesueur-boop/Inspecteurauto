@@ -569,6 +569,129 @@ function Home() {
           </div>
         </section>
 
+        {/* About / Founders Section */}
+        <section className="py-20 bg-white" data-testid="about-section">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              >
+                Notre Centre de Formation
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-xl text-gray-600 max-w-3xl mx-auto"
+              >
+                Créé par des passionnés de l'automobile pour former la nouvelle génération d'inspecteurs professionnels
+              </motion.p>
+            </div>
+
+            {/* Why This Training */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Pourquoi cette formation ?</h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                L'achat d'un véhicule d'occasion représente souvent un investissement important et anxiogène. 
+                Trop de particuliers se font arnaquer par des vendeurs peu scrupuleux ou des défauts cachés.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                Notre mission : former des inspecteurs compétents capables de sécuriser ces transactions 
+                et de redonner confiance aux acheteurs. C'est un métier utile, valorisant, et en pleine croissance.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Avec plus de <strong>1 200 inspecteurs formés</strong> et un réseau actif partout en France, 
+                nous avons développé une méthode d'inspection complète et professionnelle qui fait référence dans le secteur.
+              </p>
+            </motion.div>
+
+            {/* Founders */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Card className="h-full">
+                  <CardContent className="p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-2xl font-bold text-blue-600">RL</span>
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900">Robin Lesueur</h4>
+                        <p className="text-blue-600">Co-fondateur</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      Passionné d'automobile depuis toujours, Robin a développé la méthode d'inspection 
+                      après plusieurs années d'expérience sur le terrain. Son objectif : rendre l'expertise 
+                      automobile accessible à tous et professionnaliser le métier d'inspecteur.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card className="h-full">
+                  <CardContent className="p-8">
+                    <div className="flex items-center mb-6">
+                      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <span className="text-2xl font-bold text-green-600">GV</span>
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900">Grégoire Vergnot</h4>
+                        <p className="text-green-600">Co-fondateur</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      Expert en pédagogie et formation professionnelle, Grégoire a structuré le programme 
+                      pour qu'il soit à la fois complet et accessible. Il supervise la qualité des contenus 
+                      et l'accompagnement des élèves tout au long de leur parcours.
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+
+            {/* Community Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mt-12 bg-gray-900 rounded-2xl p-8 text-center text-white"
+            >
+              <Users className="w-12 h-12 mx-auto mb-4 text-blue-400" />
+              <h3 className="text-2xl font-bold mb-4">Rejoignez Notre Communauté</h3>
+              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Échangez avec d'autres inspecteurs, partagez vos expériences et posez vos questions 
+                dans notre groupe privé réservé aux membres de la formation.
+              </p>
+              <a 
+                href="https://m.me/inspecteur.auto.communaute" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Accéder au Groupe Privé
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700" data-testid="cta-section">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
