@@ -12,15 +12,11 @@ function FAQ() {
       questions: [
         {
           q: "Quelle est la durée de la formation ?",
-          a: "La formation compte 8 modules pour un total de 9 heures de contenu vidéo et écrit. Vous pouvez suivre la formation à votre rythme, en général entre 2 et 4 semaines selon votre disponibilité."
+          a: "La formation compte 8 modules pour un total de 11 heures de contenu vidéo. Il est préférable de la suivre en deux semaines, mais vous y avez accès de manière illimitée pour apprendre à votre rythme."
         },
         {
           q: "Dois-je avoir des connaissances en mécanique ?",
           a: "Des connaissances de base en mécanique sont recommandées. Si vous n'avez pas d'expérience, nous proposons un quiz d'évaluation et un module de remise à niveau gratuit pour acquérir les fondamentaux."
-        },
-        {
-          q: "La formation est-elle certifiée ?",
-          a: "Oui, notre formation respecte les critères Qualiopi (certification en cours d'obtention). Vous recevez un certificat de formation professionnelle à l'issue du parcours."
         },
         {
           q: "Puis-je suivre la formation tout en travaillant ?",
@@ -33,11 +29,11 @@ function FAQ() {
       questions: [
         {
           q: "Que comprend la formation ?",
-          a: "8 modules couvrant tous les aspects de l'inspection automobile : diagnostic moteur, carrosserie, électronique, ADAS, méthodologie méthode d'inspection, pratique professionnelle. Plus de 10 quiz d'évaluation et un examen final certifiant."
+          a: "8 modules couvrant tous les aspects de l'inspection automobile : diagnostic moteur, carrosserie, électronique, ADAS, méthodologie méthode d'inspection, pratique professionnelle. Plus de 10 quiz d'évaluation et une évaluation finale."
         },
         {
           q: "Ai-je accès à un support pédagogique ?",
-          a: "Oui ! Vous avez accès à un assistant IA disponible 24h/24 pour répondre à vos questions, un forum communautaire, et un système de messagerie avec les formateurs."
+          a: "Oui ! Vous avez accès à un assistant IA disponible 24h/24 pour répondre à vos questions, une communauté privée pour échanger avec d'autres inspecteurs, et un système de messagerie avec l'équipe pédagogique à support@inspecteur-auto.fr."
         },
         {
           q: "Le contenu est-il mis à jour ?",
@@ -50,19 +46,15 @@ function FAQ() {
       questions: [
         {
           q: "Quel est le prix de la formation ?",
-          a: "La formation coûte 297€ TTC, paiement unique. Ce tarif inclut l'accès à vie au contenu, les mises à jour, le certificat, et l'accès au forum communauté."
+          a: "La formation coûte 297€ TTC, payable en une fois ou en 4 fois sans frais. Ce tarif inclut l'accès à vie au contenu, les mises à jour, l'attestation de formation, et l'accès à la communauté privée."
         },
         {
-          q: "Puis-je payer en plusieurs fois ?",
-          a: "Le paiement en 4 fois sans frais sera bientôt disponible. Actuellement, seul le paiement unique par carte bancaire est accepté."
+          q: "Le paiement en plusieurs fois est-il disponible ?",
+          a: "Oui, le paiement en 4 fois sans frais est disponible. Vous pouvez choisir cette option lors de votre inscription."
         },
         {
-          q: "La formation est-elle éligible au CPF ?",
-          a: "Notre certification Qualiopi est en cours d'obtention. Une fois certifiés, la formation sera éligible au CPF. Nous vous informerons dès que possible."
-        },
-        {
-          q: "Y a-t-il une garantie satisfait ou remboursé ?",
-          a: "Oui, vous disposez de 14 jours pour tester la formation. Si vous n'êtes pas satisfait, nous vous remboursons intégralement sans question."
+          q: "Quelle est votre politique de remboursement ?",
+          a: "Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne peut être exercé pour les contenus numériques fournis sur un support immatériel dont l'exécution a commencé avec l'accord du consommateur. En accédant à la formation, vous reconnaissez renoncer expressément à votre droit de rétractation. Aucun remboursement n'est donc possible une fois l'accès à la plateforme activé."
         }
       ]
     },
@@ -71,19 +63,15 @@ function FAQ() {
       questions: [
         {
           q: "Puis-je exercer immédiatement après la formation ?",
-          a: "Oui ! Après validation de votre examen final, vous recevez votre certificat et pouvez commencer à proposer vos services d'inspection automobile en tant qu'indépendant."
+          a: "Oui ! Après validation de votre évaluation finale, vous recevez votre attestation de formation et pouvez commencer à proposer vos services d'inspection automobile en tant qu'indépendant."
         },
         {
           q: "Quel matériel faut-il pour débuter ?",
-          a: "L'investissement de départ est d'environ 5 000-15 000€ : valise de diagnostic OBD (1000-3000€), outils de mesure, caméra, équipements de protection. Un guide d'achat détaillé est fourni dans le Module 8."
+          a: "L'investissement de départ est d'environ 1 000€ : valise de diagnostic OBD, outils de mesure de base, lampe d'inspection. Un guide d'achat détaillé est fourni dans le Module 8 avec nos recommandations."
         },
         {
           q: "Quel revenu peut-on espérer ?",
           a: "Les inspecteurs facturent entre 150-400€ par inspection. Avec 3-5 inspections par jour, le potentiel de revenus est de 3 000-8 000€/mois selon votre zone géographique et votre expérience."
-        },
-        {
-          q: "Puis-je rejoindre le réseau méthode d'inspection ?",
-          a: "Les meilleurs diplômés peuvent candidater pour rejoindre le réseau méthode d'inspection en tant qu'inspecteur partenaire. Des opportunités sont régulièrement publiées dans le forum."
         }
       ]
     },
@@ -99,8 +87,8 @@ function FAQ() {
           a: "Les cours sont consultables en ligne. Pour des raisons de droits d'auteur et de mises à jour, le téléchargement n'est pas autorisé."
         },
         {
-          q: "Que faire si j'ai un problème technique ?",
-          a: "Notre support technique est disponible par email (support@inspecteur-auto.fr) et répond sous 24h maximum. L'assistant IA peut également vous aider pour les questions courantes."
+          q: "Que faire si j'ai un problème ?",
+          a: "Notre support technique et pédagogique est disponible par email (support@inspecteur-auto.fr) et par téléphone au 06 47 89 12 21. Nous répondons sous 24h maximum. L'assistant IA peut également vous aider pour les questions courantes."
         }
       ]
     }
@@ -116,7 +104,7 @@ function FAQ() {
     <>
       <Helmet>
         <title>FAQ - Questions Fréquentes | Formation Inspecteur Automobile</title>
-        <meta name="description" content="Toutes les réponses à vos questions sur la formation d'inspecteur automobile : durée, contenu, tarifs, certification, débouchés." />
+        <meta name="description" content="Toutes les réponses à vos questions sur la formation d'inspecteur automobile : durée, contenu, tarifs, débouchés." />
       </Helmet>
 
       <div className="min-h-screen bg-gray-50 py-12">
@@ -178,7 +166,7 @@ function FAQ() {
                 Vous ne trouvez pas votre réponse ?
               </h2>
               <p className="text-gray-700 mb-6">
-                Notre équipe est là pour vous aider ! Contactez-nous et nous vous répondrons dans les plus brefs délais.
+                Notre équipe pédagogique est là pour vous aider ! Contactez-nous et nous vous répondrons dans les plus brefs délais.
               </p>
               <a href="/contact" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                 Nous Contacter
