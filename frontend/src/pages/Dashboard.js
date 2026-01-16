@@ -499,10 +499,16 @@ function Dashboard() {
               <h2 className="text-2xl font-bold text-gray-900">Modules de Formation</h2>
               {user?.has_purchased && (
                 <div className="flex items-center space-x-4">
-                  <Link to="/forum">
+                  <Link to="/ressources">
+                    <Button variant="outline" className="flex items-center">
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      Ressources
+                    </Button>
+                  </Link>
+                  <Link to="/chat">
                     <Button variant="outline" className="flex items-center">
                       <MessageCircle className="h-4 w-4 mr-2" />
-                      Forum
+                      Chat
                     </Button>
                   </Link>
                 </div>
