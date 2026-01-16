@@ -320,8 +320,8 @@ function ModuleViewer() {
 
         {/* Header */}
         <div className="bg-white shadow-sm border-b sticky top-32 z-40">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <div className="flex items-center justify-between h-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4 min-w-0 flex-1">
                 <Link to="/dashboard" className="flex-shrink-0">
                   <Button variant="outline" size="sm" data-testid="back-button" className="border-gray-600 text-gray-900 hover:bg-gray-100">
@@ -331,19 +331,19 @@ function ModuleViewer() {
                 </Link>
                 
                 <div className="min-w-0 flex-1">
-                  <h1 className="font-semibold text-gray-900 truncate" title={module.title}>{module.title}</h1>
-                  <div className="flex items-center space-x-3 text-sm text-gray-500">
+                  <h1 className="font-semibold text-gray-900 text-sm line-clamp-2" title={module.title}>{module.title}</h1>
+                  <div className="flex items-center space-x-3 text-xs text-gray-500 mt-1">
                     <span className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
+                      <Clock className="h-3 w-3 mr-1" />
                       {formatDuration(module.duration_minutes)}
                     </span>
                     {module.is_free && (
-                      <Badge variant="secondary" className="bg-green-100 text-green-700">
+                      <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs px-1.5 py-0">
                         Gratuit
                       </Badge>
                     )}
                     {completed && (
-                      <Badge className="bg-green-100 text-green-700">
+                      <Badge className="bg-green-100 text-green-700 text-xs px-1.5 py-0">
                         <CheckCircle className="h-3 w-3 mr-1" />
                         Terminé
                       </Badge>
@@ -357,6 +357,7 @@ function ModuleViewer() {
                   <Button
                     onClick={handleMarkComplete}
                     disabled={completing}
+                    size="sm"
                     className="bg-green-600 hover:bg-green-700"
                     data-testid="mark-complete-button"
                   >
@@ -365,15 +366,14 @@ function ModuleViewer() {
                     ) : (
                       <CheckCircle className="h-4 w-4 mr-2" />
                     )}
-                    {completing ? 'Validation...' : 'Marquer terminé'}
+                    {completing ? 'Validation...' : 'Terminé'}
                   </Button>
                 )}
                 
                 {user?.has_purchased && (
                   <Link to="/chat">
                     <Button variant="outline" size="sm">
-                      <MessageCircle className="h-4 w-4 mr-2" />
-                      Chat
+                      <MessageCircle className="h-4 w-4" />
                     </Button>
                   </Link>
                 )}
