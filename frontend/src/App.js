@@ -29,7 +29,6 @@ import FinalEvaluation from "./pages/FinalEvaluation";
 import SatisfactionSurvey from "./pages/SatisfactionSurvey";
 import Blog from "./pages/Blog";
 import Messages from "./pages/Messages";
-import Certification from "./pages/Certification";
 import MethodeInspection from "./pages/MethodeAutoJust";
 import ProgrammeDetaille from "./pages/ProgrammeDetaille";
 import FAQ from "./pages/FAQ";
