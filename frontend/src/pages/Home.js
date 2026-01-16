@@ -536,7 +536,7 @@ function Home() {
                 transition={{ duration: 0.6 }}
                 className="space-y-6"
               >
-                <Badge className="bg-blue-100 text-blue-800">Formation Certifiante Qualiopi</Badge>
+                <Badge className="bg-blue-100 text-blue-800">Service reconnu par plus de 5000 clients</Badge>
                 <h3 className="text-3xl lg:text-4xl font-bold text-gray-900">
                   Un Environnement de Formation Optimal
                 </h3>
@@ -601,7 +601,7 @@ function Home() {
               </div>
 
               <p className="text-blue-200 text-sm">
-                ✅ Formation certifiante • ✅ Support inclus • ✅ Garantie 30 jours
+                ✅ Formation complète • ✅ Support inclus • ✅ Paiement en 4x disponible
               </p>
             </motion.div>
           </div>
