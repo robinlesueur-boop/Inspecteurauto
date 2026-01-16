@@ -320,18 +320,18 @@ function ModuleViewer() {
 
         {/* Header */}
         <div className="bg-white shadow-sm border-b sticky top-32 z-40">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <Link to="/dashboard">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="flex items-center justify-between h-12">
+              <div className="flex items-center space-x-4 min-w-0 flex-1">
+                <Link to="/dashboard" className="flex-shrink-0">
                   <Button variant="outline" size="sm" data-testid="back-button" className="border-gray-600 text-gray-900 hover:bg-gray-100">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Retour
                   </Button>
                 </Link>
                 
-                <div>
-                  <h1 className="font-semibold text-gray-900">{module.title}</h1>
+                <div className="min-w-0 flex-1">
+                  <h1 className="font-semibold text-gray-900 truncate" title={module.title}>{module.title}</h1>
                   <div className="flex items-center space-x-3 text-sm text-gray-500">
                     <span className="flex items-center">
                       <Clock className="h-4 w-4 mr-1" />
@@ -352,7 +352,7 @@ function ModuleViewer() {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
                 {!completed && user?.has_purchased && (
                   <Button
                     onClick={handleMarkComplete}
@@ -370,10 +370,10 @@ function ModuleViewer() {
                 )}
                 
                 {user?.has_purchased && (
-                  <Link to="/forum">
+                  <Link to="/chat">
                     <Button variant="outline" size="sm">
                       <MessageCircle className="h-4 w-4 mr-2" />
-                      Forum
+                      Chat
                     </Button>
                   </Link>
                 )}
