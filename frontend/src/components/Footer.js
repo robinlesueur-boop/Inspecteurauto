@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Car, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Car, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Users } from "lucide-react";
 
 function Footer() {
   return (
@@ -24,11 +24,11 @@ function Footer() {
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
                 <Mail className="h-4 w-4 mr-3 text-blue-400" />
-                <span>contact@inspecteur-auto.fr</span>
+                <span>support@inspecteur-auto.fr</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone className="h-4 w-4 mr-3 text-blue-400" />
-                <span>01 23 45 67 89</span>
+                <span>06 47 89 12 21</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <MapPin className="h-4 w-4 mr-3 text-blue-400" />
@@ -57,14 +57,20 @@ function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/certification" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Certification
+                <Link to="/programme-detaille" className="text-gray-300 hover:text-blue-400 transition-colors">
+                  Programme détaillé
                 </Link>
               </li>
               <li>
-                <Link to="/forum" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Forum communauté
-                </Link>
+                <a 
+                  href="https://m.me/inspecteur.auto.communaute" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-blue-400 transition-colors flex items-center"
+                >
+                  <Users className="h-4 w-4 mr-2" />
+                  Communauté (Groupe privé)
+                </a>
               </li>
               <li>
                 <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors">
@@ -81,11 +87,6 @@ function Footer() {
               <li>
                 <Link to="/faq" className="text-gray-300 hover:text-blue-400 transition-colors">
                   FAQ
-                </Link>
-              </li>
-              <li>
-                <Link to="/ressources" className="text-gray-300 hover:text-blue-400 transition-colors">
-                  Ressources & Guides
                 </Link>
               </li>
               <li>
@@ -130,7 +131,7 @@ function Footer() {
                 © {new Date().getFullYear()} Inspecteur Auto. Tous droits réservés.
               </p>
               <p className="text-gray-500 text-xs">
-                Organisme de formation professionnelle certifié Qualiopi
+                Organisme de formation professionnelle - NDA en cours d'enregistrement
               </p>
             </div>
           </div>
