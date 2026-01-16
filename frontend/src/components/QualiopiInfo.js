@@ -11,7 +11,8 @@ import {
   BookOpen,
   CheckCircle,
   Users,
-  Accessibility
+  Accessibility,
+  Award
 } from 'lucide-react';
 
 export default function QualiopiInfo() {
@@ -25,28 +26,28 @@ export default function QualiopiInfo() {
 
   const programDetails = [
     { module: "Module 1", title: "Introduction à l'Inspection Automobile", duration: "60 min", type: "Gratuit" },
-    { module: "Module 2", title: "Fondamentaux Techniques Automobiles", duration: "70 min", type: "Payant" },
-    { module: "Module 3", title: "Diagnostic Moteur et Transmission", duration: "75 min", type: "Payant" },
-    { module: "Module 4", title: "Inspection Carrosserie et Châssis", duration: "65 min", type: "Payant" },
-    { module: "Module 5", title: "Systèmes Électroniques et ADAS", duration: "70 min", type: "Payant" },
-    { module: "Module 6", title: "Sécurité et Équipements", duration: "60 min", type: "Payant" },
-    { module: "Module 7", title: "Méthodologie méthode d'inspection", duration: "70 min", type: "Payant" },
-    { module: "Module 8", title: "Pratique Professionnelle et Certification", duration: "70 min", type: "Payant" }
+    { module: "Module 2", title: "Fondamentaux Techniques Automobiles", duration: "90 min", type: "Payant" },
+    { module: "Module 3", title: "Diagnostic Moteur et Transmission", duration: "90 min", type: "Payant" },
+    { module: "Module 4", title: "Inspection Carrosserie et Châssis", duration: "80 min", type: "Payant" },
+    { module: "Module 5", title: "Systèmes Électroniques et ADAS", duration: "90 min", type: "Payant" },
+    { module: "Module 6", title: "Sécurité et Équipements", duration: "70 min", type: "Payant" },
+    { module: "Module 7", title: "Méthodologie méthode d'inspection", duration: "90 min", type: "Payant" },
+    { module: "Module 8", title: "Pratique Professionnelle", duration: "90 min", type: "Payant" }
   ];
 
   return (
     <div className="py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         
-        {/* En-tête avec Badge Qualiopi */}
+        {/* En-tête avec Badge Réseau */}
         <div className="text-center mb-12">
-          <Badge className="mb-4 px-4 py-2 text-lg" variant="secondary">
-            <CheckCircle className="h-5 w-5 mr-2 inline" />
-            Formation Conforme Qualiopi
+          <Badge className="mb-4 px-4 py-2 text-lg bg-blue-600 text-white" variant="secondary">
+            <Award className="h-5 w-5 mr-2 inline" />
+            Réseau d'Inspection +1200 Diplômés
           </Badge>
           <h2 className="text-4xl font-bold mb-4 text-gray-900">Programme Complet de Formation</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Formation professionnelle d'inspecteur automobile certifiante
+            Formation professionnelle d'inspecteur automobile - 11h de contenu vidéo
           </p>
         </div>
 
@@ -65,7 +66,7 @@ export default function QualiopiInfo() {
                 <Clock className="h-5 w-5 text-blue-600 mt-1" />
                 <div>
                   <p className="font-semibold">Durée</p>
-                  <p className="text-gray-600">9 heures de formation (540 minutes)</p>
+                  <p className="text-gray-600">11 heures de contenu vidéo</p>
                   <p className="text-sm text-gray-500">Réparties en 8 modules progressifs</p>
                 </div>
               </div>
@@ -75,7 +76,7 @@ export default function QualiopiInfo() {
                 <div>
                   <p className="font-semibold">Tarif</p>
                   <p className="text-gray-600">297€ TTC</p>
-                  <p className="text-sm text-green-600 font-medium">Payable en 4 fois sans frais</p>
+                  <p className="text-sm text-green-600 font-medium">Payable en 1 fois ou en 4 fois sans frais</p>
                   <p className="text-xs text-gray-500">Soit 4 x 74,25€</p>
                 </div>
               </div>
@@ -85,7 +86,7 @@ export default function QualiopiInfo() {
                 <div>
                   <p className="font-semibold">Délai et Modalités d'Accès</p>
                   <p className="text-gray-600">Accès immédiat après paiement</p>
-                  <p className="text-sm text-gray-500">Formation 100% en ligne, accessible 24/7 pendant 12 mois</p>
+                  <p className="text-sm text-gray-500">Formation 100% en ligne, accessible 24/7 à vie</p>
                 </div>
               </div>
 
@@ -96,7 +97,7 @@ export default function QualiopiInfo() {
                   <p className="text-gray-600">• Cours théoriques interactifs</p>
                   <p className="text-gray-600">• Études de cas pratiques</p>
                   <p className="text-gray-600">• Quiz d'évaluation (12 questions/module)</p>
-                  <p className="text-gray-600">• Forum communautaire</p>
+                  <p className="text-gray-600">• Communauté privée</p>
                 </div>
               </div>
             </CardContent>
@@ -128,7 +129,7 @@ export default function QualiopiInfo() {
                   <p className="font-semibold">Modalités d'Évaluation</p>
                   <p className="text-gray-600">• Quiz de validation par module (80% requis)</p>
                   <p className="text-gray-600">• Évaluation des compétences mécaniques</p>
-                  <p className="text-gray-600">• Examen final de certification</p>
+                  <p className="text-gray-600">• Évaluation finale</p>
                   <p className="text-gray-600">• Questionnaire de satisfaction</p>
                 </div>
               </div>
@@ -146,8 +147,8 @@ export default function QualiopiInfo() {
                 <Phone className="h-5 w-5 text-blue-600 mt-1" />
                 <div>
                   <p className="font-semibold">Contact</p>
-                  <p className="text-gray-600">Email : contact@inspecteur-auto.fr</p>
-                  <p className="text-gray-600">Support technique disponible 7j/7</p>
+                  <p className="text-gray-600">Email : support@inspecteur-auto.fr</p>
+                  <p className="text-gray-600">Tél : 06 47 89 12 21</p>
                 </div>
               </div>
             </CardContent>
@@ -182,7 +183,7 @@ export default function QualiopiInfo() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-2xl">
               <BookOpen className="h-7 w-7 text-blue-600" />
-              Détail du Programme - 9 heures
+              Détail du Programme - 11 heures
             </CardTitle>
             <CardDescription>
               8 modules progressifs avec quiz de validation
@@ -219,7 +220,7 @@ export default function QualiopiInfo() {
 
             <div className="mt-6 p-4 bg-green-50 border-l-4 border-green-600 rounded">
               <p className="font-semibold text-green-900 mb-2">
-                Durée Totale : 9 heures (540 minutes)
+                Durée Totale : 11 heures de contenu vidéo
               </p>
               <p className="text-sm text-green-800">
                 Formation progressive avec validation à chaque étape. Module 1 gratuit pour découvrir la méthode.
