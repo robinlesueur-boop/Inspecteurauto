@@ -99,7 +99,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/certification" element={<Certification />} />
+            {/* Route certification temporairement désactivée pour audit */}
             <Route path="/methode-autojust" element={<MethodeInspection />} />
             <Route path="/programme-detaille" element={<ProgrammeDetaille />} />
             <Route path="/faq" element={<FAQ />} />
