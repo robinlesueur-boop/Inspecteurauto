@@ -5,7 +5,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, GraduationCap, Users } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 function Contact() {
@@ -54,41 +54,58 @@ function Contact() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          {/* Contact Cards */}
+          <div className="grid lg:grid-cols-4 gap-6 mb-12">
             <Card>
               <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="w-8 h-8 text-blue-600" />
+                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="w-7 h-7 text-blue-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-                <p className="text-gray-600 text-sm mb-2">Notre équipe vous répond sous 24h</p>
-                <a href="mailto:contact@inspecteur-auto.fr" className="text-blue-600 hover:underline">
-                  contact@inspecteur-auto.fr
+                <h3 className="font-semibold text-gray-900 mb-2">Email Général</h3>
+                <p className="text-gray-600 text-sm mb-2">Questions générales</p>
+                <a href="mailto:support@inspecteur-auto.fr" className="text-blue-600 hover:underline text-sm">
+                  support@inspecteur-auto.fr
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-green-200 bg-green-50">
+              <CardContent className="p-6 text-center">
+                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <GraduationCap className="w-7 h-7 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Équipe Pédagogique</h3>
+                <p className="text-gray-600 text-sm mb-2">Questions sur les cours</p>
+                <a href="mailto:support@inspecteur-auto.fr" className="text-green-600 hover:underline text-sm block">
+                  support@inspecteur-auto.fr
+                </a>
+                <a href="tel:+33647891221" className="text-green-600 hover:underline text-sm block mt-1">
+                  06 47 89 12 21
                 </a>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="w-8 h-8 text-green-600" />
+                <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="w-7 h-7 text-purple-600" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Téléphone</h3>
-                <p className="text-gray-600 text-sm mb-2">Lundi au Vendredi : 9h-18h</p>
-                <a href="tel:+33123456789" className="text-blue-600 hover:underline">
-                  01 23 45 67 89
+                <p className="text-gray-600 text-sm mb-2">Lun - Ven : 9h-18h</p>
+                <a href="tel:+33647891221" className="text-blue-600 hover:underline text-sm">
+                  06 47 89 12 21
                 </a>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-purple-600" />
+                <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-7 h-7 text-orange-600" />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">Adresse</h3>
                 <p className="text-gray-600 text-sm">
-                  Inspecteur Auto Formation<br />
+                  Inspecteur Auto<br />
                   Paris, France
                 </p>
               </CardContent>
@@ -171,6 +188,34 @@ function Contact() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5 text-green-600" />
+                    Équipe Pédagogique
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 mb-4">
+                    Pour toute question concernant le contenu des cours, les quiz, ou votre progression :
+                  </p>
+                  <div className="bg-green-50 p-4 rounded-lg space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-green-600" />
+                      <a href="mailto:support@inspecteur-auto.fr" className="text-green-700 hover:underline font-medium">
+                        support@inspecteur-auto.fr
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-green-600" />
+                      <a href="tel:+33647891221" className="text-green-700 hover:underline font-medium">
+                        06 47 89 12 21
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
                   <CardTitle>Horaires de Support</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -190,20 +235,6 @@ function Contact() {
                       <p className="text-gray-500 text-xs">Fermé weekends et jours fériés</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Support Technique</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 mb-4">
-                    Pour les problèmes techniques (connexion, accès aux cours, vidéos, etc.) :
-                  </p>
-                  <a href="mailto:support@inspecteur-auto.fr" className="text-blue-600 hover:underline font-medium">
-                    support@inspecteur-auto.fr
-                  </a>
                 </CardContent>
               </Card>
 
