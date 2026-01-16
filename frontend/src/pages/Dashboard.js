@@ -214,7 +214,7 @@ function Dashboard() {
                 <div className="mt-4 flex items-center space-x-4">
                   <Badge className="bg-yellow-500 text-yellow-900">
                     <Award className="h-4 w-4 mr-1" />
-                    Certifié
+                    Diplômé
                   </Badge>
                   <Button
                     onClick={() => window.open(user.certificate_url, '_blank')}
@@ -222,7 +222,7 @@ function Dashboard() {
                     className="border-white text-white hover:bg-white hover:text-blue-600"
                   >
                     <Download className="h-4 w-4 mr-2" />
-                    Télécharger Certificat
+                    Télécharger Attestation
                   </Button>
                 </div>
               )}
