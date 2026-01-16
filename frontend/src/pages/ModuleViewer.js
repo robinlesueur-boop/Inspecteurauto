@@ -379,17 +379,6 @@ function ModuleViewer() {
                 )}
               </div>
             </div>
-
-            {/* Reading Progress */}
-            {readingProgress > 0 && (
-              <div className="mt-4">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm text-gray-600">Progression de lecture</span>
-                  <span className="text-sm font-medium">{readingProgress.toFixed(0)}%</span>
-                </div>
-                <Progress value={readingProgress} className="h-2" />
-              </div>
-            )}
           </div>
         </div>
 
