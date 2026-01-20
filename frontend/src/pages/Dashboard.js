@@ -252,6 +252,17 @@ function Dashboard() {
             </motion.div>
           )}
 
+          {/* Student Status Panel - Only for paying students */}
+          {user?.has_purchased && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.05 }}
+            >
+              <StudentStatusPanel user={user} />
+            </motion.div>
+          )}
+
           {/* Stats Cards */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
