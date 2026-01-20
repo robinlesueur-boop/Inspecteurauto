@@ -186,7 +186,7 @@ function CommentDevenirInspecteur() {
       {
         title: 'Les Erreurs à Éviter Quand On Débute',
         content: [
-          'Après avoir formé plus de 1200 inspecteurs, nous avons identifié les erreurs récurrentes des débutants. Voici comment les éviter pour démarrer sur de bonnes bases.'
+          'Après avoir accompagné de nombreux inspecteurs, nous avons identifié les erreurs récurrentes des débutants. Voici comment les éviter pour démarrer sur de bonnes bases.'
         ],
         list: [
           '❌ Se lancer sans formation : Vous risquez de passer à côté de défauts majeurs',

@@ -608,7 +608,7 @@ function Home() {
                 et de redonner confiance aux acheteurs. C'est un métier utile, valorisant, et en pleine croissance.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Avec plus de <strong>1 200 inspecteurs formés</strong> et un réseau actif partout en France, 
+                Avec plus de <strong>1 200 inspections réalisées chaque mois</strong> et un réseau actif partout en France, 
                 nous avons développé une méthode d'inspection complète et professionnelle qui fait référence dans le secteur.
               </p>
             </motion.div>
