@@ -200,6 +200,15 @@ function AppContent() {
             />
             
             <Route 
+              path="/admin/students" 
+              element={
+                <ProtectedRoute requiresAdmin={true}>
+                  <AdminStudentProgress />
+                </ProtectedRoute>
+              } 
+            />
+            
+            <Route 
               path="/admin/users" 
               element={
                 <ProtectedRoute requiresAdmin={true}>
