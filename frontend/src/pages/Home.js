@@ -109,7 +109,7 @@ function Home() {
   ];
 
   const stats = [
-    { number: content.stat_graduates, label: "Diplômés", icon: <Users className="h-5 w-5" /> },
+    { number: content.stat_graduates, label: "Inspections/mois", icon: <Users className="h-5 w-5" /> },
     { number: content.stat_success_rate, label: "Taux de Réussite", icon: <Trophy className="h-5 w-5" /> },
     { number: content.stat_duration, label: "de Formation", icon: <Clock className="h-5 w-5" /> },
     { number: content.stat_rating, label: "Note Moyenne", icon: <Star className="h-5 w-5 fill-current" /> }
@@ -257,7 +257,7 @@ function Home() {
                 className="text-center lg:text-left"
               >
                 <Badge className="mb-6 bg-blue-600/20 text-blue-200 border-blue-400 hover:bg-blue-600/30" data-testid="hero-badge">
-                  🚀 Formation #1 en France - {content.stat_graduates} diplômés
+                  🚀 Formation #1 en France - {content.stat_graduates} inspections/mois
                 </Badge>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -546,7 +546,7 @@ function Home() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <div className="text-3xl font-bold text-blue-600">{content.stat_graduates}</div>
-                    <div className="text-gray-600">Élèves diplômés</div>
+                    <div className="text-gray-600">Inspections/mois</div>
                   </div>
                   <div className="space-y-2">
                     <div className="text-3xl font-bold text-blue-600">{content.stat_success_rate}</div>
