@@ -7,6 +7,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Checkbox } from './ui/checkbox';
+import { Textarea } from './ui/textarea';
 import { Alert, AlertDescription } from './ui/alert';
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -23,7 +24,10 @@ export default function PreRegistrationForm({ onComplete }) {
     full_name: '',
     phone: '',
     answers: {},
-    has_driving_license: false
+    has_driving_license: false,
+    professional_project: '',
+    has_disability: '',
+    has_smartphone: ''
   });
 
   const questions = [
@@ -151,6 +155,21 @@ export default function PreRegistrationForm({ onComplete }) {
       return;
     }
 
+    if (!formData.professional_project || formData.professional_project.length < 50) {
+      toast.error('Veuillez décrire votre projet professionnel (minimum 50 caractères)');
+      return;
+    }
+
+    if (!formData.has_smartphone) {
+      toast.error('Veuillez indiquer si vous possédez un smartphone');
+      return;
+    }
+
+    if (!formData.has_disability) {
+      toast.error('Veuillez répondre à la question sur le handicap');
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -173,9 +192,9 @@ export default function PreRegistrationForm({ onComplete }) {
     }
   };
 
-  // Fix: Cap progress at 100% - use Math.min to prevent 110%
-  const displayStep = Math.min(step, 10);
-  const progressPercentage = Math.round((displayStep / 10) * 100);
+  const totalSteps = 13; // 0: info, 1-10: questions, 11: projet pro, 12: handicap/smartphone, 13: permis
+  const displayStep = Math.min(step, totalSteps);
+  const progressPercentage = Math.round((displayStep / totalSteps) * 100);
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
@@ -183,12 +202,12 @@ export default function PreRegistrationForm({ onComplete }) {
         <CardHeader>
           <CardTitle className="text-2xl">Questionnaire de Pré-inscription</CardTitle>
           <CardDescription>
-            Pour garantir la qualité de notre formation, nous analysons chaque candidature. 
-            Ce questionnaire nous aide à valider que votre profil correspond à nos critères.
+            Pour garantir la qualité de notre formation et valider votre projet professionnel, 
+            nous analysons chaque candidature. Ce questionnaire nous aide à vous accompagner au mieux.
           </CardDescription>
           <div className="mt-4">
             <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Question {displayStep} sur 10</span>
+              <span>Étape {displayStep} sur {totalSteps}</span>
               <span>{progressPercentage}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -201,6 +220,7 @@ export default function PreRegistrationForm({ onComplete }) {
         </CardHeader>
         <CardContent className="space-y-6">
           
+          {/* Step 0: Contact Info */}
           {step === 0 && (
             <div className="space-y-4">
               <div>
@@ -252,6 +272,7 @@ export default function PreRegistrationForm({ onComplete }) {
             </div>
           )}
 
+          {/* Steps 1-10: Questions */}
           {step >= 1 && step <= 10 && (
             <div className="space-y-6">
               <div>
@@ -295,7 +316,142 @@ export default function PreRegistrationForm({ onComplete }) {
             </div>
           )}
 
+          {/* Step 11: Professional Project Description */}
           {step === 11 && (
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold mb-2">
+                  Décrivez votre projet professionnel
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Expliquez-nous en quelques lignes pourquoi vous souhaitez devenir inspecteur automobile 
+                  et quels sont vos objectifs professionnels. Cette information nous aide à valider votre projet.
+                </p>
+                <Textarea
+                  value={formData.professional_project}
+                  onChange={(e) => setFormData({ ...formData, professional_project: e.target.value })}
+                  placeholder="Ex: Je souhaite me reconvertir dans l'inspection automobile car j'ai toujours été passionné par les voitures. Mon objectif est de devenir inspecteur indépendant dans ma région et de proposer mes services aux particuliers..."
+                  rows={6}
+                  className="w-full"
+                />
+                <p className="text-xs text-gray-500 mt-2">
+                  Minimum 50 caractères ({formData.professional_project.length}/50)
+                </p>
+              </div>
+
+              <div className="flex gap-4">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setStep(10)}
+                  className="flex-1"
+                >
+                  Précédent
+                </Button>
+                <Button 
+                  onClick={() => setStep(12)}
+                  disabled={formData.professional_project.length < 50}
+                  className="flex-1"
+                >
+                  Suivant
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 12: Disability & Smartphone */}
+          {step === 12 && (
+            <div className="space-y-6">
+              {/* Disability Question */}
+              <div className="p-4 border rounded-lg">
+                <h3 className="text-lg font-semibold mb-4">
+                  Êtes-vous en situation de handicap ?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Cette information nous permet d'adapter la formation à vos besoins spécifiques si nécessaire.
+                </p>
+                <RadioGroup
+                  value={formData.has_disability}
+                  onValueChange={(value) => setFormData({ ...formData, has_disability: value })}
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="non" id="disability_non" />
+                      <Label htmlFor="disability_non" className="cursor-pointer flex-1">
+                        Non
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="oui" id="disability_oui" />
+                      <Label htmlFor="disability_oui" className="cursor-pointer flex-1">
+                        Oui (nous vous contacterons pour adapter la formation)
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="ne_souhaite_pas_repondre" id="disability_no_answer" />
+                      <Label htmlFor="disability_no_answer" className="cursor-pointer flex-1">
+                        Je ne souhaite pas répondre
+                      </Label>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* Smartphone Question */}
+              <div className="p-4 border rounded-lg">
+                <h3 className="text-lg font-semibold mb-4">
+                  Possédez-vous un smartphone récent (2015 ou plus récent) ?
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Un smartphone est nécessaire pour réaliser les inspections et utiliser l'application.
+                </p>
+                <RadioGroup
+                  value={formData.has_smartphone}
+                  onValueChange={(value) => setFormData({ ...formData, has_smartphone: value })}
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="oui" id="smartphone_oui" />
+                      <Label htmlFor="smartphone_oui" className="cursor-pointer flex-1">
+                        Oui, j'ai un smartphone récent
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="oui_ancien" id="smartphone_ancien" />
+                      <Label htmlFor="smartphone_ancien" className="cursor-pointer flex-1">
+                        J'ai un smartphone mais il est ancien (avant 2015)
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                      <RadioGroupItem value="non" id="smartphone_non" />
+                      <Label htmlFor="smartphone_non" className="cursor-pointer flex-1">
+                        Non, je n'ai pas de smartphone
+                      </Label>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="flex gap-4">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setStep(11)}
+                  className="flex-1"
+                >
+                  Précédent
+                </Button>
+                <Button 
+                  onClick={() => setStep(13)}
+                  disabled={!formData.has_disability || !formData.has_smartphone}
+                  className="flex-1"
+                >
+                  Suivant
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 13: Driving License Confirmation */}
+          {step === 13 && (
             <div className="space-y-6">
               <Alert>
                 <AlertCircle className="h-4 w-4" />
@@ -319,7 +475,7 @@ export default function PreRegistrationForm({ onComplete }) {
               <div className="flex gap-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => setStep(10)}
+                  onClick={() => setStep(12)}
                   className="flex-1"
                 >
                   Précédent
