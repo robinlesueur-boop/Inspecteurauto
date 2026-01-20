@@ -8,6 +8,7 @@ import { Button } from "../components/ui/button";
 import { Progress } from "../components/ui/progress";
 import { motion } from "framer-motion";
 import toast from 'react-hot-toast';
+import StudentStatusPanel from "../components/StudentStatusPanel";
 import { 
   BookOpen, 
   Clock, 
