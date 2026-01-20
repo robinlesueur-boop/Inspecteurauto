@@ -736,6 +736,172 @@ async def delete_prospect(prospect_id: str, current_user: User = Depends(require
     
     return {"message": "Prospect supprimé"}
 
+# ==================== VALIDATION ADMIN & SUIVI ÉLÈVES ====================
+
+@api_router.get("/admin/students/pending-validation")
+async def get_pending_validations(current_user: User = Depends(require_admin)):
+    """Récupère les élèves en attente de validation de leur projet professionnel"""
+    students = await db.users.find(
+        {"has_purchased": True, "is_validated": False, "validation_pending": True},
+        {"_id": 0, "password_hash": 0}
+    ).sort("created_at", -1).to_list(100)
+    
+    return students
+
+@api_router.post("/admin/students/{user_id}/validate")
+async def validate_student(user_id: str, validated: bool, notes: str = "", current_user: User = Depends(require_admin)):
+    """Valider ou refuser le projet professionnel d'un élève"""
+    result = await db.users.update_one(
+        {"id": user_id},
+        {
+            "$set": {
+                "is_validated": validated,
+                "validation_pending": False,
+                "validation_notes": notes
+            }
+        }
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
+    
+    return {"message": "Validation mise à jour", "validated": validated}
+
+@api_router.get("/admin/students/progress")
+async def get_students_progress(current_user: User = Depends(require_admin)):
+    """Récupère la progression de tous les élèves avec alertes d'inactivité"""
+    students = await db.users.find(
+        {"has_purchased": True},
+        {"_id": 0, "password_hash": 0}
+    ).sort("created_at", -1).to_list(500)
+    
+    ten_days_ago = datetime.now(timezone.utc) - timedelta(days=10)
+    
+    result = []
+    for student in students:
+        # Get progress
+        progress = await db.module_progress.find({"user_id": student["id"]}).to_list(20)
+        completed_modules = sum(1 for p in progress if p.get("completed", False))
+        total_modules = await db.modules.count_documents({})
+        
+        # Check last activity
+        last_activity = student.get("last_activity")
+        if last_activity and isinstance(last_activity, str):
+            last_activity = datetime.fromisoformat(last_activity.replace('Z', '+00:00'))
+        
+        is_inactive = False
+        if last_activity:
+            is_inactive = last_activity < ten_days_ago
+        elif student.get("created_at"):
+            created = student.get("created_at")
+            if isinstance(created, str):
+                created = datetime.fromisoformat(created.replace('Z', '+00:00'))
+            is_inactive = created < ten_days_ago
+        
+        result.append({
+            **student,
+            "progress": {
+                "completed_modules": completed_modules,
+                "total_modules": total_modules,
+                "percentage": round((completed_modules / total_modules * 100) if total_modules > 0 else 0, 1)
+            },
+            "is_inactive": is_inactive,
+            "needs_reminder": is_inactive and completed_modules < total_modules
+        })
+    
+    return result
+
+@api_router.post("/admin/students/{user_id}/weproov-code")
+async def set_weproov_code(user_id: str, code: str, current_user: User = Depends(require_admin)):
+    """Attribuer un code Weproov à un élève pour son inspection test"""
+    result = await db.users.update_one(
+        {"id": user_id},
+        {"$set": {"weproov_code": code}}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
+    
+    return {"message": "Code Weproov attribué", "code": code}
+
+@api_router.post("/admin/students/{user_id}/validate-inspection")
+async def validate_inspection(user_id: str, validated: bool, notes: str = "", current_user: User = Depends(require_admin)):
+    """Valider l'inspection test d'un élève"""
+    update_data = {
+        "inspection_validated": validated,
+        "inspection_notes": notes
+    }
+    
+    result = await db.users.update_one(
+        {"id": user_id},
+        {"$set": update_data}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
+    
+    return {"message": "Inspection validée" if validated else "Inspection refusée"}
+
+# Endpoint pour l'élève - upload permis
+@api_router.post("/user/upload-license")
+async def upload_driving_license(file: UploadFile = File(...), current_user: User = Depends(get_current_user)):
+    """Upload du permis de conduire par l'élève"""
+    if not file.content_type.startswith('image/') and file.content_type != 'application/pdf':
+        raise HTTPException(status_code=400, detail="Fichier doit être une image ou un PDF")
+    
+    # Save file
+    file_extension = file.filename.split('.')[-1]
+    filename = f"license_{current_user.id}.{file_extension}"
+    file_path = f"/app/uploads/licenses/{filename}"
+    
+    os.makedirs("/app/uploads/licenses", exist_ok=True)
+    
+    with open(file_path, "wb") as f:
+        content = await file.read()
+        f.write(content)
+    
+    # Update user
+    license_url = f"/uploads/licenses/{filename}"
+    await db.users.update_one(
+        {"id": current_user.id},
+        {"$set": {"driving_license_url": license_url}}
+    )
+    
+    return {"message": "Permis uploadé avec succès", "url": license_url}
+
+# Endpoint pour vérifier si l'élève peut accéder à la formation
+@api_router.get("/user/access-status")
+async def get_access_status(current_user: User = Depends(get_current_user)):
+    """Vérifie le statut d'accès de l'élève"""
+    user = await db.users.find_one({"id": current_user.id}, {"_id": 0, "password_hash": 0})
+    
+    if not user:
+        raise HTTPException(status_code=404, detail="Utilisateur non trouvé")
+    
+    return {
+        "has_purchased": user.get("has_purchased", False),
+        "is_validated": user.get("is_validated", False),
+        "validation_pending": user.get("validation_pending", False),
+        "driving_license_uploaded": bool(user.get("driving_license_url")),
+        "weproov_code": user.get("weproov_code"),
+        "inspection_validated": user.get("inspection_validated", False),
+        "satisfaction_completed": user.get("satisfaction_completed", False),
+        "certificate_url": user.get("certificate_url"),
+        "mechanical_quiz_score": user.get("mechanical_quiz_score", 0)
+    }
+
+# Mise à jour de l'activité de l'élève
+@api_router.post("/user/activity")
+async def update_user_activity(current_user: User = Depends(get_current_user)):
+    """Met à jour la dernière activité de l'utilisateur"""
+    await db.users.update_one(
+        {"id": current_user.id},
+        {"$set": {"last_activity": datetime.now(timezone.utc).isoformat()}}
+    )
+    return {"message": "Activité mise à jour"}
+
+# ==================== FIN VALIDATION ADMIN ====================
+
 @api_router.get("/admin/analytics")
 async def get_analytics(current_user: User = Depends(require_admin)):
     """Get platform analytics"""
