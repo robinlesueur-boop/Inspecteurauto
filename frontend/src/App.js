@@ -50,6 +50,7 @@ import AdminBlog from "./pages/admin/AdminBlog";
 import AdminLandingPage from "./pages/admin/AdminLandingPage";
 import AdminMechanicalQuiz from "./pages/admin/AdminMechanicalQuiz";
 import AdminSEO from "./pages/admin/AdminSEO";
+import AdminStudentProgress from "./pages/admin/AdminStudentProgress";
 
 // SEO Pages
 import DynamicSEOPage from "./pages/seo/DynamicSEOPage";
