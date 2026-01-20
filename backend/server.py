@@ -180,6 +180,9 @@ class PreRegistrationQuestionnaire(BaseModel):
     phone: str = ""  # Numéro de téléphone du prospect
     answers: Dict[str, Any]
     has_driving_license: bool
+    professional_project: str = ""  # Description du projet professionnel
+    has_disability: str = ""  # non, oui, ne_souhaite_pas_repondre
+    has_smartphone: str = ""  # oui, oui_ancien, non
     profile_validated: bool = False
     validation_score: float = 0.0
     callback_status: str = "pending"  # pending, called, interested, not_interested, no_answer
