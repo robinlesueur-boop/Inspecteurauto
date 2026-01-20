@@ -372,6 +372,13 @@ function AdminDashboard() {
                     </Button>
                   </Link>
                   
+                  <Link to="/admin/students">
+                    <Button variant="outline" className="w-full h-20 flex flex-col border-purple-300 hover:bg-purple-50">
+                      <Users className="h-6 w-6 mb-2 text-purple-600" />
+                      <span className="text-purple-600 font-semibold">Suivi Élèves</span>
+                    </Button>
+                  </Link>
+                  
                   <Link to="/admin/transactions">
                     <Button variant="outline" className="w-full h-20 flex flex-col">
                       <CreditCard className="h-6 w-6 mb-2" />
