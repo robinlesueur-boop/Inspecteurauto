@@ -85,7 +85,7 @@ export default function QualiopiInfo() {
                 <Calendar className="h-5 w-5 text-purple-600 mt-1" />
                 <div>
                   <p className="font-semibold">Délai et Modalités d'Accès</p>
-                  <p className="text-gray-600">Accès immédiat après paiement</p>
+                  <p className="text-gray-600">Accès après paiement et validation de votre projet professionnel</p>
                   <p className="text-sm text-gray-500">Formation 100% en ligne, accessible 24/7 à vie</p>
                 </div>
               </div>
@@ -117,9 +117,7 @@ export default function QualiopiInfo() {
                 <div>
                   <p className="font-semibold">Prérequis</p>
                   <p className="text-gray-600">• Permis B en cours de validité <span className="text-red-600 font-semibold">(obligatoire)</span></p>
-                  <p className="text-gray-600">• Passion pour l'automobile</p>
-                  <p className="text-gray-600">• Motivation professionnelle</p>
-                  <p className="text-sm text-gray-500 mt-2">Un questionnaire pré-inscription validera votre profil</p>
+                  <p className="text-gray-600">• Smartphone récent (2015 minimum) pour réaliser les inspections</p>
                 </div>
               </div>
 
