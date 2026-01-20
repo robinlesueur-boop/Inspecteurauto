@@ -43,7 +43,7 @@ export default function QualiopiInfo() {
         <div className="text-center mb-12">
           <Badge className="mb-4 px-4 py-2 text-lg bg-blue-600 text-white" variant="secondary">
             <Award className="h-5 w-5 mr-2 inline" />
-            Réseau d'Inspection +1200 Diplômés
+            Réseau d'Inspection - +1200 Inspections par mois
           </Badge>
           <h2 className="text-4xl font-bold mb-4 text-gray-900">Programme Complet de Formation</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
