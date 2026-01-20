@@ -476,7 +476,7 @@ function Home() {
                 transition={{ duration: 0.6 }}
                 className="text-3xl lg:text-4xl font-bold mb-4"
               >
-                Témoignages de Nos Diplômés
+                Témoignages de Nos Inspecteurs
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -704,7 +704,7 @@ function Home() {
                 Prêt à Changer de Vie Professionnelle ?
               </h2>
               <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Rejoignez plus de 1200 inspecteurs automobiles certifiés qui ont transformé 
+                Rejoignez plus de 1200 inspecteurs automobiles qui ont transformé 
                 leur passion pour l'automobile en revenus réguliers.
               </p>
               
