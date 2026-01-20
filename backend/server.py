@@ -81,9 +81,21 @@ class User(BaseModel):
     avatar_url: Optional[str] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     has_purchased: bool = False
+    is_validated: bool = False  # Validation admin du projet professionnel
+    validation_pending: bool = False  # En attente de validation
+    validation_notes: str = ""  # Notes admin sur la validation
+    driving_license_url: Optional[str] = None  # URL du permis uploadé
+    weproov_code: Optional[str] = None  # Code Weproov pour inspection test
+    inspection_validated: bool = False  # Inspection test validée par admin
+    inspection_notes: str = ""  # Commentaires admin sur l'inspection
+    satisfaction_completed: bool = False  # Questionnaire satisfaction complété
     certificate_url: Optional[str] = None
     last_login: Optional[datetime] = None
+    last_activity: Optional[datetime] = None  # Pour suivi progression
     registration_source: str = "website"  # For tracking leads
+    professional_project: str = ""  # Projet professionnel de l'élève
+    has_disability: str = ""  # Situation handicap
+    mechanical_quiz_score: float = 0.0  # Score quiz mécanique
 
 class UserCreate(BaseModel):
     email: EmailStr
