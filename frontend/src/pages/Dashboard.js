@@ -611,6 +611,19 @@ function Dashboard() {
                                 </Badge>
                               )}
                               
+                              {/* Badge Module 2 - Obligatoire ou Optionnel */}
+                              {module.order_index === 2 && mechanicalAssessmentStatus?.completed && (
+                                isModule2Required ? (
+                                  <Badge className="bg-red-100 text-red-700">
+                                    Obligatoire (score &lt; 80%)
+                                  </Badge>
+                                ) : (
+                                  <Badge className="bg-blue-100 text-blue-700">
+                                    Optionnel (révision)
+                                  </Badge>
+                                )
+                              )}
+                              
                               {isCompleted && (
                                 <Badge className="bg-green-100 text-green-700">
                                   <CheckCircle className="h-3 w-3 mr-1" />
