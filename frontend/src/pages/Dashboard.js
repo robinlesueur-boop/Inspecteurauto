@@ -535,12 +535,16 @@ function Dashboard() {
                     return true;
                   }
                   
-                  // Module 2 (Remise à Niveau) should only show if:
-                  // 1. User has completed mechanical assessment AND
-                  // 2. User needs remedial module (score < 70%)
+                  // Module 2 (Remise à Niveau Mécanique) - logique spéciale:
+                  // - Obligatoire si score quiz mécanique < 80%
+                  // - Optionnel (visible) si score >= 80%
                   if (module.order_index === 2) {
-                    return mechanicalAssessmentStatus?.completed && 
-                           mechanicalAssessmentStatus?.needs_remedial_module;
+                    // Si pas encore passé le quiz mécanique, ne pas montrer
+                    if (!mechanicalAssessmentStatus?.completed) {
+                      return false;
+                    }
+                    // Toujours visible après le quiz (obligatoire ou optionnel)
+                    return true;
                   }
                   return true;
                 })
@@ -549,6 +553,11 @@ function Dashboard() {
                 const accessInfo = moduleAccess[module.id] || { can_access: false };
                 const isAccessible = accessInfo.can_access;
                 const blockReason = accessInfo.reason;
+                
+                // Module 2 est obligatoire si score < 80%
+                const isModule2Required = module.order_index === 2 && 
+                  mechanicalAssessmentStatus?.completed && 
+                  (mechanicalAssessmentStatus?.score || 0) < 80;
                 
                 return (
                   <motion.div
